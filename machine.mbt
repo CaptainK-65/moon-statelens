@@ -3,7 +3,10 @@
 pub(all) struct Transition {
   target : Int32
   output : String
-} derive(Eq, Debug, ToJson)
+} derive(Eq, Debug, ToJson, @json.FromJson)
+
+///|
+pub extend Transition with @json.FromJson::{from_json}
 
 ///|
 pub extend Transition with Eq::{equal, not_equal}
