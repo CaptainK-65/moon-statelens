@@ -13,7 +13,7 @@ pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise Lens
 pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_prefixes? : Int) -> LearningResult raise
 
 // Errors
-pub suberror LensError {
+pub(all) suberror LensError {
   InvalidArgument(String)
   UnknownInput(String)
   LimitExceeded(String)

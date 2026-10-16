@@ -10,7 +10,7 @@ pub struct System {
 pub fn System::new(
   reset~ : () -> Unit raise,
   step~ : (String) -> String raise,
-  close? : () -> Unit raise = () => (),
+  close~ : () -> Unit raise = () => (),
 ) -> System {
   { reset, step, close, }
 }

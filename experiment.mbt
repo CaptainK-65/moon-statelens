@@ -2,12 +2,12 @@
 /// Immutable counters. Queries count logical requests; resets and steps count
 /// attempted target calls, including failed calls. Cache hits execute no target code.
 pub(all) struct Statistics {
-  queries : Int
-  cache_hits : Int
-  resets : Int
-  steps : Int
-  completed_queries : Int
-  cache_nodes : Int
+  queries : Int32
+  cache_hits : Int32
+  resets : Int32
+  steps : Int32
+  completed_queries : Int32
+  cache_nodes : Int32
 } derive(Debug, ToJson)
 
 ///|
@@ -18,7 +18,7 @@ pub extend Statistics with ToJson::{to_json}
 
 ///|
 priv struct TraceNode {
-  children : Map[String, Int]
+  children : Map[String, Int32]
   output : String?
 }
 
@@ -29,29 +29,29 @@ pub struct Experiment {
   priv system : System
   priv alphabet : Array[String]
   priv nodes : Array[TraceNode]
-  priv max_queries : Int
-  priv max_steps : Int
-  priv max_word_length : Int
-  priv max_cache_nodes : Int
+  priv max_queries : Int32
+  priv max_steps : Int32
+  priv max_word_length : Int32
+  priv max_cache_nodes : Int32
   priv use_cache : Bool
-  priv recheck_every : Int
-  priv mut queries : Int
-  priv mut cache_hits : Int
-  priv mut resets : Int
-  priv mut steps : Int
-  priv mut completed_queries : Int
+  priv recheck_every : Int32
+  priv mut queries : Int32
+  priv mut cache_hits : Int32
+  priv mut resets : Int32
+  priv mut steps : Int32
+  priv mut completed_queries : Int32
 }
 
 ///|
 pub fn Experiment::new(
   system : System,
   alphabet : Array[String],
-  max_queries? : Int = 100000,
-  max_steps? : Int = 2000000,
-  max_word_length? : Int = 4096,
-  max_cache_nodes? : Int = 1000000,
-  use_cache? : Bool = true,
-  recheck_every? : Int = 0,
+  max_queries~ : Int32 = 100000,
+  max_steps~ : Int32 = 2000000,
+  max_word_length~ : Int32 = 4096,
+  max_cache_nodes~ : Int32 = 1000000,
+  use_cache~ : Bool = true,
+  recheck_every~ : Int32 = 0,
 ) -> Experiment raise LensError {
   validate_alphabet(alphabet)
   if max_queries < 0 ||
@@ -102,7 +102,7 @@ pub fn Experiment::alphabet(self : Experiment) -> Array[String] {
 pub fn Experiment::query(
   self : Experiment,
   word : Array[String],
-  bypass_cache? : Bool = false,
+  bypass_cache~ : Bool = false,
 ) -> Array[String] raise {
   if word.length() > self.max_word_length {
     raise LimitExceeded("word-length")

@@ -2,13 +2,13 @@
 // Length/lexicographic word enumeration without materializing exponential layers.
 priv struct WordCursor {
   alphabet : Array[String]
-  max_length : Int
-  digits : Array[Int]
+  max_length : Int32
+  digits : Array[Int32]
   mut done : Bool
 }
 
 ///|
-fn WordCursor::new(alphabet : Array[String], max_length : Int) -> WordCursor {
+fn WordCursor::new(alphabet : Array[String], max_length : Int32) -> WordCursor {
   { alphabet, max_length, digits: [], done: false, }
 }
 

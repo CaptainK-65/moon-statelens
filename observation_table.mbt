@@ -4,18 +4,18 @@ priv struct ObservationTable {
   prefixes : Array[Array[String]]
   suffixes : Array[Array[String]]
   rows : Map[Array[String], Array[Array[String]]]
-  max_cells : Int
-  max_prefixes : Int
-  max_states : Int
-  mut cells : Int
+  max_cells : Int32
+  max_prefixes : Int32
+  max_states : Int32
+  mut cells : Int32
 }
 
 ///|
 fn ObservationTable::new(
   experiment : Experiment,
-  max_cells~ : Int,
-  max_prefixes~ : Int,
-  max_states~ : Int,
+  max_cells~ : Int32,
+  max_prefixes~ : Int32,
+  max_states~ : Int32,
 ) -> ObservationTable {
   {
     experiment,
@@ -134,7 +134,7 @@ fn ObservationTable::stabilize(self : ObservationTable) -> Unit raise {
 
 ///|
 fn ObservationTable::hypothesis(self : ObservationTable) -> Machine raise {
-  let states : Map[Array[Array[String]], Int] = Map([])
+  let states : Map[Array[Array[String]], Int32] = Map([])
   let representatives : Array[Array[String]] = []
   for prefix in self.prefixes {
     let row = self.row(prefix)

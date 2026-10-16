@@ -22,10 +22,10 @@ fn learning_result(
 pub fn learn(
   experiment : Experiment,
   oracle : Oracle,
-  max_states? : Int = 256,
-  max_rounds? : Int = 64,
-  max_table_cells? : Int = 1000000,
-  max_prefixes? : Int = 20000,
+  max_states~ : Int32 = 256,
+  max_rounds~ : Int32 = 64,
+  max_table_cells~ : Int32 = 1000000,
+  max_prefixes~ : Int32 = 20000,
 ) -> LearningResult raise {
   if max_states < 1 ||
     max_states > 4096 ||

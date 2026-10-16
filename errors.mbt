@@ -1,6 +1,6 @@
 ///|
 /// Invalid inputs, inconsistent observations and explicit resource limits.
-pub suberror LensError {
+pub(all) suberror LensError {
   InvalidArgument(String)
   UnknownInput(String)
   LimitExceeded(String)

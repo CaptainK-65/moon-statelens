@@ -1,5 +1,5 @@
 ///|
-fn delayed_target(states : Int) -> @lens.Machine raise {
+fn delayed_target(states : Int32) -> @lens.Machine raise {
   let table : Array[Array[@lens.Transition]] = Array::makei(states, state => {
     [
       { target: (state + 1) % states, output: "tick", },

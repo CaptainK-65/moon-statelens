@@ -1,7 +1,7 @@
 ///|
 /// One transition of a complete deterministic Mealy machine.
 pub(all) struct Transition {
-  target : Int
+  target : Int32
   output : String
 } derive(Eq, Debug, ToJson)
 
@@ -18,7 +18,7 @@ pub extend Transition with ToJson::{to_json}
 /// Validated model; construction and accessors defensively copy arrays.
 pub struct Machine {
   priv alphabet : Array[String]
-  priv initial : Int
+  priv initial : Int32
   priv transitions : Array[Array[Transition]]
 } derive(Debug)
 
@@ -44,7 +44,7 @@ fn validate_alphabet(alphabet : Array[String]) -> Unit raise LensError {
 pub fn Machine::new(
   alphabet : Array[String],
   transitions : Array[Array[Transition]],
-  initial? : Int = 0,
+  initial~ : Int32 = 0,
 ) -> Machine raise LensError {
   validate_alphabet(alphabet)
   if transitions.is_empty() || transitions.length() > 4096 {
@@ -76,12 +76,12 @@ pub fn Machine::alphabet(self : Machine) -> Array[String] {
 }
 
 ///|
-pub fn Machine::state_count(self : Machine) -> Int {
+pub fn Machine::state_count(self : Machine) -> Int32 {
   self.transitions.length()
 }
 
 ///|
-pub fn Machine::initial_state(self : Machine) -> Int {
+pub fn Machine::initial_state(self : Machine) -> Int32 {
   self.initial
 }
 
@@ -91,7 +91,10 @@ pub fn Machine::table(self : Machine) -> Array[Array[Transition]] {
 }
 
 ///|
-fn Machine::input_index(self : Machine, input : String) -> Int raise LensError {
+fn Machine::input_index(
+  self : Machine,
+  input : String,
+) -> Int32 raise LensError {
   match self.alphabet.search(input) {
     Some(index) => index
     None => raise UnknownInput(input)
@@ -111,7 +114,7 @@ pub fn Machine::trace(
 /// Execute an input word starting at an explicitly selected state.
 pub fn Machine::trace_from(
   self : Machine,
-  state : Int,
+  state : Int32,
   word : Array[String],
 ) -> Array[String] raise LensError {
   if state < 0 || state >= self.state_count() {
@@ -129,8 +132,10 @@ pub fn Machine::trace_from(
 
 ///|
 /// Shortest access words for reachable states, in BFS/input order.
-pub fn Machine::access_sequences(self : Machine) -> Array[(Int, Array[String])] {
-  let seen : Map[Int, Unit] = Map([(self.initial, ())])
+pub fn Machine::access_sequences(
+  self : Machine,
+) -> Array[(Int32, Array[String])] {
+  let seen : Map[Int32, Unit] = Map([(self.initial, ())])
   let queue = [(self.initial, [])]
   for head = 0; head < queue.length(); head = head + 1 {
     let (state, word) = queue[head]

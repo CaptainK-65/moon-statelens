@@ -2,11 +2,11 @@
 
 Pure MoonBit active learning of black-box Mealy behavior, with replay-confirmed compatibility witnesses.
 
-**Development status:** the validated model and shortest distinguishing-word kernel are implemented. The active learner, conformance oracles, real-library adapter and release evidence are being built. No release or general black-box equivalence claim is made yet.
+**Development status:** the active learner, conformance oracles, model comparison and real MoonLarder adapter are implemented. The generated-target corpus passes independently checked learning. CLI, documentation and release evidence are being completed. No release or general black-box equivalence claim is made yet.
 
 ## Build
 
-Tested toolchain: MoonBit 0.10.14 / moon 0.1.20260920.
+Tested toolchain: MoonBit 0.10.15 / moon 0.1.20261012.
 
 ```sh
 moon update

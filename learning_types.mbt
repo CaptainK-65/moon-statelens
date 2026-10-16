@@ -3,7 +3,7 @@
 /// to a supplied explicit reference model; it does not certify an arbitrary adapter.
 pub(all) enum Evidence {
   ExactReference
-  ConditionalStateBound(Int)
+  ConditionalStateBound(Int32)
   Budgeted(String)
 } derive(Debug, ToJson)
 
@@ -56,13 +56,13 @@ pub extend LearningStatus with ToJson::{to_json}
 
 ///|
 pub(all) struct LearningRound {
-  index : Int
-  states : Int
-  prefixes : Int
-  suffixes : Int
-  table_cells : Int
-  queries : Int
-  counterexample_length : Int?
+  index : Int32
+  states : Int32
+  prefixes : Int32
+  suffixes : Int32
+  table_cells : Int32
+  queries : Int32
+  counterexample_length : Int32?
 } derive(Debug, ToJson)
 
 ///|

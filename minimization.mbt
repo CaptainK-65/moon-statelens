@@ -4,7 +4,7 @@
 pub fn Machine::minimize(self : Machine) -> Machine raise LensError {
   let mut classes = Array::make(self.state_count(), 0)
   for ;; {
-    let groups : Map[(Array[String], Array[Int]), Int] = Map([])
+    let groups : Map[(Array[String], Array[Int32]), Int32] = Map([])
     let next = self.transitions.map(row => {
       let signature = (
         row.map(edge => edge.output),
@@ -25,7 +25,7 @@ pub fn Machine::minimize(self : Machine) -> Machine raise LensError {
     classes = next
   }
   let reachable = self.access_sequences()
-  let ids : Map[Int, Int] = Map([])
+  let ids : Map[Int32, Int32] = Map([])
   let representatives = []
   for (state, _) in reachable {
     let group = classes[state]

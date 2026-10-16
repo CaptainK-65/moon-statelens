@@ -13,8 +13,8 @@ fn oracle_mismatch(
 /// Fresh exhaustive experiments through max_depth. Completion is bounded
 /// evidence only. max_tests or an experiment limit yields Inconclusive.
 pub fn Oracle::exhaustive(
-  max_depth : Int,
-  max_tests? : Int = 10000,
+  max_depth : Int32,
+  max_tests~ : Int32 = 10000,
 ) -> Oracle raise LensError {
   if max_depth < 0 || max_depth > 4096 || max_tests < 1 {
     raise InvalidArgument("invalid exhaustive oracle budget")
@@ -47,9 +47,9 @@ pub fn Oracle::exhaustive(
 /// Reproducible random-word experiments. Successful completion is never an
 /// unconditional equivalence result. The seed is reset for each hypothesis.
 pub fn Oracle::random_words(
-  seed? : UInt = 1,
-  max_length? : Int = 16,
-  tests? : Int = 1000,
+  seed~ : UInt32 = 1,
+  max_length~ : Int32 = 16,
+  tests~ : Int32 = 1000,
 ) -> Oracle raise LensError {
   if max_length < 0 || max_length > 4096 || tests < 1 {
     raise InvalidArgument("invalid random oracle budget")
@@ -90,8 +90,8 @@ pub fn Oracle::random_words(
 /// is conditional on the actual SUL satisfying the declared state bound and
 /// deterministic, total, resettable Mealy assumptions. Truncation is inconclusive.
 pub fn Oracle::w_method(
-  state_bound : Int,
-  max_tests? : Int = 100000,
+  state_bound : Int32,
+  max_tests~ : Int32 = 100000,
 ) -> Oracle raise LensError {
   if state_bound < 1 || state_bound > 4096 || max_tests < 1 {
     raise InvalidArgument("invalid W-method budget")

@@ -24,3 +24,8 @@ keywords = [ "automata-learning", "mealy", "model-inference", "testing" ]
 preferred_target = "wasm"
 
 description = "Active black-box Mealy model learning and replay-confirmed behavioral compatibility checks."
+
+import {
+  "jhshuai/moonlarder@0.15.0",
+  "moonbitlang/quickcheck@0.15.0",
+}

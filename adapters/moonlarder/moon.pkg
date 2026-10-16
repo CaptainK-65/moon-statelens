@@ -1,0 +1,8 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "jhshuai/moonlarder" @cache,
+}
+
+import {
+  "CaptainK-65/moon-statelens/adapters/moonlarder" @adapter,
+} for "test"

@@ -4,7 +4,7 @@
 /// implements that reference; this oracle cannot establish it for an unknown SUL.
 pub fn Oracle::exact(
   reference : Machine,
-  max_pairs? : Int = 1000000,
+  max_pairs~ : Int32 = 1000000,
 ) -> Oracle raise LensError {
   if max_pairs < 1 {
     raise InvalidArgument("max_pairs must be positive")

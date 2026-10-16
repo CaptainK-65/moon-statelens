@@ -32,7 +32,7 @@ fn compatible_alphabets(
 pub fn distinguish(
   left : Machine,
   right : Machine,
-  max_pairs? : Int = 1000000,
+  max_pairs~ : Int32 = 1000000,
 ) -> Difference? raise LensError {
   compatible_alphabets(left, right)
   distinguish_from(left, left.initial, right, right.initial, max_pairs~)
@@ -41,17 +41,17 @@ pub fn distinguish(
 ///|
 fn distinguish_from(
   left : Machine,
-  left_start : Int,
+  left_start : Int32,
   right : Machine,
-  right_start : Int,
-  max_pairs~ : Int,
+  right_start : Int32,
+  max_pairs~ : Int32,
 ) -> Difference? raise LensError {
   if max_pairs <= 0 {
     raise InvalidArgument("max_pairs must be positive")
   }
   // Parent pointers keep path storage linear in the number of visited pairs.
   let queue = [(left_start, right_start, -1, -1)]
-  let seen : Map[(Int, Int), Unit] = Map([((left_start, right_start), ())])
+  let seen : Map[(Int32, Int32), Unit] = Map([((left_start, right_start), ())])
   let right_columns = left.alphabet.map(input => right.input_index(input))
   for head = 0; head < queue.length(); head = head + 1 {
     let (ls, rs, _, _) = queue[head]
@@ -93,8 +93,8 @@ fn distinguish_from(
 /// Distinguish two states of one model. Equivalent states return None.
 pub fn Machine::distinguish_states(
   self : Machine,
-  left : Int,
-  right : Int,
+  left : Int32,
+  right : Int32,
 ) -> Array[String]? raise LensError {
   if left < 0 ||
     right < 0 ||
