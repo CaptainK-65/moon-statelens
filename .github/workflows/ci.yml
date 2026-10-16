@@ -48,4 +48,5 @@ jobs:
           version: latest
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: moon update
       - run: moon run tools/verify_published.mbtx -- ${{ matrix.target }}
