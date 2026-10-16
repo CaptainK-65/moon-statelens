@@ -10,6 +10,8 @@ pub fn confirm_difference(Experiment, Experiment, Array[String]) -> Difference? 
 
 pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
 
+pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_prefixes? : Int) -> LearningResult raise
+
 // Errors
 pub suberror LensError {
   InvalidArgument(String)
@@ -20,6 +22,13 @@ pub suberror LensError {
 pub fn LensError::to_repr(Self) -> @debug.Repr
 
 // Types and methods
+pub(all) enum CheckResult {
+  Counterexample(Array[String])
+  NoCounterexample(Evidence)
+  Inconclusive(String)
+} derive(@debug.Debug)
+pub fn CheckResult::to_repr(Self) -> @debug.Repr
+
 pub(all) struct Difference {
   inputs : Array[String]
   left_outputs : Array[String]
@@ -30,6 +39,14 @@ pub fn Difference::not_equal(Self, Self) -> Bool
 pub fn Difference::to_json(Self) -> Json
 pub fn Difference::to_repr(Self) -> @debug.Repr
 
+pub(all) enum Evidence {
+  ExactReference
+  ConditionalStateBound(Int)
+  Budgeted(String)
+} derive(ToJson, @debug.Debug)
+pub fn Evidence::to_json(Self) -> Json
+pub fn Evidence::to_repr(Self) -> @debug.Repr
+
 pub struct Experiment {
   // private fields
 }
@@ -38,13 +55,44 @@ pub fn Experiment::new(System, Array[String], max_queries? : Int, max_steps? : I
 pub fn Experiment::query(Self, Array[String], bypass_cache? : Bool) -> Array[String] raise
 pub fn Experiment::statistics(Self) -> Statistics
 
+pub(all) struct LearningResult {
+  model : Machine?
+  status : LearningStatus
+  statistics : Statistics
+  rounds : Array[LearningRound]
+  counterexamples : Array[Difference]
+} derive(@debug.Debug)
+pub fn LearningResult::to_repr(Self) -> @debug.Repr
+
+pub(all) struct LearningRound {
+  index : Int
+  states : Int
+  prefixes : Int
+  suffixes : Int
+  table_cells : Int
+  queries : Int
+  counterexample_length : Int?
+} derive(ToJson, @debug.Debug)
+pub fn LearningRound::to_json(Self) -> Json
+pub fn LearningRound::to_repr(Self) -> @debug.Repr
+
+pub(all) enum LearningStatus {
+  Supported(Evidence)
+  Inconclusive(String)
+  Unstable(word~ : Array[String], expected~ : Array[String], actual~ : Array[String])
+} derive(ToJson, @debug.Debug)
+pub fn LearningStatus::to_json(Self) -> Json
+pub fn LearningStatus::to_repr(Self) -> @debug.Repr
+
 pub struct Machine {
   // private fields
 } derive(@debug.Debug)
 pub fn Machine::access_sequences(Self) -> Array[(Int, Array[String])]
 pub fn Machine::alphabet(Self) -> Array[String]
+pub fn Machine::characterizing_set(Self) -> Array[Array[String]] raise LensError
 pub fn Machine::distinguish_states(Self, Int, Int) -> Array[String]? raise LensError
 pub fn Machine::initial_state(Self) -> Int
+pub fn Machine::minimize(Self) -> Self raise LensError
 pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
 pub fn Machine::state_count(Self) -> Int
 pub fn Machine::system(Self) -> System
@@ -52,6 +100,15 @@ pub fn Machine::table(Self) -> Array[Array[Transition]]
 pub fn Machine::to_repr(Self) -> @debug.Repr
 pub fn Machine::trace(Self, Array[String]) -> Array[String] raise LensError
 pub fn Machine::trace_from(Self, Int, Array[String]) -> Array[String] raise LensError
+
+pub struct Oracle {
+  // private fields
+}
+pub fn Oracle::exact(Machine, max_pairs? : Int) -> Self raise LensError
+pub fn Oracle::exhaustive(Int, max_tests? : Int) -> Self raise LensError
+pub fn Oracle::new((Machine, Experiment) -> CheckResult raise) -> Self
+pub fn Oracle::random_words(seed? : UInt, max_length? : Int, tests? : Int) -> Self raise LensError
+pub fn Oracle::w_method(Int, max_tests? : Int) -> Self raise LensError
 
 pub(all) struct Statistics {
   queries : Int
