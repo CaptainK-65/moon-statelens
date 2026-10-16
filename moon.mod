@@ -26,5 +26,4 @@ preferred_target = "wasm"
 description = "Active black-box Mealy model learning and replay-confirmed behavioral compatibility checks."
 
 import {
-  "ShellWen/lru_cache@0.1.0",
-}
+  }

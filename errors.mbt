@@ -4,6 +4,11 @@ pub suberror LensError {
   InvalidArgument(String)
   UnknownInput(String)
   LimitExceeded(String)
+  InconsistentObservation(
+    word~ : Array[String],
+    expected~ : Array[String],
+    actual~ : Array[String]
+  )
 } derive(Debug)
 
 ///|

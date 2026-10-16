@@ -6,6 +6,8 @@ import {
 }
 
 // Values
+pub fn confirm_difference(Experiment, Experiment, Array[String]) -> Difference? raise
+
 pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
 
 // Errors
@@ -13,6 +15,7 @@ pub suberror LensError {
   InvalidArgument(String)
   UnknownInput(String)
   LimitExceeded(String)
+  InconsistentObservation(word~ : Array[String], expected~ : Array[String], actual~ : Array[String])
 } derive(@debug.Debug)
 pub fn LensError::to_repr(Self) -> @debug.Repr
 
@@ -27,6 +30,14 @@ pub fn Difference::not_equal(Self, Self) -> Bool
 pub fn Difference::to_json(Self) -> Json
 pub fn Difference::to_repr(Self) -> @debug.Repr
 
+pub struct Experiment {
+  // private fields
+}
+pub fn Experiment::alphabet(Self) -> Array[String]
+pub fn Experiment::new(System, Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, use_cache? : Bool, recheck_every? : Int) -> Self raise LensError
+pub fn Experiment::query(Self, Array[String], bypass_cache? : Bool) -> Array[String] raise
+pub fn Experiment::statistics(Self) -> Statistics
+
 pub struct Machine {
   // private fields
 } derive(@debug.Debug)
@@ -36,10 +47,27 @@ pub fn Machine::distinguish_states(Self, Int, Int) -> Array[String]? raise LensE
 pub fn Machine::initial_state(Self) -> Int
 pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
 pub fn Machine::state_count(Self) -> Int
+pub fn Machine::system(Self) -> System
 pub fn Machine::table(Self) -> Array[Array[Transition]]
 pub fn Machine::to_repr(Self) -> @debug.Repr
 pub fn Machine::trace(Self, Array[String]) -> Array[String] raise LensError
 pub fn Machine::trace_from(Self, Int, Array[String]) -> Array[String] raise LensError
+
+pub(all) struct Statistics {
+  queries : Int
+  cache_hits : Int
+  resets : Int
+  steps : Int
+  completed_queries : Int
+  cache_nodes : Int
+} derive(ToJson, @debug.Debug)
+pub fn Statistics::to_json(Self) -> Json
+pub fn Statistics::to_repr(Self) -> @debug.Repr
+
+pub struct System {
+  // private fields
+}
+pub fn System::new(reset~ : () -> Unit raise, step~ : (String) -> String raise, close? : () -> Unit raise) -> Self
 
 pub(all) struct Transition {
   target : Int
