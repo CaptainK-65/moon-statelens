@@ -1,0 +1,26 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn main {
+  let output = @shell.Cmd("moon", [
+    "run", "cmd/statelens", "--target", "native", "--", "benchmark",
+  ]).output(timeout_ms=60000, max_output_bytes=2097152)
+  output.check()
+  let evidence = @json.parse(output.stdout())
+  guard evidence
+    is { "format": "moonstatelens.query-study", "cases": Array(cases), .. } &&
+    cases.length() == 6 else {
+    fail("invalid query study")
+  }
+  @fs.write_file(
+    "docs/evidence/query-study.json",
+    evidence.stringify(indent=2) + "\n",
+  )
+  println("Updated deterministic query-cost evidence")
+}

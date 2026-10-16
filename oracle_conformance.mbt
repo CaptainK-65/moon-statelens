@@ -92,8 +92,12 @@ pub fn Oracle::random_words(
 pub fn Oracle::w_method(
   state_bound : Int32,
   max_tests~ : Int32 = 100000,
+  max_characterization_work~ : Int32 = 1000000,
 ) -> Oracle raise LensError {
-  if state_bound < 1 || state_bound > 4096 || max_tests < 1 {
+  if state_bound < 1 ||
+    state_bound > 4096 ||
+    max_tests < 1 ||
+    max_characterization_work < 1 {
     raise InvalidArgument("invalid W-method budget")
   }
   Oracle::new((hypothesis, experiment) => {
@@ -101,6 +105,10 @@ pub fn Oracle::w_method(
     if model.state_count() > state_bound {
       return Inconclusive("state-bound-below-hypothesis")
     }
+    let suffixes = characterizing_minimal(
+      model,
+      max_work=max_characterization_work,
+    )
     let access = model.access_sequences()
     let cover : Array[Array[String]] = []
     for (_, prefix) in access {
@@ -114,7 +122,6 @@ pub fn Oracle::w_method(
         }
       }
     }
-    let suffixes = model.characterizing_set()
     let middle = WordCursor::new(
       model.alphabet,
       state_bound - model.state_count(),

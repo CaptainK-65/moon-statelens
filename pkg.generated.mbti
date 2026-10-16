@@ -118,12 +118,12 @@ pub struct Machine {
 } derive(@debug.Debug)
 pub fn Machine::access_sequences(Self) -> Array[(Int, Array[String])]
 pub fn Machine::alphabet(Self) -> Array[String]
-pub fn Machine::characterizing_set(Self) -> Array[Array[String]] raise LensError
+pub fn Machine::characterizing_set(Self, max_work? : Int) -> Array[Array[String]] raise LensError
 pub fn Machine::distinguish_states(Self, Int, Int) -> Array[String]? raise LensError
 pub fn Machine::encode(Self) -> String
 pub fn Machine::from_json(Json) -> Self raise
 pub fn Machine::initial_state(Self) -> Int
-pub fn Machine::minimize(Self) -> Self raise LensError
+pub fn Machine::minimize(Self, max_work? : Int) -> Self raise LensError
 pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
 pub fn Machine::state_count(Self) -> Int
 pub fn Machine::system(Self) -> System
@@ -143,7 +143,7 @@ pub fn Oracle::exact(Machine, max_pairs? : Int) -> Self raise LensError
 pub fn Oracle::exhaustive(Int, max_tests? : Int) -> Self raise LensError
 pub fn Oracle::new((Machine, Experiment) -> CheckResult raise) -> Self
 pub fn Oracle::random_words(seed? : UInt, max_length? : Int, tests? : Int) -> Self raise LensError
-pub fn Oracle::w_method(Int, max_tests? : Int) -> Self raise LensError
+pub fn Oracle::w_method(Int, max_tests? : Int, max_characterization_work? : Int) -> Self raise LensError
 pub fn Oracle::with_regressions(Self, Array[Array[String]]) -> Self
 
 pub(all) struct Statistics {
