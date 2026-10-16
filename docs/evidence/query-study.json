@@ -14,7 +14,8 @@
         "resets": 20,
         "steps": 39,
         "completed_queries": 20,
-        "cache_nodes": 11
+        "cache_nodes": 11,
+        "output_code_units": 126
       },
       "exhaustive_validation_of_final_model": {
         "queries": 15,
@@ -22,7 +23,8 @@
         "resets": 15,
         "steps": 34,
         "completed_queries": 15,
-        "cache_nodes": 15
+        "cache_nodes": 15,
+        "output_code_units": 106
       },
       "learning_rounds": 1
     },
@@ -37,7 +39,8 @@
         "resets": 57,
         "steps": 161,
         "completed_queries": 57,
-        "cache_nodes": 25
+        "cache_nodes": 25,
+        "output_code_units": 534
       },
       "exhaustive_validation_of_final_model": {
         "queries": 63,
@@ -45,7 +48,8 @@
         "resets": 63,
         "steps": 258,
         "completed_queries": 63,
-        "cache_nodes": 63
+        "cache_nodes": 63,
+        "output_code_units": 786
       },
       "learning_rounds": 2
     },
@@ -60,7 +64,8 @@
         "resets": 90,
         "steps": 329,
         "completed_queries": 90,
-        "cache_nodes": 44
+        "cache_nodes": 44,
+        "output_code_units": 1114
       },
       "exhaustive_validation_of_final_model": {
         "queries": 255,
@@ -68,7 +73,8 @@
         "resets": 255,
         "steps": 1538,
         "completed_queries": 255,
-        "cache_nodes": 255
+        "cache_nodes": 255,
+        "output_code_units": 4646
       },
       "learning_rounds": 2
     },
@@ -83,7 +89,8 @@
         "resets": 140,
         "steps": 625,
         "completed_queries": 140,
-        "cache_nodes": 73
+        "cache_nodes": 73,
+        "output_code_units": 2134
       },
       "exhaustive_validation_of_final_model": {
         "queries": 1023,
@@ -91,7 +98,8 @@
         "resets": 1023,
         "steps": 8194,
         "completed_queries": 1023,
-        "cache_nodes": 1023
+        "cache_nodes": 1023,
+        "output_code_units": 24662
       },
       "learning_rounds": 2
     },
@@ -106,7 +114,8 @@
         "resets": 219,
         "steps": 1145,
         "completed_queries": 219,
-        "cache_nodes": 120
+        "cache_nodes": 120,
+        "output_code_units": 3898
       },
       "exhaustive_validation_of_final_model": {
         "queries": 4095,
@@ -114,7 +123,8 @@
         "resets": 4095,
         "steps": 40962,
         "completed_queries": 4095,
-        "cache_nodes": 4095
+        "cache_nodes": 4095,
+        "output_code_units": 123078
       },
       "learning_rounds": 2
     },
@@ -129,7 +139,8 @@
         "resets": 351,
         "steps": 2089,
         "completed_queries": 351,
-        "cache_nodes": 201
+        "cache_nodes": 201,
+        "output_code_units": 7022
       },
       "exhaustive_validation_of_final_model": {
         "queries": 16383,
@@ -137,7 +148,8 @@
         "resets": 16383,
         "steps": 196610,
         "completed_queries": 16383,
-        "cache_nodes": 16383
+        "cache_nodes": 16383,
+        "output_code_units": 590278
       },
       "learning_rounds": 2
     }

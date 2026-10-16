@@ -8,6 +8,7 @@ pub(all) struct Statistics {
   steps : Int32
   completed_queries : Int32
   cache_nodes : Int32
+  output_code_units : Int32
 } derive(Debug, ToJson)
 
 ///|
@@ -33,6 +34,7 @@ pub struct Experiment {
   priv max_steps : Int32
   priv max_word_length : Int32
   priv max_cache_nodes : Int32
+  priv max_output_code_units : Int32
   priv use_cache : Bool
   priv recheck_every : Int32
   priv mut queries : Int32
@@ -40,6 +42,9 @@ pub struct Experiment {
   priv mut resets : Int32
   priv mut steps : Int32
   priv mut completed_queries : Int32
+  priv mut output_code_units : Int32
+  priv mut in_flight : Bool
+  priv mut conflict : (Array[String], Array[String], Array[String])?
 }
 
 ///|
@@ -50,6 +55,7 @@ pub fn Experiment::new(
   max_steps~ : Int32 = 2000000,
   max_word_length~ : Int32 = 4096,
   max_cache_nodes~ : Int32 = 1000000,
+  max_output_code_units~ : Int32 = 16777216,
   use_cache~ : Bool = true,
   recheck_every~ : Int32 = 0,
 ) -> Experiment raise LensError {
@@ -58,6 +64,7 @@ pub fn Experiment::new(
     max_steps < 0 ||
     max_word_length < 0 ||
     max_cache_nodes < 1 ||
+    max_output_code_units < 0 ||
     recheck_every < 0 {
     raise InvalidArgument("invalid experiment budget")
   }
@@ -69,6 +76,7 @@ pub fn Experiment::new(
     max_steps,
     max_word_length,
     max_cache_nodes,
+    max_output_code_units,
     use_cache,
     recheck_every,
     queries: 0,
@@ -76,6 +84,9 @@ pub fn Experiment::new(
     resets: 0,
     steps: 0,
     completed_queries: 0,
+    output_code_units: 0,
+    in_flight: false,
+    conflict: None,
   }
 }
 
@@ -88,6 +99,7 @@ pub fn Experiment::statistics(self : Experiment) -> Statistics {
     steps: self.steps,
     completed_queries: self.completed_queries,
     cache_nodes: self.nodes.length(),
+    output_code_units: self.output_code_units,
   }
 }
 
@@ -101,12 +113,27 @@ pub fn Experiment::alphabet(self : Experiment) -> Array[String] {
 /// Bypass forces a new observation, checked against every previously observed prefix.
 pub fn Experiment::query(
   self : Experiment,
-  word : Array[String],
+  requested_word : Array[String],
   bypass_cache~ : Bool = false,
 ) -> Array[String] raise {
-  if word.length() > self.max_word_length {
+  if self.in_flight {
+    raise InvalidArgument("reentrant experiment query")
+  }
+  self.in_flight = true
+  defer {
+    self.in_flight = false
+  }
+  if self.conflict is Some((word, expected, actual)) {
+    raise InconsistentObservation(
+      word=word.copy(),
+      expected=expected.copy(),
+      actual=actual.copy(),
+    )
+  }
+  if requested_word.length() > self.max_word_length {
     raise LimitExceeded("word-length")
   }
+  let word = requested_word.copy()
   for input in word {
     if !self.alphabet.contains(input) {
       raise UnknownInput(input)
@@ -150,7 +177,12 @@ pub fn Experiment::query(
     let result = []
     for input in word {
       self.steps += 1
-      result.push((self.system.step)(input))
+      let output = (self.system.step)(input)
+      if output.length() > self.max_output_code_units - self.output_code_units {
+        raise LimitExceeded("output-code-units")
+      }
+      self.output_code_units += output.length()
+      result.push(output)
     }
     result
   }
@@ -159,6 +191,13 @@ pub fn Experiment::query(
   // Check before inserting, so a conflicting trace cannot partially update the cache.
   for index in 0..<cached.length() {
     if cached[index] != outputs[index] {
+      self.conflict = Some(
+        (
+          word[:index + 1].to_owned(),
+          cached[:index + 1].to_owned(),
+          outputs[:index + 1].to_owned(),
+        ),
+      )
       raise InconsistentObservation(
         word=word[:index + 1].to_owned(),
         expected=cached[:index + 1].to_owned(),
@@ -189,11 +228,12 @@ pub fn confirm_difference(
   right : Experiment,
   inputs : Array[String],
 ) -> Difference? raise {
-  let left_outputs = left.query(inputs, bypass_cache=true)
-  let right_outputs = right.query(inputs, bypass_cache=true)
+  let word = inputs.copy()
+  let left_outputs = left.query(word, bypass_cache=true)
+  let right_outputs = right.query(word, bypass_cache=true)
   if left_outputs == right_outputs {
     None
   } else {
-    Some({ inputs: inputs.copy(), left_outputs, right_outputs, })
+    Some({ inputs: word, left_outputs, right_outputs, })
   }
 }

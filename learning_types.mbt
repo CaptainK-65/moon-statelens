@@ -61,6 +61,7 @@ pub(all) struct LearningRound {
   prefixes : Int32
   suffixes : Int32
   table_cells : Int32
+  table_symbols : Int32
   queries : Int32
   counterexample_length : Int32?
 } derive(Debug, ToJson)

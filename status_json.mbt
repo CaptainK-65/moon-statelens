@@ -32,6 +32,14 @@ pub impl ToJson for LearningStatus with fn to_json(self) {
 ///|
 pub impl ToJson for CompatibilityStatus with fn to_json(self) {
   match self {
+    ReplayUnstable(side~, word~, expected~, actual~) =>
+      Json::object({
+        "kind": Json("unstable-during-replay"),
+        "side": Json(side),
+        "inputs": Json(word),
+        "expected": Json(expected),
+        "actual": Json(actual),
+      })
     ConfirmedDifference(difference) =>
       Json::object({
         "kind": Json("confirmed-difference"),
@@ -52,6 +60,8 @@ pub impl ToJson for CompatibilityResult with fn to_json(self) {
     "status": Json(self.status),
     "left": Json(self.left),
     "right": Json(self.right),
+    "left_statistics": Json(self.left_statistics),
+    "right_statistics": Json(self.right_statistics),
     "refinements": Json(self.refinements),
     "spurious_inputs": Json(self.spurious_inputs),
   })

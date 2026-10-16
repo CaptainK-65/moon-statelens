@@ -15,7 +15,7 @@ pub fn decode_model(String, max_code_units? : Int) -> Machine raise
 
 pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
 
-pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_prefixes? : Int) -> LearningResult raise
+pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
 
 // Errors
 pub(all) suberror LensError {
@@ -38,6 +38,8 @@ pub(all) struct CompatibilityResult {
   status : CompatibilityStatus
   left : LearningResult
   right : LearningResult
+  left_statistics : Statistics
+  right_statistics : Statistics
   refinements : Int
   spurious_inputs : Array[Array[String]]
 } derive(@debug.Debug)
@@ -49,6 +51,7 @@ pub(all) enum CompatibilityStatus {
   ConfirmedDifference(Difference)
   NoDifferenceBetweenHypotheses
   Inconclusive(String)
+  ReplayUnstable(side~ : String, word~ : Array[String], expected~ : Array[String], actual~ : Array[String])
 } derive(@debug.Debug)
 pub fn CompatibilityStatus::to_json(Self) -> Json
 pub fn CompatibilityStatus::to_repr(Self) -> @debug.Repr
@@ -77,7 +80,7 @@ pub struct Experiment {
   // private fields
 }
 pub fn Experiment::alphabet(Self) -> Array[String]
-pub fn Experiment::new(System, Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, use_cache? : Bool, recheck_every? : Int) -> Self raise LensError
+pub fn Experiment::new(System, Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, max_output_code_units? : Int, use_cache? : Bool, recheck_every? : Int) -> Self raise LensError
 pub fn Experiment::query(Self, Array[String], bypass_cache? : Bool) -> Array[String] raise
 pub fn Experiment::statistics(Self) -> Statistics
 
@@ -98,6 +101,7 @@ pub(all) struct LearningRound {
   prefixes : Int
   suffixes : Int
   table_cells : Int
+  table_symbols : Int
   queries : Int
   counterexample_length : Int?
 } derive(ToJson, @debug.Debug)
@@ -153,6 +157,7 @@ pub(all) struct Statistics {
   steps : Int
   completed_queries : Int
   cache_nodes : Int
+  output_code_units : Int
 } derive(ToJson, @debug.Debug)
 pub fn Statistics::to_json(Self) -> Json
 pub fn Statistics::to_repr(Self) -> @debug.Repr

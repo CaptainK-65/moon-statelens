@@ -25,18 +25,21 @@ pub fn learn(
   max_states~ : Int32 = 256,
   max_rounds~ : Int32 = 64,
   max_table_cells~ : Int32 = 1000000,
+  max_table_symbols~ : Int32 = 4000000,
   max_prefixes~ : Int32 = 20000,
 ) -> LearningResult raise {
   if max_states < 1 ||
     max_states > 4096 ||
     max_rounds < 1 ||
     max_table_cells < 1 ||
+    max_table_symbols < 1 ||
     max_prefixes < 1 {
     raise InvalidArgument("invalid learning budget")
   }
   let table = ObservationTable::new(
     experiment,
     max_cells=max_table_cells,
+    max_symbols=max_table_symbols,
     max_prefixes~,
     max_states~,
   )
@@ -59,6 +62,7 @@ pub fn learn(
         prefixes: table.prefixes.length(),
         suffixes: table.suffixes.length(),
         table_cells: table.cells,
+        table_symbols: table.symbols,
         queries: experiment.queries,
         counterexample_length,
       })

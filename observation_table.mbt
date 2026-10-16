@@ -5,15 +5,18 @@ priv struct ObservationTable {
   suffixes : Array[Array[String]]
   rows : Map[Array[String], Array[Array[String]]]
   max_cells : Int32
+  max_symbols : Int32
   max_prefixes : Int32
   max_states : Int32
   mut cells : Int32
+  mut symbols : Int32
 }
 
 ///|
 fn ObservationTable::new(
   experiment : Experiment,
   max_cells~ : Int32,
+  max_symbols~ : Int32,
   max_prefixes~ : Int32,
   max_states~ : Int32,
 ) -> ObservationTable {
@@ -23,9 +26,11 @@ fn ObservationTable::new(
     suffixes: experiment.alphabet.map(input => [input]),
     rows: Map([]),
     max_cells,
+    max_symbols,
     max_prefixes,
     max_states,
     cells: 0,
+    symbols: 0,
   }
 }
 
@@ -40,11 +45,19 @@ fn ObservationTable::row(
       if self.suffixes.length() > self.max_cells - self.cells {
         raise LimitExceeded("table-cells")
       }
+      let mut required_symbols = 0
+      for suffix in self.suffixes {
+        if suffix.length() > self.max_symbols - self.symbols - required_symbols {
+          raise LimitExceeded("table-symbols")
+        }
+        required_symbols += suffix.length()
+      }
       let row = self.suffixes.map(suffix => {
         let outputs = self.experiment.query(prefix + suffix)
         outputs[prefix.length():].to_owned()
       })
       self.cells += self.suffixes.length()
+      self.symbols += required_symbols
       self.rows[prefix.copy()] = row
       row
     }
@@ -108,6 +121,7 @@ fn ObservationTable::consistent_once(self : ObservationTable) -> Bool raise {
                 self.suffixes.push([input] + self.suffixes[column])
                 self.rows.clear()
                 self.cells = 0
+                self.symbols = 0
                 return false
               }
             }

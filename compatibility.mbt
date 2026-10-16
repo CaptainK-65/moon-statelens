@@ -3,6 +3,12 @@ pub(all) enum CompatibilityStatus {
   ConfirmedDifference(Difference)
   NoDifferenceBetweenHypotheses
   Inconclusive(String)
+  ReplayUnstable(
+    side~ : String,
+    word~ : Array[String],
+    expected~ : Array[String],
+    actual~ : Array[String]
+  )
 } derive(Debug)
 
 ///|
@@ -16,6 +22,8 @@ pub(all) struct CompatibilityResult {
   status : CompatibilityStatus
   left : LearningResult
   right : LearningResult
+  left_statistics : Statistics
+  right_statistics : Statistics
   refinements : Int32
   spurious_inputs : Array[Array[String]]
 } derive(Debug)
@@ -25,6 +33,27 @@ pub extend CompatibilityResult with @debug.Debug::{to_repr}
 
 ///|
 pub extend CompatibilityResult with ToJson::{to_json}
+
+///|
+fn compatibility_result(
+  status : CompatibilityStatus,
+  lr : LearningResult,
+  rr : LearningResult,
+  left : Experiment,
+  right : Experiment,
+  refinements : Int32,
+  spurious : Array[Array[String]],
+) -> CompatibilityResult {
+  {
+    status,
+    left: lr,
+    right: rr,
+    left_statistics: left.statistics(),
+    right_statistics: right.statistics(),
+    refinements,
+    spurious_inputs: spurious,
+  }
+}
 
 ///|
 /// Replay supplied regression words before delegating to this oracle. Words
@@ -46,8 +75,9 @@ pub fn Oracle::with_regressions(
 
 ///|
 /// Infer both behaviors and replay model differences on the real adapters.
-/// Spurious hypothesis disagreements become regression experiments for a new
-/// learning pass. Equal hypotheses remain qualified by each result's evidence.
+/// Spurious hypothesis disagreements refine later experiments. Equal hypotheses
+/// remain qualified by each learning result's evidence. Final statistics include
+/// the real confirmation calls, even when those calls exhaust a budget.
 pub fn compare(
   left : Experiment,
   right : Experiment,
@@ -68,63 +98,92 @@ pub fn compare(
     let lr = learn(left, left_oracle.with_regressions(spurious), max_states~)
     let rr = learn(right, right_oracle.with_regressions(spurious), max_states~)
     if lr.status is Unstable(..) || rr.status is Unstable(..) {
-      return {
-        status: Inconclusive("unstable-observations"),
-        left: lr,
-        right: rr,
+      return compatibility_result(
+        Inconclusive("unstable-observations"),
+        lr,
+        rr,
+        left,
+        right,
         refinements,
-        spurious_inputs: spurious,
-      }
+        spurious,
+      )
     }
     guard lr.model is Some(lm) && rr.model is Some(rm) else {
-      return {
-        status: Inconclusive("missing-hypothesis"),
-        left: lr,
-        right: rr,
+      return compatibility_result(
+        Inconclusive("missing-hypothesis"),
+        lr,
+        rr,
+        left,
+        right,
         refinements,
-        spurious_inputs: spurious,
-      }
+        spurious,
+      )
     }
-    match distinguish(lm, rm) {
-      None => {
-        let status = if lr.status is Supported(_) && rr.status is Supported(_) {
-          NoDifferenceBetweenHypotheses
-        } else {
-          Inconclusive("learning-incomplete")
+    try {
+      match distinguish(lm, rm) {
+        None => {
+          let status = if lr.status is Supported(_) && rr.status is Supported(_) {
+            NoDifferenceBetweenHypotheses
+          } else {
+            Inconclusive("learning-incomplete")
+          }
+          return compatibility_result(
+            status, lr, rr, left, right, refinements, spurious,
+          )
         }
-        return {
-          status,
-          left: lr,
-          right: rr,
-          refinements,
-          spurious_inputs: spurious,
-        }
-      }
-      Some(candidate) =>
-        match confirm_difference(left, right, candidate.inputs) {
-          Some(actual) =>
-            return {
-              status: ConfirmedDifference(actual),
-              left: lr,
-              right: rr,
-              refinements,
-              spurious_inputs: spurious,
-            }
-          None => {
-            spurious.push(candidate.inputs.copy())
-            if refinements == max_refinements {
-              return {
-                status: Inconclusive("compatibility-refinements"),
-                left: lr,
-                right: rr,
+        Some(candidate) =>
+          match confirm_difference(left, right, candidate.inputs) {
+            Some(actual) =>
+              return compatibility_result(
+                ConfirmedDifference(actual),
+                lr,
+                rr,
+                left,
+                right,
                 refinements,
-                spurious_inputs: spurious,
+                spurious,
+              )
+            None => {
+              spurious.push(candidate.inputs.copy())
+              if refinements == max_refinements {
+                return compatibility_result(
+                  Inconclusive("compatibility-refinements"),
+                  lr,
+                  rr,
+                  left,
+                  right,
+                  refinements,
+                  spurious,
+                )
               }
             }
           }
-        }
+      }
+    } catch {
+      LimitExceeded(reason) =>
+        return compatibility_result(
+          Inconclusive("comparison:" + reason),
+          lr,
+          rr,
+          left,
+          right,
+          refinements,
+          spurious,
+        )
+      InconsistentObservation(word~, expected~, actual~) => {
+        let side = if left.conflict is Some(_) { "left" } else { "right" }
+        return compatibility_result(
+          ReplayUnstable(side~, word~, expected~, actual~),
+          lr,
+          rr,
+          left,
+          right,
+          refinements,
+          spurious,
+        )
+      }
+      error => raise error
     }
   }
-  // The inclusive loop always returns in its final iteration.
   abort("unreachable compatibility loop")
 }
