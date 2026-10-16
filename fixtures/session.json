@@ -1,0 +1,40 @@
+{
+  "format": "moonstatelens.mealy",
+  "version": 1,
+  "alphabet": [
+    "login",
+    "logout",
+    "request"
+  ],
+  "initial": 0,
+  "transitions": [
+    [
+      {
+        "target": 1,
+        "output": "ok"
+      },
+      {
+        "target": 0,
+        "output": "ok"
+      },
+      {
+        "target": 0,
+        "output": "denied"
+      }
+    ],
+    [
+      {
+        "target": 1,
+        "output": "ok"
+      },
+      {
+        "target": 0,
+        "output": "ok"
+      },
+      {
+        "target": 1,
+        "output": "allowed"
+      }
+    ]
+  ]
+}

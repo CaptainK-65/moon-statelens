@@ -28,4 +28,9 @@ jobs:
       - run: moon fmt --check
       - run: moon info
       - run: git diff --exit-code -- '*.mbti'
-      - run: moon run cmd/statelens
+      - run: moon run examples/session
+      - run: moon run examples/regression
+      - run: moon run examples/lru
+      - run: moon run cmd/statelens --target native -- demo regression
+      - run: moon run cmd/statelens --target native -- benchmark
+      - run: moon run tools/verify_cli.mbtx

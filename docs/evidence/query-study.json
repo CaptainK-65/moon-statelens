@@ -1,0 +1,145 @@
+{
+  "format": "moonstatelens.query-study",
+  "version": 1,
+  "methodology": "Active includes inference and W-method queries. Baseline receives the final model and freshly checks all words through the stated depth. This is a cost reference, not a like-for-like learner speedup claim.",
+  "cases": [
+    {
+      "target_states": 2,
+      "alphabet_size": 2,
+      "exhaustive_depth": 3,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 24,
+        "cache_hits": 4,
+        "resets": 20,
+        "steps": 39,
+        "completed_queries": 20,
+        "cache_nodes": 11
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 15,
+        "cache_hits": 0,
+        "resets": 15,
+        "steps": 34,
+        "completed_queries": 15,
+        "cache_nodes": 15
+      },
+      "learning_rounds": 1
+    },
+    {
+      "target_states": 3,
+      "alphabet_size": 2,
+      "exhaustive_depth": 5,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 89,
+        "cache_hits": 32,
+        "resets": 57,
+        "steps": 161,
+        "completed_queries": 57,
+        "cache_nodes": 25
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 63,
+        "cache_hits": 0,
+        "resets": 63,
+        "steps": 258,
+        "completed_queries": 63,
+        "cache_nodes": 63
+      },
+      "learning_rounds": 2
+    },
+    {
+      "target_states": 4,
+      "alphabet_size": 2,
+      "exhaustive_depth": 7,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 172,
+        "cache_hits": 82,
+        "resets": 90,
+        "steps": 329,
+        "completed_queries": 90,
+        "cache_nodes": 44
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 255,
+        "cache_hits": 0,
+        "resets": 255,
+        "steps": 1538,
+        "completed_queries": 255,
+        "cache_nodes": 255
+      },
+      "learning_rounds": 2
+    },
+    {
+      "target_states": 5,
+      "alphabet_size": 2,
+      "exhaustive_depth": 9,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 300,
+        "cache_hits": 160,
+        "resets": 140,
+        "steps": 625,
+        "completed_queries": 140,
+        "cache_nodes": 73
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 1023,
+        "cache_hits": 0,
+        "resets": 1023,
+        "steps": 8194,
+        "completed_queries": 1023,
+        "cache_nodes": 1023
+      },
+      "learning_rounds": 2
+    },
+    {
+      "target_states": 6,
+      "alphabet_size": 2,
+      "exhaustive_depth": 11,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 491,
+        "cache_hits": 272,
+        "resets": 219,
+        "steps": 1145,
+        "completed_queries": 219,
+        "cache_nodes": 120
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 4095,
+        "cache_hits": 0,
+        "resets": 4095,
+        "steps": 40962,
+        "completed_queries": 4095,
+        "cache_nodes": 4095
+      },
+      "learning_rounds": 2
+    },
+    {
+      "target_states": 7,
+      "alphabet_size": 2,
+      "exhaustive_depth": 13,
+      "reference_equivalent": true,
+      "active_learning_and_w_method": {
+        "queries": 775,
+        "cache_hits": 424,
+        "resets": 351,
+        "steps": 2089,
+        "completed_queries": 351,
+        "cache_nodes": 201
+      },
+      "exhaustive_validation_of_final_model": {
+        "queries": 16383,
+        "cache_hits": 0,
+        "resets": 16383,
+        "steps": 196610,
+        "completed_queries": 16383,
+        "cache_nodes": 16383
+      },
+      "learning_rounds": 2
+    }
+  ]
+}

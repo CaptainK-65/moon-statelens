@@ -40,17 +40,19 @@ pub(all) struct CompatibilityResult {
   right : LearningResult
   refinements : Int
   spurious_inputs : Array[Array[String]]
-} derive(ToJson, @debug.Debug)
+} derive(@debug.Debug)
 pub fn CompatibilityResult::to_json(Self) -> Json
 pub fn CompatibilityResult::to_repr(Self) -> @debug.Repr
+pub impl ToJson for CompatibilityResult
 
 pub(all) enum CompatibilityStatus {
   ConfirmedDifference(Difference)
   NoDifferenceBetweenHypotheses
   Inconclusive(String)
-} derive(ToJson, @debug.Debug)
+} derive(@debug.Debug)
 pub fn CompatibilityStatus::to_json(Self) -> Json
 pub fn CompatibilityStatus::to_repr(Self) -> @debug.Repr
+pub impl ToJson for CompatibilityStatus
 
 pub(all) struct Difference {
   inputs : Array[String]
@@ -66,9 +68,10 @@ pub(all) enum Evidence {
   ExactReference
   ConditionalStateBound(Int)
   Budgeted(String)
-} derive(ToJson, @debug.Debug)
+} derive(@debug.Debug)
 pub fn Evidence::to_json(Self) -> Json
 pub fn Evidence::to_repr(Self) -> @debug.Repr
+pub impl ToJson for Evidence
 
 pub struct Experiment {
   // private fields
@@ -105,9 +108,10 @@ pub(all) enum LearningStatus {
   Supported(Evidence)
   Inconclusive(String)
   Unstable(word~ : Array[String], expected~ : Array[String], actual~ : Array[String])
-} derive(ToJson, @debug.Debug)
+} derive(@debug.Debug)
 pub fn LearningStatus::to_json(Self) -> Json
 pub fn LearningStatus::to_repr(Self) -> @debug.Repr
+pub impl ToJson for LearningStatus
 
 pub struct Machine {
   // private fields
@@ -134,6 +138,7 @@ pub impl ToJson for Machine
 pub struct Oracle {
   // private fields
 }
+pub fn Oracle::evaluate(Self, Machine, Experiment) -> CheckResult raise
 pub fn Oracle::exact(Machine, max_pairs? : Int) -> Self raise LensError
 pub fn Oracle::exhaustive(Int, max_tests? : Int) -> Self raise LensError
 pub fn Oracle::new((Machine, Experiment) -> CheckResult raise) -> Self

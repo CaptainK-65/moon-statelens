@@ -12,7 +12,7 @@ Tested toolchain: MoonBit 0.10.15 / moon 0.1.20261012.
 moon update
 moon check --target all --deny-warn
 moon test --target all --deny-warn
-moon run cmd/statelens
+moon run cmd/statelens --target native -- demo regression
 ```
 
 ## Scope

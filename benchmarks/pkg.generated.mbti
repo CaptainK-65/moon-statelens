@@ -1,0 +1,13 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "CaptainK-65/moon-statelens/benchmarks"
+
+// Values
+pub fn query_study() -> Json raise
+
+// Errors
+
+// Types and methods
+
+// Type aliases
+
+// Traits

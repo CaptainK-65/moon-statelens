@@ -1,5 +1,18 @@
 import {
   "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/examples/targets",
+  "CaptainK-65/moon-statelens/adapters/moonlarder" @lru,
+  "CaptainK-65/moon-statelens/benchmarks" @study,
+  "moonbitlang/async",
+  "moonbitlang/async/fs",
+  "moonbitlang/async/io",
+  "moonbitlang/core/buffer",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+  "moonbitlang/core/string",
 }
 
 pkgtype(kind: "executable")
+
+supported_targets = "+native"

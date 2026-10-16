@@ -1,0 +1,97 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn invoke(args : Array[String], succeeds~ : Bool = true) -> String {
+  let output = @shell.Cmd(
+    "moon",
+    ["run", "cmd/statelens", "--target", "native", "--"] + args,
+  ).output(timeout_ms=60000, max_output_bytes=2097152)
+  if succeeds {
+    output.check()
+  } else if output.exit_code() == 0 {
+    fail("expected CLI failure")
+  }
+  output.stdout()
+}
+
+///|
+async fn main {
+  let regression = @json.parse(invoke(["demo", "regression"]))
+  guard regression
+    is {
+      "status": {
+        "kind": "confirmed-difference",
+        "difference": {
+          "inputs": ["login", "logout", "request"],
+          "left_outputs": ["ok", "ok", "denied"],
+          "right_outputs": ["ok", "ok", "allowed"],
+          ..
+        },
+        ..
+      },
+      ..
+    } else {
+    fail("regression was not confirmed on both adapters")
+  }
+  let learned = @json.parse(invoke(["learn", "fixtures/session.json", "2"]))
+  guard learned
+    is {
+      "model": {
+        "format": "moonstatelens.mealy",
+        "transitions": Array(rows),
+        ..
+      },
+      "status": { "kind": "supported", .. },
+      ..
+    } &&
+    rows.length() == 2 else {
+    fail("model-backed learning failed")
+  }
+  let replay = @json.parse(
+    invoke([
+      "replay", "fixtures/session.json", "fixtures/session-regression-inputs.json",
+    ]),
+  )
+  assert_eq(replay, Json(["ok", "ok", "denied"]))
+  let same = @json.parse(
+    invoke(["compare", "fixtures/session.json", "fixtures/session.json"]),
+  )
+  guard same is { "difference": Null, .. } else {
+    fail("identical models differ")
+  }
+  let different = @json.parse(
+    invoke(["compare", "fixtures/session.json", "fixtures/session-buggy.json"]),
+  )
+  guard different
+    is { "difference": { "inputs": ["login", "logout", "request"], .. }, .. } else {
+    fail("expected shortest explicit-model difference")
+  }
+  let incomplete = @json.parse(invoke(["learn", "fixtures/session.json", "1"]))
+  guard incomplete is { "status": { "kind": "inconclusive", .. }, .. } else {
+    fail("invalid state bound was treated as success")
+  }
+  let study = @json.parse(invoke(["benchmark"]))
+  let saved = @json.parse(
+    @fs.read_file("docs/evidence/query-study.json").text(),
+  )
+  assert_eq(study, saved)
+  let dir = "_build/cli-smoke-" + @env.now().to_string()
+  @fs.mkdir(dir)
+  let path = dir + "/session.json"
+  ignore(invoke(["export", "session", path]))
+  let before = @fs.read_file(path).text()
+  ignore(invoke(["export", "session", path], succeeds=false))
+  assert_eq(@fs.read_file(path).text(), before)
+  ignore(invoke(["unknown-command"], succeeds=false))
+  println(
+    "CLI smoke passed: learning, confirmed replay, exact comparison, inconclusive state bound, reproducible query study, overwrite protection and invalid arguments",
+  )
+}

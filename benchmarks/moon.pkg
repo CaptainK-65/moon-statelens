@@ -1,0 +1,3 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+}

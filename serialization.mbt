@@ -61,7 +61,7 @@ pub impl ToJson for LearningResult with fn to_json(self) {
   Json::object({
     "format": Json("moonstatelens.learning"),
     "version": Json(1),
-    "model": Json(self.model),
+    "model": self.model.map(model => Json(model)).unwrap_or(Json::null()),
     "status": Json(self.status),
     "statistics": Json(self.statistics),
     "rounds": Json(self.rounds),

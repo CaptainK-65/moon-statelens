@@ -5,7 +5,7 @@ pub(all) enum Evidence {
   ExactReference
   ConditionalStateBound(Int32)
   Budgeted(String)
-} derive(Debug, ToJson)
+} derive(Debug)
 
 ///|
 pub extend Evidence with @debug.Debug::{to_repr}
@@ -46,7 +46,7 @@ pub(all) enum LearningStatus {
     expected~ : Array[String],
     actual~ : Array[String]
   )
-} derive(Debug, ToJson)
+} derive(Debug)
 
 ///|
 pub extend LearningStatus with @debug.Debug::{to_repr}

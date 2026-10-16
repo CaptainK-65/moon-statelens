@@ -3,7 +3,7 @@ pub(all) enum CompatibilityStatus {
   ConfirmedDifference(Difference)
   NoDifferenceBetweenHypotheses
   Inconclusive(String)
-} derive(Debug, ToJson)
+} derive(Debug)
 
 ///|
 pub extend CompatibilityStatus with @debug.Debug::{to_repr}
@@ -18,7 +18,7 @@ pub(all) struct CompatibilityResult {
   right : LearningResult
   refinements : Int32
   spurious_inputs : Array[Array[String]]
-} derive(Debug, ToJson)
+} derive(Debug)
 
 ///|
 pub extend CompatibilityResult with @debug.Debug::{to_repr}
