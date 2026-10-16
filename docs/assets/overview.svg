@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="560" viewBox="0 0 1280 560" role="img" aria-labelledby="title desc">
+  <title id="title">MoonStateLens: learn hidden behavior and replay the difference</title>
+  <desc id="desc">Reset and step a black box, infer a Mealy model through active learning, then confirm a behavioral difference by replaying a sequence on both versions.</desc>
+  <defs>
+    <linearGradient id="bg" x2="1" y2="1"><stop stop-color="#101b36"/><stop offset="1" stop-color="#172b4d"/></linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#6c9aff"/></marker>
+  </defs>
+  <rect width="1280" height="560" rx="24" fill="url(#bg)"/>
+  <circle cx="1190" cy="10" r="180" fill="#24497a" opacity=".22"/>
+  <circle cx="80" cy="560" r="190" fill="#235a77" opacity=".17"/>
+  <g font-family="Segoe UI,Arial,sans-serif">
+    <text x="48" y="91" fill="#f7faff" font-size="52" font-weight="700" letter-spacing="-1.5">MoonStateLens</text>
+    <text x="51" y="132" fill="#b9cbe8" font-size="21">Learn hidden behavior. Replay the difference.</text>
+    <rect x="1034" y="57" width="195" height="39" rx="19.5" fill="#24416b"/>
+    <text x="1131.5" y="82" fill="#b9d2ff" font-size="14" text-anchor="middle" font-weight="700" letter-spacing="1.5">PURE MOONBIT</text>
+
+    <g fill="#1b2d4d" stroke="#3c5375" stroke-width="1.5">
+      <rect x="48" y="188" width="264" height="154" rx="15"/>
+      <rect x="352" y="188" width="264" height="154" rx="15"/>
+      <rect x="656" y="188" width="264" height="154" rx="15"/>
+      <rect x="960" y="188" width="264" height="154" rx="15"/>
+    </g>
+    <g fill="none" stroke="#6c9aff" stroke-width="2.5" marker-end="url(#arrow)">
+      <path d="M320 265H341"/><path d="M624 265H645"/><path d="M928 265H949"/>
+    </g>
+    <g fill="#8db5ff" font-size="13" font-weight="700" letter-spacing="1.5">
+      <text x="70" y="220">01 / BLACK BOX</text>
+      <text x="374" y="220">02 / ACTIVE LEARNING</text>
+      <text x="678" y="220">03 / MEALY MODEL</text>
+      <text x="982" y="220">04 / REPLAY WITNESS</text>
+    </g>
+    <g font-family="Consolas,monospace" font-size="18" fill="#e3edff">
+      <text x="70" y="258">reset()</text>
+      <text x="70" y="288">step(input) → output</text>
+    </g>
+    <text x="70" y="319" fill="#98afcf" font-size="13">No reference state table required</text>
+    <text x="374" y="259" fill="#e3edff" font-size="18">Observe · distinguish · refine</text>
+    <text x="374" y="290" fill="#a8bfdc" font-size="15">Closed, consistent hypotheses</text>
+    <text x="374" y="319" fill="#98afcf" font-size="13">Counterexamples drive new experiments</text>
+
+    <path d="M732 266Q789 224 847 264" fill="none" stroke="#6c9aff" stroke-width="2" marker-end="url(#arrow)"/>
+    <path d="M847 282Q789 322 732 283" fill="none" stroke="#6c9aff" stroke-width="2" marker-end="url(#arrow)"/>
+    <circle cx="717" cy="274" r="21" fill="#2b4875" stroke="#86adff" stroke-width="1.5"/>
+    <circle cx="862" cy="274" r="21" fill="#2b4875" stroke="#86adff" stroke-width="1.5"/>
+    <text x="717" y="280" fill="#edf5ff" text-anchor="middle" font-size="17">q0</text>
+    <text x="862" y="280" fill="#edf5ff" text-anchor="middle" font-size="17">q1</text>
+    <text x="789" y="240" fill="#b9d2ff" text-anchor="middle" font-size="12">input / output</text>
+    <text x="678" y="327" fill="#98afcf" font-size="13">Inferred observable states</text>
+
+    <text x="982" y="254" fill="#e3edff" font-size="16">login → logout → request</text>
+    <rect x="982" y="271" width="96" height="28" rx="7" fill="#184b49"/>
+    <text x="1030" y="290" fill="#7de5c4" text-anchor="middle" font-size="13" font-weight="600">v1: denied</text>
+    <rect x="1090" y="271" width="111" height="28" rx="7" fill="#5a4030"/>
+    <text x="1145.5" y="290" fill="#ffd098" text-anchor="middle" font-size="13" font-weight="600">v2: allowed</text>
+    <text x="982" y="326" fill="#98afcf" font-size="13">Confirmed on both actual adapters</text>
+
+    <rect x="48" y="386" width="1176" height="104" rx="16" fill="#12233f" stroke="#30496c"/>
+    <text x="73" y="421" fill="#f2f6ff" font-size="20" font-weight="600">Evidence has a scope.</text>
+    <text x="73" y="455" fill="#a8bfdc" font-size="16">State bounds · experiment budgets · replayed outputs · explicit inconclusive results</text>
+    <text x="50" y="531" fill="#86a1c3" font-size="14">Model inference for the MoonBit ecosystem</text>
+    <text x="1224" y="531" fill="#9cb7dc" font-size="14" text-anchor="end">wasm  /  wasm-gc  /  JS  /  native</text>
+  </g>
+</svg>

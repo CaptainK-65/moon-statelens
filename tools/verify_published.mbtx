@@ -1,0 +1,79 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+}
+
+///|
+async fn main {
+  let args = @env.args()
+  let target = match args {
+    [_] => "wasm"
+    [_, target] => target
+    _ => fail("expected optional backend")
+  }
+  if !["wasm", "wasm-gc", "js", "native"].contains(target) {
+    fail("unsupported backend")
+  }
+  let dir = "_build/published-consumer-" + target + "-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  let manifest = "name = \"validation/statelens-consumer\"\npreferred_target = \"" +
+    target +
+    "\"\nimport {\n  \"CaptainK-65/moon-statelens@0.1.0\",\n}\n"
+  @fs.write_file(dir + "/moon.mod", manifest)
+  @fs.write_file(
+    dir + "/moon.pkg",
+    "import {\n  \"CaptainK-65/moon-statelens\" @lens,\n}\npkgtype(kind: \"executable\")\n",
+  )
+  let program =
+    #|///|
+    #|fn target(buggy : Bool) -> @lens.System {
+    #|  let active = [false]
+    #|  @lens.System::new(reset=() => active[0] = false, step=input => match input {
+    #|    "login" => { active[0] = true; "ok" }
+    #|    "logout" => { if !buggy { active[0] = false }; "ok" }
+    #|    _ => if active[0] { "allowed" } else { "denied" }
+    #|  })
+    #|}
+    #|
+    #|///|
+    #|fn main raise {
+    #|  let alphabet = ["login", "logout", "request"]
+    #|  let experiment = @lens.Experiment::new(target(false), alphabet)
+    #|  let learned = @lens.learn(experiment, @lens.Oracle::w_method(2))
+    #|  guard learned.status is Supported(ConditionalStateBound(2)) else { fail("published learner did not complete") }
+    #|  let model = learned.model.unwrap()
+    #|  assert_eq(model.state_count(), 2)
+    #|  assert_true(@lens.distinguish(model, @lens.decode_model(model.encode())) is None)
+    #|  let comparison = @lens.compare(@lens.Experiment::new(target(false), alphabet), @lens.Experiment::new(target(true), alphabet), @lens.Oracle::w_method(2), @lens.Oracle::w_method(2))
+    #|  guard comparison.status is ConfirmedDifference(diff) else { fail("published compatibility check did not confirm difference") }
+    #|  assert_eq(diff.inputs, ["login", "logout", "request"])
+    #|  assert_eq(diff.left_outputs, ["ok", "ok", "denied"])
+    #|  assert_eq(diff.right_outputs, ["ok", "ok", "allowed"])
+    #|  assert_true(comparison.left_statistics.resets > comparison.left.statistics.resets)
+    #|  println("published consumer ok")
+    #|}
+  @fs.write_file(dir + "/main.mbt", program + "\n")
+  let update = @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000)
+  update.check()
+  let output = @shell.Cmd("moon", ["run", ".", "--target", target], cwd=dir).output(
+    timeout_ms=60000,
+    max_output_bytes=2097152,
+  )
+  output.check()
+  if !output.stdout().contains("published consumer ok") {
+    fail("consumer did not finish")
+  }
+  let installed = @fs.read_file(
+    dir + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
+  ).text()
+  if !installed.contains("version = \"0.1.0\"") {
+    fail("unexpected installed package version")
+  }
+  println(
+    "Registry package CaptainK-65/moon-statelens@0.1.0 verified on " + target,
+  )
+}

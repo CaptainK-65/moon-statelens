@@ -1,0 +1,1863 @@
+{
+  "date": "2026-10-16",
+  "timezone": "Asia/Shanghai",
+  "status": "Research and proposal only. No implementation or new remote repository.",
+  "caveats": [
+    "Searches cover public indexed material, not all projects.",
+    "Moon search uses fuzzy matching; empty or irrelevant results are not an absence proof.",
+    "Registry summaries and source documentation are evidence of declared scope, not runtime validation.",
+    "zploc/loci is registered, but its linked upstream zpc-sh/loci was unavailable (404) during this audit."
+  ],
+  "registry": [
+    {
+      "query": "sbvr",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "process mining",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "zhaoyuanjuns/moonbit_extractor",
+          "version": "0.1.2",
+          "description": "Extraction process calculation toolkit for liquid-liquid extraction and solid-liquid leaching",
+          "matched_packages": [
+            {
+              "name": "zhaoyuanjuns/moonbit_extractor/process",
+              "summary": "Provides process-engineering utilities for liquid-liquid extraction flowsheets, including sequential flowsheet simulation, recycle convergence, stream mixing, splitting and comparison, mass-balance ledgers, operating-limit and operating-window checks, scenario/envelope summaries, equipment sizing for mixers, settlers, pumps, heat exchangers and vessels, and \n\nKeywords: process engineering, extraction, flowsheet simulation, ProcessStream, Flowsheet, simulate, simulate_recycle, mass balance, StreamBalance, BalanceLedger, OperatingLimit, OperatingWindow, equipment sizing, UtilityNetwork, 工艺"
+            },
+            {
+              "name": "zhaoyuanjuns/moonbit_extractor/ternary",
+              "summary": "Provides data structures and algorithms for ternary liquid-liquid equilibrium calculations, including binodal curve (closed two-phase envelope), tie-line table, lever rule, mixing and splitting operations, and coordinate conversion between ternary composition and Cartesian coordinates.\n\nKeywords: ternary, liquid-liquid equilibrium, binodal curve, tie line, lever rule, phase split, ternary composition, Cartesian conversion, BinodalCurve, TieLineTable, 三元相图, 液液平衡, 杠杆规则, 相平衡, 三元组成"
+            }
+          ]
+        },
+        {
+          "name": "Nanaloveyuki/orbit",
+          "version": "0.1.0-alpha.15",
+          "description": "Composable desktop application foundations for MoonBit."
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        }
+      ]
+    },
+    {
+      "query": "petri",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "okMambaOut/moonpetri",
+          "version": "0.1.4",
+          "description": "Deterministic discrete Petri net modeling and reachability analysis for MoonBit",
+          "matched_packages": [
+            {
+              "name": "okMambaOut/moonpetri",
+              "summary": "MoonPetri is an offline weighted Petri net analysis library written in MoonBit. It lets you build and validate place/transition nets, check enabled transitions, fire transitions or sequences, run bounded BFS reachability, reconstruct shortest firing traces, detect deadlocks, and import/export a restricted flat PNML subset.\n\nKeywords: Petri net, weighted Petri net, MoonBit, reachability, bounded BFS, deadlock, firing, marking, PNML, enabled, shortest_trace, reachable, PetriNet, Petri 网, 可达性"
+            },
+            {
+              "name": "okMambaOut/moonpetri/cmd/moonpetri",
+              "summary": "The package okMambaOut/moonpetri/cmd/moonpetri provides no documented public API in the supplied sources; its package README is empty and the public API documentation lists no types, traits, errors, aliases, values, or other declarations.\n\nKeywords: moonpetri, okMambaOut, cmd/moonpetri"
+            },
+            {
+              "name": "okMambaOut/moonpetri/examples/api-demo",
+              "summary": "This package, okMambaOut/moonpetri/examples/api-demo, has no documented public API in the supplied sources. No public types, traits, errors, values, or aliases are described."
+            }
+          ]
+        },
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.30",
+          "description": "把《伽达默尔与哈贝马斯真理观比较》与《通往宁静之路》建模为可运行、可测试的 MoonBit 状态机族（主体／多主体／群体／双层次社会交往），外加 Agent 状态机（进化层：变异／闸门／只追加账本）与科研 Agent 协调器。",
+          "matched_packages": [
+            {
+              "name": "riantr/pyroduct/src",
+              "summary": "Provides a discrete subject-state machine encoding an individual moral genesis narrative, with states, triggers, slot-driven transitions, and outcomes. Includes Aho-Corasick automaton scanning, Petri-net marking and firing, reachability and shortest-path queries, Buchi acceptance checks, expansion and trace walking, plus report and DOT/Mermaid renderers.\n\nKeywords: state machine, SubjectState, Trigger, Slot, Transition, Petri net, PetriMarking, Aho-Corasick, buchi, reachability, state diagram, Mermaid, DOT, moral genesis, 状态机"
+            }
+          ]
+        },
+        {
+          "name": "chenliyi-cly/moonweave",
+          "version": "0.1.1",
+          "description": "Portable weaving draft simulation, liftplan compilation and periodic float analysis",
+          "matched_packages": [
+            {
+              "name": "chenliyi-cly/moonweave",
+              "summary": "MoonWeave is a MoonBit library for weaving-draft simulation and float analysis. It validates rising-shed drafts, compiles treadle looms, generates plain, twill, and satin drafts, renders drawdowns and SVG, analyzes finite and periodic float runs, checks loom limits, compares drafts, and reconstructs liftplans from hand-drawn drawdowns.\n\nKeywords: MoonWeave, MoonBit, weaving draft, drawdown, float analysis, 浮线分析, twill, satin, plain weave, from_treadles, from_drawdown, check_loom, periodic_floats, svg, moonweave/1 JSON"
+            },
+            {
+              "name": "chenliyi-cly/moonweave/cmd/moonweave",
+              "summary": "This package has no public API or documentation available."
+            },
+            {
+              "name": "chenliyi-cly/moonweave/examples/loom",
+              "summary": "This package is an example within the moonweave project and does not expose any public API.\n\nKeywords: moonweave, loom, example"
+            },
+            {
+              "name": "chenliyi-cly/moonweave/examples/plain",
+              "summary": "This package has no public API documentation or README, so its functionality cannot be described."
+            },
+            {
+              "name": "chenliyi-cly/moonweave/examples/reconstruct",
+              "summary": "This package has no public API."
+            }
+          ]
+        },
+        {
+          "name": "chgttyyr/MoonSpectrum",
+          "version": "0.2.2",
+          "description": "MoonBit-native scientific signal processing toolkit with FFT, spectra, windows, convolution, FIR filters, and CLI analysis.",
+          "matched_packages": [
+            {
+              "name": "chgttyyr/MoonSpectrum",
+              "summary": "MoonSpectrum is a scientific signal-processing library for MoonBit providing complex arithmetic, DFT/FFT and inverse FFT, magnitude and power spectra, peak detection, STFT and spectrograms, periodogram and Welch PSD, window functions, convolution, FIR and biquad IIR filtering, resampling, correlation, and signal statistics and feature functions. It also expo\n\nKeywords: MoonSpectrum, signal processing, FFT, DFT, 频谱分析, spectrum analysis, STFT, spectrogram, Welch PSD, periodogram, window function, 窗函数, convolution, FIR filter, IIR biquad, resampling, correlation, signal statistics, MoonBit, CLI"
+            }
+          ]
+        },
+        {
+          "name": "mohongquan0630/moonbit-plasma",
+          "version": "0.2.2",
+          "description": "A MoonBit plasma numerics toolkit for teaching, research prototypes, and lightweight engineering calculations.",
+          "matched_packages": [
+            {
+              "name": "mohongquan0630/moonbit-plasma",
+              "summary": "a pure MoonBit toolkit for deterministic one-dimensional electrostatic plasma models, providing particle-in-cell (PIC) simulation with NGP/CIC/TSC shape functions, periodic Poisson solvers, Vlasov-Poisson advection, Boris and Verlet integration, collision models, fluid fluxes, and diagnostics for teaching, research, and regression testing.\n\nKeywords: moonbit plasma, 1D electrostatic, particle-in-cell, PIC, NGP CIC TSC, shape functions, Poisson solver, Vlasov-Poisson, Boris integrator, Verlet integration, collision model, fluid flux, phase space, CSV export, benchmark"
+            }
+          ]
+        },
+        {
+          "name": "ciqingweiyang/mooncal",
+          "version": "0.1.2",
+          "description": "MoonBit 原生 iCalendar 解析器和 RRULE 日程展开库。",
+          "matched_packages": [
+            {
+              "name": "ciqingweiyang/mooncal",
+              "summary": "MoonBit native iCalendar toolkit for parsing .ics, validating calendars, expanding RRULE events, and handling VTODO tasks and VFREEBUSY periods. Provides event, task, and free/busy query functions.\n\nKeywords: iCalendar, ICS parsing, RRULE, VEVENT, VTODO, VFREEBUSY, free/busy period, calendar validation, task, MoonCal, MoonBit, 日历解析, 重复规则, 待办任务, 空闲忙碌"
+            }
+          ]
+        },
+        {
+          "name": "zhsyutt/moonbit-lbm",
+          "version": "0.2.1",
+          "description": "A D2Q9 lattice Boltzmann fluid simulation core for MoonBit.",
+          "matched_packages": [
+            {
+              "name": "zhsyutt/moonbit-lbm",
+              "summary": "A pure MoonBit D2Q9 lattice Boltzmann solver for small-to-medium incompressible flow experiments, offering BGK/regularized/MRT collision models, periodic/bounce-back/open boundaries, geometry tools, scalar transport, checkpoint round-trips, and built-in Poiseuille, cavity, and cylinder-wake benchmarks.\n\nKeywords: Lattice Boltzmann method, D2Q9, MoonBit, zhsyutt/moonbit-lbm, computational fluid dynamics, CFD, collision model, BGK, regularized, MRT, boundary conditions, Poiseuille benchmark, lid-driven cavity, cylinder wake, scalar transport"
+            }
+          ]
+        },
+        {
+          "name": "mengshi-12/moon-ofx-importer",
+          "version": "0.3.0",
+          "description": "Offline OFX bank transaction extraction and diagnostics",
+          "matched_packages": [
+            {
+              "name": "mengshi-12/moon-ofx-importer",
+              "summary": "A pure MoonBit library that parses OFX 1.x SGML and OFX 2.x XML bank statements offline, returning accounts, periods, balances, transactions and investment records along with diagnostics that name the offending tag and line. It also offers exact decimal-to-minor-unit conversion, posted-date parsing with UTC comparison, balance reconciliation, overflow-checke\n\nKeywords: OFX, moon-ofx-importer, bank statement, parse_statement, parse_document, transaction, reconcile, diagnostic, minor units, PostedDate, investment, CSV, OFX 1.x SGML, OFX 2.x XML, 银行对账单"
+            }
+          ]
+        },
+        {
+          "name": "bobzhang/loop_invariants_math",
+          "version": "0.17.0",
+          "description": "Mathematical algorithms with loop-invariant explanations",
+          "matched_packages": [
+            {
+              "name": "bobzhang/loop_invariants_math/berlekamp_massey",
+              "summary": "Provides the Berlekamp-Massey algorithm as berlekamp_massey(seq, m), which returns the shortest linear recurrence coefficients that generate an Int64 sequence modulo a prime number. It is used to compress sequences, detect period structure over finite fields, and predict future terms.\n\nKeywords: berlekamp_massey, Berlekamp-Massey, linear recurrence, shortest recurrence, modulo prime, finite field, sequence prediction, connection polynomial, discrepancy update, Int64, Array, 线性递推, 最短递推, 有限域, 序列"
+            },
+            {
+              "name": "bobzhang/loop_invariants_math/linear_diophantine",
+              "summary": "Provides functions to solve linear Diophantine equations of the form a x + b y = c over Int64 integers, returning a DiophantineResult with an optional particular solution and the period generating the full solution family. Use solve for any particular solution or solve_min_x for the smallest non-negative x, for tasks such as modular arithmetic, coin problems\n\nKeywords: linear_diophantine, Diophantine equation, solve, solve_min_x, DiophantineResult, Int64, Bezout, gcd, modular arithmetic, coin problem, CRT, 二元一次不定方程, 线性丢番图方程, 整数解, period"
+            }
+          ]
+        },
+        {
+          "name": "cxh04/cron_mbt",
+          "version": "0.2.4",
+          "description": "A cron expression parser, matcher, scheduler, and CLI for MoonBit.",
+          "matched_packages": [
+            {
+              "name": "cxh04/cron_mbt/benchmarks",
+              "summary": "A deterministic conformance corpus for the cron_mbt package's parser, matcher, and next-trigger APIs, covering step, range, list, macro, weekday, month, and question-mark wildcard expressions, leap years, and cross-period transitions.\n\nKeywords: benchmark corpus, conformance testing, cron parser, cron matcher, next-trigger, cron expressions, leap year handling, cross-month transitions, cron wildcards, deterministic tests, MoonBit cron"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "bayesian network",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "pddl",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "timetable",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "zhtzht12345678/moonbit-ats-timetable",
+          "version": "0.1.1",
+          "description": "A MoonBit library for railway ATS timetable modelling, real-time monitoring, conflict detection, dispatch advice, and string-diagram JSON rendering.",
+          "matched_packages": [
+            {
+              "name": "zhtzht12345678/moonbit-ats-timetable",
+              "summary": "Pure MoonBit library and CLI for ATS timetable modeling, validation, and real-time conflict detection in rail operations control centers. It builds verifiable schedule models from stations, segments, trains, stops, platforms, and route resources, and produces explainable conflict evidence, dispatch recommendations, quality reports, and String Diagram data fo\n\nKeywords: ATS, timetable, 运行图, 冲突检测, conflict detection, 调度, dispatch, telemetry, 遥测, headway, capacity, String Diagram, validate_schedule, detect_conflicts, OCC"
+            },
+            {
+              "name": "zhtzht12345678/moonbit-ats-timetable/cmd/ats-bench",
+              "summary": "This package provides no public API and has no documentation.\n\nKeywords: ats-bench, typealias, traits, errors, types, values, misc, name, cmd, moonbit-ats-timetable, zhtzht12345678, bench, moonbit"
+            },
+            {
+              "name": "zhtzht12345678/moonbit-ats-timetable/cmd/ats-demo",
+              "summary": "This package provides no public API or documentation.\n\nKeywords: ats-demo, cmd, moonbit-ats-timetable, zhtzht12345678, timetable, empty, no API, no README"
+            }
+          ]
+        },
+        {
+          "name": "Zh666-lab/moonsuncalc",
+          "version": "0.1.0",
+          "description": "Pure MoonBit port of SunCalc 2.0.1: solar and lunar observer calculations",
+          "matched_packages": [
+            {
+              "name": "Zh666-lab/moonsuncalc/examples/photography",
+              "summary": "Example package for a photography timetable that computes morning blue hour, sunrise, golden hour, sunset, and evening blue hour in UTC for a given location, date, and observation height, using optional handling for missing events such as polar day.\n\nKeywords: photography, 摄影时刻表, 蓝调, 金色时段, 日出, 日落, UTC, golden hour, blue hour, sunrise, sunset, observation height, Optional, 极昼"
+            }
+          ]
+        },
+        {
+          "name": "ZSeanYves/markitdown",
+          "version": "0.5.3",
+          "description": "A MoonBit-native document-to-Markdown converter with multi-format parsing, metadata, assets, batch conversion, and validation tooling",
+          "matched_packages": [
+            {
+              "name": "ZSeanYves/markitdown/format_readers/toml",
+              "summary": "This package provides a TOML format reader for Markitdown, enabling parsing of TOML text into a source-native document model (TomlDocument), classification of parse errors (TomlError, TomlErrorKind), structural inspection (TomlInspectReport), and preparation from InputSource. Use cases: parsing TOML config files, inspecting document structure, handling parse\n\nKeywords: TOML, TOML解析, parser, parse_toml_document, classify_toml_error, inspect_toml_document, TomlDocument, TomlError, TomlErrorKind, TomlInspectReport, TomlValue, TomlTable, TomlMember, 结构检查, 错误分类"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "separation logic",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "bobzhang/mbtpdf",
+          "version": "0.2.0",
+          "description": ""
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33",
+          "description": ""
+        },
+        {
+          "name": "NoahLiu/moonbit-libyue",
+          "version": "0.5.12",
+          "description": "libyue 的 MoonBit 封装：统一跨平台 GUI API，平台差异由库内部吸收，消费方无感"
+        }
+      ]
+    },
+    {
+      "query": "design by contract",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.30",
+          "description": "把《伽达默尔与哈贝马斯真理观比较》与《通往宁静之路》建模为可运行、可测试的 MoonBit 状态机族（主体／多主体／群体／双层次社会交往），外加 Agent 状态机（进化层：变异／闸门／只追加账本）与科研 Agent 协调器。"
+        },
+        {
+          "name": "vectie/moonrobo",
+          "version": "0.1.1",
+          "description": "Auditable physical-world interface and operator cockpit for the Moon agent suite"
+        },
+        {
+          "name": "dtzrttp/moonbit-rtl",
+          "version": "0.2.5",
+          "description": "A Verilog-2001 RTL parser, hierarchy analyzer, and lint tool written in MoonBit."
+        },
+        {
+          "name": "vectie/moontown",
+          "version": "0.1.6",
+          "description": ""
+        },
+        {
+          "name": "bobzhang/loop_invariants_graph",
+          "version": "0.18.0",
+          "description": "Graph and tree algorithms with loop-invariant explanations"
+        },
+        {
+          "name": "lkdrt/palette_forge",
+          "version": "0.1.0",
+          "description": "面向设计系统的高级调色与调和工具 - Advanced Color Palette & Harmony Engine for Design Systems in MoonBit"
+        },
+        {
+          "name": "wzzc-dev/moui_theme",
+          "version": "0.2.1",
+          "description": "Source-mapped design system adapters and first-party visual themes for MoUI",
+          "matched_packages": [
+            {
+              "name": "wzzc-dev/moui_theme/carbon",
+              "summary": "The wzzc-dev/moui_theme/carbon package provides Carbon design themes for the moui UI framework. It exposes functions to build light, dark, system, and high-contrast themes, obtain a design preset, and retrieve design system tokens, optionally parameterized by color scheme, design density, or scheme variant.\n\nKeywords: moui_theme, carbon, theme, design system, DesignDensity, ColorScheme, DesignPreset, DesignSystemTokens, light_theme, dark_theme, system_theme, high_contrast_theme, tokens, preset, Carbon 主题"
+            }
+          ]
+        },
+        {
+          "name": "zhaoyuanjuns/moonbit_extractor",
+          "version": "0.1.2",
+          "description": "Extraction process calculation toolkit for liquid-liquid extraction and solid-liquid leaching"
+        },
+        {
+          "name": "dgmxjj/moonbit-posterkit",
+          "version": "0.1.4",
+          "description": "Typed, data-driven SVG poster and cover generation for MoonBit."
+        }
+      ]
+    },
+    {
+      "query": "linearizability",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "moonbit-community/quickcheck_statemachine",
+          "version": "0.0.1",
+          "description": "",
+          "matched_packages": [
+            {
+              "name": "moonbit-community/quickcheck_statemachine/async_parallel",
+              "summary": "Provides async parallel state-machine testing for MoonBit via AsyncStateMachine and ParallelCommands, detecting linearizability violations in interleaved operations on shared mutable systems. Entry points: run_parallel_commands_async, check_parallel_async, assert_check_parallel_async, and from_sync for lifting synchronous specs. Includes failure types for re\n\nKeywords: async parallel testing, 状态机, 线性化, linearizability, 并行命令, AsyncStateMachine, ParallelCommands, 并发测试, 线性化失败, 共享可变系统, run_parallel_commands_async, check_parallel_async, from_sync, 环境合并, 线性化预算"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "linearizable",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "Lfan-ke/raft-moonbit",
+          "version": "0.5.2",
+          "description": "Raft consensus algorithm implemented in MoonBit.",
+          "matched_packages": [
+            {
+              "name": "Lfan-ke/raft-moonbit/core",
+              "summary": "Core consensus and simulation types for a MoonBit port of etcd's Raft. Provides Node and RaftNode for message-driven consensus with leader election, log replication, and configuration changes, plus a deterministic cluster simulator (Cluster) for testing correctness. Includes RawNode/Ready for the synchronous Ready/Advance loop, and pluggable Logger, Tracer, \n\nKeywords: Raft consensus, etcd Raft, leader election, log replication, configuration change, conf change, linearizable read, ReadOnlyOption, deterministic simulation, cluster simulator, Ready/Advance, RawNode, RaftNode, Node, crash recovery, snapshot install, state machine, searchable, 可搜索, MoonBit raft"
+            }
+          ]
+        },
+        {
+          "name": "moonbitstack/moonraft",
+          "version": "0.7.0",
+          "description": "Raft consensus algorithm implemented in MoonBit.",
+          "matched_packages": [
+            {
+              "name": "moonbitstack/moonraft/core",
+              "summary": "A MoonBit implementation of the Raft consensus algorithm, providing a core library and runnable driver for building replicated state machines. It offers RawNode for event-driven control, a run_single_node helper for single-node usage, pluggable traits for transport, logging, tracing, and storage, plus safety-check functions for testing. Includes linearizable\n\nKeywords: Raft, consensus, replicated state machine, RawNode, Ready/Advance, linearizable read, conf change, Transport, Logger, Tracer, state machine safety, election safety, log matching, snapshot, WAL"
+            }
+          ]
+        },
+        {
+          "name": "moonbit-community/quickcheck_statemachine",
+          "version": "0.0.1",
+          "description": "",
+          "matched_packages": [
+            {
+              "name": "moonbit-community/quickcheck_statemachine/async_parallel",
+              "summary": "Provides async parallel state-machine testing for MoonBit via AsyncStateMachine and ParallelCommands, detecting linearizability violations in interleaved operations on shared mutable systems. Entry points: run_parallel_commands_async, check_parallel_async, assert_check_parallel_async, and from_sync for lifting synchronous specs. Includes failure types for re\n\nKeywords: async parallel testing, 状态机, 线性化, linearizability, 并行命令, AsyncStateMachine, ParallelCommands, 并发测试, 线性化失败, 共享可变系统, run_parallel_commands_async, check_parallel_async, from_sync, 环境合并, 线性化预算"
+            }
+          ]
+        },
+        {
+          "name": "zhaoyuanjuns/moonbit_extractor",
+          "version": "0.1.2",
+          "description": "Extraction process calculation toolkit for liquid-liquid extraction and solid-liquid leaching",
+          "matched_packages": [
+            {
+              "name": "zhaoyuanjuns/moonbit_extractor/interpolation",
+              "summary": "Provides validated piecewise-linear interpolation tables (LinearTable) and equilibrium relation tables (EquilibriumTable) backed by measured points. Supports evaluation, slope, integration via trapezoids, inverse lookups, and configurable extrapolation (reject/clamp/linear). Errors are raised as ExtractionError for invalid input or out-of-range queries.\n\nKeywords: interpolation, 插值, LinearTable, EquilibriumTable, piecewise-linear, 分段线性, extrapolation, 外推, slope_at, integrate, 积分, x_at, y_at, EquilibriumPoint, ExtractionError"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "history checker",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "HhWw96/moontxnwitness",
+          "version": "0.0.6",
+          "description": "Offline transactional history analysis with independently verifiable dependency-cycle witnesses",
+          "matched_packages": [
+            {
+              "name": "HhWw96/moontxnwitness",
+              "summary": "MoonTxnWitness is an offline MoonBit transaction-history checker for versioned point-read/write logs. It parses histories, analyzes WR/WW/RW/RT dependencies and serializability under Serializable or StrictSerializable models, finds shortest cycle witnesses, reduces histories to reproducible counterexamples, compares models, and supports replay/verification, \n\nKeywords: MoonTxnWitness, MoonBit, 事务历史检查, transaction history checker, serializability, strict serializable, 依赖环, dependency cycle, shortest cycle witness, 反例缩减, counterexample reduction, history replay, verify cycle, HhWw96/moontxnwitness, 点读写日志"
+            }
+          ]
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0",
+          "description": "MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        },
+        {
+          "name": "vectie/moontown",
+          "version": "0.1.6",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "query": "bayesian",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "clbbbb/bayes-shift",
+          "version": "0.1.0",
+          "description": "Bayesian online change point detection for streaming numeric data",
+          "matched_packages": [
+            {
+              "name": "clbbbb/bayes-shift",
+              "summary": "BayesShift is a MoonBit online changepoint detection library implementing Bayesian Online Changepoint Detection. It provides Gaussian and Gamma-Poisson detectors for continuous values and count streams, plus event gating, input validation, reproducible experiment plans, and evaluation utilities comparing against EWMA and CUSUM baselines.\n\nKeywords: MoonBit, online changepoint detection, BOCPD, Bayesian, 变点检测, GaussianModel, PoissonModel, Detector, PoissonDetector, EventGate, 在线检测, 新段概率, run length posterior, EWMA, CUSUM"
+            },
+            {
+              "name": "clbbbb/bayes-shift/cmd",
+              "summary": "The package clbbbb/bayes-shift/cmd has no documented public API in the supplied sources. No capabilities or use cases can be described.\n\nKeywords: clbbbb/bayes-shift/cmd, bayes-shift"
+            },
+            {
+              "name": "clbbbb/bayes-shift/cmd/evaluate",
+              "summary": "The package clbbbb/bayes-shift/cmd/evaluate has no documented public API in the supplied sources. No README or public documentation describes its capabilities or use cases.\n\nKeywords: clbbbb/bayes-shift/cmd/evaluate, clbbbb/bayes-shift, evaluate"
+            }
+          ]
+        },
+        {
+          "name": "tyytyy68/moon-bayes-kit",
+          "version": "0.1.9",
+          "description": "MoonBit Composable Bayesian Online Update Library",
+          "matched_packages": [
+            {
+              "name": "tyytyy68/moon-bayes-kit",
+              "summary": "MoonBit composable Bayesian online update library providing Beta-Binomial, Gamma-Poisson, Normal-Normal, and Dirichlet-Multinomial conjugate models with immutable updates and ToJson serialization. Supports posterior mean, variance, predictive distributions, and credible intervals for binomial, count, continuous, and categorical data.\n\nKeywords: 贝叶斯在线更新, 共轭模型, Beta-Binomial, Gamma-Poisson, Normal-Normal, Dirichlet-Multinomial, posterior, predictive distribution, credible interval, ToJson, serialization, online update, Bayesian inference, experiment analysis, conjugate prior"
+            },
+            {
+              "name": "tyytyy68/moon-bayes-kit/cmd/benchmark",
+              "summary": "No documentation or public API is available for this package based on the supplied sources.\n\nKeywords: tyytyy68/moon-bayes-kit/cmd/benchmark, moon-bayes-kit, cmd, benchmark, package"
+            }
+          ]
+        },
+        {
+          "name": "code3055/moonmentor",
+          "version": "0.1.0",
+          "description": "Offline explainable Bayesian tutor for MoonBit learning",
+          "matched_packages": [
+            {
+              "name": "code3055/moonmentor/cmd/moonmentor",
+              "summary": "The code3055/moonmentor/cmd/moonmentor package provides the command entry point for MoonMentor. The supplied public API documentation lists no exported types, values, traits, errors, or type aliases.\n\nKeywords: moonmentor, code3055/moonmentor, cmd/moonmentor, MoonMentor 命令行, 命令入口"
+            },
+            {
+              "name": "code3055/moonmentor/moonmentor",
+              "summary": "MoonMentor provides an explainable adaptive-learning model with parsers for curriculum and learner-attempt files. It supports building a learner, applying attempts, computing mastery, diagnosing misconceptions, recommending concepts, and planning study sessions or reports in text and JSON.\n\nKeywords: moonmentor, adaptive learning, adaptive-learning, curriculum, learner, mastery, diagnosis, misconception, recommendation, session plan, parse_curriculum, parse_attempts, ParseError, 自适应学习, 报告"
+            },
+            {
+              "name": "code3055/moonmentor/web/bridge",
+              "summary": "Browser boundary for the MoonMentor engine. It exposes an analyze function that takes curriculum text, attempts text, exercises text, a time budget in minutes, and a format string, and returns a String result.\n\nKeywords: MoonMentor, bridge, browser boundary, analyze, curriculum_text, attempts_text, exercises_text, budget_minutes, format, web bridge, engine"
+            }
+          ]
+        },
+        {
+          "name": "Zy789kl/moon-change-point",
+          "version": "0.3.1",
+          "description": "Production-oriented MoonBit change-point detection, streaming windows, multivariate monitoring, replay, SLO and alert routing",
+          "matched_packages": [
+            {
+              "name": "Zy789kl/moon-change-point",
+              "summary": "Provides online and offline statistical change-point detection for time-series and telemetry pipelines, including algorithms like CUSUM, Page-Hinkley, Bayesian, EWMA, Robust-Z, IQR, trend, variance, and distribution shift detectors, plus streaming pipelines, alerting, multivariate monitoring, data quality validation, and export integrations.\n\nKeywords: CUSUM, Page-Hinkley, Bayesian online detection, EWMA, Robust-Z, IQR spike detector, time-series, streaming, multivariate, alerting, data quality, offline binary segmentation, canary rollout, MoonBit, 变化点检测"
+            }
+          ]
+        },
+        {
+          "name": "hxiuzheng/moon_diffusion_lab",
+          "version": "0.1.6",
+          "description": "A 1D/2D toy diffusion model experimentation and visualization lab in MoonBit",
+          "matched_packages": [
+            {
+              "name": "hxiuzheng/moon_diffusion_lab/model",
+              "summary": "Provides analytical and MLP-based noise prediction models for diffusion processes. AnalyticalModel computes theoretical optimal noise via Bayesian posterior expectation over a dataset point cloud; ToyMLP is a lightweight two-hidden-layer MLP with SiLU activation and time embedding for parameterized diffusion model forward inference.\n\nKeywords: noise prediction, diffusion model, AnalyticalModel, ToyMLP, score predictor, Bayesian, posterior expectation, MLP, SiLU, time embedding, Xavier initialization, 噪声预测, 扩散模型, 解析模型, 多层感知机"
+            }
+          ]
+        },
+        {
+          "name": "pla678889/moon-experiment",
+          "version": "0.2.3",
+          "description": "A mature A/B testing analysis library for MoonBit, supporting sample size estimation, sequential testing, metrics comparison and guardrails.",
+          "matched_packages": [
+            {
+              "name": "pla678889/moon-experiment/sequential",
+              "summary": "This package provides types and functions for sequential analysis of experiments, including group sequential monitoring, spending functions, and Bayesian evaluation. Use cases include interim analysis of clinical trials or A/B tests with multiple looks.\n\nKeywords: sequential analysis, group sequential design, interim monitoring, stopping boundaries, spending functions, O'Brien-Fleming, Pocock, conditional power, predictive power, Bayes factor, mixture SPRT, e-value, LookResult, SequentialPlan, MoonBit"
+            }
+          ]
+        },
+        {
+          "name": "zc222er/thinfilm_tmm",
+          "version": "0.1.2",
+          "description": "High-performance Pure MoonBit Transfer Matrix Method (TMM) optical simulation & parameter inversion engine",
+          "matched_packages": [
+            {
+              "name": "zc222er/thinfilm_tmm/inversion",
+              "summary": "This package provides inverse problem solvers for thin-film optical characterization and multilayer design, including global optimizers (PSO, DE, CMA-ES, ACOR, simulated annealing, cuckoo search, grey wolf, Jaya, moth-flame, sine cosine, whale), Levenberg-Marquardt least squares, MCMC Bayesian inversion, needle synthesis, and fitting utilities for single-lay\n\nKeywords: thin film, inversion, 反演, 光学薄膜, TMM, transfer matrix method, global optimization, 全局优化, Levenberg-Marquardt, MCMC, Bayesian inversion, ellipsometry, needle synthesis, Cauchy dispersion, refractive index fitting"
+            }
+          ]
+        },
+        {
+          "name": "wjyupl/measure",
+          "version": "0.1.2",
+          "description": "Physical measurement & uncertainty evaluation library for MoonBit",
+          "matched_packages": [
+            {
+              "name": "wjyupl/measure/src/uncertainty",
+              "summary": "Provides uncertainty evaluation and statistical analysis functions for measurement data, including Type A and Type B uncertainty, combined uncertainty, Welch-Satterthwaite effective degrees of freedom, Student's t coverage factors, Bayesian normal updates, Monte Carlo propagation, correlated uncertainty propagation, and multivariate analysis. It also include\n\nKeywords: uncertainty, measurement, Type A, Type B, Welch-Satterthwaite, effective degrees of freedom, Student's t, coverage factor, Bayesian update, Monte Carlo, uncertainty propagation, correlated uncertainty, multivariate analysis, 随机数生成, 测量不确定度"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "factor graph",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "moonbit-community/graphviz",
+          "version": "0.1.10",
+          "description": "Graphviz rewrite in MoonBit",
+          "matched_packages": [
+            {
+              "name": "moonbit-community/graphviz/layout/dot/unranked_engine",
+              "summary": "Provides unranked DOT layout helpers for Graphviz parity, including Neato-style position relaxation, edge spline generation, and node projection with scaling for layout trees.\n\nKeywords: unranked engine, Neato layout, position relaxation, edge splines, node projection, layout tree, DotLayoutNode, NodeSize, rankdir, scale factor, Graphviz parity, graph layout, spline, noop layout, record orientation"
+            }
+          ]
+        },
+        {
+          "name": "OldPigxjk/moon_toolkit",
+          "version": "0.1.2",
+          "description": "MoonBit general graph algorithm toolkit",
+          "matched_packages": [
+            {
+              "name": "OldPigxjk/moon_toolkit/src/centrality",
+              "summary": "Provides graph centrality algorithms for directed or undirected graphs: betweenness (Brandes), closeness (Wasserman-Faust), degree, eigenvector (power iteration), and PageRank. Each function takes a Graph[Int, Int] and returns an Array[Double] of vertex scores.\n\nKeywords: centrality, betweenness_centrality, closeness_centrality, degree_centrality, eigenvector_centrality, pagerank, Brandes algorithm, Wasserman-Faust, power iteration, directed graph, undirected graph, Shortest paths, damping factor, graph analysis"
+            }
+          ]
+        },
+        {
+          "name": "morning-start/mbtgraph",
+          "version": "0.1.3",
+          "description": "MoonBit 图算法库 - 完整的图数据结构和算法实现",
+          "matched_packages": [
+            {
+              "name": "morning-start/mbtgraph/lib/algo/pagerank",
+              "summary": "Provides PageRank and HITS link-analysis algorithms for graphs. The pagerank function computes node ranks via power iteration with configurable damping factor, max iterations, and tolerance, while hits computes hub and authority scores; results expose top_nodes, get_rank, and total_rank queries.\n\nKeywords: PageRank, HITS, 链接分析, link analysis, hub, authority, pagerank, hits, top_nodes, get_rank, total_rank, damping_factor, PageRankResult, HitsResult, GraphReadable"
+            }
+          ]
+        },
+        {
+          "name": "KKKIIO/selene",
+          "version": "0.37.5",
+          "description": "ECS game engine in MoonBit"
+        },
+        {
+          "name": "hwlxmm/dsp",
+          "version": "0.1.0",
+          "description": "A lightweight digital signal processing and spectrum analysis library for MoonBit"
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33",
+          "description": ""
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0",
+          "description": ""
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        },
+        {
+          "name": "Bobojy00/moonbit_factory_graph",
+          "version": "0.2.1",
+          "description": "Industrial plant topology, multi-layer material/control/energy flow modeling and failure propagation graph engine in MoonBit.",
+          "matched_packages": [
+            {
+              "name": "Bobojy00/moonbit_factory_graph",
+              "summary": "Industrial topology and digital-twin engine for modeling manufacturing production assets and multi-layer flows (material, control, energy). Provides routing, resilience, outage, capacity, and bottleneck analyses, topology health inspection, shortest path finding, diffing, and export to DOT, Mermaid, and JSON.\n\nKeywords: industrial topology, digital twin, manufacturing, production assets, multi-layer flows, graph algorithms, routing, resilience, outage simulation, capacity analysis, bottleneck, topology diff, export, FactoryGraph, moonbit_factory_graph"
+            },
+            {
+              "name": "Bobojy00/moonbit_factory_graph/cmd/main",
+              "summary": "This package provides no public API and its README is empty, so its purpose cannot be determined from the available documentation.\n\nKeywords: Bobojy00, moonbit_factory_graph, cmd, main, empty README, no public API, MoonBit package"
+            },
+            {
+              "name": "Bobojy00/moonbit_factory_graph/src/algorithms",
+              "summary": "This package provides graph algorithms for analyzing factory or manufacturing systems, including shortest path routing with configurable cost criteria, max flow computation, critical asset identification, cycle detection, node centrality ranking, and topological production scheduling.\n\nKeywords: factory graph, graph algorithms, shortest path, dijkstra_shortest_path, max flow, edmonds_karp_max_flow, critical asset, single point of failure, cycle detection, cycle classification, centrality ranking, production schedule, critical path, bottleneck, disjoint paths, manufacturing optimization, 工厂图, 最短路径, 最大流"
+            },
+            {
+              "name": "Bobojy00/moonbit_factory_graph/src/analysis",
+              "summary": "This package provides analysis functions and report types for evaluating factory production graphs, including bottleneck identification, material capacity, operational readiness, plant safety, line redundancy, and outage simulation. It supports use cases like production optimization, deployment readiness checks, and risk assessment.\n\nKeywords: factory graph analysis, bottleneck analysis, material capacity, operational readiness, plant safety, line redundancy, outage simulation, production optimization, deployment readiness, risk assessment, 工厂图分析, 瓶颈分析, 产能分析"
+            },
+            {
+              "name": "Bobojy00/moonbit_factory_graph/src/diff",
+              "summary": "This package computes topology differences between two factory graphs and produces a detailed diff report with node/edge changes and migration risk assessment.\n\nKeywords: factory graph, diff, topology, node, edge, migration, risk, comparison, report, breaking changes, mitigation, 图差异, 拓扑对比, 风险等级, 节点"
+            }
+          ]
+        },
+        {
+          "name": "Suquster/moonbit-pathfinding",
+          "version": "0.2.0",
+          "description": "A MoonBit pathfinding and graph algorithms library with executable documentation, runtime-checked proof predicates, and multi-backend verification gates. Built for OSC 2026.",
+          "matched_packages": [
+            {
+              "name": "Suquster/moonbit-pathfinding/factory-template/src/example",
+              "summary": "This package provides the public value isqrt, a function that computes the integer square root of a non-negative integer using floor(sqrt(n)); it returns None for negative inputs.\n\nKeywords: isqrt, integer square root, 整数平方根, floor, negative, None, moonbit-pathfinding, example, Int, Int?"
+            }
+          ]
+        },
+        {
+          "name": "bobzhang/elk",
+          "version": "0.3.4",
+          "description": "A MoonBit port of Eclipse Layout Kernel (ELK).",
+          "matched_packages": [
+            {
+              "name": "bobzhang/elk/graph",
+              "summary": "The bobzhang/elk/graph package provides MoonBit types and utilities for ELK graph models, including nodes, ports, edges, edge sections, labels, bend points, and property holders. It offers factory and adapter construction, graph traversal and containment helpers, layout option access, and reflection registration for constructing and cloning graph elements.\n\nKeywords: ELK, graph, ElkNode, ElkPort, ElkEdge, ElkLabel, ElkBendPoint, GraphArena, ElkGraphFactory, ElkGraphAdapterFactory, layout option, property holder, graph traversal, reflection, MoonBit"
+            },
+            {
+              "name": "bobzhang/elk/alg/graphviz/dot",
+              "summary": "The bobzhang/elk/alg/graphviz/dot package owns the Graphviz DOT syntax model, including types for graphs, subgraphs, nodes, edges, attributes, ports, and edge operators, along with parser, formatter, and serializer entry points. It also provides a factory for creating model elements, model parsing and serialization functions, and adapter support for converti\n\nKeywords: graphviz, dot, DOT syntax model, parser, formatter, serializer, DotGraphvizModel, DotFactory, DotAdapterFactory, graph, subgraph, node, edge, attribute, Graphviz DOT"
+            }
+          ]
+        },
+        {
+          "name": "Milky2018/moon_elk",
+          "version": "0.3.2",
+          "description": "A MoonBit port of Eclipse Layout Kernel (ELK).",
+          "matched_packages": [
+            {
+              "name": "Milky2018/moon_elk/alg/vertiflex",
+              "summary": "VertiFlex layout algorithm for ELK-style graphs, providing a VertiFlexLayoutProvider that lays out ElkNode graphs through node placement and edge routing phases. It exposes phase factories and strategy enums for node Y placement, relative and absolute X placement, and straight or bend edge routing, plus session-based outline and scratch data storage and algo\n\nKeywords: VertiFlex, moon_elk, graph layout, ElkNode, layout provider, edge routing, node placement, outline, vertiflex_layout_strategy, register_vertiflex_layout_algorithm, VertiFlexSession, phase factory, vertical layout, 布局算法, 图布局"
+            },
+            {
+              "name": "Milky2018/moon_elk/alg/layered/processors/intermediate",
+              "summary": "Intermediate layout processors and supporting utilities for the layered graph layout algorithm in moon_elk. It provides processor factories, graph statistics and cut index calculation, vertical segment handling, and model order comparators for node and port ordering. The package also defines data structures and exceptions used while transforming LGraph insta\n\nKeywords: layered graph layout, intermediate processors, processor_factory, register_processors, GraphStats, ICutIndexCalculator, VerticalSegment, ModelOrderNodeComparator, ModelOrderPortComparator, BiLinkedHashMultiMap, TypedLayoutProcessor, LGraph, 布局, 处理器, 图统计"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "belief propagation",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "strips",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "cstoooo/terminfo",
+          "version": "0.1.0",
+          "description": "terminfo(5) terminal capability library in pure MoonBit: compiled binary format, source language, and tparm parameter expansion",
+          "matched_packages": [
+            {
+              "name": "cstoooo/terminfo",
+              "summary": "A pure-MoonBit implementation of the terminfo(5) terminal capability format, covering the ncurses compiled binary format, the terminfo.src source language, and a tparm(3x) parameter interpreter. It parses and serializes compiled entries byte-exactly, compiles source entries with use= inheritance, expands parameterized capabilities, strips padding, and looks \n\nKeywords: terminfo, ncurses, terminfo.src, tparm, terminal capabilities, terminal database, compiled terminfo, parse_source, compile, to_bytes, strip_padding, unescape_value, Entry, SourceEntry, use= inheritance"
+            }
+          ]
+        },
+        {
+          "name": "howtomakeaname/sumi",
+          "version": "0.3.0",
+          "description": "A UI component library for MoonBit web apps — dark & light themes, overlay motion, zero config",
+          "matched_packages": [
+            {
+              "name": "howtomakeaname/sumi/layout",
+              "summary": "A UI component library providing Rabbita-based layout widgets such as cards, chat bubbles, tabs, pagination, toolbars, session lists and headers, task cards, markdown text blocks, shortcuts panels, dividers, generation metadata and tabs strips. It also defines supporting types like MdTextKind, SessionStatus, ShortcutItem/Section and TabEntry.\n\nKeywords: UI components, layout, Rabbita, MoonBit, card, chat_bubble, tab_strip, pagination, toolbar, session_list, task_card, md_text, 生成状态, 快捷键面板, 分隔线"
+            },
+            {
+              "name": "howtomakeaname/sumi/forms",
+              "summary": "Forms widgets from the sumi design system for building controlled user interfaces with Rabbita Html. It provides inputs, textarea, checkbox, switch, slider, stepper, segmented control, select, chips, attachment strip, prompt box, agent input, and HITL confirm card components.\n\nKeywords: sumi, forms, Rabbita, Html, controlled components, UI widgets, input, textarea, checkbox, switch, slider, stepper, select, segmented, chip, attachment_strip, hitl_card, prompt_box, agent_input, 表单"
+            }
+          ]
+        },
+        {
+          "name": "bobzhang/kimicc",
+          "version": "0.1.246",
+          "description": "",
+          "matched_packages": [
+            {
+              "name": "bobzhang/kimicc/msl",
+              "summary": "The bobzhang/kimicc/msl package models Metal Shading Language kernels as a dialect layer over C: a Kernel wraps a cfront FuncDecl plus per-parameter decorations, with decor/plain constructors for ParamDecor. It provides print_kernel, print_kernels (with optional prelude), and parse_kernel, which lexically strips MSL qualifiers, address spaces, and attributes\n\nKeywords: MSL, Metal Shading Language, kernel, MSL kernel, ParamDecor, Kernel, parse_kernel, print_kernel, print_kernels, decor, plain, address space, thread_position_in_grid, buffer attribute, decoration bridge"
+            }
+          ]
+        },
+        {
+          "name": "moonbitstack/moonetui",
+          "version": "0.1.1",
+          "description": "moonetui — a terminal UI toolkit for MoonBit (after Textual): cell buffer, differential ANSI renderer, incremental key parser, layout, widgets, and pluggable terminal drivers.",
+          "matched_packages": [
+            {
+              "name": "moonbitstack/moonetui/strip",
+              "summary": "The `strip` package models a single rendered line of text as a `Strip`: an array of styled `Seg` segments plus a cached total column width, and provides a `cell_width` function to measure the column width of code points, handling wide/combining characters. It offers operations to build, join, split, crop, pad, and simplify strips; crop and divide replace hal\n\nKeywords: Strip, Seg, styled segment, cell width, East Asian wide, double-width, text layout, crop, divide, pad_to, plot, layer style, plain text, column width, combining marks"
+            },
+            {
+              "name": "moonbitstack/moonetui/comp",
+              "summary": "Provides terminal composition primitives: Cell represents one column (supports wide characters via continuation), Placement/Scene handle widget layout with clipping, and Span/diff/cells encode repainting. Use cases include composing full-screen layouts, diffing two screens to emit minimal escape-code updates, and cursor control.\n\nKeywords: Cell, Placement, Scene, Span, Strip, diff, repa.int, terminal, wide character, compose, clip, cursor, encode, line_of, column"
+            }
+          ]
+        },
+        {
+          "name": "0xA672/strip",
+          "version": "0.1.2",
+          "description": "Recursively strip empty/null/zero values from JSON-like structures",
+          "matched_packages": [
+            {
+              "name": "0xA672/strip",
+              "summary": "A MoonBit library for recursively stripping empty, null, and zero values from JSON-like data structures. Provides three functions: strip, strip_empty, and strip_null for different cleaning levels.\n\nKeywords: strip, MoonBit, JSON清理, 递归删除, 空值, null值, 零值, strip_empty, strip_null, Js枚举, 数据清洗, immutable, 深度限制"
+            }
+          ]
+        },
+        {
+          "name": "oyjh0381/moonerasure",
+          "version": "0.2.0",
+          "description": "Reed-Solomon encoding, selective recovery and incremental parity updates",
+          "matched_packages": [
+            {
+              "name": "oyjh0381/moonerasure",
+              "summary": "MoonErasure provides systematic Reed-Solomon erasure coding over GF(256) in pure MoonBit, splitting k data shards into k+m shards and reconstructing stripes from any k intact shards. It also offers object-level encoding and decoding, bounded stripes with checksum-protected frames, range recovery, repair planning, incremental encoding, bundle import/export, a\n\nKeywords: Reed-Solomon, erasure coding, GF(256), MoonBit, 纠删码, shard reconstruction, reconstruct_selected, update_parity, encode_object, recover_object, repair_object, FrameCatalog, recoverable_ranges, bundle, ShardEnvelope"
+            }
+          ]
+        },
+        {
+          "name": "Milky2018/moon_wesl",
+          "version": "0.17.4",
+          "description": "A WESL module compiler for MoonBit backed by WGSL Core.",
+          "matched_packages": [
+            {
+              "name": "Milky2018/moon_wesl",
+              "summary": "Milky2018/moon_wesl is a MoonBit library for compiling WESL shader modules into one emitted source string. It provides module-path resolution, Resolver-based source loading, import resolution with @publish re-exports, @if conditional compilation, reachability-based stripping, symbol mangling via EscapeMangler, optional lowering of top-level aliases and const\n\nKeywords: WESL, WGSL, shader compilation, MoonBit, Resolver, ModulePath, EscapeMangler, CompileOptions, compile, import resolution, conditional compilation, stripping, mangling, @publish, 着色器"
+            }
+          ]
+        },
+        {
+          "name": "Milky2018/meshopt_mbt",
+          "version": "0.1.2",
+          "description": "MoonBit bindings for meshoptimizer",
+          "matched_packages": [
+            {
+              "name": "Milky2018/meshopt_mbt",
+              "summary": "Provides safe MoonBit native bindings for meshoptimizer, covering quantization, vertex remap, index/vertex codecs, vertex cache/overdraw/fetch optimization, simplification, meshlet building, stripification, analysis, tangent generation, and spatial sorting for 3D mesh geometry processing.\n\nKeywords: meshoptimizer, MoonBit, mesh optimization, vertex remap, index codec, vertex cache optimization, simplification, meshlets, quantization, stripification, spatial sort, tangent generation, opacity map, analysis, meshopt_mbt"
+            }
+          ]
+        },
+        {
+          "name": "faaaaaa3/moonmacro",
+          "version": "0.2.2",
+          "description": "A compile-time macro system for MoonBit, inspired by Rust macros",
+          "matched_packages": [
+            {
+              "name": "faaaaaa3/moonmacro",
+              "summary": "MoonMacro is a build-time macro system for MoonBit that expands declarative macro_rules! definitions, #[macro_derive] auto-derivation, and 13 built-in macros into plain MoonBit source. It is usable as a preprocessing CLI tool or as a library via find_macro_defs, expand_file, and strip_macro_defs.\n\nKeywords: MoonMacro, MoonBit, macro_rules!, macro_derive, macro, 宏, 预处理器, 编译期, 模式匹配, find_macro_defs, expand_file, strip_macro_defs, derive, Constructor, EnumFromStr"
+            }
+          ]
+        },
+        {
+          "name": "HK-SHAO/dsp",
+          "version": "0.1.4",
+          "description": "Numeric kernel of atools: FFT, STFT codec and phase reconstruction, compiled to WASM for direct browser use",
+          "matched_packages": [
+            {
+              "name": "HK-SHAO/dsp",
+              "summary": "A spectral DSP kernel in MoonBit compiled to WebAssembly, the numeric core of atools audio↔spectrogram conversion. Provides cached FFT plans, pooled FFT slots, paired real transforms, PGHI phase initialization, RTISI-LA phase reconstruction, and RGBA metadata strip codec, all through a stable dsp_* host ABI using job arenas for variable-size work.\n\nKeywords: FFT, spectrogram, audio processing, phase reconstruction, RTISI-LA, PGHI, DSP, WebAssembly, MoonBit, atools, complex FFT, real inverse, Hann window, metadata strip, ABI"
+            }
+          ]
+        },
+        {
+          "name": "lin2077-zeming/MoonHook",
+          "version": "0.4.0",
+          "description": "Outbound webhook delivery framework for MoonBit: signing, retry with backoff, outbox, dead letter, idempotency, audit, and real HTTP delivery over moonbitlang/async.",
+          "matched_packages": [
+            {
+              "name": "lin2077-zeming/MoonHook",
+              "summary": "A MoonBit webhook delivery (outbound) framework for reliable, verifiable event delivery with retry policies, dead letter queues, idempotency, and audit logging. It provides pure MoonBit SHA-256/HMAC-SHA256 signing, timestamp-based replay protection, platform signature adapters (GitHub, Stripe, Slack, FeishuBot, Shopify), and an HTTP transport for real delive\n\nKeywords: WebHook, 出站框架, outbound, delivery, HMAC-SHA256, signing, timestamp防重放, RetryPolicy, DeliveryEngine, Outbox, DeadLetter, IdempotencyStore, AuditLog, SignatureProvider, transport_http, pure MoonBit"
+            }
+          ]
+        },
+        {
+          "name": "zzy12346/moonhook",
+          "version": "0.2.0",
+          "description": "A lightweight MoonBit WebHook processing framework for event driven automation.",
+          "matched_packages": [
+            {
+              "name": "zzy12346/moonhook",
+              "summary": "A MoonBit Webhook processing framework supporting parsing, signature verification, middleware pipelines, routing, deduplication, retry policies, and diagnostics for providers including GitHub, GitLab, Gitee, Feishu, WeCom, and Stripe.\n\nKeywords: Webhook, MoonHook, HookEvent, HookRouter, HookPipeline, ProviderAdapter, SignatureVerifier, InMemoryDeduper, RetryPolicy, middleware, idempotency, GitHub, GitLab, Feishu, Stripe"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "automated planning",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "vectie/mooncast",
+          "version": "0.2.3",
+          "description": "Systematic rights-aware long-form AIGC production pack for MoonSuite"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0",
+          "description": "MoonBit image library: pure MoonBit backend for native/wasm-gc/js/wasm multi-target support."
+        },
+        {
+          "name": "vectie/moontown",
+          "version": "0.1.6",
+          "description": ""
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33",
+          "description": ""
+        },
+        {
+          "name": "fan-ere/moon-pdf417-core",
+          "version": "0.2.1",
+          "description": "Pure MoonBit PDF417 encoder: Text / Byte / Numeric compaction, the annex P mode selector, GF(929) Reed-Solomon parity with error repair, symbol layout, the annex A module patterns and SVG or ASCII rendering.",
+          "matched_packages": [
+            {
+              "name": "fan-ere/moon-pdf417-core",
+              "summary": "A dependency-free MoonBit library implementing the PDF417 codeword layer: Text, Numeric and Byte compaction with automatic mode selection, GF(929) Reed-Solomon error correction, symbol layout planning, row indicators, low-level module structure, rendering to ASCII or SVG, and inverse decoders for verification. It turns a message into a complete codeword sequ\n\nKeywords: PDF417, MoonBit, codeword layer, barcode, encode_high_level, finalize, error correction, Reed-Solomon, GF(929), Text Compaction, Numeric Compaction, Byte Compaction, symbol_matrix, matrix_to_svg, verify_symbol"
+            }
+          ]
+        },
+        {
+          "name": "vectie/lepusa",
+          "version": "0.1.6",
+          "description": "MoonBit-native desktop application framework research and implementation."
+        },
+        {
+          "name": "phjphj676/moongeoroute",
+          "version": "0.1.6",
+          "description": "MoonGeoRoute: Geographic Routing & Spatial Analysis Library for MoonBit",
+          "matched_packages": [
+            {
+              "name": "phjphj676/moongeoroute/graph",
+              "summary": "The graph package builds topological road networks from Node and Edge structures and provides path planning over them. It supports adding nodes with coordinates and one-way or two-way edges with automatic Haversine distance weights, snapping coordinates to nodes via a spatial grid index, and computing shortest paths with Dijkstra, A*, or end-to-end coordinat\n\nKeywords: graph, road network, 路径规划, 拓扑路网, Dijkstra, A*, shortest path, dijkstra, a_star, find_path_by_coords, nearest_node, Haversine, RoadNetwork, NetworkStats, RouteMetrics"
+            }
+          ]
+        },
+        {
+          "name": "zmjknn/moon-stream-quality",
+          "version": "0.2.2",
+          "description": "MoonBit Streaming Data Quality Rule Engine for logs, sensors, and event streams."
+        },
+        {
+          "name": "ZSeanYves/markitdown",
+          "version": "0.5.3",
+          "description": "A MoonBit-native document-to-Markdown converter with multi-format parsing, metadata, assets, batch conversion, and validation tooling"
+        }
+      ]
+    },
+    {
+      "query": "automata learning",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "active learning",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "Across2005/yimai_prophecy_moonbit",
+          "version": "0.1.1",
+          "description": "译脉·先知 2.0 预知记忆网络引擎的 MoonBit 零依赖实现：带预测能力的记忆网络，支持可解释预测与语义召回。",
+          "matched_packages": [
+            {
+              "name": "Across2005/yimai_prophecy_moonbit",
+              "summary": "A zero-dependency predictive memory network engine in MoonBit that remembers workflows, predicts next steps with white-box explainability, and provides translation memory (fuzzy match, TBX termbase, concordance) and term consistency checking. It offers a pure-MoonBit HTTP service with 27 REST endpoints and an MCP server for local agents and LLM integration.\n\nKeywords: predictive memory network, workflow prediction, white-box explainability, translation memory, fuzzy match, TBX termbase, concordance search, term consistency checking, MQM quality estimation, BLEU chrF++, federated learning, active learning, MCP server, MoonBit engine, 译脉先知"
+            }
+          ]
+        },
+        {
+          "name": "vectie/moonbook",
+          "version": "0.1.1",
+          "description": ""
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "query": "Angluin",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": []
+    },
+    {
+      "query": "Lstar",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "mizchi/bit_io",
+          "version": "0.48.0",
+          "description": "Abstract FileSystem traits and in-memory test implementation",
+          "matched_packages": [
+            {
+              "name": "mizchi/bit_io",
+              "summary": "Provides I/O abstractions for Git worktree operations: RepoFileSystem/AsyncRepoFileSystem traits, TestFs in-memory test implementation, EnvProvider/WorktreeProbeProvider, WorktreeEntry/WorktreeEntryMeta types, and helpers for reading worktree entries (including symlink targets and typed readdir with d_type info).\n\nKeywords: worktree, RepoFileSystem, AsyncRepoFileSystem, TestFs, EnvProvider, WorktreeProbeProvider, WorktreeEntry, WorktreeEntryMeta, readdir_typed, read_symlink_target_path, lstat, d_type, symlink, worktree_entry, file system trait"
+            }
+          ]
+        },
+        {
+          "name": "mizchi/github",
+          "version": "0.1.5",
+          "description": "GitHub REST API client for MoonBit",
+          "matched_packages": [
+            {
+              "name": "mizchi/github/actions",
+              "summary": "The mizchi/github/actions package provides GitHub Actions data types and async functions for the MoonBit GitHub client. It can list workflow runs for a repository, list artifacts for a workflow run, and download an artifact as a ZIP archive in raw bytes.\n\nKeywords: github, actions, GitHub Actions, workflow runs, artifacts, mizchi/github/actions, list_workflow_runs, list_artifacts, download_artifact, WorkflowRun, Artifact, ListWorkflowRunsResponse, ListArtifactsResponse, 工作流, 制品"
+            }
+          ]
+        },
+        {
+          "name": "i5ting/readdirp",
+          "version": "0.1.3",
+          "description": "Directory walking for MoonBit native/LLVM targets.",
+          "matched_packages": [
+            {
+              "name": "i5ting/readdirp",
+              "summary": "A synchronous directory walker for MoonBit that returns arrays of entry info. Supports configurable depth, file/directory filtering, symlink handling, and optional stat collection; the `readdirp_report` variant also returns recoverable warning details.\n\nKeywords: directory walking, directory traversal, readdirp, moonbit, sync, recursive, 文件系统, EntryInfo, Options, filter, basename_filter, lstat, symlink, ReaddirpReport"
+            }
+          ]
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0",
+          "description": "",
+          "matched_packages": [
+            {
+              "name": "bobzhang/bap/native_io",
+              "summary": "The bobzhang/bap/native_io package provides native file-system and process-environment operations for MoonBit, including stat/lstat metadata, file kinds, permissions, directory creation and reading, recursive removal, atomic writes, temporary files and directories, advisory file locking, and host architecture queries.\n\nKeywords: native_io, file system, filesystem, stat, lstat, FileStat, FileKind, FileLock, lock_file, with_lock, mkdir_p, remove_tree, write_file_atomic, make_temp_file, host_architecture"
+            }
+          ]
+        },
+        {
+          "name": "hongweifei/lua",
+          "version": "0.1.0",
+          "description": "A complete Lua 5.4 interpreter written in MoonBit",
+          "matched_packages": [
+            {
+              "name": "hongweifei/lua/src/core",
+              "summary": "Core runtime types and helpers for the hongweifei/lua Lua implementation in MoonBit, covering values, tables, strings, closures, frames, coroutines, instructions, garbage collection, numeric conversion and error handling. It exposes the VM-level API used by the interpreter, compiler and host libraries to build, run and inspect Lua programs.\n\nKeywords: Lua, MoonBit, interpreter, LuaState, Value, LTable, LStr, LClosure, LBuiltin, LThread, Frame, Instr, coroutine, garbage collection, LuaRaised"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "Mealy",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "zploc/loci",
+          "version": "0.1.0",
+          "description": "Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime",
+          "matched_packages": [
+            {
+              "name": "zploc/loci/loci_fsm",
+              "summary": "Provides composable finite state transducers (FSTs) for WASM-based runtimes. Includes BoundaryWalkerFsm for membrane-boundary inspection and stigmergy, ReporterFsm for collection/publish workflows, and algebraic combinators (Union, Subtract, Diff, Compose) plus a FsmCave artifact store and MetabolicEnvelope lifecycle management.\n\nKeywords: finite state transducer, FST, Mealy machine, 边界行走, 执行体组合, Transducer trait, BoundaryWalkerFsm, ReporterFsm, FsmCave, MetabolicEnvelope, TransducerUnion, TransducerCompose, set algebra"
+            }
+          ]
+        },
+        {
+          "name": "Metalymph/valkey",
+          "version": "0.5.0",
+          "description": "Native async Valkey/Redis client for MoonBit",
+          "matched_packages": [
+            {
+              "name": "Metalymph/valkey",
+              "summary": "A native async Valkey/Redis client for MoonBit, providing RESP protocol implementation, TCP networking, typed commands, and Redis Streams support with Consumer Groups.\n\nKeywords: Valkey, Redis, MoonBit, async, RESP, TCP client, Redis Streams, Consumer Group, moonbitlang/async, Metalymph, GET, SET, XADD, XREADGROUP, XPENDING"
+            },
+            {
+              "name": "Metalymph/valkey/relay",
+              "summary": "This package provides Redis/Valkey backend implementations for the Relay messaging framework, including a list-based queue (RedisBackend) and a stream-based queue with consumer group support (RedisStreamBackend). Use cases include message pushing, popping, acknowledgment, pending recovery, and dead-letter queue management.\n\nKeywords: Valkey, Redis, relay, queue, backend, stream, RedisBackend, RedisStreamBackend, message queue, DLQ, consumer group, BLPOP, RPUSH, pending recovery, RelayQueue"
+            }
+          ]
+        },
+        {
+          "name": "Metalymph/relay",
+          "version": "0.5.1",
+          "description": "Distributed message queue with V3 reliability",
+          "matched_packages": [
+            {
+              "name": "Metalymph/relay/cmd/main",
+              "summary": "This package provides no public API documentation or README.\n\nKeywords: Metalymph, relay, cmd, main, Metalymph/relay/cmd/main"
+            },
+            {
+              "name": "Metalymph/relay/core",
+              "summary": "Metalymph/relay/core provides a generic, closure-based message queue with async push/pop, ack/nack, retry policies, and dead-letter queue (DLQ) support. It also includes telemetry types for OpenTelemetry and Prometheus, plus operational health monitoring and incident detection.\n\nKeywords: message queue, relay, async, ack/nack, dead-letter queue (DLQ), retry policy, telemetry, OpenTelemetry, Prometheus, health monitoring, incident detection, observability, MoonBit, 消息队列, 可观测性"
+            },
+            {
+              "name": "Metalymph/relay/memory",
+              "summary": "This package provides an in-memory backend for the Metalymph relay queue system, supporting push, pop, ack, nack, retry policies, and a dead letter queue. It also includes a Dashboard for visualizing queue state with ANSI color-coded output.\n\nKeywords: in-memory, relay, backend, queue, Metalymph, MoonBit, InMemoryBackend, Dashboard, Dead Letter Queue, RetryPolicy, QueueMetrics, ack, nack, push, pop"
+            },
+            {
+              "name": "Metalymph/relay/worker",
+              "summary": "Provides a WorkerPool for concurrent message processing from a RelayQueue, with configurable concurrency and an async handler. Includes WorkerStats for tracking processing counters such as successes, failures, and retries.\n\nKeywords: WorkerPool, 工作池, concurrent processing, RelayQueue, WorkerStats, metrics, async handler, TaskGroup, message queue, start_worker, processing counters"
+            }
+          ]
+        },
+        {
+          "name": "WB-ai-nb/pantrycalc",
+          "version": "0.1.4",
+          "description": "MoonBit-native recipe scaling, allergen-safe substitution and pantry shopping planner",
+          "matched_packages": [
+            {
+              "name": "WB-ai-nb/pantrycalc",
+              "summary": "PantryCalc is a MoonBit-native recipe and household pantry planning library. It provides public APIs for recipe serving scaling, unit conversion, allergen-aware substitutions, pantry gap and shopping-list calculation, nutrition and cost totals, expiring-stock rotation, zero-waste meal-prep ranking, and Markdown/CSV export.\n\nKeywords: PantryCalc, WB-ai-nb/pantrycalc, MoonBit, recipe planning, pantry planning, 食谱, 库存, shopping list, 购物清单, unit conversion, 单位换算, allergen substitution, 过敏原替代, expiring rotation, 临期库存, zero waste meal prep, 零浪费备餐, nutrition, cost, CSV export"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "conformance testing",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "cxh04/cron_mbt",
+          "version": "0.2.4",
+          "description": "A cron expression parser, matcher, scheduler, and CLI for MoonBit.",
+          "matched_packages": [
+            {
+              "name": "cxh04/cron_mbt/benchmarks",
+              "summary": "A deterministic conformance corpus for the cron_mbt package's parser, matcher, and next-trigger APIs, covering step, range, list, macro, weekday, month, and question-mark wildcard expressions, leap years, and cross-period transitions.\n\nKeywords: benchmark corpus, conformance testing, cron parser, cron matcher, next-trigger, cron expressions, leap year handling, cross-month transitions, cron wildcards, deterministic tests, MoonBit cron"
+            }
+          ]
+        },
+        {
+          "name": "moonbitstack/moonasgi",
+          "version": "0.10.0",
+          "description": "MoonBit-dialect ASGI 3.0 — the load-bearing server↔app SEAM (Scope / Receive / Send) that the moon* full-stack web suite (mooncat, moonapi, moonrpc, moongql, moonzero) is built around.",
+          "matched_packages": [
+            {
+              "name": "moonbitstack/moonasgi",
+              "summary": "moonasgi is a MoonBit-dialect implementation of the ASGI 3.0 specification, providing a backend-agnostic protocol seam (typed Scope, Event, Receive, Send, AsgiApp) for building asynchronous web servers and frameworks. It includes synchronous, sans-transport runtimes for HTTP, WebSocket, and lifespan, plus conformance testing tools and utilities like header d\n\nKeywords: ASGI, MoonBit, async server, web framework, Scope, Event, Receive, Send, AsgiApp, WebSocket, HTTP, lifespan, conformance, middleware, transport-agnostic"
+            }
+          ]
+        },
+        {
+          "name": "marianoguerra/sos",
+          "version": "0.2.0",
+          "description": "Simple Object Storage",
+          "matched_packages": [
+            {
+              "name": "marianoguerra/sos",
+              "summary": "A storage abstraction library for MoonBit that provides a unified Store interface and Operator front door for reading, writing, listing, and deleting blobs across multiple backends including in-memory Map, filesystem, and IndexedDB. It normalizes paths, validates capabilities before calls, and raises a single SosError type regardless of backend.\n\nKeywords: storage, blob storage, object storage, MoonBit, Store trait, Operator, IndexedDB, filesystem, in-memory, backend abstraction, path validation, capabilities, SosError, conformance testing, 存储抽象"
+            }
+          ]
+        },
+        {
+          "name": "mokomoking2501/fieldbus_core",
+          "version": "0.1.0",
+          "description": "Protocol-neutral fieldbus profile layer for Isochronon",
+          "matched_packages": [
+            {
+              "name": "mokomoking2501/fieldbus_core/cia402_scenario_loop",
+              "summary": "This package provides a CiA 402 drive profile scenario loop for conformance testing, generating scenario reports and conformance artifacts with replay digest verification. It supports nominal, stale command, out-of-order status, and injected fault variants.\n\nKeywords: CiA 402, CIA402, scenario loop, conformance, artifact, replay digest, fault injection, fieldbus, drive profile, scenario variant, nominal, stale command, out-of-order status, injected fault, conformance artifact"
+            },
+            {
+              "name": "mokomoking2501/fieldbus_core/modbus",
+              "summary": "Provides Modbus protocol core types for TCP and RTU framing, including PDU, MBAP envelope, and register profiles. Supports simulation, conformance testing, and trace generation for Modbus communication.\n\nKeywords: Modbus, TCP, RTU, PDU, MBAP, framing, register profile, conformance, simulation, trace, Modbus 协议, 寄存器配置"
+            }
+          ]
+        },
+        {
+          "name": "oilleelssq-wq/moonmarkdown",
+          "version": "0.2.0",
+          "description": "A CommonMark spec-compliant Markdown to HTML parser written in pure MoonBit",
+          "matched_packages": [
+            {
+              "name": "oilleelssq-wq/moonmarkdown/tests",
+              "summary": "Provides test fixtures for Markdown conformance testing, including a SpecCase structure with markdown input and expected HTML output, and an array of spec cases.\n\nKeywords: SpecCase, spec_cases, Markdown spec, Markdown tests, test cases, expected HTML, markdown input, MoonBit tests"
+            }
+          ]
+        },
+        {
+          "name": "Atman-Angle/moonbit-unicode",
+          "version": "0.1.0",
+          "description": "Unicode 16.0 normalization and extended grapheme segmentation for MoonBit",
+          "matched_packages": [
+            {
+              "name": "Atman-Angle/moonbit-unicode/tests/conformance",
+              "summary": "Provides arrays of test cases for Unicode grapheme cluster and normalization conformance testing. Used to validate implementations of Unicode grapheme segmentation and normalization forms.\n\nKeywords: test cases, grapheme clusters, normalization, conformance, unicode, grapheme_cases, normalization_cases, test data"
+            }
+          ]
+        },
+        {
+          "name": "binhongcha/moonsuccinct",
+          "version": "0.1.0",
+          "description": "Static succinct index primitives for MoonBit",
+          "matched_packages": [
+            {
+              "name": "binhongcha/moonsuccinct/conformance",
+              "summary": "The binhongcha/moonsuccinct/conformance package provides a minimal embeddable health check for the moonsuccinct ecosystem. Its public API exposes smoke_check, which verifies every public structure family, and suite_name, an identifier used by external harnesses to select this package.\n\nKeywords: moonsuccinct, conformance, smoke_check, suite_name, health check, embeddable check, public structure family, external harness, conformance testing, moonbit, MoonBit, 一致性检查, 健康检查, 测试套件"
+            }
+          ]
+        },
+        {
+          "name": "mizchi/veri",
+          "version": "0.2.0",
+          "description": "Proof models, verified runtime APIs, and differential checks for MoonBit",
+          "matched_packages": [
+            {
+              "name": "mizchi/veri/testing/state_machine",
+              "summary": "MoonBit state machine tester comparing an independent reference model against a concrete system implementation. It uses QuickCheck to generate, shrink, and replay command sequences, comparing per-command outputs and state snapshots. Preconditions filter invalid commands; expected errors should live in outputs via Result rather than exceptions. Provides check\n\nKeywords: state machine, model-based testing, QuickCheck, property-based testing, replay, command sequencing, precondition, shrinking, reference model, conformance testing, Verdict, Replay, valid_trace, generate, arbitrary"
+            }
+          ]
+        },
+        {
+          "name": "marianoguerra/tutuca",
+          "version": "0.57.0",
+          "description": "MoonBit port of the tutuca UI framework (value language, templates, vdom, components, app runtime, lint, CLI)",
+          "matched_packages": [
+            {
+              "name": "marianoguerra/tutuca/tscript/conformance/mbt",
+              "summary": "This package provides a conformance model-based-testing corpus for the Tutuca component framework. It defines generated component types (CorpusState, CorpusMsg, CorpusIntent), a Ctx implementation called Recorder that records effects in order, a Label record, and helpers to build the Corpus component from its views and styles or retrieve a v2 case's dispatch\n\nKeywords: mbt, model-based testing, conformance, corpus, Tutuca, CorpusState, CorpusMsg, CorpusIntent, Recorder, CorpusLabel, component, dispatch, intent, send, conformance testing"
+            }
+          ]
+        },
+        {
+          "name": "zhangbowen2006/moonbit-target-parity",
+          "version": "0.5.1",
+          "description": "Reusable cross-target behavior contract comparison for MoonBit programs.",
+          "matched_packages": [
+            {
+              "name": "zhangbowen2006/moonbit-target-parity",
+              "summary": "A behavior-contract comparison library for MoonBit multi-backend projects: callers submit each target's exit code, stdout, and optional stderr, and the package compares backends against each other and optionally against committed per-target expectations. It also provides JSON, Markdown, and self-contained HTML report rendering, suite aggregation, unified tex\n\nKeywords: MoonBit, target parity, multi-backend, 跨后端对照, wasm, wasm-gc, js, native, ComparePolicy, ScenarioRun, ContractScenario, ParityReport, unified_text_diff, JSON comparison, CI exit code"
+            },
+            {
+              "name": "zhangbowen2006/moonbit-target-parity/cmd/probe",
+              "summary": "This package, zhangbowen2006/moonbit-target-parity/cmd/probe, is documented as a MoonBit command-line probe module. Its public API documentation exposes no aliases, traits, errors, types, values, or other public items.\n\nKeywords: moonbit-target-parity, cmd/probe, probe, MoonBit, 命令行, 命令行工具"
+            },
+            {
+              "name": "zhangbowen2006/moonbit-target-parity/examples/portable/arithmetic",
+              "summary": "The module zhangbowen2006/moonbit-target-parity/examples/portable/arithmetic has no documented types, values, traits, errors, type aliases, or miscellaneous declarations in its public API. It contains no README content either.\n\nKeywords: target parity, examples portable arithmetic, MoonBit examples"
+            },
+            {
+              "name": "zhangbowen2006/moonbit-target-parity/examples/portable/collections",
+              "summary": "The package zhangbowen2006/moonbit-target-parity/examples/portable/collections is a portable collections example within the moonbit-target-parity project. Its public API documentation lists no types, values, traits, errors, or type aliases.\n\nKeywords: moonbit-target-parity, portable, collections, example, MoonBit"
+            },
+            {
+              "name": "zhangbowen2006/moonbit-target-parity/examples/portable/floats",
+              "summary": "This package, zhangbowen2006/moonbit-target-parity/examples/portable/floats, has no public API documentation for types, values, traits, or errors in the supplied sources. No package README content is provided, so its capabilities and use cases cannot be determined from the available information.\n\nKeywords: zhangbowen2006/moonbit-target-parity, portable, floats, target parity"
+            }
+          ]
+        },
+        {
+          "name": "zploc/loci",
+          "version": "0.1.0",
+          "description": "Deterministic hashing, Merkle tree sealing, FST swarms, and AI inhabitation substrate for the loci runtime"
+        },
+        {
+          "name": "f4ah6o/gpui",
+          "version": "0.7.2",
+          "description": "An independent MoonBit implementation of the GPUI programming model.",
+          "matched_packages": [
+            {
+              "name": "f4ah6o/gpui/testing/backend",
+              "summary": "Provides a reusable portable backend conformance gate for the GPUI testing framework. The check_host function consumes and stops a running test host and returns a Result indicating success or a FrameworkError, without depending on target-specific batching or host-state APIs.\n\nKeywords: gpui, testing, backend, conformance, check_host, Backend, FrameworkError, portable backend, conformance gate, test host, 后端一致性, 测试"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "grammar inference",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0",
+          "description": ""
+        },
+        {
+          "name": "moonbitlang/editor",
+          "version": "0.4.6",
+          "description": "Readonly MoonBit code viewer harness inspired by Monaco and CodeMirror."
+        }
+      ]
+    },
+    {
+      "query": "model inference",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "majikxu/laya",
+          "version": "0.1.0",
+          "description": "Laya typed-decision inference engine for MoonBit — native ModernBERT/mmBERT encoder, no Python runtime",
+          "matched_packages": [
+            {
+              "name": "majikxu/laya/tensor",
+              "summary": "Provides tensor operations and GPU acceleration for large language model inference, including float32 arena memory management, Metal GPU tensor kernels, safe tensor file reading, and CPU fallbacks for GELU, layer norm, softmax, and linear layers.\n\nKeywords: Arena, MetalContext, MetalBuffer, safetensors, Reader, gather_rows, geglu, gelu, layer_norm, softmax, gemm, linear layer, float16 decoding, tensor ops, CPU fallback"
+            },
+            {
+              "name": "majikxu/laya/model",
+              "summary": "The model package for the Laya project. Defines Model, EncoderConfig, AgentConfig, Outputs, and Attention types. Use it to load Laya model checkpoints, parse config JSONs, run forward passes with marker and behavior-type inputs, and switch inference between GPU (Metal) and CPU backends.\n\nKeywords: Laya, checkpoint loading, Model::load, Model::forward, EncoderConfig, AgentConfig, Attention patterns, ModernBERT, Metal GPU acceleration, CPU fallback, logits, action outputs, rl_agent_config.json, encoder/config.json, forward pass"
+            }
+          ]
+        },
+        {
+          "name": "QUHONGYE-gif/modelhub",
+          "version": "0.1.0",
+          "description": "MoonBit × HuggingFace 生态栈：与 huggingface_hub 兼容的 Hub 客户端、张量推理内核、GPT-2 推理与通用 ONNX 图执行器。",
+          "matched_packages": [
+            {
+              "name": "QUHONGYE-gif/modelhub/transformers",
+              "summary": "GPT-2 style model inference in MoonBit: parses F32 safetensors weights and config, loads a Gpt2Model, and runs full forward passes from token ids to logits. A Generator adds KV-cache incremental forward plus greedy or temperature sampling, fitting a pull-model, tokenize, generate, decode pipeline.\n\nKeywords: GPT-2, transformers, safetensors, KV cache, inference, 推理, text generation, greedy sampling, temperature sampling, logits, Gpt2Model, Generator, parse_safetensors, parse_config, forward"
+            },
+            {
+              "name": "QUHONGYE-gif/modelhub/onnx",
+              "summary": "A general-purpose ONNX graph interpreter for MoonBit that parses ONNX protobuf models and runs inference, letting models exported from frameworks like PyTorch execute directly in MoonBit. It provides protobuf wire parsing, ModelProto/GraphProto/NodeProto/TensorProto coverage, a dependency-scheduled DAG executor, and an operator set covering Gemm, MatMul, Add\n\nKeywords: ONNX, onnx, MoonBit, moonbit, 推理, inference, 图解释执行器, graph interpreter, protobuf, parse_model, run_model, parse_tensor_bytes, Gemm, Softmax, PyTorch"
+            },
+            {
+              "name": "QUHONGYE-gif/modelhub",
+              "summary": "QUHONGYE-gif/modelhub is a pure MoonBit HuggingFace Hub client that downloads and caches models and datasets with HuggingFace-compatible cache layout. It provides single-file and full-snapshot downloads, resumable transfers, repository metadata lookup, revision resolution, authentication tokens, offline mode, and mirror endpoints.\n\nKeywords: HuggingFace Hub, model download, 模型下载, 缓存, cache, hf_hub_download, snapshot_download, HubConfig, offline, 镜像, mirror, authentication, token, 断点续传, MoonBit"
+            }
+          ]
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0",
+          "description": "MoonBit image library: pure MoonBit backend for native/wasm-gc/js/wasm multi-target support.",
+          "matched_packages": [
+            {
+              "name": "walkzzz/image/src/process/model_compression",
+              "summary": "Provides model compression and deployment utilities in pure MoonBit, covering pruning, quantization, knowledge distillation, and low-rank factorization. It also offers model inference optimization, deployment configuration/results, default config constructors, and compression report generation.\n\nKeywords: model compression, 模型压缩, pruning, quantization, knowledge distillation, low-rank factorization, deployment, prune_model, quantize_model, knowledge_distillation, low_rank_factorization, deploy_model, optimize_model_inference, ModelCompressionResult, MoonBit"
+            }
+          ]
+        },
+        {
+          "name": "hxiuzheng/moon_diffusion_lab",
+          "version": "0.1.6",
+          "description": "A 1D/2D toy diffusion model experimentation and visualization lab in MoonBit",
+          "matched_packages": [
+            {
+              "name": "hxiuzheng/moon_diffusion_lab/model",
+              "summary": "Provides analytical and MLP-based noise prediction models for diffusion processes. AnalyticalModel computes theoretical optimal noise via Bayesian posterior expectation over a dataset point cloud; ToyMLP is a lightweight two-hidden-layer MLP with SiLU activation and time embedding for parameterized diffusion model forward inference.\n\nKeywords: noise prediction, diffusion model, AnalyticalModel, ToyMLP, score predictor, Bayesian, posterior expectation, MLP, SiLU, time embedding, Xavier initialization, 噪声预测, 扩散模型, 解析模型, 多层感知机"
+            }
+          ]
+        },
+        {
+          "name": "HuLunTunTao/moon-ort",
+          "version": "0.1.1",
+          "description": "Native MoonBit CPU inference SDK for ONNX Runtime",
+          "matched_packages": [
+            {
+              "name": "HuLunTunTao/moon-ort/src/raw",
+              "summary": "Low-level MoonBit bindings to the ONNX Runtime C API, providing an opaque Runtime loaded via dlopen, SessionOptions, Session, and CPU tensor Value types. It supports creating sessions from model files, inspecting input and output names, shapes, element types, and metadata, and running models with a structured OrtError for failures.\n\nKeywords: ONNX Runtime, ONNX, moon-ort, raw bindings, OrtError, Runtime, Session, SessionOptions, Value, CPU tensor, OrtEnv, inference, 模型推理, 张量"
+            },
+            {
+              "name": "HuLunTunTao/moon-ort/src/session",
+              "summary": "Provides a CPU ONNX Runtime session API for MoonBit: SessionOptions creation and configuration (execution mode, graph optimization level, inter-op and intra-op threads), loading a Session from a local model file, inspecting model metadata and input/output contract (names, DType, Dimension shapes, counts, model version), running Session::run synchronously wit\n\nKeywords: ONNX Runtime, ORT, Session, SessionOptions, Session::run, Tensor, DType, Dimension, ExecutionMode, GraphOptimization, RunError, IoError, file_sha256, moon-ort, session"
+            }
+          ]
+        },
+        {
+          "name": "starAndHonor/flashmoon",
+          "version": "0.1.1",
+          "description": "Pure-MoonBit WebGPU runtime and inference kernel library: WGSL kernels, 4D batched FlashAttention (MHA/GQA/MQA, causal, cross-attention), same API across wasm/native/js and WebGPU, with verified numerics.",
+          "matched_packages": [
+            {
+              "name": "starAndHonor/flashmoon/demo/qwen",
+              "summary": "Provides a Qwen3-0.6B inference demo with SafeTensors checkpoint parsing, a Qwen3 model forward pass returning last-position logits, tokenizer encode/decode, and a UTF-8-safe StreamDecoder for incremental token output.\n\nKeywords: flashmoon, qwen, Qwen3, SafeTensors, Tokenizer, StreamDecoder, forward, load, encode, decode, tokenizer.json, logits, inference, 大模型, 分词器"
+            }
+          ]
+        },
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.30",
+          "description": "把《伽达默尔与哈贝马斯真理观比较》与《通往宁静之路》建模为可运行、可测试的 MoonBit 状态机族（主体／多主体／群体／双层次社会交往），外加 Agent 状态机（进化层：变异／闸门／只追加账本）与科研 Agent 协调器。",
+          "matched_packages": [
+            {
+              "name": "riantr/pyroduct/multi",
+              "summary": "riantr/pyroduct/multi is a MoonBit model of multi-subject discourse based on a thesis about truth regimes and validity claims. It provides encounter rules R1–R12, subject and network construction, verdict and outcome types such as Cheng, ClaimKind, TruthRegime and Verdict, plus reports on rules, scenarios, genealogy and open problems.\n\nKeywords: riantr/pyroduct/multi, multi-subject discourse, TruthRegime, Cheng, ClaimKind, ValidityClaim, EncounterOutcome, 商谈, 主体间性, 有效性主张, 真理体制, 诚, multi-subject network, encounter rules, consensus"
+            },
+            {
+              "name": "riantr/pyroduct/society",
+              "summary": "riantr/pyroduct/society provides a state-transition model of social interaction: states (State), phases (Phase), triggers (Trigger), and transitions, with functions to step, walk, and check reachability or model invariants. It also renders the model as a Mermaid state diagram or a report, and exposes basis text references.\n\nKeywords: riantr/pyroduct/society, society, state transition model, State, Phase, Trigger, Outcome, Transition, Trace, step, walk, reachable, render_mermaid, render_report, 社会交往模型"
+            },
+            {
+              "name": "riantr/pyroduct/group",
+              "summary": "Provides a group-scale state machine for the pyroduct model: GroupState (20 states), GroupPhase (9 phases), GroupTrigger (22 triggers), GroupTransition and GroupTrace, with step, walk, successors, reachable, emerge and feedback operations. It also renders reports and a Mermaid stateDiagram-v2, and resolves Open outcomes via GroupLean.\n\nKeywords: pyroduct, group, GroupState, GroupPhase, GroupTrigger, GroupTransition, GroupTrace, GroupOutcome, GroupLean, state machine, emerge, feedback, step, walk, 群体状态机"
+            },
+            {
+              "name": "riantr/pyroduct",
+              "summary": "Pyroduct is a runnable, tested MoonBit state-machine family modelled from two Chinese philosophy texts, covering subject, group and society machines plus normative rules, a gated agent evolution layer, and a research-agent coordinator. It provides literal cited states, transitions, phases and triggers, drive-slot based step outcomes, agent updates behind evi\n\nKeywords: riantr/pyroduct, MoonBit state machine, Chinese philosophy, subject machine, group emergence, society model, normative rules, drive slots, step contract, evolution gate, Ledger, coordinator, research agent, 原文直述, 模型整理"
+            },
+            {
+              "name": "riantr/pyroduct/ml",
+              "summary": "Provides a MoonBit implementation of DoubleML (double machine learning) for partially linear regression, including cross-fitted DML estimation with polynomial sieve and ridge nuisance models. It also offers simulated dataset generation from a subject-state machine, naive and adjusted OLS baselines, replication studies with bias/RMSE/coverage summaries, CSV e\n\nKeywords: DoubleML, double machine learning, partially linear regression, PLR, 交叉拟合, cross-fitting, DML estimation, dml_plr, nuisance, confounding, causal inference, 状态机, CSV export, RNG, replicate"
+            }
+          ]
+        },
+        {
+          "name": "co63oc/moonbit_promptkit",
+          "version": "0.1.7",
+          "description": "The MoonBit-implemented AI model SDK supports OpenAI compatible interfaces and is compatible with multiple platforms.",
+          "matched_packages": [
+            {
+              "name": "co63oc/moonbit_promptkit/cmd/bailian",
+              "summary": "Example command package for calling Alibaba Cloud Bailian large models through an OpenAI-compatible interface. It covers chat, streaming, deep thinking, tool calling, web search, batch inference, image and video generation and editing, vision, translation, TTS and speech recognition, embedding, rerank, and MCP integration.\n\nKeywords: bailian, 阿里云百炼, 通义千问, Qwen, OpenAI兼容接口, 大模型调用, tool_call, image_gen, video_gen, tts, embedding, rerank, mcp, 语音识别, 问答对话"
+            }
+          ]
+        },
+        {
+          "name": "mizchi/webnn",
+          "version": "0.1.0",
+          "description": "WebNN backend and TFLite inference runtime for MoonBit",
+          "matched_packages": [
+            {
+              "name": "mizchi/webnn/model",
+              "summary": "Provides neural network model building blocks for inference, including Transformer/BERT encoders, self-attention, feed-forward, layer normalization, convolutional layers, and attention masks. Supports CPU and WebNN backends via polymorphic tensor operations.\n\nKeywords: mizchi/webnn, model, Transformer, BERT encoder, self-attention, feed-forward, layer normalization, convolutional layer, attention mask, inference, WebNN, tensor, 自注意力, 前馈网络, 层归一化, 注意力掩码"
+            },
+            {
+              "name": "mizchi/webnn/litert",
+              "summary": "Provides a lightweight intermediate representation for neural network models (values, nodes, outputs) with lowering to tensor backends, and TFLite model parsing that retains UINT8/INT8 quantization metadata plus dequantize/requantize helpers.\n\nKeywords: LiteRtModel, TFLite, parse, lower, quantization, dequantize, requantize, UINT8, INT8, runtime metadata, neural network ops, Conv2d, Matmul, LiteRtNode, TFLite模型解析, 量化"
+            },
+            {
+              "name": "mizchi/webnn",
+              "summary": "A MoonBit WebNN backend and TFLite/LiteRT inference runtime for JavaScript targets, providing low-level WebNN bindings, typed graph building, a program cache, execution pools, TFLite-to-WebNN lowering, quantized TFLite parsing, and backend-independent model definitions for CPU/WebNN inference, including Transformer/BERT and MNIST workloads.\n\nKeywords: WebNN, TFLite, MoonBit, LiteRT, WebNNGraphBuilder, graph builder, program cache, execution pool, TensorOps, BERT encoder, SafeTensors, transformer, quantized inference, MNIST, TfliteRunner"
+            },
+            {
+              "name": "mizchi/webnn/webnn/compat",
+              "summary": "This package provides a compatibility mode for WebNN, enabling selection of device preference (CPU, GPU, NPU) and asynchronous creation of a WebNN context.\n\nKeywords: WebNN, compatibility, device preference, CPU, GPU, NPU, context, async, compatibility_mode, create_context, DevicePreference, MLContext, 兼容性, 设备偏好, WebNN上下文"
+            },
+            {
+              "name": "mizchi/webnn/backend/webnn",
+              "summary": "This backend package provides WebNN-based inference for TFLite models, including a high-level runtime with caching, CPU fallback support, a graph builder for transformer models, and tensor operations (add, matmul, conv2d, relu, etc.).\n\nKeywords: WebNN, TFLite, 推理引擎, 缓存, CPU回退, 图构建, 张量操作, 模型编译, 运行时, WebNNRuntime, TfliteRunner, TfliteCpuRunner, TensorOps, MoonBit, JavaScript"
+            }
+          ]
+        },
+        {
+          "name": "xlyyyyyy112/moonbit-mirostat",
+          "version": "0.1.0",
+          "description": "Model-independent Mirostat adaptive text sampling for MoonBit",
+          "matched_packages": [
+            {
+              "name": "xlyyyyyy112/moonbit-mirostat/jsonio",
+              "summary": "The jsonio package provides JSON request and response types for Mirostat text generation, covering one-shot logits sampling, non-negative weight sampling, portable session init and per-step session updates, batch multi-session inference, replay of precomputed logits, and preview of the next candidate set without advancing feedback state. It also exposes *_js\n\nKeywords: moonbit-mirostat, jsonio, Mirostat, JSON, sampling, logits, weights, session, batch, replay, preview, JSON 采样, 批量推理, 会话状态"
+            }
+          ]
+        },
+        {
+          "name": "vectie/lunanexa",
+          "version": "0.1.0",
+          "description": "MoonBit-native model-as-a-service and cluster control plane",
+          "matched_packages": [
+            {
+              "name": "vectie/lunanexa/policy",
+              "summary": "Provides policy types and enforcement for Lunanexa, including role-based authorization, data retention ledgers, trust policies, and permission checks for node enrollment, model management, and inference invocation.\n\nKeywords: policy, access control, role-based authorization, permission, retention, trust policy, audit, deletion, secret rotation, network policy, Lunanexa, policy enforcement, consent, data retention, authorization"
+            }
+          ]
+        },
+        {
+          "name": "668xin/moon_epub",
+          "version": "0.1.0",
+          "description": "EPUB 3 ebook generation engine for MoonBit: builds spec-conformant .epub files from a structured book model, with OPF package documents, navigation, XHTML content, OCF/ZIP packaging and a structure validator.",
+          "matched_packages": [
+            {
+              "name": "668xin/moon_epub/src/assets",
+              "summary": "Provides a ResourceRegistry for registering EPUB resources by href, with duplicate detection, href lookup, and media-type prefix filtering. Includes stylesheet helpers for composing a built-in reader-friendly base stylesheet with custom CSS, plus MIME type inference from file extensions and font/image type checks.\n\nKeywords: epub, resources, ResourceRegistry, stylesheet, css, mime, media type, font, image, href, 资源登记表, 样式表, 基础样式, MIME类型"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "protocol inference",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "moonbitlang/editor",
+          "version": "0.4.6",
+          "description": "Readonly MoonBit code viewer harness inspired by Monaco and CodeMirror."
+        },
+        {
+          "name": "co63oc/moonbit_promptkit",
+          "version": "0.1.7",
+          "description": "The MoonBit-implemented AI model SDK supports OpenAI compatible interfaces and is compatible with multiple platforms."
+        },
+        {
+          "name": "marianoguerra/tutuca",
+          "version": "0.57.0",
+          "description": "MoonBit port of the tutuca UI framework (value language, templates, vdom, components, app runtime, lint, CLI)"
+        },
+        {
+          "name": "Suquster/moonbit-pathfinding",
+          "version": "0.2.0",
+          "description": "A MoonBit pathfinding and graph algorithms library with executable documentation, runtime-checked proof predicates, and multi-backend verification gates. Built for OSC 2026."
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0",
+          "description": "MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "query": "state machine learning",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "riantr/pyroduct",
+          "version": "0.1.30",
+          "description": "把《伽达默尔与哈贝马斯真理观比较》与《通往宁静之路》建模为可运行、可测试的 MoonBit 状态机族（主体／多主体／群体／双层次社会交往），外加 Agent 状态机（进化层：变异／闸门／只追加账本）与科研 Agent 协调器。",
+          "matched_packages": [
+            {
+              "name": "riantr/pyroduct/ml",
+              "summary": "Provides a MoonBit implementation of DoubleML (double machine learning) for partially linear regression, including cross-fitted DML estimation with polynomial sieve and ridge nuisance models. It also offers simulated dataset generation from a subject-state machine, naive and adjusted OLS baselines, replication studies with bias/RMSE/coverage summaries, CSV e\n\nKeywords: DoubleML, double machine learning, partially linear regression, PLR, 交叉拟合, cross-fitting, DML estimation, dml_plr, nuisance, confounding, causal inference, 状态机, CSV export, RNG, replicate"
+            },
+            {
+              "name": "riantr/pyroduct/dmlref",
+              "summary": "Provides comparison utilities for partial linear regression (PLR) between a reference implementation and a custom implementation. Includes fitting functions, matched and rich nuisance comparisons, an external DGP-based comparison, a demo dataset, and a report renderer.\n\nKeywords: dmlref, partial linear regression, PLR, double machine learning, DML, compare_matched, compare_rich, compare_with, fit_reference, fit_ours, external_plr, demo_dataset, render_report, nuisance, 对照"
+            }
+          ]
+        },
+        {
+          "name": "moonbitstack/moonraft",
+          "version": "0.7.0",
+          "description": "Raft consensus algorithm implemented in MoonBit.",
+          "matched_packages": [
+            {
+              "name": "moonbitstack/moonraft/examples/00-helloworld",
+              "summary": "This is a minimal example package for the MoonRaft library, demonstrating a basic hello-world-style usage. The package serves as a starting point for learning how to integrate MoonRaft into a MoonBit project.\n\nKeywords: MoonRaft, MoonBit, hello world, example, minimal, integration"
+            }
+          ]
+        },
+        {
+          "name": "Lfan-ke/moonrpc",
+          "version": "0.10.1",
+          "description": "moonrpc — a real gRPC implementation for MoonBit (← gRPC). v0.8.1 adds Channel::stream_take, which drives a streaming call inline — no background reader — and returns once it has collected a bounded number of reply messages, so a caller can consume the first N of an unbounded subscription (etcd's Watch, a long server-streaming feed) and close, keeping the whole exchange in one task. v0.8.0 completes the client channel stack. Load balancing picks a READY sub-connection per call (pick_first or round_robin) from a connection pool that tracks each address through the gRPC connectivity states (IDLE/CONNECTING/READY/TRANSIENT_FAILURE/SHUTDOWN); a ManagedChannel dials several backends over real sockets and routes calls through the picker. Name resolution self-builds a DNS message codec (RFC 1035, A/AAAA with name compression) and a UDP resolver, so dns_connect turns a hostname into the backends it dials. Retry and hedging policies drive re-issue and parallel attempts — hedging fires a fresh attempt every hedging delay and commits on the first fatal status, cancelling the rest. Client keepalive pings an idle connection and closes it on a missed ACK. A multiplexed channel (MuxChannel) carries many concurrent calls over one connection through a shared read pump with per-stream inboxes and serialized writes, drives keepalive, and supports interactive bidirectional streaming — send while receiving, replies read message by message. v0.7.0 adds per-message gzip: a self-built DEFLATE (RFC 1951, stored/fixed/dynamic-Huffman) and gzip (RFC 1952, CRC-32 + ISIZE) reader that decompresses gzip requests on the server and gzip responses on the client, and client-side retry with exponential backoff bounded by the call deadline. It also hardens every decoder against malformed input: the gRPC length prefix, HPACK integer/string, protobuf, and health decoders now reject an out-of-range or overflowing length instead of aborting; flow-control windows saturate rather than wrap; peer SETTINGS are validated; the client reassembles a response header block across CONTINUATION; and header blocks and message sizes are capped. v0.6.1 self-builds a pure protobuf wire runtime (PbWriter/PbReader for varint, zigzag, fixed32/64, and length-delimited fields) and Server Reflection: a descriptor model and the grpc.reflection.v1.ServerReflection service (with its v1alpha alias) answering ListServices, FileContainingSymbol, and FileByFilename. v0.6 added the client half — a real Channel, a long-lived multiplexed h2c connection over @socket.Tcp driven by a pure H2Client engine symmetric to the server — plus the grpc.health.v1.Health service, server interceptors, -bin metadata, google.rpc.Status rich errors, and client-side grpc-timeout enforcement. The server engine (H2Server) serves all four call kinds over the self-built HTTP/2 (h2c) transport, driving the RFC 7540 frame layer, the stream state machine, complete HPACK (RFC 7541, with Huffman + dynamic table), and connection- and stream-level flow control. Includes the shared length-prefixed framing and the 17-code gRPC status model.",
+          "matched_packages": [
+            {
+              "name": "Lfan-ke/moonrpc/examples/05-protobuf-wire",
+              "summary": "This package is a MoonBit example demonstrating Protobuf wire-format usage within the moonrpc framework. It provides a concrete reference for implementing RPC services with protocol buffer encoding, including the necessary build configuration and module setup. The package is intended for developers learning to integrate Protobuf wire serialization into their\n\nKeywords: MoonBit, moonrpc, Protobuf, protobuf-wire, RPC, 示例, 例子, wire format, serialization, encoding"
+            }
+          ]
+        },
+        {
+          "name": "bobzhang/games",
+          "version": "0.9.33",
+          "description": ""
+        },
+        {
+          "name": "walkzzz/owl_mbt",
+          "version": "0.1.1",
+          "description": "Owl - OCaml Scientific Computing, pure MoonBit port (no C FFI)"
+        },
+        {
+          "name": "mizchi/flaker",
+          "version": "0.3.1",
+          "description": "flaker core computation engine"
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0",
+          "description": "MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        },
+        {
+          "name": "walkzzz/image",
+          "version": "0.5.0",
+          "description": "MoonBit image library: pure MoonBit backend for native/wasm-gc/js/wasm multi-target support."
+        },
+        {
+          "name": "IvanAXu/BioSeqs",
+          "version": "0.1.9",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "query": "Lsharp",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "Milky2018/moon_elk",
+          "version": "0.3.2",
+          "description": "A MoonBit port of Eclipse Layout Kernel (ELK).",
+          "matched_packages": [
+            {
+              "name": "Milky2018/moon_elk/alg/layered/runtime",
+              "summary": "Internal runtime kernel for the layered graph-layout implementation of moon_elk. It owns the layered graph model types (LGraph, LNode, LPort, LEdge, Layer, LShape), processor run state and layout plan, a phase registry for linked layered phases, adapters, and related exceptions such as LEdgeException and SelfLoopHolderException.\n\nKeywords: moon_elk, layered, runtime, LGraph, LNode, LPort, LEdge, Layer, LayeredRunState, LayeredLayoutPlan, LayeredPhaseRegistry, IntermediateProcessorStrategy, graph layout, kernel, 分层"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "query": "observation table",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "dowdiness/js_engine",
+          "version": "0.9.0",
+          "description": "Pure MoonBit cross-target embedded JavaScript engine"
+        },
+        {
+          "name": "lwq443/moonbit-ocean-qc",
+          "version": "0.3.0",
+          "description": "Composable, explainable, and traceable quality control for ocean observations.",
+          "matched_packages": [
+            {
+              "name": "lwq443/moonbit-ocean-qc/ingest",
+              "summary": "Provides CSV parsing, normalization, and decoding of observation data with error tracking. Supports parsing CSV into structured tables, normalizing headers/rows/values, decoding observations, and filtering out blank IDs or invalid coordinates.\n\nKeywords: CSV, parse, observation, normalization, validation, ocean quality control, decode, CsvError, CsvTable, DecodeResult, parse_csv, decode_observations, reject_blank_ids, reject_invalid_coordinates, CSV解析"
+            }
+          ]
+        },
+        {
+          "name": "vitro/engine",
+          "version": "0.8.0",
+          "description": "MoonBit implementation of the Vitro C teaching engine: 137 diagnostic codes, 135 opcodes, full AST family, byte-for-byte parity with the Rust oracle"
+        },
+        {
+          "name": "Juwan-Hwang/moon-certified",
+          "version": "0.1.1",
+          "description": "Core algorithms and data structures for MoonBit — partially formally verified"
+        },
+        {
+          "name": "Zjyyer/moonbit-klt-tracker",
+          "version": "0.1.4",
+          "description": "Deterministic sparse KLT feature tracking for grayscale frame buffers."
+        },
+        {
+          "name": "vectie/moonflow",
+          "version": "0.1.2",
+          "description": "Generic durable orchestration engine for Moon Suite"
+        },
+        {
+          "name": "Luna-Flow/mare_mark",
+          "version": "0.4.0",
+          "description": "Reproducible benchmarking, statistical comparison, tuning, and self-contained reports for MoonBit payloads."
+        },
+        {
+          "name": "moonbitlang/core",
+          "version": "0.1.20261012+943464bfa",
+          "description": ""
+        },
+        {
+          "name": "marianoguerra/tutuca",
+          "version": "0.57.0",
+          "description": "MoonBit port of the tutuca UI framework (value language, templates, vdom, components, app runtime, lint, CLI)"
+        },
+        {
+          "name": "bobzhang/bap",
+          "version": "0.4.0",
+          "description": "",
+          "matched_packages": [
+            {
+              "name": "bobzhang/bap/primus",
+              "summary": "The bobzhang/bap/primus package provides a MoonBit port of the BAP Primus machine: an imperative design where continuations are data, with Machine supporting fork, switch, kill, scheduling, resumable calls, observations and per-fork state. It also includes a BIR interpreter, linker table, memory banks and generators, environment values, systems, components a\n\nKeywords: primus, bap, Machine, Interpreter, Linker, fork, switch, scheduler, observation, BIR, memory, generator, system, job, S-expression"
+            }
+          ]
+        },
+        {
+          "name": "mizchi/kagura_engine",
+          "version": "0.6.0",
+          "description": "Rendering, presentation, assets, audio and application runtime for Kagura"
+        },
+        {
+          "name": "pla678889/moon-experiment",
+          "version": "0.2.3",
+          "description": "A mature A/B testing analysis library for MoonBit, supporting sample size estimation, sequential testing, metrics comparison and guardrails."
+        },
+        {
+          "name": "vectie/moonfish",
+          "version": "0.1.0",
+          "description": ""
+        },
+        {
+          "name": "lfbnntr/moonbit-fish-stock",
+          "version": "0.1.2",
+          "description": "Fishery stock assessment and management strategy simulation library for MoonBit"
+        },
+        {
+          "name": "ywz1314/sessionlog",
+          "version": "0.2.4",
+          "description": "A deterministic MoonBit model and analytics library for rehabilitation session logs."
+        }
+      ]
+    },
+    {
+      "query": "moongrammata",
+      "source": "live moon search --limit 12/15 --json"
+    },
+    {
+      "query": "lockwire",
+      "source": "live moon search --limit 12/15 --json",
+      "status": "success",
+      "results": [
+        {
+          "name": "mokomoking2501/lockwire",
+          "version": "0.1.0",
+          "description": "Deterministic run-test substrate for MoonBit",
+          "matched_packages": [
+            {
+              "name": "mokomoking2501/lockwire",
+              "summary": "Lockwire is a deterministic run-test substrate for simulation, replay, fault injection, and native/wasm differential runs. It provides core contracts (Frame/Endpoint/Medium/Reactor), typed clock domains, deterministic virtual clocks, offline switched-fabric FIFO and QoS/IRT models, CAN-like arbitrated bus simulation, fault injection with delay/drop/corrupt/d\n\nKeywords: Lockwire, Isochronon framework, deterministic simulation, fault injection, trace replay, virtual clock, switched fabric, arbitrated bus, scenario combinator, Npcap, raw socket, UDP loopback, STM32 ThreadX, MoonBit, native-wasm diff"
+            },
+            {
+              "name": "mokomoking2501/lockwire/core",
+              "summary": "Lockwire/core defines core abstractions for an event-driven communication/simulation framework: Endpoint, Medium, PointToPointMedium, and Reactor traits, plus TxEvent/RxEvent, Frame lifecycle states, virtual time, channels, simulation digest, and TransportError. It supports deterministic simulation, point-to-point transport modeling, frame state transitions,\n\nKeywords: lockwire core, Endpoint, Medium, Reactor, TxEvent, RxEvent, Frame, FrameState, VTime 虚拟时间, Duration, Channel, TransportError, simulation digest, point-to-point, 确定性模拟"
+            },
+            {
+              "name": "mokomoking2501/lockwire/clock",
+              "summary": "This package provides clock and time domain abstractions for lockwire, including typed Instants, DomainInstants, MonotonicClock and TimerDriver traits, a VirtualClock for simulation, and ClockRelation for converting between domains with uncertainty bounds. Use cases include multi-domain time tracking, simulation, and cross-domain timestamping.\n\nKeywords: clock, domain, Instant, DomainInstant, MonotonicClock, VirtualClock, ClockRelation, CrossStamp, TimerDriver, simulation, cross-domain, uncertainty, deterministic sequence, lockwire, 虚拟时钟"
+            },
+            {
+              "name": "mokomoking2501/lockwire/cmd/main",
+              "summary": "The package has no README and no public API documentation, so no functionality or use cases are described.\n\nKeywords: lockwire, cmd/main, mokomoking2501, empty API, no documentation"
+            },
+            {
+              "name": "mokomoking2501/lockwire/driver",
+              "summary": "Provides data types and functions for defining and validating network link drivers, master harness descriptors, and readiness targets within the Lockwire industrial Ethernet simulation framework. Includes driver specifications (native, PROFINET, MoonEcat), harness validation reports, and readiness matrix reports for targets like Windows, Linux, and STM32/Thr\n\nKeywords: LinkDriver, LinkMasterHarness, ReadinessMatrix, Validation, PROFINET, EtherCAT, MoonEcat, native driver, Windows Npcap, Linux raw socket, STM32, ThreadX, simulation, industrial Ethernet, Lockwire"
+            }
+          ]
+        },
+        {
+          "name": "mokomoking2501/fieldbus_core",
+          "version": "0.1.0",
+          "description": "Protocol-neutral fieldbus profile layer for Isochronon",
+          "matched_packages": [
+            {
+              "name": "mokomoking2501/fieldbus_core/moonecat_live_adapter",
+              "summary": "Provides a LockwireNic implementing MoonECAT's @hal.Nic trait for sending/receiving raw EtherCAT frames through a pluggable lockwire live transport. Includes MoonEcatLiveScanReport and scan functions that return a structured report; caller selects backend via LiveTransportKind, and wasm-gc open raises to prove the no-live contract.\n\nKeywords: LockwireNic, MoonECAT, EtherCAT, live transport, LiveTransportKind, moonecat_live_scan_report, MoonEcatLiveScanReport, @hal.Nic, raw EtherCAT frames, backend-agnostic, wasm-gc, no-live contract, fieldbus, 现场总线, 实时传输"
+            },
+            {
+              "name": "mokomoking2501/fieldbus_core/moonecat_master_harness",
+              "summary": "Provides MoonEcat master harness structures and functions for fieldbus core, including live command handoffs, ownership reports, lockwire session bindings, and a minimal master harness descriptor.\n\nKeywords: MoonEcat, master harness, fieldbus core, live command handoff, ownership report, lockwire session binding, minimal master harness, moonecat_live_command_handoffs, moonecat_lockwire_session_bindings, MoonEcatLiveCommandOwnershipReport, MoonEcatLockwireSessionBindingReport, moonecat_minimal_master_harness, package_id"
+            },
+            {
+              "name": "mokomoking2501/fieldbus_core/profinet_master_harness",
+              "summary": "Provides PROFINET master harness data structures and accessor functions for live command handoffs (DCP, helper, RT pcap, root facade) and lockwire I/O bindings. Includes a binding report with a passes check for validating harness configuration state.\n\nKeywords: PROFINET, master harness, live command handoff, lockwire, IO binding, binding report, DCP, RT pcap, root facade native handoffs, LinkMasterHarnessDescriptor, passes, ProfinetLockwireIoBinding, ProfinetLiveCommandHandoff, ProfinetLockwireIoBindingReport"
+            },
+            {
+              "name": "mokomoking2501/fieldbus_core/profinet_live_adapter",
+              "summary": "Provides PROFINET live scan and DCP operations (get/set IP, name, identify) via a pluggable raw Ethernet backend, along with a clock adapter for PROFINET RT scheduling. Includes a structured scan report type.\n\nKeywords: profinet, live scan, dcp, raw ethernet, lockwire, profient live adapter, clock adapter, fieldbus, network probe, backend-agnostic, ProfinetLiveScanReport, ProfinetLockwireRawEthernetAdapter"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "githubCode": [
+    {
+      "query": "LearnLib language:MoonBit",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    },
+    {
+      "query": "aalpy language:MoonBit",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    },
+    {
+      "query": "distinguishing_sequence language:MoonBit",
+      "total": 0,
+      "incomplete": false,
+      "items": []
+    },
+    {
+      "query": "Mealy language:MoonBit",
+      "total": 5,
+      "incomplete": false,
+      "items": [
+        {
+          "repository": "Andromeda1101/wordle",
+          "path": "wordle-mbt/wordle/constant/builtin_words.mbt",
+          "url": "https://github.com/Andromeda1101/wordle/blob/d800cf6bd2b7c717820c4aa44b2f30cfc9c60df0/wordle-mbt/wordle/constant/builtin_words.mbt",
+          "sha": "42d68e0860955680cae5860a828ff5d093925cc7"
+        },
+        {
+          "repository": "moonbitlang/parser",
+          "path": "test/sync_test/__snapshot__/pipeline_test_large_static_array.mbt",
+          "url": "https://github.com/moonbitlang/parser/blob/0849ccd34080504af4147cc14378f1a33fb39975/test/sync_test/__snapshot__/pipeline_test_large_static_array.mbt",
+          "sha": "bbdfed2c6f79c25ece1c64b6d1a3f17f6a2d6479"
+        },
+        {
+          "repository": "Rosist-Sallina/wordle",
+          "path": "wordle-mbt/wordle/constant/builtin_words.mbt",
+          "url": "https://github.com/Rosist-Sallina/wordle/blob/df2d7883cd3fd45ce71bbf34ae8348e6d6cda6d4/wordle-mbt/wordle/constant/builtin_words.mbt",
+          "sha": "42d68e0860955680cae5860a828ff5d093925cc7"
+        },
+        {
+          "repository": "djh592/wordle-dingjh21",
+          "path": "wordle-mbt/wordle/constant/builtin_words.mbt",
+          "url": "https://github.com/djh592/wordle-dingjh21/blob/6021f5e54a06db19f9cb867dd9ae43dcd8801079/wordle-mbt/wordle/constant/builtin_words.mbt",
+          "sha": "42d68e0860955680cae5860a828ff5d093925cc7"
+        },
+        {
+          "repository": "yituoren/Rust-Wordle",
+          "path": "wordle-mbt/wordle/constant/builtin_words.mbt",
+          "url": "https://github.com/yituoren/Rust-Wordle/blob/01c353e813fde228434c24b577eb4243542b7f82/wordle-mbt/wordle/constant/builtin_words.mbt",
+          "sha": "42d68e0860955680cae5860a828ff5d093925cc7"
+        }
+      ]
+    }
+  ],
+  "githubEarlier": [
+    {
+      "query": "'\"automata learning\" MoonBit in:name,description,readme'",
+      "response": {
+        "chunk_id": "527317",
+        "wall_time_seconds": 3.0288215,
+        "exit_code": 0,
+        "original_token_count": 1,
+        "output": "[]\n\n"
+      }
+    },
+    {
+      "query": "'\"Angluin\" MoonBit in:name,description,readme'",
+      "response": {
+        "chunk_id": "63f940",
+        "wall_time_seconds": 3.1637565,
+        "exit_code": 0,
+        "original_token_count": 1,
+        "output": "[]\n\n"
+      }
+    },
+    {
+      "query": "'Angluin language:MoonBit'",
+      "response": {
+        "chunk_id": "aa7569",
+        "wall_time_seconds": 2.8306339,
+        "exit_code": 0,
+        "original_token_count": 1,
+        "output": "[]\n\n"
+      }
+    },
+    {
+      "query": "'observation_table language:MoonBit'",
+      "response": {
+        "chunk_id": "4946e0",
+        "wall_time_seconds": 2.9023593,
+        "exit_code": 0,
+        "original_token_count": 1,
+        "output": "[]\n\n"
+      }
+    },
+    {
+      "query": "'learn_mealy language:MoonBit'",
+      "response": {
+        "chunk_id": "660681",
+        "wall_time_seconds": 2.959692,
+        "exit_code": 0,
+        "original_token_count": 1,
+        "output": "[]\n\n"
+      }
+    }
+  ],
+  "sourceEvidence": [
+    {
+      "url": "https://github.com/mizchi/veri/blob/main/README.md",
+      "sha": "a2aa73c2d03d12cb63391d08b241025df1c38cb2"
+    },
+    {
+      "url": "https://github.com/moonbit-community/quickcheck_statemachine/blob/main/README.mbt.md",
+      "sha": "003d4399feb4a997520cbd4b1eeff924194c4f98"
+    },
+    {
+      "url": "https://github.com/mizchi/veri/blob/main/testing/state_machine/pkg.generated.mbti",
+      "sha": "7228cd543c99af1f564ba6155ee3cc4ff5d2dfce"
+    },
+    {
+      "url": "https://github.com/mizchi/veri/blob/main/docs/model-workflows.md",
+      "sha": "1eef3718dfa74b87ef3db7f83ff1bdde389bda20"
+    },
+    {
+      "url": "https://github.com/erzhuzi259/MoonGrammata/blob/main/README.md",
+      "sha": "f4691ce197d35cd151f7e04f9e937c03a65b19be"
+    }
+  ],
+  "references": [
+    "https://learnlib.de/",
+    "https://github.com/DES-Lab/AALpy",
+    "https://github.com/DES-Lab/AALpy/wiki/SUL-Interface,-or-How-to-Learn-Your-Systems",
+    "https://github.com/DES-Lab/AALpy/wiki/Equivalence-Oracles",
+    "https://www.sciencedirect.com/science/article/pii/0890540187900526",
+    "https://mooncakes.io/docs/zploc/loci"
+  ]
+}
+
