@@ -23,4 +23,14 @@ Linux, Windows and macOS source CI is public in [Actions](https://github.com/Cap
 
 The README diagram was authored as SVG and visually checked after local browser rendering. No third-party bitmap assets are embedded.
 
+## Publication completed
+
+- Published `CaptainK-65/moon-statelens@0.1.0`; the service returned HTTP 200 and the CLI exited 0.
+- The live registry returned version 0.1.0 with the expected repository and package summaries.
+- Clean, separately generated consumer modules downloaded the registry package and exercised learning, model JSON round trips and replay-confirmed compatibility on wasm, wasm-gc, JS and native.
+- Package source commit: `50ff75e1135825d926e2c92ea21f2addd7ca57db`.
+- Source CI for that commit: [38863192445](https://github.com/CaptainK-65/moon-statelens/actions/runs/38863192445), all three platform jobs successful.
+- Published ZIP SHA-256: `9e7b2717b110184da41c15f666339b32fcef65ff7597bf6fb4f6b87a5f0a74f2`.
+- CI now additionally verifies the registry package in four independent consumer jobs without Mooncakes publishing credentials.
+
 This record validates implementation behavior within the documented scope. It does not establish global uniqueness, arbitrary black-box equivalence or competition acceptance.

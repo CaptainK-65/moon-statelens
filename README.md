@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/CaptainK-65/moon-statelens/actions/workflows/ci.yml/badge.svg)](https://github.com/CaptainK-65/moon-statelens/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-[English](README.en.md) · [可执行快速开始](README.mbt.md) · [使用指南](docs/guide.md) · [独立核心说明](docs/independent-core.md)
+[English](README.en.md) · [Mooncakes 0.1.0](https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.1.0) · [可执行快速开始](README.mbt.md) · [使用指南](docs/guide.md) · [独立核心说明](docs/independent-core.md)
 
 ![MoonStateLens: black-box experiments, active learning, inferred models and replayed differences](docs/assets/overview.png)
 
