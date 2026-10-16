@@ -1,0 +1,55 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "CaptainK-65/moon-statelens"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
+
+// Errors
+pub suberror LensError {
+  InvalidArgument(String)
+  UnknownInput(String)
+  LimitExceeded(String)
+} derive(@debug.Debug)
+pub fn LensError::to_repr(Self) -> @debug.Repr
+
+// Types and methods
+pub(all) struct Difference {
+  inputs : Array[String]
+  left_outputs : Array[String]
+  right_outputs : Array[String]
+} derive(Eq, ToJson, @debug.Debug)
+pub fn Difference::equal(Self, Self) -> Bool
+pub fn Difference::not_equal(Self, Self) -> Bool
+pub fn Difference::to_json(Self) -> Json
+pub fn Difference::to_repr(Self) -> @debug.Repr
+
+pub struct Machine {
+  // private fields
+} derive(@debug.Debug)
+pub fn Machine::access_sequences(Self) -> Array[(Int, Array[String])]
+pub fn Machine::alphabet(Self) -> Array[String]
+pub fn Machine::distinguish_states(Self, Int, Int) -> Array[String]? raise LensError
+pub fn Machine::initial_state(Self) -> Int
+pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
+pub fn Machine::state_count(Self) -> Int
+pub fn Machine::table(Self) -> Array[Array[Transition]]
+pub fn Machine::to_repr(Self) -> @debug.Repr
+pub fn Machine::trace(Self, Array[String]) -> Array[String] raise LensError
+pub fn Machine::trace_from(Self, Int, Array[String]) -> Array[String] raise LensError
+
+pub(all) struct Transition {
+  target : Int
+  output : String
+} derive(Eq, ToJson, @debug.Debug)
+pub fn Transition::equal(Self, Self) -> Bool
+pub fn Transition::not_equal(Self, Self) -> Bool
+pub fn Transition::to_json(Self) -> Json
+pub fn Transition::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits

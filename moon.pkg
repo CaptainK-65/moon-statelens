@@ -1,0 +1,7 @@
+import {
+  "moonbitlang/core/debug",
+}
+
+import {
+  "CaptainK-65/moon-statelens" @lens,
+} for "test"

@@ -1,0 +1,5 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+}
+
+pkgtype(kind: "executable")
