@@ -1,0 +1,35 @@
+{
+  "format": "moonstatelens.experiment",
+  "version": 1,
+  "identity": "CONTROLLED-rollback-as-commit-fixture",
+  "abstraction": "sqlite-single-row-v1",
+  "alphabet": [
+    "begin",
+    "put",
+    "delete",
+    "commit",
+    "rollback",
+    "read"
+  ],
+  "learner": "kv",
+  "target": {
+    "kind": "sqlite",
+    "program": "sqlite3",
+    "rollback_as_commit": true
+  },
+  "verification": {
+    "kind": "wp",
+    "state_bound": 4,
+    "max_tests": 20000,
+    "max_work": 100000
+  },
+  "budgets": {
+    "queries": 20000,
+    "steps": 200000,
+    "run_timeout_ms": 120000
+  },
+  "expectations": {
+    "evidence": "conditional-state-bound"
+  }
+}
+

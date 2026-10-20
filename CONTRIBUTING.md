@@ -2,6 +2,8 @@
 
 Use MoonBit 0.10.15 / moon 0.1.20261012 or a compatible newer stable toolchain. Automation belongs in .mbtx files; the root package must remain independent of third-party inference engines.
 
+CI pins compiler/core 0.10.15+943464bfa. Native tests require sqlite3 on PATH and a prior native build for the subprocess fixture. Regenerate native-only API snapshots with moon run tools/update_native_interfaces.mbtx; these are unmodified compiler output, not handwritten interfaces.
+
 ```sh
 moon update
 moon check --target all --deny-warn
@@ -10,6 +12,7 @@ moon test --target all --deny-warn
 moon fmt --check
 moon info
 moon run tools/verify_cli.mbtx
+moon run tools/verify_native.mbtx
 ```
 
 Add behavioral regressions for algorithm or boundary changes. Generated models need reproducible seeds. Claims of equivalence must state their evidence and assumptions. Do not add empty commits or fabricate adoption and performance results.

@@ -1,0 +1,69 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+/// Copy selected verified public example reports. Private target settings and
+/// ephemeral configuration files are not part of the checked-in evidence.
+async fn main {
+  let args = @env.args()
+  guard args is [_, source] else {
+    fail("expected a completed verify_native evidence directory")
+  }
+  let destination = "docs/evidence/v0.2"
+  if !@fs.exists(destination) {
+    @fs.mkdir(destination, recursive=true)
+  }
+  for
+    name in [
+      "jsonl-session.json", "http-session.json", "sqlite-kv.json", "sqlite-lstar.json",
+      "sqlite-kv-model.json", "sqlite-lstar-model.json", "sqlite-comparison.json",
+      "counterexample-words.json", "sqlite-replay-normal.json", "sqlite-replay-CONTROLLED-mutant.json",
+      "algorithm-study.json", "insufficient-evidence.json", "timeout.json", "artifact-traces.json",
+    ] {
+    let document = @fs.read_file(source + "/" + name).json()
+    @fs.write_file(
+      destination + "/" + name,
+      document.stringify(indent=2) + "\n",
+    )
+  }
+  let commit = @shell.Cmd("git", ["rev-parse", "HEAD"]).output()
+  commit.check()
+  let toolchain = @shell.Cmd("moon", ["version", "--all"]).output()
+  toolchain.check()
+  let sqlite = @shell.Cmd("sqlite3", ["--version"]).output()
+  sqlite.check()
+  let versions = []
+  for line in toolchain.stdout().split("\n") {
+    let trimmed = line.trim()
+    if trimmed.is_empty() {
+      continue
+    }
+    versions.push(
+      match trimmed.find(")") {
+        Some(index) => trimmed[:index + 1].to_owned()
+        None => trimmed.to_owned()
+      },
+    )
+  }
+  let metadata = Json::object({
+    "source_commit": Json(commit.stdout().trim().to_owned()),
+    "toolchain": Json(versions),
+    "sqlite": Json(sqlite.stdout().trim().to_owned()),
+    "origin": Json(source),
+    "scope": Json(
+      "public controlled examples; SQLite is real; mutation is deliberately injected",
+    ),
+  })
+  @fs.write_file(
+    destination + "/metadata.json",
+    metadata.stringify(indent=2) + "\n",
+  )
+  println("Captured verified native evidence in " + destination)
+}

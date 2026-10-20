@@ -1,0 +1,55 @@
+{
+  "format": "moonstatelens.experiment",
+  "version": 1,
+  "identity": "controlled-http-session-service",
+  "abstraction": "session-v1",
+  "alphabet": [
+    "login",
+    "logout",
+    "request"
+  ],
+  "learner": "kv",
+  "target": {
+    "kind": "http",
+    "base_url": "http://127.0.0.1:41080",
+    "session_field": "session",
+    "reset": {
+      "path": "/reset",
+      "body": {}
+    },
+    "close": {
+      "path": "/close",
+      "body": {}
+    },
+    "actions": {
+      "login": {
+        "path": "/step",
+        "body": {
+          "input": "login"
+        }
+      },
+      "logout": {
+        "path": "/step",
+        "body": {
+          "input": "logout"
+        }
+      },
+      "request": {
+        "path": "/step",
+        "body": {
+          "input": "request"
+        }
+      }
+    }
+  },
+  "verification": {
+    "kind": "wp",
+    "state_bound": 2,
+    "max_tests": 1000,
+    "max_work": 10000
+  },
+  "expectations": {
+    "evidence": "conditional-state-bound"
+  }
+}
+

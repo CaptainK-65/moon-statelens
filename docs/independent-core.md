@@ -32,7 +32,7 @@ learning_test.mbt 的七状态目标对 advance 总返回 tick。许多历史在
 
 ## 可核对的证据
 
-- observation_table.mbt / learning.mbt：学习核心及查询边界。
+- learning_driver.mbt / learning_table.mbt / learning_tree.mbt：可暂停驱动、L* 与独立 KV 学习核心。
 - learning_test.mbt / generated_test.mbt：长后缀、200 个生成目标和独立等价检查。
 - characterization_test.mbt：反向状态对算法与独立 BFS 交叉核对。
 - adapters/moonlarder/lru_test.mbt：真实组件学习与事后独立规范比较。
@@ -40,3 +40,11 @@ learning_test.mbt 的七状态目标对 advance 总返回 tick。许多历史在
 - tools/verify_cli.mbtx：公开命令的端到端复现。
 
 本项目采用已发表算法，不声称全球原创。原创工程贡献、参考来源、实际组件接入和适用条件分别记录，具体赛事审核由主办方判断。
+
+## v0.2：真实外部组件与多算法
+
+KV 独立维护区分树和反例分裂，未调用 L* 代算。两种学习器驱动同步或异步执行器；QuerySession 统一负责缓存、预算和冲突失效。W/Wp、重放与策略链使用可暂停验证游标。
+
+真实 SQLite CLI 的单行事务抽象学习得到六状态模型。学习过程只执行 BEGIN／PUT／DELETE／COMMIT／ROLLBACK／READ；独立参考规范在结束后核验。将适配层 ROLLBACK 刻意误发为 COMMIT 时，实际重放 begin → put → rollback → read 获得 empty／present。这是受控适配缺陷，不是 SQLite 漏洞。
+
+JSONL 与 HTTP 接入包含实际等待、消息和输出边界、超时、取消及受管进程回收。模型推断与验证仍由本项目承担；底层进程／网络库不提供这些算法。见 [算法说明](algorithms.md)、[组件接入](native.md) 和 [验收记录](VALIDATION.md)。

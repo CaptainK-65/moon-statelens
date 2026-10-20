@@ -1,0 +1,50 @@
+{
+  "format": "moonstatelens.experiment",
+  "version": 1,
+  "identity": "controlled-session-subprocess",
+  "abstraction": "session-v1",
+  "alphabet": [
+    "login",
+    "logout",
+    "request"
+  ],
+  "learner": "kv",
+  "target": {
+    "kind": "jsonl",
+    "program": "_build/native/debug/build/cmd/fixture/fixture.exe",
+    "args": [
+      "session"
+    ]
+  },
+  "verification": {
+    "kind": "chain",
+    "stages": [
+      {
+        "kind": "replay",
+        "words": [
+          [
+            "login",
+            "logout",
+            "request"
+          ]
+        ]
+      },
+      {
+        "kind": "random",
+        "seed": 42,
+        "max_length": 8,
+        "tests": 30
+      },
+      {
+        "kind": "wp",
+        "state_bound": 2,
+        "max_tests": 1000,
+        "max_work": 10000
+      }
+    ]
+  },
+  "expectations": {
+    "evidence": "conditional-state-bound"
+  }
+}
+

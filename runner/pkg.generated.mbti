@@ -1,0 +1,49 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "CaptainK-65/moon-statelens/runner"
+
+import {
+  "CaptainK-65/moon-statelens",
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub async fn infer(AsyncExperiment, @moon-statelens.VerificationPlan, algorithm? : @moon-statelens.Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> InferenceReport
+
+// Errors
+pub(all) suberror AdapterError {
+  Protocol(String)
+  Target(String)
+  TimedOut(String)
+  Configuration(String)
+  Transport(String)
+} derive(@debug.Debug)
+pub fn AdapterError::to_repr(Self) -> @debug.Repr
+
+// Types and methods
+pub struct AsyncExperiment {
+  // private fields
+}
+pub fn AsyncExperiment::alphabet(Self) -> Array[String]
+pub fn AsyncExperiment::new(AsyncSystem, Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, max_output_code_units? : Int, use_cache? : Bool, recheck_every? : Int, query_timeout_ms? : Int, step_timeout_ms? : Int, cleanup_timeout_ms? : Int, trace_limit? : Int) -> Self raise
+pub async fn AsyncExperiment::query(Self, Array[String], bypass_cache? : Bool) -> Array[String]
+pub fn AsyncExperiment::statistics(Self) -> @moon-statelens.Statistics
+pub fn AsyncExperiment::traces_json(Self) -> Json
+
+pub struct AsyncSystem {
+  // private fields
+}
+pub fn AsyncSystem::new(reset~ : async () -> Unit, step~ : async (String) -> String, close~ : async () -> Unit) -> Self
+
+pub(all) struct InferenceReport {
+  algorithm : String
+  learning : @moon-statelens.LearningResult
+  metrics : @moon-statelens.DriverMetrics
+  verification : Array[Array[@moon-statelens.VerificationStage]]
+} derive(@debug.Debug)
+pub fn InferenceReport::to_json(Self) -> Json
+pub fn InferenceReport::to_repr(Self) -> @debug.Repr
+pub impl ToJson for InferenceReport
+
+// Type aliases
+
+// Traits

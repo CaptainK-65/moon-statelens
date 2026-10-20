@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.0
+
+- Add independent classification-tree KV and resumable L* learning continuations.
+- Share cache, attempted-call accounting and conflict poisoning across sync/async runners.
+- Add lazy Wp, replay and composable verification with per-stage evidence logs.
+- Add native async deadlines, cancellation-safe cleanup and direct-child reaping.
+- Integrate bounded JSONL, finite HTTP mappings and a real six-state SQLite transaction abstraction.
+- Add strict configurations, v2 report envelopes, evidence-aware exits and fresh compatibility replay.
+- Verify all 256 binary two-state machines with both learners and Wp against all 65,536 model pairs.
+- Add malformed/fragmented protocol, timeout, cleanup, query-log and spurious-model-difference regressions.
+- Publish reproducible algorithm cost and real component evidence; retain v1 model/legacy CLI compatibility.
+
 ## 0.1.0
 
 - Implement Mealy observation-table learning with closure, consistency and counterexample refinement.

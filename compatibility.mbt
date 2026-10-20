@@ -171,7 +171,11 @@ pub fn compare(
           spurious,
         )
       InconsistentObservation(word~, expected~, actual~) => {
-        let side = if left.conflict is Some(_) { "left" } else { "right" }
+        let side = if left.session.conflict is Some(_) {
+          "left"
+        } else {
+          "right"
+        }
         return compatibility_result(
           ReplayUnstable(side~, word~, expected~, actual~),
           lr,

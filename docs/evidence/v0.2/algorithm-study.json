@@ -1,0 +1,121 @@
+{
+  "format": "moonstatelens.algorithm-study",
+  "version": 1,
+  "scope": "fixed deterministic targets; same Wp budgets; no universal speed claim",
+  "cases": [
+    {
+      "target": "delayed-probe",
+      "states": 2,
+      "algorithm": "lstar",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 39,
+        "completed_queries": 20,
+        "cache_nodes": 11,
+        "output_code_units": 126
+      },
+      "verification_resets": 10,
+      "verification_steps": 17,
+      "rounds": 1,
+      "correct": true
+    },
+    {
+      "target": "delayed-probe",
+      "states": 2,
+      "algorithm": "kv",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 31,
+        "cache_hits": 7,
+        "resets": 24,
+        "steps": 39,
+        "completed_queries": 24,
+        "cache_nodes": 9,
+        "output_code_units": 122
+      },
+      "verification_resets": 18,
+      "verification_steps": 27,
+      "rounds": 2,
+      "correct": true
+    },
+    {
+      "target": "delayed-probe",
+      "states": 4,
+      "algorithm": "lstar",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 168,
+        "cache_hits": 72,
+        "resets": 96,
+        "steps": 347,
+        "completed_queries": 96,
+        "cache_nodes": 44,
+        "output_code_units": 1164
+      },
+      "verification_resets": 68,
+      "verification_steps": 214,
+      "rounds": 2,
+      "correct": true
+    },
+    {
+      "target": "delayed-probe",
+      "states": 4,
+      "algorithm": "kv",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 200,
+        "cache_hits": 51,
+        "resets": 149,
+        "steps": 452,
+        "completed_queries": 149,
+        "cache_nodes": 37,
+        "output_code_units": 1472
+      },
+      "verification_resets": 132,
+      "verification_steps": 374,
+      "rounds": 4,
+      "correct": true
+    },
+    {
+      "target": "delayed-probe",
+      "states": 7,
+      "algorithm": "lstar",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 821,
+        "cache_hits": 408,
+        "resets": 413,
+        "steps": 2461,
+        "completed_queries": 413,
+        "cache_nodes": 201,
+        "output_code_units": 8128
+      },
+      "verification_resets": 361,
+      "verification_steps": 2012,
+      "rounds": 2,
+      "correct": true
+    },
+    {
+      "target": "delayed-probe",
+      "states": 7,
+      "algorithm": "kv",
+      "oracle": "wp",
+      "statistics": {
+        "queries": 1919,
+        "cache_hits": 237,
+        "resets": 1682,
+        "steps": 8889,
+        "completed_queries": 1682,
+        "cache_nodes": 188,
+        "output_code_units": 27447
+      },
+      "verification_resets": 1641,
+      "verification_steps": 8537,
+      "rounds": 7,
+      "correct": true
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "CaptainK-65/moon-statelens/integration"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub async fn compare(Config, Config, max_refinements? : Int) -> RunResult
+
+pub async fn replay(Config, Array[Array[String]]) -> Json
+
+pub async fn run(Config) -> RunResult
+
+// Errors
+
+// Types and methods
+pub struct Config {
+  // private fields
+}
+pub fn Config::from_json(Json) -> Self raise
+pub fn Config::manifest(Self) -> Json
+
+pub(all) struct RunBudgets {
+  queries : Int
+  steps : Int
+  word_length : Int
+  cache_nodes : Int
+  output_code_units : Int
+  states : Int
+  rounds : Int
+  table_cells : Int
+  table_symbols : Int
+  prefixes : Int
+  query_timeout_ms : Int
+  step_timeout_ms : Int
+  cleanup_timeout_ms : Int
+  run_timeout_ms : Int
+} derive(ToJson, @debug.Debug)
+pub fn RunBudgets::to_json(Self) -> Json
+pub fn RunBudgets::to_repr(Self) -> @debug.Repr
+
+pub(all) struct RunResult {
+  report : Json
+  exit_code : Int
+} derive(@debug.Debug)
+pub fn RunResult::to_repr(Self) -> @debug.Repr
+
+// Type aliases
+
+// Traits
