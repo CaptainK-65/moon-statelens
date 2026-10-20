@@ -1,0 +1,16 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/runner",
+  "moonbitlang/async",
+  "moonbitlang/async/process",
+  "moonbitlang/async/http",
+  "moonbitlang/core/encoding/utf8",
+  "moonbitlang/core/json",
+}
+
+supported_targets = "+native"
+
+import {
+  "CaptainK-65/moon-statelens/adapters/native" @external,
+  "moonbitlang/async/socket",
+} for "test"

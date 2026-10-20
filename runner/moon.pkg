@@ -1,0 +1,11 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "moonbitlang/async",
+  "moonbitlang/core/debug",
+}
+
+supported_targets = "+native"
+
+import {
+  "CaptainK-65/moon-statelens/runner",
+} for "test"

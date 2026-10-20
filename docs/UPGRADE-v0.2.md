@@ -25,10 +25,22 @@ versioned reports and reproducible CI evidence.
 - Local wasm check/test passes: 50 named tests, including existing 200-target
   corpus and new exhaustive subcorpora. This is not yet an async/platform claim.
 
+## Completed native work (2026-10-20)
+
+- Added native asynchronous runner with actual suspension, timeout and cancellation.
+- Sync/async runs have identical statistics under the same learner and plan.
+- JSONL supports bounded UTF-8 framing, request IDs, separate bounded stderr,
+  fault detection and protected process reaping even during cleanup cancellation.
+- Added configurable finite HTTP actions, output abstraction and session headers.
+- Real sqlite3 CLI learned as a six-state transaction abstraction with KV + Wp;
+  an independent reference was used only after learning.
+- Ten native runner/adapter tests pass locally on Windows, including real sockets,
+  real processes, invalid frames, failed exits and injected timeouts.
+- Native integration tests require first running moon build --target native and
+  having sqlite3 on PATH. Test fixture paths are compiler output paths.
+
 ## Remaining gates
 
-- Actual delayed async, timeout/cancellation/cleanup verification.
-- Real process/HTTP/SQLite targets and malformed/fragmented protocol tests.
 - Configuration, native CLI integration, versioned report and fresh replay.
 - Four-backend core tests, Linux native integration CI, publication/consumer tests.
 - Updated application distinguishing implemented features from roadmap.
