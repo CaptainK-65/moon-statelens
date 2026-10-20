@@ -1,0 +1,178 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/async@0.22.5/process",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn invoke(args : Array[String], code~ : Int32 = 0) -> Json {
+  let result = @shell.Cmd(
+    "_build/native/debug/build/cmd/statelens/statelens.exe", args,
+  ).output(timeout_ms=180000, max_output_bytes=4194304)
+  if result.exit_code() != code {
+    fail(
+      "unexpected CLI status: " +
+      result.exit_code().to_string() +
+      " for " +
+      args[0] +
+      "; stderr=" +
+      result.stderr(),
+    )
+  }
+  @json.parse(result.stdout())
+}
+
+///|
+async fn main {
+  @shell.Cmd("moon", ["build", "--target", "native", "--deny-warn"])
+  .output(timeout_ms=120000, max_output_bytes=4194304)
+  .check()
+  let directory = "_build/v0.2-evidence/run-" + @env.now().to_string()
+  @fs.mkdir(directory, recursive=true)
+  async fn save(name, value : Json) {
+    @fs.write_file(directory + "/" + name, value.stringify(indent=2) + "\n")
+  }
+  let protocol = invoke(["run-config", "configs/session-jsonl.json"])
+  guard protocol is { "accepted": True, .. } else { fail("JSONL not accepted") }
+  save("jsonl-session.json", protocol)
+  let kv = invoke(["run-config", "configs/sqlite-kv.json"])
+  let ls = invoke(["run-config", "configs/sqlite-lstar.json"])
+  for report in [kv, ls] {
+    guard report
+      is {
+        "accepted": True,
+        "inference": {
+          "learning": { "model": { "transitions": Array(rows), .. }, .. },
+          ..
+        },
+        ..
+      } &&
+      rows.length() == 6 else {
+      fail("SQLite not learned as six-state abstraction")
+    }
+  }
+  save("sqlite-kv.json", kv)
+  save("sqlite-lstar.json", ls)
+  guard kv is { "inference": { "learning": { "model": kv_model, .. }, .. }, .. } else {
+    fail("KV model")
+  }
+  guard ls is { "inference": { "learning": { "model": ls_model, .. }, .. }, .. } else {
+    fail("LStar model")
+  }
+  save("sqlite-kv-model.json", kv_model)
+  save("sqlite-lstar-model.json", ls_model)
+  let identical = invoke([
+    "compare",
+    directory + "/sqlite-kv-model.json",
+    directory + "/sqlite-lstar-model.json",
+  ])
+  guard identical is { "difference": Null, .. } else {
+    fail("learners disagree")
+  }
+  let comparison = invoke(
+    ["compare-config", "configs/sqlite-kv.json", "configs/sqlite-mutant.json"],
+    code=2,
+  )
+  guard comparison
+    is {
+      "status": {
+        "kind": "confirmed-difference",
+        "difference": { "inputs": Array(inputs), .. },
+        ..
+      },
+      ..
+    } else {
+    fail("no actual SQLite replay")
+  }
+  save("sqlite-comparison.json", comparison)
+  save("counterexample-words.json", Json::array([Json::array(inputs.copy())]))
+  let normal = invoke([
+    "replay-config",
+    "configs/sqlite-kv.json",
+    directory + "/counterexample-words.json",
+  ])
+  let mutant = invoke([
+    "replay-config",
+    "configs/sqlite-mutant.json",
+    directory + "/counterexample-words.json",
+  ])
+  guard normal is { "traces": Array(normal_traces), .. } &&
+    mutant is { "traces": Array(mutant_traces), .. } &&
+    normal_traces != mutant_traces else {
+    fail("difference did not freshly reproduce")
+  }
+  save("sqlite-replay-normal.json", normal)
+  save("sqlite-replay-CONTROLLED-mutant.json", mutant)
+  save("algorithm-study.json", invoke(["benchmark-algorithms"]))
+
+  @async.with_task_group(group => {
+    let (reader, output) = @process.read_from_process()
+    defer reader.close()
+    let server = @process.spawn(
+      group,
+      "_build/native/debug/build/cmd/http_fixture/http_fixture.exe",
+      ["0"],
+      stdout=output,
+      no_console_window=true,
+      cancel_handler=@process.hard_cancel(),
+      no_wait=true,
+    )
+    defer server.cancel()
+    let ready = @async.with_timeout(10000, () => reader.read_until("\n"))
+    guard ready is Some(url) else { fail("HTTP fixture did not start") }
+    let value = @fs.read_file("configs/http-session.json").json()
+    guard value is Object(config) &&
+      config.get("target") is Some(Object(target)) else {
+      fail("HTTP configuration")
+    }
+    target["base_url"] = Json(url.trim().to_owned())
+    let path = directory + "/http-config.json"
+    @fs.write_file(path, value.stringify(indent=2))
+    let learned = invoke(["run-config", path])
+    guard learned is { "accepted": True, .. } else { fail("HTTP learning") }
+    save("http-session.json", learned)
+  })
+
+  let value = @fs.read_file("configs/session-jsonl.json").json()
+  guard value is Object(config) else { fail("configuration") }
+  config["learner"] = Json("unsupported")
+  let invalid = directory + "/invalid.json"
+  @fs.write_file(invalid, value.stringify())
+  let rejected = invoke(["run-config", invalid], code=1)
+  guard rejected is { "kind": "configuration-error", .. } else {
+    fail("missing configuration error")
+  }
+  config["learner"] = Json("kv")
+  config["verification"] = Json::object({
+    "kind": Json("random"),
+    "tests": Json(1),
+    "max_length": Json(1),
+  })
+  let insufficient = directory + "/insufficient.json"
+  @fs.write_file(insufficient, value.stringify())
+  let budgeted = invoke(["run-config", insufficient], code=3)
+  guard budgeted is { "accepted": False, .. } else {
+    fail("finite exploration became complete proof")
+  }
+  save("insufficient-evidence.json", budgeted)
+  config["verification"] = Json::object({
+    "kind": Json("wp"),
+    "state_bound": Json(2),
+  })
+  guard config.get("target") is Some(Object(target)) else { fail("target") }
+  target["args"] = Json(["slow-step"])
+  config["budgets"] = Json::object({ "step_timeout_ms": Json(500) })
+  let timeout = directory + "/timeout.json"
+  @fs.write_file(timeout, value.stringify())
+  let timed_out = invoke(["run-config", timeout], code=1)
+  guard timed_out is { "kind": "timeout", .. } else {
+    fail("timeout was not classified")
+  }
+  save("timeout.json", timed_out)
+  println("Native integration verified; evidence: " + directory)
+}

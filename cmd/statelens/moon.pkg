@@ -1,5 +1,7 @@
 import {
   "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/integration",
+  "CaptainK-65/moon-statelens/runner",
   "CaptainK-65/moon-statelens/examples/targets",
   "CaptainK-65/moon-statelens/adapters/moonlarder" @lru,
   "CaptainK-65/moon-statelens/benchmarks" @study,

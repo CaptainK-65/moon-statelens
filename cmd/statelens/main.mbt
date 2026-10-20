@@ -12,6 +12,10 @@ fn usage() -> String {
     #|  dot MODEL.json                   Print a Graphviz state diagram
     #|  export session|lru OUT.json      Learn and save a model; refuses overwrite
     #|  benchmark [OUT.json]             Query-cost reference study; refuses overwrite
+    #|  benchmark-algorithms             L* / KV costs under identical Wp plans
+    #|  run-config CONFIG.json           Learn an actual configured component
+    #|  compare-config LEFT.json RIGHT.json  Infer and freshly confirm differences
+    #|  replay-config CONFIG.json WORDS.json  Freshly replay arrays of input words
     #|  --version | --help
     #|
     #|Black-box evidence is conditional or budgeted. Equal learned models are not
@@ -25,6 +29,11 @@ async fn main {
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
     [_, "--version"] => println("0.1.0")
+    [_, "run-config", path] => configuration_command("run", path, "")
+    [_, "compare-config", left, right] =>
+      configuration_command("compare", left, right)
+    [_, "replay-config", config, words] =>
+      configuration_command("replay", config, words)
     [_, "demo", "session"] =>
       println(Json(session_result()).stringify(indent=2))
     [_, "demo", "lru"] => println(Json(lru_result()).stringify(indent=2))
@@ -82,6 +91,8 @@ async fn main {
     [_, "export", "lru", path] =>
       write_new(path, lru_result().model.unwrap().encode() + "\n")
     [_, "benchmark"] => println(@study.query_study().stringify(indent=2))
+    [_, "benchmark-algorithms"] =>
+      println(@study.algorithm_study().stringify(indent=2))
     [_, "benchmark", path] =>
       write_new(path, @study.query_study().stringify(indent=2) + "\n")
     _ => raise @lens.InvalidArgument(usage())

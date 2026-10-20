@@ -43,7 +43,7 @@ async fn send_http(
     client.write(action.body)
   }
   let response = client.end_request()
-  if response.code != action.expect_status {
+  if action.expect_status > 0 && response.code != action.expect_status {
     raise @runner.Target("unexpected HTTP status " + response.code.to_string())
   }
   let bytes : Array[Byte] = []
@@ -55,13 +55,15 @@ async fn send_http(
       bytes.push(byte)
     }
   }
+  if action.output_field.is_empty() {
+    return ("status:" + response.code.to_string(), Json::null())
+  }
   let body = if bytes.is_empty() {
     Json::null()
   } else {
-    @json.parse(@utf8.decode(Bytes::from_array(bytes)[:]))
-  }
-  if action.output_field.is_empty() {
-    return ("status:" + response.code.to_string(), body)
+    @json.parse(@utf8.decode(Bytes::from_array(bytes)[:])) catch {
+      _ => raise @runner.Protocol("invalid HTTP JSON or UTF-8")
+    }
   }
   guard body is Object(fields) && fields.get(action.output_field) is Some(value) else {
     raise @runner.Protocol("missing HTTP output field")

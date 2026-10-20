@@ -45,6 +45,20 @@ versioned reports and reproducible CI evidence.
 - Four-backend core tests, Linux native integration CI, publication/consumer tests.
 - Updated application distinguishing implemented features from roadmap.
 
+## Configuration integration (2026-10-20)
+
+- Strict versioned configurations select learners, verification chains, targets,
+  budgets, abstraction identity and required evidence. Unknown fields are errors.
+- Added native run-config, compare-config and replay-config CLI commands with
+  exit codes 0/1/2/3 and version-2 report envelopes.
+- Comparison freshly replays candidate differences; spurious model differences
+  trigger regression experiments and relearning, or explicit inconclusive.
+- Successful query traces can be exported with explicit size/truncation limits.
+- Core four-backend tests pass locally (50 each); native adds runner/adapter tests.
+- Added reproducible native CLI verification including real SQLite and HTTP,
+  and an L*/KV query-cost study under identical Wp plans.
+- GitHub tracking issue: #5. Native CLI full verification and CI are still running.
+
 Algorithm references remain theoretical/behavioral references, not runtime
 LearnLib/AALpy backends. No source code has been copied from them.
 
