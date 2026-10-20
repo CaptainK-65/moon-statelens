@@ -1,0 +1,66 @@
+{
+  "format": "moonstatelens.replay",
+  "version": 2,
+  "configuration": {
+    "identity": "sqlite-cli-single-row",
+    "abstraction": "sqlite-single-row-v1",
+    "target_kind": "sqlite",
+    "learner": "kv",
+    "alphabet": [
+      "begin",
+      "put",
+      "delete",
+      "commit",
+      "rollback",
+      "read"
+    ],
+    "budgets": {
+      "queries": 20000,
+      "steps": 200000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "wp",
+      "state_bound": 6,
+      "max_tests": 20000,
+      "max_work": 100000
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "traces": [
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "outputs": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    }
+  ],
+  "statistics": {
+    "queries": 1,
+    "cache_hits": 0,
+    "resets": 1,
+    "steps": 4,
+    "completed_queries": 1,
+    "cache_nodes": 5,
+    "output_code_units": 11
+  }
+}

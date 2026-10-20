@@ -1,6 +1,6 @@
 # Security and operating assumptions
 
-Version 0.1 executes trusted synchronous in-process callbacks. It is not a sandbox for hostile target code. Callback execution is not preempted by the experiment's operation budgets; the host must provide isolation/timeouts when needed.
+Version 0.2 supports synchronous callbacks and native asynchronous IO to controlled HTTP/process targets. It is not a sandbox for hostile target code. Operation budgets cannot preempt arbitrary synchronous computation. Async IO waits have deadlines and protected cleanup; the supervisor reaps its direct child but does not claim arbitrary descendant-tree isolation. See docs/native.md for the actual contract.
 
 Do not probe targets without authorization. Reset and step can change real state. Use disposable or explicitly controlled target instances. Avoid recording secrets as output symbols; define a stable abstraction that preserves the behavior being investigated.
 

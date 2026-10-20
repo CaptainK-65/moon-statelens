@@ -1,0 +1,118 @@
+{
+  "format": "moonstatelens.run",
+  "version": 2,
+  "configuration": {
+    "identity": "controlled-session-subprocess",
+    "abstraction": "session-v1",
+    "target_kind": "jsonl",
+    "learner": "kv",
+    "alphabet": [
+      "login",
+      "logout",
+      "request"
+    ],
+    "budgets": {
+      "queries": 100000,
+      "steps": 2000000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "random",
+      "tests": 1,
+      "max_length": 1
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "inference": {
+    "format": "moonstatelens.inference",
+    "version": 2,
+    "algorithm": "kv",
+    "learning": {
+      "format": "moonstatelens.learning",
+      "version": 1,
+      "model": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "login",
+          "logout",
+          "request"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "denied"
+            }
+          ]
+        ]
+      },
+      "status": {
+        "kind": "supported",
+        "evidence": {
+          "kind": "budgeted",
+          "details": "seeded random words; seed=42"
+        }
+      },
+      "statistics": {
+        "queries": 4,
+        "cache_hits": 0,
+        "resets": 4,
+        "steps": 4,
+        "completed_queries": 4,
+        "cache_nodes": 4,
+        "output_code_units": 12
+      },
+      "rounds": [
+        {
+          "index": 1,
+          "states": 1,
+          "prefixes": 1,
+          "suffixes": 0,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 3
+        }
+      ],
+      "counterexamples": []
+    },
+    "metrics": {
+      "states": 1,
+      "access_sequences": 1,
+      "discriminators": 0,
+      "table_cells": 0,
+      "table_symbols": 0,
+      "tree_nodes": 1
+    },
+    "verification": [
+      [
+        {
+          "strategy": "random-words",
+          "tests": 1,
+          "result": "completed"
+        }
+      ]
+    ]
+  },
+  "accepted": false
+}

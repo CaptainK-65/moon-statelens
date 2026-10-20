@@ -1,0 +1,12 @@
+{
+  "source_commit": "bd829474efa83639bbab321a293d6f23dce36790",
+  "toolchain": [
+    "moon 0.1.20261012 (748b63c 2026-10-12)",
+    "moonc v0.10.15+943464bfa (2026-10-12)",
+    "moonrun 0.1.20261012 (748b63c 2026-10-12)",
+    "Feature flags enabled: rr_moon_mod,rr_moon_pkg"
+  ],
+  "sqlite": "3.45.3 2024-04-15 13:34:05 8653b758870e6ef0c98d46b3ace27849054af85da891eb121e9aaa537f1e8355 (64-bit)",
+  "origin": "_build/v0.2-evidence/run-1792491562793",
+  "scope": "public controlled examples; SQLite is real; mutation is deliberately injected"
+}

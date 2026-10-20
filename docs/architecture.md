@@ -8,7 +8,10 @@ The root package owns Machine, System, Experiment, Oracle, LearningResult and Co
 | --- | --- |
 | machine / comparison / minimization | Validated complete models, reachable product BFS, partition refinement, reverse pair characterization |
 | system / experiment | Synchronous target contract, cleanup, trace trie, stable-observation checks and budgets |
-| observation_table / learning | Mealy L* closure, consistency, hypothesis construction and counterexample refinement |
+| learning_driver / learning_table / learning_tree | Suspended L* and independent KV, complete hypotheses and counterexample refinement |
+| query_session / experiment | Shared IO-independent lifecycle, cache and budgets; synchronous compatibility facade |
+| verification / verification_words | Lazy W/Wp and composable verification cursors with stage logs |
+| runner / adapters/native / integration | Async execution, scoped real targets, configuration and replay-confirmed comparison |
 | oracle_* / word_cursor | Exact reference, finite experiments, lazy W-method word enumeration and oracle evaluation |
 | compatibility | Two-target inference, fresh replay and spurious-disagreement refinement |
 | serialization / status_json | Validated versioned interchange and readable evidence scopes |
@@ -16,6 +19,8 @@ The root package owns Machine, System, Experiment, Oracle, LearningResult and Co
 | examples / benchmarks / cmd | Consumers of the public API |
 
 ## Observation table
+
+The current suspended table is learning_table.mbt. [Algorithm invariants](algorithms.md) also document KV, the continuation protocol and Wp. [Native integration](native.md) covers IO ownership and failure semantics. The root never imports the native layer.
 
 S is a prefix-closed set of access words; E is a suffix-closed set of distinguishing experiments, initially every one-letter input. T(s,e) stores only the output suffix after executing s. The preceding output history is not part of state identity.
 

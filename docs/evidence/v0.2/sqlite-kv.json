@@ -1,0 +1,441 @@
+{
+  "format": "moonstatelens.run",
+  "version": 2,
+  "configuration": {
+    "identity": "sqlite-cli-single-row",
+    "abstraction": "sqlite-single-row-v1",
+    "target_kind": "sqlite",
+    "learner": "kv",
+    "alphabet": [
+      "begin",
+      "put",
+      "delete",
+      "commit",
+      "rollback",
+      "read"
+    ],
+    "budgets": {
+      "queries": 20000,
+      "steps": 200000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "wp",
+      "state_bound": 6,
+      "max_tests": 20000,
+      "max_work": 100000
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "inference": {
+    "format": "moonstatelens.inference",
+    "version": 2,
+    "algorithm": "kv",
+    "learning": {
+      "format": "moonstatelens.learning",
+      "version": 1,
+      "model": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "begin",
+          "put",
+          "delete",
+          "commit",
+          "rollback",
+          "read"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "transaction-error"
+            },
+            {
+              "target": 0,
+              "output": "transaction-error"
+            },
+            {
+              "target": 0,
+              "output": "empty"
+            }
+          ],
+          [
+            {
+              "target": 1,
+              "output": "transaction-error"
+            },
+            {
+              "target": 4,
+              "output": "ok"
+            },
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 1,
+              "output": "empty"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "transaction-error"
+            },
+            {
+              "target": 2,
+              "output": "transaction-error"
+            },
+            {
+              "target": 2,
+              "output": "present"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "transaction-error"
+            },
+            {
+              "target": 3,
+              "output": "ok"
+            },
+            {
+              "target": 5,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 3,
+              "output": "present"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "transaction-error"
+            },
+            {
+              "target": 4,
+              "output": "ok"
+            },
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 4,
+              "output": "present"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "transaction-error"
+            },
+            {
+              "target": 3,
+              "output": "ok"
+            },
+            {
+              "target": 5,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 2,
+              "output": "ok"
+            },
+            {
+              "target": 5,
+              "output": "empty"
+            }
+          ]
+        ]
+      },
+      "status": {
+        "kind": "supported",
+        "evidence": {
+          "kind": "conditional-state-bound",
+          "state_bound": 6
+        }
+      },
+      "statistics": {
+        "queries": 775,
+        "cache_hits": 308,
+        "resets": 467,
+        "steps": 1373,
+        "completed_queries": 467,
+        "cache_nodes": 142,
+        "output_code_units": 6514
+      },
+      "rounds": [
+        {
+          "index": 1,
+          "states": 1,
+          "prefixes": 1,
+          "suffixes": 0,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 6,
+          "counterexample_length": 2
+        },
+        {
+          "index": 2,
+          "states": 2,
+          "prefixes": 2,
+          "suffixes": 1,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 41,
+          "counterexample_length": 2
+        },
+        {
+          "index": 3,
+          "states": 3,
+          "prefixes": 3,
+          "suffixes": 2,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 165,
+          "counterexample_length": 3
+        },
+        {
+          "index": 4,
+          "states": 4,
+          "prefixes": 4,
+          "suffixes": 3,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 259,
+          "counterexample_length": 4
+        },
+        {
+          "index": 5,
+          "states": 5,
+          "prefixes": 5,
+          "suffixes": 4,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 433,
+          "counterexample_length": 5
+        },
+        {
+          "index": 6,
+          "states": 6,
+          "prefixes": 6,
+          "suffixes": 5,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 644
+        }
+      ],
+      "counterexamples": [
+        {
+          "inputs": [
+            "begin",
+            "begin"
+          ],
+          "left_outputs": [
+            "ok",
+            "ok"
+          ],
+          "right_outputs": [
+            "ok",
+            "transaction-error"
+          ]
+        },
+        {
+          "inputs": [
+            "put",
+            "read"
+          ],
+          "left_outputs": [
+            "ok",
+            "empty"
+          ],
+          "right_outputs": [
+            "ok",
+            "present"
+          ]
+        },
+        {
+          "inputs": [
+            "put",
+            "begin",
+            "read"
+          ],
+          "left_outputs": [
+            "ok",
+            "ok",
+            "empty"
+          ],
+          "right_outputs": [
+            "ok",
+            "ok",
+            "present"
+          ]
+        },
+        {
+          "inputs": [
+            "begin",
+            "put",
+            "rollback",
+            "read"
+          ],
+          "left_outputs": [
+            "ok",
+            "ok",
+            "ok",
+            "present"
+          ],
+          "right_outputs": [
+            "ok",
+            "ok",
+            "ok",
+            "empty"
+          ]
+        },
+        {
+          "inputs": [
+            "put",
+            "begin",
+            "delete",
+            "rollback",
+            "read"
+          ],
+          "left_outputs": [
+            "ok",
+            "ok",
+            "ok",
+            "ok",
+            "empty"
+          ],
+          "right_outputs": [
+            "ok",
+            "ok",
+            "ok",
+            "ok",
+            "present"
+          ]
+        }
+      ]
+    },
+    "metrics": {
+      "states": 6,
+      "access_sequences": 6,
+      "discriminators": 5,
+      "table_cells": 0,
+      "table_symbols": 0,
+      "tree_nodes": 11
+    },
+    "verification": [
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 8,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 73,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 18,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 72,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 80,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 131,
+          "result": "completed"
+        }
+      ]
+    ]
+  },
+  "accepted": true
+}

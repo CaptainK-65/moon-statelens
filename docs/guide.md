@@ -4,7 +4,7 @@
 
 目标通过 `System::new(reset~, step~, close~)` 接入。一次物理查询先 reset，再按顺序执行输入，每个输入返回一个输出字符串，最后 close。reset 必须恢复相同的可观察起点；必要时重建对象，而不只是清理部分字段。
 
-首版回调是同步、可抛错的进程内函数。异步网络接口不能直接作为回调；首版没有网络会话桥接器。目标不能在回调中重入同一个 Experiment，也不能在实验外被其他调用并发修改。这个边界保持核心库四后端可用。
+System 回调保留为同步、可抛错的进程内函数。v0.2 新增 native AsyncSystem／AsyncExperiment、HTTP、JSONL 子进程及 SQLite 专用接入，详见 [异步组件指南](native.md)。两条执行路线共享 QuerySession 的缓存、预算与冲突语义，并驱动同一套可暂停算法。目标不能重入同一会话，也不能在实验外被并发修改。
 
 输入集合必须是 1—256 个不同字符串。参数无限的 API 需要先选定有限代表值；输出中的时间戳、随机 ID 等需要显式抽象。只对选定输入和抽象后的输出建立结论。状态编号没有业务语义，不会自动命名“已登录”等概念。
 
@@ -12,12 +12,16 @@
 
 `Experiment::new` 持有目标、字母表、缓存与预算。`learn(experiment, oracle)` 构造 Mealy 假设，向 oracle 寻找反例，然后加入区分信息。调用方不向学习表提供目标转移矩阵。
 
+`learn_with(experiment, oracle, KearnsVazirani)` 选择独立 KV 学习器；默认 `learn` 仍为 L*。异步接入使用 `runner.infer` 和可暂停 VerificationPlan。同步自定义 Oracle 回调保持兼容，不自动获得异步效果。完整设计见 [算法说明](algorithms.md)。
+
 | Oracle | 用途与结论 |
 | --- | --- |
 | `Oracle::exact(reference)` | 对受控模型／算法验证使用，精确比较假设与显式参考。调用方负责适配器对应关系 |
 | `Oracle::exhaustive(depth, max_tests=...)` | 新鲜执行长度不超过 depth 的全部输入词；只报告该有限范围 |
 | `Oracle::random_words(seed=..., max_length=..., tests=...)` | 每轮重置固定种子的随机词实验；没有全局等价保证 |
 | `Oracle::w_method(bound, max_tests=...)` | 最小可达假设上的 transition cover × 中间词 × characterizing suffixes；完成后给出有条件上界结论 |
+| `Oracle::wp_method(bound, max_tests=...)` | 使用状态覆盖、其余转移覆盖与局部区分后缀，完成后给出有条件上界结论 |
+| `Oracle::plan(VerificationPlan::Chain(...))` | 按序执行重放／随机／W/Wp 等阶段；未完成阶段停止，最后完成阶段决定证据 |
 | `Oracle::new(callback)` | 自定义实验策略；返回的反例必须在实际查询中成立，证据声明由提供者负责 |
 
 W-method 要求真实目标完整、确定、可可靠重置，使用相同有限操作集合，且实现的可观察状态数不超过声明上界。上界不是算法自动证明出来的。低估上界可能使未覆盖的真实状态漏检；发现假设状态已经超过上界时返回未完成。预算中止、区分集计算中止不能被解释为完整执行。

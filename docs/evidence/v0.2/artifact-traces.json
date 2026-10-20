@@ -1,0 +1,35 @@
+{
+  "format": "moonstatelens.traces",
+  "version": 1,
+  "enabled": true,
+  "truncated": false,
+  "scope": "successful logical queries, including cache hits",
+  "entries": [
+    {
+      "sequence": 1,
+      "inputs": [
+        "x"
+      ],
+      "outputs": [
+        "ok"
+      ],
+      "cached": false
+    },
+    {
+      "sequence": 2,
+      "inputs": [],
+      "outputs": [],
+      "cached": false
+    },
+    {
+      "sequence": 3,
+      "inputs": [
+        "x"
+      ],
+      "outputs": [
+        "ok"
+      ],
+      "cached": false
+    }
+  ]
+}

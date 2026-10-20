@@ -1,0 +1,165 @@
+{
+  "format": "moonstatelens.run",
+  "version": 2,
+  "configuration": {
+    "identity": "controlled-http-session-service",
+    "abstraction": "session-v1",
+    "target_kind": "http",
+    "learner": "kv",
+    "alphabet": [
+      "login",
+      "logout",
+      "request"
+    ],
+    "budgets": {
+      "queries": 100000,
+      "steps": 2000000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "wp",
+      "state_bound": 2,
+      "max_tests": 1000,
+      "max_work": 10000
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "inference": {
+    "format": "moonstatelens.inference",
+    "version": 2,
+    "algorithm": "kv",
+    "learning": {
+      "format": "moonstatelens.learning",
+      "version": 1,
+      "model": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "login",
+          "logout",
+          "request"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "denied"
+            }
+          ],
+          [
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 1,
+              "output": "allowed"
+            }
+          ]
+        ]
+      },
+      "status": {
+        "kind": "supported",
+        "evidence": {
+          "kind": "conditional-state-bound",
+          "state_bound": 2
+        }
+      },
+      "statistics": {
+        "queries": 46,
+        "cache_hits": 9,
+        "resets": 37,
+        "steps": 63,
+        "completed_queries": 37,
+        "cache_nodes": 16,
+        "output_code_units": 236
+      },
+      "rounds": [
+        {
+          "index": 1,
+          "states": 1,
+          "prefixes": 1,
+          "suffixes": 0,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 3,
+          "counterexample_length": 2
+        },
+        {
+          "index": 2,
+          "states": 2,
+          "prefixes": 2,
+          "suffixes": 1,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 32
+        }
+      ],
+      "counterexamples": [
+        {
+          "inputs": [
+            "login",
+            "request"
+          ],
+          "left_outputs": [
+            "ok",
+            "denied"
+          ],
+          "right_outputs": [
+            "ok",
+            "allowed"
+          ]
+        }
+      ]
+    },
+    "metrics": {
+      "states": 2,
+      "access_sequences": 2,
+      "discriminators": 1,
+      "table_cells": 0,
+      "table_symbols": 0,
+      "tree_nodes": 3
+    },
+    "verification": [
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 14,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "wp-method",
+          "tests": 14,
+          "result": "completed"
+        }
+      ]
+    ]
+  },
+  "accepted": true
+}

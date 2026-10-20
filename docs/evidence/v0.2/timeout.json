@@ -1,0 +1,6 @@
+{
+  "format": "moonstatelens.failure",
+  "version": 2,
+  "kind": "timeout",
+  "message": "step"
+}
