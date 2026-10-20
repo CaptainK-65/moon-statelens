@@ -1,8 +1,9 @@
 ///|
 /// A synchronous facade over the same suspendable verification used by async IO.
-pub fn Oracle::plan(plan : VerificationPlan) -> Oracle {
+pub fn Oracle::plan(plan : VerificationPlan) -> Oracle raise LensError {
+  let owned = copy_plan(plan, 0, [0])
   Oracle::new((model, experiment) => {
-    let cursor = VerificationCursor::new(plan, model)
+    let cursor = VerificationCursor::new(owned, model)
     for ;; {
       match cursor.event() {
         Query(request) =>

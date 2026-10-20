@@ -65,11 +65,45 @@ pub fn VerificationCursor::new(
 ) -> VerificationCursor raise {
   let stages = []
   {
-    instruction: prepare_verification(plan, hypothesis, stages, 0),
+    instruction: prepare_verification(
+      copy_plan(plan, 0, [0]),
+      hypothesis,
+      stages,
+      0,
+    ),
     serial: 0,
     pending: None,
     stages,
     failed: false,
+  }
+}
+
+///|
+fn copy_plan(
+  plan : VerificationPlan,
+  depth : Int32,
+  count : Array[Int32],
+) -> VerificationPlan raise LensError {
+  count[0] += 1
+  if depth > 16 || count[0] > 64 {
+    raise InvalidArgument("verification plan too complex")
+  }
+  match plan {
+    Chain(plans) => Chain(plans.map(p => copy_plan(p, depth + 1, count)))
+    Replay(words) => {
+      if words.length() > 100000 {
+        raise InvalidArgument("too many replay words")
+      }
+      Replay(
+        words.map(word => {
+          if word.length() > 4096 {
+            raise InvalidArgument("replay word too long")
+          }
+          word.copy()
+        }),
+      )
+    }
+    other => other
   }
 }
 

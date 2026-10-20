@@ -119,3 +119,66 @@ async test "cancellation attempts cleanup and leaves the session usable" {
   assert_eq(experiment.query(["x"]), ["ok"])
   assert_eq(closed[0], 2)
 }
+
+///|
+async test "async target errors outrank cleanup failures and traces report truncation" {
+  let broken = @runner.AsyncExperiment::new(
+    @runner.AsyncSystem::new(
+      reset=() => @async.pause(),
+      step=_ => {
+        @async.pause()
+        raise @runner.Target("primary")
+      },
+      close=() => {
+        @async.pause()
+        raise @runner.Protocol("secondary")
+      },
+    ),
+    ["x"],
+  )
+  try broken.query(["x"]) catch {
+    @runner.Target("primary") => ()
+    error => raise error
+  } noraise {
+    _ => fail("lost primary target error")
+  }
+  assert_eq(broken.statistics().cache_nodes, 1)
+  let target = @lens.Machine::new(["x"], [[{ target: 0, output: "ok", }]])
+  let logged = @runner.AsyncExperiment::new(
+    delayed(target, [0]),
+    ["x"],
+    trace_limit=1,
+  )
+  ignore(logged.query(["x"]))
+  ignore(logged.query(["x"]))
+  guard logged.traces_json()
+    is { "truncated": True, "entries": Array(entries), .. } else {
+    fail("missing bounded trace metadata")
+  }
+  assert_eq(entries.length(), 1)
+}
+
+///|
+async test "fresh asynchronous output conflicts invalidate the shared session" {
+  let epoch = [0]
+  let system = @runner.AsyncSystem::new(
+    reset=() => {
+      @async.pause()
+      epoch[0] += 1
+    },
+    step=_ => {
+      @async.pause()
+      epoch[0].to_string()
+    },
+    close=() => @async.pause(),
+  )
+  let experiment = @runner.AsyncExperiment::new(system, ["x"], recheck_every=1)
+  let report = @runner.infer(experiment, Exhaustive(depth=1, max_tests=10))
+  assert_true(report.learning.status is Unstable(..))
+  try experiment.query(["x"]) catch {
+    @lens.InconsistentObservation(..) => ()
+    error => raise error
+  } noraise {
+    _ => fail("served stale cache after conflict")
+  }
+}

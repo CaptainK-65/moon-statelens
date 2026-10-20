@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   let text =
-    #|MoonStateLens 0.1.0
+    #|MoonStateLens 0.2.0
     #|Usage: moon run cmd/statelens --target native -- COMMAND
     #|  demo session|regression|lru       Learn actual adapters and print evidence
     #|  learn MODEL.json STATE_BOUND     Learn a model-backed black box using W-method
@@ -28,7 +28,7 @@ async fn main {
   let args = @env.args()
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
-    [_, "--version"] => println("0.1.0")
+    [_, "--version"] => println("0.2.0")
     [_, "run-config", path] => configuration_command("run", path, "")
     [_, "compare-config", left, right] =>
       configuration_command("compare", left, right)

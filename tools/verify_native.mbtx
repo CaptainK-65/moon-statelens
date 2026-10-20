@@ -174,5 +174,44 @@ async fn main {
     fail("timeout was not classified")
   }
   save("timeout.json", timed_out)
+  let artifact_config = Json::object({
+    "format": Json("moonstatelens.experiment"),
+    "version": Json(1),
+    "identity": Json("artifact-check"),
+    "abstraction": Json("one-state-v1"),
+    "alphabet": Json(["x"]),
+    "learner": Json("kv"),
+    "target": Json::object({
+      "kind": Json("model"),
+      "model": Json::object({
+        "format": Json("moonstatelens.mealy"),
+        "version": Json(1),
+        "alphabet": Json(["x"]),
+        "initial": Json(0),
+        "transitions": Json::array([
+          Json::array([
+            Json::object({ "target": Json(0), "output": Json("ok") }),
+          ]),
+        ]),
+      }),
+    }),
+    "verification": Json::object({ "kind": Json("wp"), "state_bound": Json(1) }),
+    "artifacts": Json::object({
+      "report": Json(directory + "/artifact-report.json"),
+      "model": Json(directory + "/artifact-model.json"),
+      "dot": Json(directory + "/artifact-model.dot"),
+      "traces": Json(directory + "/artifact-traces.json"),
+    }),
+  })
+  save("artifact-config.json", artifact_config)
+  ignore(invoke(["run-config", directory + "/artifact-config.json"]))
+  let trace = @fs.read_file(directory + "/artifact-traces.json").json()
+  guard trace is { "truncated": False, "entries": Array(entries), .. } &&
+    entries.length() > 0 else {
+    fail("query trace artifact missing")
+  }
+  let before = @fs.read_file(directory + "/artifact-report.json").text()
+  ignore(invoke(["run-config", directory + "/artifact-config.json"], code=1))
+  assert_eq(before, @fs.read_file(directory + "/artifact-report.json").text())
   println("Native integration verified; evidence: " + directory)
 }

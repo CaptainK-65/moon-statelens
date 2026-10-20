@@ -38,8 +38,9 @@ jobs:
       - run: moon build --target all --deny-warn
       - run: moon test --target all --deny-warn
       - run: moon fmt --check
-      - run: moon fmt --check tools/verify_cli.mbtx tools/update_evidence.mbtx tools/verify_published.mbtx tools/verify_native.mbtx
+      - run: moon fmt --check tools/verify_cli.mbtx tools/update_evidence.mbtx tools/verify_published.mbtx tools/verify_native.mbtx tools/update_native_interfaces.mbtx
       - run: moon info
+      - run: moon run tools/update_native_interfaces.mbtx
       - run: git diff --exit-code -- '*.mbti'
       - run: moon run examples/session
       - run: moon run examples/regression

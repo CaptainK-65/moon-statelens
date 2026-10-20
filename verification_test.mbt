@@ -121,3 +121,29 @@ test "single-state Wp checks transition outputs and a failed stage cannot be rep
   )
   assert_true(result is Inconclusive("conformance-tests"))
 }
+
+///|
+test "verification snapshots nested caller-owned plans before suspending" {
+  let target = stateless("ok")
+  let word = ["x"]
+  let words = [word]
+  let plans : Array[@lens.VerificationPlan] = [
+    Replay(words),
+    WpMethod(bound=1, max_tests=10, max_work=10),
+  ]
+  let cursor = @lens.VerificationCursor::new(Chain(plans), target)
+  plans.clear()
+  words.clear()
+  word.clear()
+  for _ in 0..<20 {
+    match cursor.event() {
+      Query(request) => cursor.submit(request.id, target.trace(request.inputs))
+      Completed(result) => {
+        assert_true(result is NoCounterexample(ConditionalStateBound(1)))
+        assert_eq(cursor.stages().length(), 2)
+        return
+      }
+    }
+  }
+  fail("snapshot did not finish")
+}

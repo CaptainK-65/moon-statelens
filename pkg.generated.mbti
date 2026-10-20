@@ -185,7 +185,7 @@ pub fn Oracle::evaluate(Self, Machine, Experiment) -> CheckResult raise
 pub fn Oracle::exact(Machine, max_pairs? : Int) -> Self raise LensError
 pub fn Oracle::exhaustive(Int, max_tests? : Int) -> Self raise LensError
 pub fn Oracle::new((Machine, Experiment) -> CheckResult raise) -> Self
-pub fn Oracle::plan(VerificationPlan) -> Self
+pub fn Oracle::plan(VerificationPlan) -> Self raise LensError
 pub fn Oracle::random_words(seed? : UInt, max_length? : Int, tests? : Int) -> Self raise LensError
 pub fn Oracle::w_method(Int, max_tests? : Int, max_characterization_work? : Int) -> Self raise LensError
 pub fn Oracle::with_regressions(Self, Array[Array[String]]) -> Self

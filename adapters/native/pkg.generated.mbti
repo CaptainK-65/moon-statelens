@@ -1,0 +1,28 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "CaptainK-65/moon-statelens/adapters/native"
+
+import {
+  "CaptainK-65/moon-statelens/runner",
+}
+
+// Values
+pub fn http_system(String, HttpAction, Map[String, HttpAction], HttpAction, session_field? : String, session_header? : String, max_response_bytes? : Int) -> @runner.AsyncSystem raise
+
+pub async fn[T] with_jsonl(String, Array[String], async (@runner.AsyncSystem) -> T, max_frame_bytes? : Int, max_stderr_bytes? : Int) -> T
+
+pub async fn[T] with_sqlite(String, async (@runner.AsyncSystem) -> T, rollback_as_commit? : Bool) -> T
+
+// Errors
+
+// Types and methods
+pub(all) struct HttpAction {
+  path : String
+  verb : String
+  body : Json
+  output_field : String
+  expect_status : Int
+}
+
+// Type aliases
+
+// Traits
