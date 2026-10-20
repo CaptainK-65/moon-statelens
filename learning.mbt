@@ -16,9 +16,8 @@ fn learning_result(
 }
 
 ///|
-/// Learn only through experiment queries. The oracle searches for counterexamples;
-/// its evidence determines what a Supported status actually means.
-/// Resource limits return Inconclusive with the last completed hypothesis, if any.
+/// Synchronous L* compatibility entry. The same suspended learner also powers
+/// native asynchronous runners.
 pub fn learn(
   experiment : Experiment,
   oracle : Oracle,
@@ -28,110 +27,65 @@ pub fn learn(
   max_table_symbols~ : Int32 = 4000000,
   max_prefixes~ : Int32 = 20000,
 ) -> LearningResult raise {
-  if max_states < 1 ||
-    max_states > 4096 ||
-    max_rounds < 1 ||
-    max_table_cells < 1 ||
-    max_table_symbols < 1 ||
-    max_prefixes < 1 {
-    raise InvalidArgument("invalid learning budget")
-  }
-  let table = ObservationTable::new(
+  learn_with(
     experiment,
-    max_cells=max_table_cells,
-    max_symbols=max_table_symbols,
-    max_prefixes~,
+    oracle,
+    LStar,
     max_states~,
+    max_rounds~,
+    max_table_cells~,
+    max_table_symbols~,
+    max_prefixes~,
   )
-  let mut last = None
-  let rounds = []
-  let counterexamples = []
+}
+
+///|
+/// Select L* or KV without changing the synchronous custom-oracle contract.
+pub fn learn_with(
+  experiment : Experiment,
+  oracle : Oracle,
+  algorithm : Algorithm,
+  max_states~ : Int32 = 256,
+  max_rounds~ : Int32 = 64,
+  max_table_cells~ : Int32 = 1000000,
+  max_table_symbols~ : Int32 = 4000000,
+  max_prefixes~ : Int32 = 20000,
+) -> LearningResult raise {
+  let mut driver : LearningDriver? = None
+  fn result(status) {
+    match driver {
+      Some(driver) => driver.result(experiment.statistics(), status)
+      None => learning_result(experiment, None, status, [], [])
+    }
+  }
   try {
-    for index in 1..<=max_rounds {
-      table.stabilize()
-      let hypothesis = table.hypothesis()
-      last = Some(hypothesis)
-      let decision = (oracle.check)(hypothesis, experiment)
-      let mut counterexample_length = None
-      if decision is Counterexample(word) {
-        counterexample_length = Some(word.length())
-      }
-      rounds.push({
-        index,
-        states: hypothesis.state_count(),
-        prefixes: table.prefixes.length(),
-        suffixes: table.suffixes.length(),
-        table_cells: table.cells,
-        table_symbols: table.symbols,
-        queries: experiment.queries,
-        counterexample_length,
-      })
-      match decision {
-        Counterexample(word) => {
-          let actual = experiment.query(word, bypass_cache=true)
-          let expected = hypothesis.trace(word)
-          guard actual != expected else {
-            raise InvalidArgument("oracle returned a non-counterexample")
+    let active = LearningDriver::new(
+      algorithm,
+      experiment.alphabet,
+      max_states~,
+      max_rounds~,
+      max_table_cells~,
+      max_table_symbols~,
+      max_prefixes~,
+    )
+    driver = Some(active)
+    for ;; {
+      match active.event(queries=experiment.statistics().queries) {
+        Query(request) =>
+          active.submit(request.id, experiment.query(request.inputs))
+        Hypothesis(model) =>
+          match (oracle.check)(model, experiment) {
+            Counterexample(word) =>
+              active.refine(word, experiment.query(word, bypass_cache=true))
+            NoCounterexample(evidence) => return result(Supported(evidence))
+            Inconclusive(reason) => return result(Inconclusive(reason))
           }
-          // Ignore any tail after the first mismatching output. This is a
-          // distinguishing prefix, not a globally shortest counterexample claim.
-          let mut end = 0
-          for i in 0..<actual.length() {
-            if actual[i] != expected[i] {
-              end = i + 1
-              break
-            }
-          }
-          let inputs = word[:end].to_owned()
-          counterexamples.push({
-            inputs,
-            left_outputs: expected[:end].to_owned(),
-            right_outputs: actual[:end].to_owned(),
-          })
-          table.refine(inputs)
-        }
-        NoCounterexample(evidence) =>
-          return learning_result(
-            experiment,
-            last,
-            Supported(evidence),
-            rounds,
-            counterexamples,
-          )
-        Inconclusive(reason) =>
-          return learning_result(
-            experiment,
-            last,
-            Inconclusive(reason),
-            rounds,
-            counterexamples,
-          )
       }
     }
-    learning_result(
-      experiment,
-      last,
-      Inconclusive("learning-rounds"),
-      rounds,
-      counterexamples,
-    )
   } catch {
-    LimitExceeded(reason) =>
-      learning_result(
-        experiment,
-        last,
-        Inconclusive(reason),
-        rounds,
-        counterexamples,
-      )
+    LimitExceeded(reason) => result(Inconclusive(reason))
     InconsistentObservation(word~, expected~, actual~) =>
-      learning_result(
-        experiment,
-        last,
-        Unstable(word~, expected~, actual~),
-        rounds,
-        counterexamples,
-      )
+      result(Unstable(word~, expected~, actual~))
     error => raise error
   }
 }
