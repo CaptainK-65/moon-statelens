@@ -1,64 +1,51 @@
-# v0.2 engineering work log
+# v0.2 engineering completion
 
-Status: in development, not released. Existing v0.1.0 remains the published release.
+Implemented and published on 2026-10-20. Tracking: Issue #5, merged PR #6.
+See VALIDATION.md for source, registry and artifact evidence.
 
-## Accepted scope
+## Delivered work packages
 
-Independent KV and L* learners; resumable query execution; Wp and composed
-verification; native asynchronous runners; JSONL subprocess and HTTP adapters;
-a real SQLite CLI integration; configuration, fresh compatibility replay,
-versioned reports and reproducible CI evidence.
+- E1: continuation-based query suspension; no restart per query.
+- E2: migrated L* and synchronous compatibility facade onto shared query state.
+- E3: independent KV classification tree and counterexample splitting.
+- E4: lazy Wp, replay, composed verification and stage logs.
+- E5: bounded JSONL process protocol and real SQLite transaction learning.
+- E6: native HTTP actions, explicit abstraction and session handling.
+- E7: strict configuration, v2 reports, evidence-aware CLI exits, fresh replay
+  confirmation and spurious-difference refinement.
+- E8: three-platform source/native CI, release ZIP, public registry installation,
+  four-backend consumer verification, docs and updated application.
 
-## Completed core work (2026-10-20)
+## Regression evidence
 
-- Extracted IO-independent QuerySession. The original synchronous Experiment
-  delegates cache, attempted-call budgets and conflict poisoning to it.
-- Added continuation-based LearningDriver. Each continuation keeps the actual
-  table/tree phase; resuming never reruns the learner from the beginning.
-- L* uses the suspended driver; the synchronous custom Oracle API still works.
-- Added independent KV state classification and counterexample splitting.
-- Added lazy W/Wp verification cursors, replay/random/exhaustive/exact plans,
-  stage logs and ordered strategy chains.
-- Added all 256 binary two-state transition/output targets to learner tests.
-- Compared Wp to independent exact model comparison for all 65,536 pairs of
-  those two-state targets.
-- Local wasm check/test passes: 50 named tests, including existing 200-target
-  corpus and new exhaustive subcorpora. This is not yet an async/platform claim.
+Portable backends: 51 named tests each. Native: 66 including real IO.
+Embedded corpora: 200 generated targets, all 256 binary two-state machines for
+both learners, and all 65,536 ordered pairs for Wp vs independent exact comparison.
 
-## Completed native work (2026-10-20)
+The SQLite reference specification is used after learning, never supplied to the
+learner. The rollback-as-commit mutation is intentionally injected in the adapter.
+Session/HTTP fixtures are controlled examples, not third-party defect reports.
 
-- Added native asynchronous runner with actual suspension, timeout and cancellation.
-- Sync/async runs have identical statistics under the same learner and plan.
-- JSONL supports bounded UTF-8 framing, request IDs, separate bounded stderr,
-  fault detection and protected process reaping even during cleanup cancellation.
-- Added configurable finite HTTP actions, output abstraction and session headers.
-- Real sqlite3 CLI learned as a six-state transaction abstraction with KV + Wp;
-  an independent reference was used only after learning.
-- Ten native runner/adapter tests pass locally on Windows, including real sockets,
-  real processes, invalid frames, failed exits and injected timeouts.
-- Native integration tests require first running moon build --target native and
-  having sqlite3 on PATH. Test fixture paths are compiler output paths.
+Cancellation during cleanup initially prevented reliable process reaping; the
+protected wait fix is covered by hanging-close/timeout regressions. Scheduling
+changes removed duplicate logical cache requests; deterministic evidence was
+regenerated while physical totals in the original reference study stayed equal.
 
-## Remaining gates
+## Published artifacts
 
-- Configuration, native CLI integration, versioned report and fresh replay.
-- Four-backend core tests, Linux native integration CI, publication/consumer tests.
-- Updated application distinguishing implemented features from roadmap.
+- GitHub: https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.2.0
+- Registry: https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.2.0
+- Contracts: native.md and algorithms.md.
+- Reviewer response: review-response-v0.2.md; application: ../APPLICATION.md.
 
-## Configuration integration (2026-10-20)
+## Remaining roadmap, not v0.2 claims
 
-- Strict versioned configurations select learners, verification chains, targets,
-  budgets, abstraction identity and required evidence. Unknown fields are errors.
-- Added native run-config, compare-config and replay-config CLI commands with
-  exit codes 0/1/2/3 and version-2 report envelopes.
-- Comparison freshly replays candidate differences; spurious model differences
-  trigger regression experiments and relearning, or explicit inconclusive.
-- Successful query traces can be exported with explicit size/truncation limits.
-- Core four-backend tests pass locally (50 each); native adds runner/adapter tests.
-- Added reproducible native CLI verification including real SQLite and HTTP,
-  and an L*/KV query-cost study under identical Wp plans.
-- GitHub tracking issue: #5. Native CLI full verification and CI are still running.
+TTT, optimized counterexample processing, nondeterministic/probabilistic/timed
+models, concurrent interleaving inference, unbounded parameter domains and
+cross-version checkpoint recovery. The present async executor operates a
+deterministic resettable finite abstraction sequentially.
 
-Algorithm references remain theoretical/behavioral references, not runtime
-LearnLib/AALpy backends. No source code has been copied from them.
+Original synchronous APIs and v1 model interchange remain available. Native
+consumers explicitly import moonbitlang/async for async main. No external
+LearnLib/AALpy engine is embedded, copied or invoked.
 

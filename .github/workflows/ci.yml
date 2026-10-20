@@ -70,4 +70,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: moon update
+      - name: Prepare real SQLite for published native consumer
+        if: matrix.target == 'native'
+        run: sudo apt-get update
+      - name: Install published consumer target
+        if: matrix.target == 'native'
+        run: sudo apt-get install --yes sqlite3
       - run: moon run tools/verify_published.mbtx -- ${{ matrix.target }}

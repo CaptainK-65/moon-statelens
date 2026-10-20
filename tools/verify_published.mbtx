@@ -8,6 +8,7 @@ import {
 }
 
 ///|
+/// Fresh modules download the PUBLIC 0.2.0 registry package, not the checkout.
 async fn main {
   let args = @env.args()
   let target = match args {
@@ -20,15 +21,34 @@ async fn main {
   }
   let dir = "_build/published-consumer-" + target + "-" + @env.now().to_string()
   @fs.mkdir(dir, recursive=true)
-  let manifest = "name = \"validation/statelens-consumer\"\npreferred_target = \"" +
+  let runtime = if target == "native" {
+    "  \"moonbitlang/async@0.22.5\",\n"
+  } else {
+    ""
+  }
+  @fs.write_file(
+    dir + "/moon.mod",
+    "name = \"validation/statelens-consumer\"\npreferred_target = \"" +
     target +
-    "\"\nimport {\n  \"CaptainK-65/moon-statelens@0.1.0\",\n}\n"
-  @fs.write_file(dir + "/moon.mod", manifest)
+    "\"\nimport {\n  \"CaptainK-65/moon-statelens@0.2.0\",\n" +
+    runtime +
+    "}\n",
+  )
+  let imports = if target == "native" {
+    "  \"CaptainK-65/moon-statelens/runner\",\n" +
+    "  \"CaptainK-65/moon-statelens/adapters/native\" @external,\n" +
+    "  \"moonbitlang/async\",\n"
+  } else {
+    ""
+  }
   @fs.write_file(
     dir + "/moon.pkg",
-    "import {\n  \"CaptainK-65/moon-statelens\" @lens,\n}\npkgtype(kind: \"executable\")\n",
+    "import {\n  \"CaptainK-65/moon-statelens\" @lens,\n" +
+    imports +
+    "}\npkgtype(kind: \"executable\")\n" +
+    (if target == "native" { "supported_targets = \"+native\"\n" } else { "" }),
   )
-  let program =
+  let shared =
     #|///|
     #|fn target(buggy : Bool) -> @lens.System {
     #|  let active = [false]
@@ -40,40 +60,68 @@ async fn main {
     #|}
     #|
     #|///|
-    #|fn main raise {
+    #|fn verify_core() -> Unit raise {
     #|  let alphabet = ["login", "logout", "request"]
-    #|  let experiment = @lens.Experiment::new(target(false), alphabet)
-    #|  let learned = @lens.learn(experiment, @lens.Oracle::w_method(2))
-    #|  guard learned.status is Supported(ConditionalStateBound(2)) else { fail("published learner did not complete") }
-    #|  let model = learned.model.unwrap()
-    #|  assert_eq(model.state_count(), 2)
-    #|  assert_true(@lens.distinguish(model, @lens.decode_model(model.encode())) is None)
+    #|  for algorithm in [@lens.Algorithm::LStar, @lens.Algorithm::KearnsVazirani] {
+    #|    let experiment = @lens.Experiment::new(target(false), alphabet)
+    #|    let learned = @lens.learn_with(experiment, @lens.Oracle::wp_method(2), algorithm)
+    #|    guard learned.status is Supported(ConditionalStateBound(2)) else { fail("published learner did not complete") }
+    #|    let model = learned.model.unwrap()
+    #|    assert_eq(model.state_count(), 2)
+    #|    assert_true(@lens.distinguish(model, @lens.decode_model(model.encode())) is None)
+    #|  }
     #|  let comparison = @lens.compare(@lens.Experiment::new(target(false), alphabet), @lens.Experiment::new(target(true), alphabet), @lens.Oracle::w_method(2), @lens.Oracle::w_method(2))
-    #|  guard comparison.status is ConfirmedDifference(diff) else { fail("published compatibility check did not confirm difference") }
+    #|  guard comparison.status is ConfirmedDifference(diff) else { fail("published comparison did not confirm difference") }
     #|  assert_eq(diff.inputs, ["login", "logout", "request"])
     #|  assert_eq(diff.left_outputs, ["ok", "ok", "denied"])
     #|  assert_eq(diff.right_outputs, ["ok", "ok", "allowed"])
     #|  assert_true(comparison.left_statistics.resets > comparison.left.statistics.resets)
     #|  println("published consumer ok")
     #|}
-  @fs.write_file(dir + "/main.mbt", program + "\n")
-  let update = @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000)
-  update.check()
+  let main = if target == "native" {
+    (
+      #|///|
+      #|async fn main {
+      #|  verify_core()
+      #|  @external.with_sqlite("sqlite3", system => {
+      #|    let experiment = @runner.AsyncExperiment::new(system,
+      #|      ["begin", "put", "delete", "commit", "rollback", "read"])
+      #|    assert_eq(experiment.query(["begin", "put", "rollback", "read"]),
+      #|      ["ok", "ok", "ok", "empty"])
+      #|    assert_eq(experiment.query(["read"], bypass_cache=true), ["empty"])
+      #|  })
+      #|  println("published native adapter ok")
+      #|}
+    )
+  } else {
+    (
+      #|///|
+      #|fn main raise { verify_core() }
+    )
+  }
+  @fs.write_file(dir + "/main.mbt", shared + "\n" + main + "\n")
+  @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000).check()
   let output = @shell.Cmd("moon", ["run", ".", "--target", target], cwd=dir).output(
-    timeout_ms=60000,
-    max_output_bytes=2097152,
+    timeout_ms=120000,
+    max_output_bytes=4194304,
   )
-  output.check()
-  if !output.stdout().contains("published consumer ok") {
+  if output.exit_code() != 0 {
+    fail("published consumer failed: " + output.stderr() + output.stdout())
+  }
+  if !output.stdout().contains("published consumer ok") ||
+    (
+      target == "native" &&
+      !output.stdout().contains("published native adapter ok")
+    ) {
     fail("consumer did not finish")
   }
   let installed = @fs.read_file(
     dir + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
   ).text()
-  if !installed.contains("version = \"0.1.0\"") {
-    fail("unexpected installed package version")
+  if !installed.contains("version = \"0.2.0\"") {
+    fail("unexpected installed version")
   }
   println(
-    "Registry package CaptainK-65/moon-statelens@0.1.0 verified on " + target,
+    "Registry package CaptainK-65/moon-statelens@0.2.0 verified on " + target,
   )
 }

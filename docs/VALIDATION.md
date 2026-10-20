@@ -64,9 +64,31 @@ is tested in [CI 39407101805](https://github.com/CaptainK-65/moon-statelens/acti
 All three source jobs completed successfully, including real SQLite, JSONL,
 HTTP and full native CLI verification on Linux, macOS and Windows.
 
-Registry consumer jobs on that candidate still verify the previously published
-0.1.0. They are NOT evidence that 0.2.0 has been published. New-version registry
-consumer verification is a separate release gate.
+Registry consumer jobs on that source candidate verified the previously published
+0.1.0; they are not used as evidence for the new publication.
+
+## Publication completed
+
+- Published CaptainK-65/moon-statelens@0.2.0 on 2026-10-20. Actual publication
+  returned HTTP 200 and CLI exit 0.
+- Package source commit: 2b915a54bfb3ecc9ab43d089bab01bb61683dcec (PR #6 merge),
+  with a tree identical to source-tested 78bc401.
+- Source CI: [39408430003](https://github.com/CaptainK-65/moon-statelens/actions/runs/39408430003),
+  all three platform/source/native-integration jobs successful.
+- Uploaded ZIP SHA-256:
+  15a635b28e33155a1e21f9972ea102951d95e2d08371d08d1538666528b4cfc2.
+- [GitHub release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.2.0)
+  provides the uploaded ZIP; [Mooncakes](https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.2.0)
+  provides the installable package.
+- Four clean local consumer modules downloaded the actual public 0.2.0 package
+  and passed on wasm, wasm-gc, JS and native. They exercised both learners, Wp,
+  model JSON and legacy compatibility. Native additionally imported the published
+  runner/adapters and executed real SQLite transactions.
+- Published-consumer CI now targets 0.2.0 and includes SQLite for the native case.
+  Current runs are linked from the repository's Actions page.
+- The dry-run service returned HTTP 202 success, but the client exited 1;
+  this known client behavior is retained, not reported as a clean dry-run exit.
+  The extracted ZIP separately passed all-target checking before publication.
 
 Finite testing does not establish universal correctness, global uniqueness,
 arbitrary black-box equivalence or competition acceptance.

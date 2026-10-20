@@ -146,6 +146,34 @@ verification plan; it is not an automatically verified target version/hash.
 
 ## Public API discovery
 
+A separate native consumer needs the async runtime explicitly imported for
+MoonBit's async main entry point. Its moon.mod imports both
+CaptainK-65/moon-statelens@0.2.0 and moonbitlang/async@0.22.5. Its moon.pkg is:
+
+```moonbit
+import {
+  "CaptainK-65/moon-statelens/runner",
+  "CaptainK-65/moon-statelens/adapters/native" @external,
+  "moonbitlang/async",
+}
+pkgtype(kind: "executable")
+supported_targets = "+native"
+```
+
+The published-consumer verification generates and runs such a separate module,
+including a real SQLite query. Example main:
+
+```moonbit
+async fn main {
+  @external.with_sqlite("sqlite3", system => {
+    let experiment = @runner.AsyncExperiment::new(system,
+      ["begin", "put", "delete", "commit", "rollback", "read"])
+    assert_eq(experiment.query(["begin", "put", "rollback", "read"]),
+      ["ok", "ok", "ok", "empty"])
+  })
+}
+```
+
 Use `moon ide doc` in the source tree or inspect generated interfaces:
 - `runner/pkg.generated.mbti`
 - `adapters/native/pkg.generated.mbti`
