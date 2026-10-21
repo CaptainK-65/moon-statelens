@@ -123,10 +123,8 @@ moon fmt --check
 moon info
 ```
 
-## 来源与非重叠说明
+## 来源说明
 
-本项目基于公开自动机学习研究独立实现。[LearnLib](https://learnlib.de/) 与 [AALpy](https://github.com/DES-Lab/AALpy) 是其他语言的相关实现，不是运行时引擎；没有复制其源码，不声称算法全球首创。
-
-2026-10-16 的 Mooncakes／GitHub 查重及近邻职责比较见 [调研记录](docs/ecosystem-audit.md)。已有 MoonBit 状态测试工具需要预先提供模型；本项目新增从交互推导模型的核心算法。未检出同职责实现不等于全网不存在，也不保证赛事审核结果。
+本项目基于公开自动机学习研究独立实现。
 
 [第三方来源](THIRD_PARTY_NOTICES.md) · [贡献说明](CONTRIBUTING.md) · [安全与使用边界](SECURITY.md) · [Apache-2.0](LICENSE)
