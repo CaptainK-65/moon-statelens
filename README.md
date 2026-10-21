@@ -4,7 +4,7 @@
 
 [English](README.en.md) · [Mooncakes](https://mooncakes.io/docs/CaptainK-65/moon-statelens) · [可执行快速开始](README.mbt.md) · [异步与真实组件接入](docs/native.md) · [算法说明](docs/algorithms.md) · [独立核心说明](docs/independent-core.md)
 
-![MoonStateLens: black-box experiments, active learning, inferred models and replayed differences](docs/assets/overview.png)
+![MoonStateLens：光学镜头揭示黑盒中的状态网络。Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
 

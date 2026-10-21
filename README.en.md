@@ -2,7 +2,7 @@
 
 [中文](README.md) · [Tested quick start](README.mbt.md) · [Architecture](docs/architecture.md)
 
-![MoonStateLens overview](docs/assets/overview.png)
+![MoonStateLens: a precision lens reveals a hidden state network. Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.
 
