@@ -26,4 +26,3 @@ Text, verbatim and only these three elements:
 Constraints: the title must remain easily readable when the full banner is displayed at 840 pixels wide. Seamlessly finished rectangular dark background, no white border. Make the artwork itself feel powerful, premium and technically intriguing.
 Avoid: flowchart panels, UI cards, dashboards, charts with tiny labels, additional copy, logos of other brands, human figures, robots, brains, circuit-board wallpaper, crowded HUD overlays, loud rainbow neon, purple-pink gradients, excessive lens flare, illegible decorative text, stock sci-fi clutter.
 ```
-
