@@ -108,6 +108,46 @@ async fn main {
       #|fn main raise { verify_core() }
     )
   }
+  let main = if target == "native" && version != "0.2.0" {
+    let checks =
+      #|  fn configuration(output : String, name : String) -> Json raise {
+      #|    Json::object({
+      #|      "format": Json("moonstatelens.experiment"), "version": Json(1),
+      #|      "identity": Json(name), "abstraction": Json("public-one-state-v1"),
+      #|      "alphabet": Json(["x"]), "learner": Json("kv"),
+      #|      "target": Json::object({ "kind": Json("model"), "model":
+      #|        Json(@lens.Machine::new(["x"], [[{ target: 0, output, }]])) }),
+      #|      "verification": Json::object({ "kind": Json("wp"), "state_bound": Json(1) }),
+      #|      "artifacts": Json::object({ "report": Json(name + ".json") }),
+      #|    })
+      #|  }
+      #|  let left = @integration.Config::from_json(configuration("yes", "published-left"))
+      #|  let right = @integration.Config::from_json(configuration("no", "published-right"))
+      #|  guard left.validate(operation="compare") is { "valid": True, .. } else {
+      #|    fail("published offline validator")
+      #|  }
+      #|  let compared = @integration.compare(left, right)
+      #|  assert_eq(compared.exit_code, 2)
+      #|  assert_eq(@fs.read_file("published-left.json").json(), compared.report)
+      #|  assert_eq(@fs.read_file("published-right.json").json(), compared.report)
+      #|  let replay = @integration.Config::from_json(configuration("yes", "published-replay"))
+      #|  let replayed = @integration.replay(replay, [["x"]])
+      #|  assert_eq(@fs.read_file("published-replay.json").json(), replayed)
+      #|  println("published configuration and artifact API ok")
+    main.replace(old="  verify_core()", new="  verify_core()\n" + checks)
+  } else {
+    main
+  }
+  let imports = if target == "native" && version != "0.2.0" {
+    "import {\n  \"CaptainK-65/moon-statelens/integration\",\n  \"moonbitlang/async/fs\",\n}\n"
+  } else {
+    ""
+  }
+  // Add new-package imports to moon.pkg, never substitute checkout sources.
+  if !imports.is_empty() {
+    let package = @fs.read_file(dir + "/moon.pkg").text()
+    @fs.write_file(dir + "/moon.pkg", imports + package)
+  }
   @fs.write_file(dir + "/main.mbt", shared + "\n" + main + "\n")
   @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000).check()
   let output = @shell.Cmd("moon", ["run", ".", "--target", target], cwd=dir).output(
@@ -123,6 +163,11 @@ async fn main {
       !output.stdout().contains("published native adapter ok")
     ) {
     fail("consumer did not finish")
+  }
+  if target == "native" &&
+    version != "0.2.0" &&
+    !output.stdout().contains("published configuration and artifact API ok") {
+    fail("new public configuration/artifact API did not finish")
   }
   let installed = @fs.read_file(
     dir + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
