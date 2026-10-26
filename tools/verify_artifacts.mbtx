@@ -144,5 +144,21 @@ async fn main {
       code=1,
     ),
   )
+  let race = config(model, "race")
+  guard race is Object(race_config) else { fail("configuration") }
+  let race_path = dir + "/race-report.json"
+  race_config["target"] = Json::object({
+    "kind": Json("jsonl"),
+    "program": Json("_build/native/debug/build/cmd/fixture/fixture.exe"),
+    "args": Json(["occupy-artifact", race_path]),
+  })
+  race_config["artifacts"] = Json::object({ "report": Json(race_path) })
+  save("race-config.json", race)
+  let failed_write = invoke(["run-config", dir + "/race-config.json"], code=1)
+  guard failed_write is { "kind": "execution-error", .. } else {
+    fail("an actual write failure became an accepted result")
+  }
+  assert_eq(@fs.read_file(race_path).text(), "created-by-controlled-target")
+  save("write-failure.json", failed_write)
   println("Artifact CLI verification passed; evidence: " + dir)
 }
