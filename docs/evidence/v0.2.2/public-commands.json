@@ -1,0 +1,56 @@
+[
+  {
+    "name": "wasm",
+    "arguments": [
+      "run",
+      "tools/verify_published.mbtx",
+      "--",
+      "wasm",
+      "0.2.2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "wasm-gc",
+    "arguments": [
+      "run",
+      "tools/verify_published.mbtx",
+      "--",
+      "wasm-gc",
+      "0.2.2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "js",
+    "arguments": [
+      "run",
+      "tools/verify_published.mbtx",
+      "--",
+      "js",
+      "0.2.2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "native",
+    "arguments": [
+      "run",
+      "tools/verify_published.mbtx",
+      "--",
+      "native",
+      "0.2.2"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "standalone",
+    "arguments": [
+      "run",
+      "tools/verify_consumer.mbtx",
+      "--",
+      "0.2.2"
+    ],
+    "exit_code": 0
+  }
+]

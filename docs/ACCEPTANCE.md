@@ -54,7 +54,7 @@ moon run cmd/statelens --target native -- compare-config configs/sqlite-kv.json 
 
 ## 验证正式发布包
 
-正式 0.2.2 发布后，从仓库根目录分别执行：
+0.2.2 已正式发布，从仓库根目录分别执行：
 
 ```sh
 moon run tools/verify_published.mbtx -- wasm 0.2.2

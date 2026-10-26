@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# Retain captured tool output, including its original line endings and EOF.
+docs/evidence/**/*.log -text -whitespace

@@ -1,0 +1,7 @@
+{
+  "source_commit": "b925110a028148fa5e306317e27a0c32af3d3453",
+  "source_ci_run": "40261462438",
+  "public_version": "0.2.2",
+  "selection": "whitelisted actual clean source CI and fresh public-download evidence",
+  "scope": "public controlled fixtures; real SQLite with deliberately mutated adapter, not a SQLite defect claim"
+}

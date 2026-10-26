@@ -1,0 +1,8 @@
+# Standalone SQLite gate
+
+- Public package: CaptainK-65/moon-statelens@0.2.2
+- Normal comparison exited 0.
+- Controlled mutation exited 2 and saved fresh replay differences.
+- This does not allege a SQLite defect.
+- Evidence: _build/standalone-consumer-1792983452747
+

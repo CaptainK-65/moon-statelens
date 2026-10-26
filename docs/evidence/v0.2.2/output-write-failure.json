@@ -1,0 +1,6 @@
+{
+  "format": "moonstatelens.failure",
+  "version": 2,
+  "kind": "execution-error",
+  "message": "IO or runtime failure; check component availability and configuration"
+}

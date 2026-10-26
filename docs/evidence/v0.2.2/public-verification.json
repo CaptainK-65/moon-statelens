@@ -1,0 +1,62 @@
+{
+  "public_version": "0.2.2",
+  "verifier_checkout_commit": "b925110a028148fa5e306317e27a0c32af3d3453",
+  "scope": "fresh modules downloaded the public package; native exercises new configuration/artifact APIs and real SQLite; standalone confirms fresh controlled replay",
+  "commands": [
+    {
+      "name": "wasm",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm",
+        "0.2.2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "wasm-gc",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm-gc",
+        "0.2.2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "js",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "js",
+        "0.2.2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "native",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "native",
+        "0.2.2"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "standalone",
+      "arguments": [
+        "run",
+        "tools/verify_consumer.mbtx",
+        "--",
+        "0.2.2"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "complete": true
+}

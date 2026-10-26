@@ -1,0 +1,39 @@
+{
+  "format": "moonstatelens.validation",
+  "version": 1,
+  "valid": true,
+  "operation": "compare",
+  "configuration": {
+    "identity": "left",
+    "abstraction": "session-v1",
+    "target_kind": "model",
+    "learner": "kv",
+    "alphabet": [
+      "login",
+      "logout",
+      "request"
+    ],
+    "budgets": {
+      "queries": 100000,
+      "steps": 2000000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "wp",
+      "state_bound": 2
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "scope": "offline structure and semantics; no target IO or filesystem permission checks"
+}
