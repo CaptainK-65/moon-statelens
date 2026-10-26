@@ -8,16 +8,23 @@ import {
 }
 
 ///|
-/// Fresh modules download the PUBLIC 0.2.0 registry package, not the checkout.
+/// Fresh modules download the explicitly selected PUBLIC registry package, not the checkout.
 async fn main {
   let args = @env.args()
-  let target = match args {
-    [_] => "wasm"
-    [_, target] => target
-    _ => fail("expected optional backend")
+  let (target, version) = match args {
+    [_, target, version] => (target, version)
+    _ => fail("expected BACKEND VERSION, e.g. wasm 0.2.1")
   }
   if !["wasm", "wasm-gc", "js", "native"].contains(target) {
     fail("unsupported backend")
+  }
+  if version.is_empty() ||
+    version.contains("/") ||
+    version.contains("\\") ||
+    version.contains("\"") ||
+    version.contains("\n") ||
+    version.contains("\r") {
+    fail("invalid registry version")
   }
   let dir = "_build/published-consumer-" + target + "-" + @env.now().to_string()
   @fs.mkdir(dir, recursive=true)
@@ -30,7 +37,9 @@ async fn main {
     dir + "/moon.mod",
     "name = \"validation/statelens-consumer\"\npreferred_target = \"" +
     target +
-    "\"\nimport {\n  \"CaptainK-65/moon-statelens@0.2.0\",\n" +
+    "\"\nimport {\n  \"CaptainK-65/moon-statelens@" +
+    version +
+    "\",\n" +
     runtime +
     "}\n",
   )
@@ -118,10 +127,13 @@ async fn main {
   let installed = @fs.read_file(
     dir + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
   ).text()
-  if !installed.contains("version = \"0.2.0\"") {
+  if !installed.contains("version = \"" + version + "\"") {
     fail("unexpected installed version")
   }
   println(
-    "Registry package CaptainK-65/moon-statelens@0.2.0 verified on " + target,
+    "Registry package CaptainK-65/moon-statelens@" +
+    version +
+    " verified on " +
+    target,
   )
 }
