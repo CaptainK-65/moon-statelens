@@ -29,8 +29,8 @@ When experiment scheduling or counters change, run moon run tools/update_evidenc
 New target adapters must document reset semantics, finite input/output abstractions, state-bound justification and cleanup. Keep actual third-party components distinct from controlled fixtures. Preserve upstream licenses and source notices.
 
 Public-release verification requires an explicit version:
-`moon run tools/verify_published.mbtx -- native 0.2.1` and
-`moon run tools/verify_consumer.mbtx -- 0.2.1`.
+`moon run tools/verify_published.mbtx -- native 0.2.2` and
+`moon run tools/verify_consumer.mbtx -- 0.2.2`.
 Before publication, CI may select the previous public version; report that exact
 version and do not use it as evidence for an unpublished candidate.
 Format the nested consumer from its own module directory with `moon fmt`.

@@ -11,7 +11,7 @@
 
 name = "CaptainK-65/moon-statelens"
 
-version = "0.2.1"
+version = "0.2.2"
 
 readme = "README.md"
 

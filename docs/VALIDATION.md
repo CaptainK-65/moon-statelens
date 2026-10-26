@@ -1,10 +1,10 @@
-# Validation record — 0.2.1
+# Validation record — 0.2.2
 
 Date: 2026-10-26. Frozen candidate and publication evidence are recorded below
 as they complete; this file does not claim a pending release is already public.
 
 Historical records remain available:
-[0.1.0](VALIDATION-v0.1.md), [0.2.0](VALIDATION-v0.2.0.md).
+[0.1.0](VALIDATION-v0.1.md), [0.2.0](VALIDATION-v0.2.0.md), [0.2.1](VALIDATION-v0.2.1.md).
 
 ## Verified during implementation
 
@@ -14,18 +14,18 @@ Historical records remain available:
 - Native total is now 71; portable tests remain 51 per backend.
 - CLI verification passed offline validation, comparison/replay outputs, private-setting omission, evidence-aware exits and overwrite rejection.
 - The unified source acceptance command completed during development. Final commit evidence must come from a clean, unchanged checkout or CI, rather than that moving development tree.
-- Explicit public-version verification downloaded and verified 0.2.0 on wasm.
-  This is prior-release evidence, not evidence for public 0.2.1.
+- The corrected native verifier downloaded public 0.2.1 and exercised offline validation plus comparison/replay artifacts successfully. The standalone public 0.2.1 SQLite gate also passed exits 0/2 and fresh replays.
+- The generated duplicate-import defect and the superseded 0.2.1 upload are documented in the historical record. Candidate CI now uses public 0.2.1 so it exercises the corrected native branch before 0.2.2 publication.
 
 ## Commands for the frozen candidate
 
 ```sh
 moon run tools/verify_acceptance.mbtx
-moon run tools/verify_published.mbtx -- wasm 0.2.1
-moon run tools/verify_published.mbtx -- wasm-gc 0.2.1
-moon run tools/verify_published.mbtx -- js 0.2.1
-moon run tools/verify_published.mbtx -- native 0.2.1
-moon run tools/verify_consumer.mbtx -- 0.2.1
+moon run tools/verify_published.mbtx -- wasm 0.2.2
+moon run tools/verify_published.mbtx -- wasm-gc 0.2.2
+moon run tools/verify_published.mbtx -- js 0.2.2
+moon run tools/verify_published.mbtx -- native 0.2.2
+moon run tools/verify_consumer.mbtx -- 0.2.2
 ```
 
 Source CI pins compiler/core 0.10.15+943464bfa, moon 0.1.20261012, explicit OS
