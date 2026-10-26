@@ -2,6 +2,8 @@
 
 [中文](README.md) · [Tested quick start](README.mbt.md) · [Architecture](docs/architecture.md)
 
+[Acceptance and proposal mapping](docs/ACCEPTANCE.md) · [Standalone consumer and CI](consumers/sqlite-gate/README.md) · [Maintainer explanation](docs/maintainer-notes.md)
+
 ![MoonStateLens: a precision lens reveals a hidden state network. Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.
@@ -10,10 +12,17 @@ The root library supports wasm, wasm-gc, JS and native. Version 0.2 adds indepen
 
 ## Run
 
+For the portable core, run `moon update`, `moon test --target wasm` and
+`moon run examples/session`; SQLite is not needed. Follow the
+[tested library API example](README.mbt.md) to embed the package.
+
+For native integration, install SQLite and build the fixture executables first:
+
 ```sh
 moon update
 sqlite3 --version
 moon build --target native --deny-warn
+moon run cmd/statelens --target native -- validate-config configs/sqlite-kv.json
 moon test --target all --deny-warn
 moon run examples/session
 moon run examples/regression
@@ -24,7 +33,23 @@ moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run tools/verify_native.mbtx
 ```
 
-CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.0`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.1`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+
+Version 0.2.1 adds offline target validation and persisted comparison/replay
+evidence. `validate-config CONFIG [run|compare|replay]` checks structure and
+operation semantics without starting targets or contacting servers. It does not
+prove availability, filesystem permissions, reset reliability or state bounds.
+Run `moon run tools/verify_acceptance.mbtx` from the repository root for source
+acceptance. This saves actual environment, command exits, logs and summaries;
+verification of an explicitly selected public package version is separate.
+
+Configuration commands use exits 0 (evidence policy met), 1 (execution error),
+2 (freshly confirmed difference), 3 (insufficient/unstable evidence). Comparison
+reports are common to both sides; configured models/DOT/traces belong to their
+side. Replay supports report/traces only. Outputs use exclusive creation, need
+existing parent directories, and must have distinct paths. Failed writes are
+execution failures, and multiple output files are not an atomic transaction.
+See the full [native configuration and artifact contract](docs/native.md).
 
 ## Independent core
 
@@ -47,6 +72,11 @@ Observed conflicts invalidate the session. Cache bypass and periodic checks prov
 ## Validation
 
 The suite includes 200 generated targets, delayed distinguishing suffixes, independent reverse-pair/BFS cross-checks, mutation witnesses, real-library integration, replay and resource boundaries. CI checks all four library backends on Linux, Windows and macOS, plus the native CLI.
+
+The portable suite has 51 named tests per backend; native has 71 after five
+0.2.1 integration regressions. Generated corpora are cases inside named tests,
+not tens of thousands of individually named tests. Actual frozen-commit CI and
+publication results are linked in the [validation record](docs/VALIDATION.md).
 
 `benchmark` emits a deterministic [query-cost reference study](docs/evidence/query-study.json). Active costs include learning and W-method testing; exhaustive validation receives the final model. It is not a like-for-like learner speedup claim.
 

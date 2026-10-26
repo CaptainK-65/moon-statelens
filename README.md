@@ -4,6 +4,8 @@
 
 [English](README.en.md) · [Mooncakes](https://mooncakes.io/docs/CaptainK-65/moon-statelens) · [可执行快速开始](README.mbt.md) · [异步与真实组件接入](docs/native.md) · [算法说明](docs/algorithms.md) · [独立核心说明](docs/independent-core.md)
 
+[验收入口与功能对应表](docs/ACCEPTANCE.md) · [独立项目接入与 CI 范例](consumers/sqlite-gate/README.md) · [维护者原理说明](docs/maintainer-notes.md)
+
 ![MoonStateLens：光学镜头揭示黑盒中的状态网络。Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
@@ -12,10 +14,20 @@ MoonStateLens 是纯 MoonBit 编写的主动 Mealy 自动机学习内核。调�
 
 v0.2 提供 L* 与 KV 两种学习器、W/Wp 验证及策略链。核心库支持 wasm、wasm-gc、JS、native；native 执行器接入异步 HTTP、JSONL 子进程和真实 SQLite CLI，保留原同步接口。
 
+v0.2.1 补齐离线配置检查、比较／回放产物导出与统一验收命令。首次使用可按目标选择：
+
+| 目标 | 入口与预期 |
+| --- | --- |
+| 先看模型学习，不安装 SQLite | `moon update` 后执行 `moon run examples/session`，输出从接口交互学得的会话模型 |
+| 在自己的 MoonBit 项目使用核心库 | [可执行 API 示例](README.mbt.md)，便携核心测试使用 `moon test --target wasm` |
+| 学习真实 SQLite 或接入进程／HTTP | 先安装 SQLite 并构建 native，按下方命令及 [完整说明](docs/native.md) 操作 |
+| 复现最终源码验收 | `moon run tools/verify_acceptance.mbtx`，实际运行检查、构建、测试和演示并保存日志 |
+
 ```sh
 moon update
 sqlite3 --version
 moon build --target native --deny-warn
+moon run cmd/statelens --target native -- validate-config configs/sqlite-kv.json
 moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run cmd/statelens --target native -- run-config configs/session-jsonl.json
 moon run tools/verify_native.mbtx
@@ -58,7 +70,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.2.0
+moon add CaptainK-65/moon-statelens@0.2.1
 ```
 
 消费包中加入：
@@ -109,6 +121,8 @@ moon run cmd/statelens --target native -- benchmark
 ```
 
 `learn MODEL.json` 用模型包装出的黑盒进行可重复实验；真实组件可使用 `run-config`、`compare-config`、`replay-config` 或嵌入式 API。旧命令退出码 0 表示有效报告，仍须检查状态。新配置命令按证据要求返回：0 满足条件、1 执行错误、2 真实确认差异、3 证据不足或不稳定。导出拒绝覆盖已有文件。
+
+`validate-config CONFIG.json [run|compare|replay]` 在不启动目标、不发 HTTP 请求的情况下检查配置；它不验证目标可用性、重置可靠性或状态上界。学习、比较分别导出各自报告与模型；比较的模型／轨迹按配置所属一侧保存。回放只支持报告和轨迹，配置模型／DOT 会提前报错。各产物目的路径须唯一且父目录已存在，具体规则见 [产物约定](docs/native.md#artifacts-and-reports)。
 
 ## 验证与成本证据
 

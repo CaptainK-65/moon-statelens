@@ -12,3 +12,6 @@
 - W-method claims require a complete minimal reachable hypothesis, a valid implementation state upper bound, complete deterministic resettable target, matching alphabet, and an entirely executed test suite.
 - Differences between inferred models require fresh replay against the actual targets before being reported as implementation differences.
 - Target exceptions are propagated, cleanup is attempted, and incomplete queries must not become cached successful traces.
+- Configurations are parsed into typed targets before target IO. Offline validation checks declared structure and operation semantics, not target availability or behavioral premises.
+- Run/comparison/replay artifact settings are either honored or explicitly rejected. Comparison artifacts belong to their configured side; report files contain the common comparison result. Replay never pretends to learn a model.
+- Artifact files use exclusive creation. A write failure is an execution failure, even when a valid model or confirmed difference was computed first. Multiple artifact writes are not an atomic filesystem transaction.

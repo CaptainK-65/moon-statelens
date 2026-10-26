@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.2.1
+
+- Parse complete typed target configurations before component IO and expose offline validate-config.
+- Persist comparison reports, per-side models/DOT/traces and replay reports/traces; reject unsupported replay outputs.
+- Preflight output parents, normalized aliases and cross-side destinations; preserve exclusive creation and propagate write errors.
+- Add five integration regressions and end-to-end CLI artifact verification.
+- Add a standalone public-package SQLite compatibility gate, saved counterexamples and copyable CI workflow.
+- Add a unified source acceptance command with actual environment, command exits, logs and CI summaries.
+- Pin CI runner labels/action revisions, update artifact runtime and select the public version explicitly.
+- Clarify usage, generated-material provenance and the mapping from proposal to acceptance evidence.
+
 ## 0.2.0
 
 - Add independent classification-tree KV and resumable L* learning continuations.
