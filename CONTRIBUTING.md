@@ -2,7 +2,8 @@
 
 Use MoonBit 0.10.15 / moon 0.1.20261012 or a compatible newer stable toolchain. Automation belongs in .mbtx files; the root package must remain independent of third-party inference engines.
 
-The primary source acceptance entry point is `moon run tools/verify_acceptance.mbtx`.
+After an initial `moon update` to bootstrap the registry on a fresh toolchain,
+the primary source acceptance entry point is `moon run tools/verify_acceptance.mbtx`.
 It records environment, commit, initial working-tree state, command exits and logs.
 Run it from a clean, unchanged checkout when recording final release evidence.
 It exercises public controlled fixtures and writes under _build; use isolated

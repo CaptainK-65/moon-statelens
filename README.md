@@ -21,7 +21,7 @@ v0.2.1 补齐离线配置检查、比较／回放产物导出与统一验收命�
 | 先看模型学习，不安装 SQLite | `moon update` 后执行 `moon run examples/session`，输出从接口交互学得的会话模型 |
 | 在自己的 MoonBit 项目使用核心库 | [可执行 API 示例](README.mbt.md)，便携核心测试使用 `moon test --target wasm` |
 | 学习真实 SQLite 或接入进程／HTTP | 先安装 SQLite 并构建 native，按下方命令及 [完整说明](docs/native.md) 操作 |
-| 复现最终源码验收 | `moon run tools/verify_acceptance.mbtx`，实际运行检查、构建、测试和演示并保存日志 |
+| 复现最终源码验收 | 首次先 `moon update`，再 `moon run tools/verify_acceptance.mbtx`，实际运行检查、构建、测试和演示并保存日志 |
 
 ```sh
 moon update

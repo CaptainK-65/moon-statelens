@@ -12,6 +12,7 @@
 ```sh
 git clone https://github.com/CaptainK-65/moon-statelens.git
 cd moon-statelens
+moon update
 moon run tools/verify_acceptance.mbtx
 ```
 

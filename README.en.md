@@ -39,7 +39,8 @@ Version 0.2.1 adds offline target validation and persisted comparison/replay
 evidence. `validate-config CONFIG [run|compare|replay]` checks structure and
 operation semantics without starting targets or contacting servers. It does not
 prove availability, filesystem permissions, reset reliability or state bounds.
-Run `moon run tools/verify_acceptance.mbtx` from the repository root for source
+Run `moon update` once to bootstrap a fresh registry, then
+`moon run tools/verify_acceptance.mbtx` from the repository root for source
 acceptance. This saves actual environment, command exits, logs and summaries;
 verification of an explicitly selected public package version is separate.
 

@@ -32,6 +32,8 @@ jobs:
           core-version: 0.10.15+943464bfa
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Bootstrap registry before compiling standalone verification scripts
+        run: moon update
       - name: Refresh Linux package metadata
         if: runner.os == 'Linux'
         run: sudo apt-get update
