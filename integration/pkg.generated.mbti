@@ -47,8 +47,6 @@ pub(all) struct RunResult {
 } derive(@debug.Debug)
 pub fn RunResult::to_repr(Self) -> @debug.Repr
 
-type TargetConfig
-
 // Type aliases
 
 // Traits

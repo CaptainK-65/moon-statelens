@@ -1,6 +1,6 @@
 ///|
 /// Parsed without IO; execution never has to reinterpret unvalidated JSON.
-enum TargetConfig {
+priv enum TargetConfig {
   Model(@lens.Machine)
   Jsonl(String, Array[String], Int32, Int32)
   Sqlite(String, Bool)
