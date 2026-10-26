@@ -40,10 +40,18 @@ async fn main {
       },
     )
   }
-  @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000).check()
-  @shell.Cmd("moon", ["fmt", "--check"], cwd=dir)
-  .output(timeout_ms=60000)
-  .check()
+  for args in [["update"], ["fmt", "--check"]] {
+    let output = @shell.Cmd("moon", args, cwd=dir).output(timeout_ms=60000)
+    if output.exit_code() != 0 {
+      fail(
+        "consumer preparation failed in " +
+        dir +
+        ": " +
+        output.stdout() +
+        output.stderr(),
+      )
+    }
+  }
   for
     (label, args, expected) in [
       ("normal", ["normal-evidence"], 0),

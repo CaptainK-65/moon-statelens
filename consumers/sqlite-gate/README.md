@@ -18,7 +18,9 @@ normally fails a CI step. It deliberately maps ROLLBACK to COMMIT in one adapter
 it does not report a defect in SQLite itself.
 
 The consumer learns the finite single-row transaction abstraction through the
-public integration API, using KV and Wp with a **declared six-state bound**.
+public integration API, using KV and Wp with **declared bounds of six states for
+the normal adapter and four for the controlled mutant**. These are premises for
+the documented finite mappings, not bounds inferred or proven by the tool.
 Both targets use separately launched real SQLite processes. It does not give a
 reference model to either learner. A zero exit is an evidence-policy result,
 not unconditional equivalence of arbitrary SQLite programs.
@@ -26,8 +28,8 @@ not unconditional equivalence of arbitrary SQLite programs.
 Each completed comparison saves:
 
 - comparison.json: evidence, inference results and actual comparison status.
-- counterexample-words.json: confirmed inputs, or a fixed smoke sequence if no
-  difference was found (in that case the filename does not assert a new defect).
+- replay-words.json: confirmed inputs, or a fixed smoke sequence when no difference is found.
+- counterexample-words.json: saved only when a difference was actually confirmed.
 - left-replay.json and right-replay.json: fresh execution of those inputs.
 - SUMMARY.md: readable verdict and stated assumptions.
 
@@ -35,6 +37,11 @@ Exit codes: 0 meets the evidence policy, 1 is execution/configuration/output
 failure, 2 is a freshly confirmed difference, 3 is insufficient evidence.
 Outputs use CreateNew. A failed run can leave partial evidence files; inspect
 its exit code and logs before treating any file as an accepted result.
+
+Wp work can grow exponentially with the gap between the declared bound and the
+hypothesis size. A loose bound may exhaust the run timeout; do not lower a bound
+without an independent justification. The controlled mappings here use the same
+documented 6/4 assumptions as the source integration examples.
 
 Copy [regression.example.yml](regression.example.yml) to
 .github/workflows/regression.yml in the new repository. It runs the ordinary
