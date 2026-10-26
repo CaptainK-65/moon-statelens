@@ -16,6 +16,7 @@ fn usage() -> String {
     #|  run-config CONFIG.json           Learn an actual configured component
     #|  compare-config LEFT.json RIGHT.json  Infer and freshly confirm differences
     #|  replay-config CONFIG.json WORDS.json  Freshly replay arrays of input words
+    #|  validate-config CONFIG.json [run|compare|replay]  Validate without target IO
     #|  --version | --help
     #|
     #|Black-box evidence is conditional or budgeted. Equal learned models are not
@@ -29,6 +30,9 @@ async fn main {
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
     [_, "--version"] => println("0.2.0")
+    [_, "validate-config", path] => validate_configuration(path, "run")
+    [_, "validate-config", path, operation] =>
+      validate_configuration(path, operation)
     [_, "run-config", path] => configuration_command("run", path, "")
     [_, "compare-config", left, right] =>
       configuration_command("compare", left, right)

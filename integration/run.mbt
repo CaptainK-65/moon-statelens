@@ -22,10 +22,34 @@ fn Config::accepts(self : Config, learning : @lens.LearningResult) -> Bool {
 }
 
 ///|
-async fn Config::preflight_artifacts(self : Config) -> Unit {
+async fn Config::preflight_artifacts(
+  self : Config,
+  seen~ : Array[String] = [],
+) -> Unit {
   for (_, path) in self.artifacts {
     if @fs.exists(path) {
       raise @runner.Configuration("artifact already exists: " + path)
+    }
+    let parsed = @path.Path(path)
+    let parent = parsed.dirname().to_string()
+    if !@fs.exists(parent) || @fs.kind(parent) != @fs.Directory {
+      raise @runner.Configuration(
+        "artifact parent directory does not exist: " + parent,
+      )
+    }
+    let resolved = @path.Path(@fs.realpath(parent))
+      .join(@path.Path(parsed.basename().to_owned()))
+      .to_string()
+    if seen.contains(resolved) {
+      raise @runner.Configuration(
+        "artifact paths alias the same destination: " + path,
+      )
+    }
+    seen.push(resolved)
+    if !@fs.can_write(parent) {
+      raise @runner.Configuration(
+        "artifact parent directory is not writable: " + parent,
+      )
     }
   }
 }
@@ -61,6 +85,7 @@ async fn Config::write_artifacts(
 /// Execute and judge according to the requested evidence scope. Transport
 /// failures raise; completed-but-insufficient evidence returns exit code 3.
 pub async fn run(config : Config) -> RunResult {
+  ignore(config.validate())
   config.preflight_artifacts()
   @async.with_timeout(
     config.budgets.run_timeout_ms,
@@ -91,6 +116,8 @@ pub async fn run(config : Config) -> RunResult {
 ///|
 /// Freshly replay arbitrary saved input sequences on the configured real target.
 pub async fn replay(config : Config, words : Array[Array[String]]) -> Json {
+  ignore(config.validate(operation="replay"))
+  config.preflight_artifacts()
   if words.length() > 100000 {
     raise @runner.Configuration("too many replay words")
   }
@@ -107,13 +134,15 @@ pub async fn replay(config : Config, words : Array[Array[String]]) -> Json {
             Json::object({ "inputs": Json(inputs), "outputs": Json(outputs) }),
           )
         }
-        Json::object({
+        let report = Json::object({
           "format": Json("moonstatelens.replay"),
           "version": Json(2),
           "configuration": config.manifest(),
           "traces": Json(results),
           "statistics": Json(experiment.statistics()),
         })
+        config.write_artifacts(report, None, experiment.traces_json())
+        report
       })
     },
     error=@runner.TimedOut("replay"),
@@ -128,6 +157,8 @@ pub async fn compare(
   right : Config,
   max_refinements~ : Int32 = 4,
 ) -> RunResult {
+  ignore(left.validate(operation="compare"))
+  ignore(right.validate(operation="compare"))
   if left.alphabet != right.alphabet {
     raise @runner.Configuration(
       "comparison alphabets must have identical order",
@@ -139,6 +170,9 @@ pub async fn compare(
   if max_refinements < 0 || max_refinements > 64 {
     raise @runner.Configuration("invalid refinement budget")
   }
+  let destinations = []
+  left.preflight_artifacts(seen=destinations)
+  right.preflight_artifacts(seen=destinations)
   let timeout = if left.budgets.run_timeout_ms < right.budgets.run_timeout_ms {
     left.budgets.run_timeout_ms
   } else {
@@ -157,26 +191,26 @@ pub async fn compare(
           for iteration in 0..<=max_refinements {
             let lr = left.infer(le, lplan)
             let rr = right.infer(re, rplan)
-            fn finish(
+            async fn finish(
               status : @lens.CompatibilityStatus,
               exit_code : Int32,
             ) -> RunResult {
-              {
-                exit_code,
-                report: Json::object({
-                  "format": Json("moonstatelens.comparison"),
-                  "version": Json(2),
-                  "status": Json(status),
-                  "left_configuration": left.manifest(),
-                  "right_configuration": right.manifest(),
-                  "left": Json(lr),
-                  "right": Json(rr),
-                  "left_statistics": Json(le.statistics()),
-                  "right_statistics": Json(re.statistics()),
-                  "refinements": Json(iteration),
-                  "spurious_inputs": Json(regressions),
-                }),
-              }
+              let report = Json::object({
+                "format": Json("moonstatelens.comparison"),
+                "version": Json(2),
+                "status": Json(status),
+                "left_configuration": left.manifest(),
+                "right_configuration": right.manifest(),
+                "left": Json(lr),
+                "right": Json(rr),
+                "left_statistics": Json(le.statistics()),
+                "right_statistics": Json(re.statistics()),
+                "refinements": Json(iteration),
+                "spurious_inputs": Json(regressions),
+              })
+              left.write_artifacts(report, lr.learning.model, le.traces_json())
+              right.write_artifacts(report, rr.learning.model, re.traces_json())
+              { exit_code, report, }
             }
             guard lr.learning.model is Some(lm) && rr.learning.model is Some(rm) else {
               return finish(Inconclusive("missing completed hypothesis"), 3)
