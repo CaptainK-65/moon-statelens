@@ -13,7 +13,7 @@ async fn main {
   let args = @env.args()
   let (target, version) = match args {
     [_, target, version] => (target, version)
-    _ => fail("expected BACKEND VERSION, e.g. wasm 0.2.1")
+    _ => fail("expected BACKEND VERSION, e.g. wasm 0.2.2")
   }
   if !["wasm", "wasm-gc", "js", "native"].contains(target) {
     fail("unsupported backend")
@@ -139,14 +139,17 @@ async fn main {
     main
   }
   let imports = if target == "native" && version != "0.2.0" {
-    "import {\n  \"CaptainK-65/moon-statelens/integration\",\n  \"moonbitlang/async/fs\",\n}\n"
+    "import {\n  \"CaptainK-65/moon-statelens/integration\",\n  \"moonbitlang/async/fs\",\n"
   } else {
     ""
   }
   // Add new-package imports to moon.pkg, never substitute checkout sources.
   if !imports.is_empty() {
-    let package = @fs.read_file(dir + "/moon.pkg").text()
-    @fs.write_file(dir + "/moon.pkg", imports + package)
+    let package_source = @fs.read_file(dir + "/moon.pkg").text()
+    @fs.write_file(
+      dir + "/moon.pkg",
+      package_source.replace(old="import {", new=imports),
+    )
   }
   @fs.write_file(dir + "/main.mbt", shared + "\n" + main + "\n")
   @shell.Cmd("moon", ["update"], cwd=dir).output(timeout_ms=60000).check()

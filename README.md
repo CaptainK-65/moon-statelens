@@ -14,7 +14,7 @@ MoonStateLens 是纯 MoonBit 编写的主动 Mealy 自动机学习内核。调�
 
 v0.2 提供 L* 与 KV 两种学习器、W/Wp 验证及策略链。核心库支持 wasm、wasm-gc、JS、native；native 执行器接入异步 HTTP、JSONL 子进程和真实 SQLite CLI，保留原同步接口。
 
-v0.2.1 补齐离线配置检查、比较／回放产物导出与统一验收命令。首次使用可按目标选择：
+v0.2.2 补齐离线配置检查、比较／回放产物导出与统一验收命令。首次使用可按目标选择：
 
 | 目标 | 入口与预期 |
 | --- | --- |
@@ -70,7 +70,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.2.1
+moon add CaptainK-65/moon-statelens@0.2.2
 ```
 
 消费包中加入：

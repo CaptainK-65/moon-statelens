@@ -4,7 +4,7 @@ This is a separate MoonBit module. Copy this directory into your own repository;
 it imports the public Mooncakes package and does not import this checkout by path.
 
 Prerequisites: the documented MoonBit toolchain and sqlite3 on PATH. Run these
-commands **inside this directory** after version 0.2.1 has been published:
+commands **inside this directory** after version 0.2.2 has been published:
 
 ```sh
 moon update
@@ -52,7 +52,7 @@ From the source repository root, maintainers can verify these exact committed
 source files against an **explicit public version**:
 
 ```sh
-moon run tools/verify_consumer.mbtx -- 0.2.1
+moon run tools/verify_consumer.mbtx -- 0.2.2
 ```
 
 The verifier copies the example to a fresh temporary module, selects that public

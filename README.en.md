@@ -33,9 +33,9 @@ moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run tools/verify_native.mbtx
 ```
 
-CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.1`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.2`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
 
-Version 0.2.1 adds offline target validation and persisted comparison/replay
+Version 0.2.2 adds offline target validation and persisted comparison/replay
 evidence. `validate-config CONFIG [run|compare|replay]` checks structure and
 operation semantics without starting targets or contacting servers. It does not
 prove availability, filesystem permissions, reset reliability or state bounds.
@@ -75,7 +75,7 @@ Observed conflicts invalidate the session. Cache bypass and periodic checks prov
 The suite includes 200 generated targets, delayed distinguishing suffixes, independent reverse-pair/BFS cross-checks, mutation witnesses, real-library integration, replay and resource boundaries. CI checks all four library backends on Linux, Windows and macOS, plus the native CLI.
 
 The portable suite has 51 named tests per backend; native has 71 after five
-0.2.1 integration regressions. Generated corpora are cases inside named tests,
+0.2.2 integration regressions. Generated corpora are cases inside named tests,
 not tens of thousands of individually named tests. Actual frozen-commit CI and
 publication results are linked in the [validation record](docs/VALIDATION.md).
 

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.2
+
+- Fix duplicate import blocks in the generated public native consumer configuration.
+- Exercise the fixed post-0.2.0 validation/artifact branch against public 0.2.1 before publishing this patch.
+- Ship the corrected verification tools and point installation examples at the fully verified patch.
+
 ## 0.2.1
 
 - Parse complete typed target configurations before component IO and expose offline validate-config.
