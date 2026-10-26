@@ -1,0 +1,164 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn invoke(args : Array[String], code~ : Int32 = 0) -> Json {
+  let output = @shell.Cmd(
+    "moon",
+    ["run", "cmd/statelens", "--target", "native", "--"] + args,
+  ).output(timeout_ms=60000, max_output_bytes=8388608)
+  if output.exit_code() != code {
+    fail(
+      "unexpected CLI exit for " +
+      args[0] +
+      ": " +
+      output.stderr() +
+      output.stdout(),
+    )
+  }
+  @json.parse(output.stdout())
+}
+
+///|
+async fn main {
+  let dir = "_build/artifact-evidence/run-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  async fn save(name : String, value : Json) {
+    @fs.write_file(dir + "/" + name, value.stringify(indent=2) + "\n")
+  }
+  let model = @fs.read_file("fixtures/session.json").json()
+  let model2 = @fs.read_file("fixtures/session-buggy.json").json()
+  fn config(target : Json, prefix : String) {
+    Json::object({
+      "format": Json("moonstatelens.experiment"),
+      "version": Json(1),
+      "identity": Json(prefix),
+      "abstraction": Json("session-v1"),
+      "alphabet": Json(["login", "logout", "request"]),
+      "learner": Json("kv"),
+      "target": Json::object({ "kind": Json("model"), "model": target }),
+      "verification": Json::object({
+        "kind": Json("wp"),
+        "state_bound": Json(2),
+      }),
+      "artifacts": Json::object({
+        "report": Json(dir + "/" + prefix + "-report.json"),
+        "model": Json(dir + "/" + prefix + "-model.json"),
+        "dot": Json(dir + "/" + prefix + ".dot"),
+        "traces": Json(dir + "/" + prefix + "-traces.json"),
+      }),
+    })
+  }
+  let left = config(model, "left")
+  let right = config(model2, "right")
+  save("left-config.json", left)
+  save("right-config.json", right)
+  let validated = invoke([
+    "validate-config",
+    dir + "/left-config.json",
+    "compare",
+  ])
+  guard validated is { "valid": True, .. } else { fail("validation report") }
+  save("validation.json", validated)
+  let compared = invoke(
+    ["compare-config", dir + "/left-config.json", dir + "/right-config.json"],
+    code=2,
+  )
+  assert_eq(@fs.read_file(dir + "/left-report.json").json(), compared)
+  assert_eq(@fs.read_file(dir + "/right-report.json").json(), compared)
+  guard compared
+    is {
+      "status": {
+        "kind": "confirmed-difference",
+        "difference": { "inputs": Array(inputs), .. },
+        ..
+      },
+      ..
+    } else {
+    fail("fresh difference")
+  }
+  save("words.json", Json::array([Json::array(inputs.copy())]))
+  let replay = config(model, "replay")
+  guard replay is Object(object) else { fail("configuration") }
+  object["artifacts"] = Json::object({
+    "report": Json(dir + "/replay-report.json"),
+    "traces": Json(dir + "/replay-traces.json"),
+  })
+  save("replay-config.json", replay)
+  let replayed = invoke([
+    "replay-config",
+    dir + "/replay-config.json",
+    dir + "/words.json",
+  ])
+  assert_eq(@fs.read_file(dir + "/replay-report.json").json(), replayed)
+  let before = @fs.read_file(dir + "/left-report.json").text()
+  let rejected = invoke(
+    ["compare-config", dir + "/left-config.json", dir + "/right-config.json"],
+    code=1,
+  )
+  guard rejected is { "kind": "configuration-error", .. } else {
+    fail("overwrite error")
+  }
+  assert_eq(@fs.read_file(dir + "/left-report.json").text(), before)
+  object["target"] = Json::object({
+    "kind": Json("jsonl"),
+    "program": Json("NONEXISTENT-no-offline-execution"),
+    "args": Json(["private-argument-not-for-output"]),
+  })
+  save("offline-config.json", replay)
+  let offline = invoke([
+    "validate-config",
+    dir + "/offline-config.json",
+    "replay",
+  ])
+  assert_true(!offline.stringify().contains("private-argument-not-for-output"))
+  assert_true(!offline.stringify().contains("NONEXISTENT"))
+  object["target"] = Json::object({
+    "kind": Json("jsonl"),
+    "program": Json("missing"),
+    "args": Json([42]),
+  })
+  save("invalid-config.json", replay)
+  let invalid = invoke(
+    ["validate-config", dir + "/invalid-config.json"],
+    code=1,
+  )
+  guard invalid
+    is { "kind": "configuration-error", "message": String(message), .. } &&
+    message.contains("args") else {
+    fail("target field diagnostic")
+  }
+  object["target"] = Json::object({ "kind": Json("model"), "model": model })
+  object["artifacts"] = Json::object({ "dot": Json(dir + "/unsupported.dot") })
+  save("unsupported-config.json", replay)
+  ignore(
+    invoke(
+      ["replay-config", dir + "/unsupported-config.json", dir + "/words.json"],
+      code=1,
+    ),
+  )
+  let race = config(model, "race")
+  guard race is Object(race_config) else { fail("configuration") }
+  let race_path = dir + "/race-report.json"
+  race_config["target"] = Json::object({
+    "kind": Json("jsonl"),
+    "program": Json("_build/native/debug/build/cmd/fixture/fixture.exe"),
+    "args": Json(["occupy-artifact", race_path]),
+  })
+  race_config["artifacts"] = Json::object({ "report": Json(race_path) })
+  save("race-config.json", race)
+  let failed_write = invoke(["run-config", dir + "/race-config.json"], code=1)
+  guard failed_write is { "kind": "execution-error", .. } else {
+    fail("an actual write failure became an accepted result")
+  }
+  assert_eq(@fs.read_file(race_path).text(), "created-by-controlled-target")
+  save("write-failure.json", failed_write)
+  println("Artifact CLI verification passed; evidence: " + dir)
+}

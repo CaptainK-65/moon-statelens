@@ -1,109 +1,32 @@
 ///|
-fn parse_http_action(value : Json) -> @external.HttpAction raise {
-  let object = fields(value, [
-    "path", "verb", "body", "output_field", "expect_status",
-  ])
-  let path = text(object, "path")
-  let verb = text(object, "verb", default="POST")
-  if !path.has_prefix("/") ||
-    !["GET", "POST", "PUT", "DELETE", "PATCH"].contains(verb) {
-    raise @runner.Configuration("invalid HTTP action path or verb")
-  }
-  let status = integer(object, "expect_status", 200, max=599)
-  if status > 0 && status < 100 {
-    raise @runner.Configuration("invalid HTTP status")
-  }
-  {
-    path,
-    verb,
-    body: object.get("body").unwrap_or(Json::null()),
-    output_field: text(object, "output_field", default="output"),
-    expect_status: status,
-  }
-}
-
-///|
 async fn[T] Config::with_target(
   self : Config,
   action : async (@runner.AsyncSystem) -> T,
 ) -> T {
-  match self.kind {
-    "jsonl" => {
-      let program = text(self.target, "program")
-      let args = array_strings(
-        self.target.get("args").unwrap_or(Json::array([])),
-      )
+  match self.target {
+    Jsonl(program, args, frame, stderr) =>
       @external.with_jsonl(
         program,
         args,
         action,
-        max_frame_bytes=integer(
-          self.target,
-          "max_frame_bytes",
-          1048576,
-          min=64,
-          max=16777216,
-        ),
-        max_stderr_bytes=integer(
-          self.target,
-          "max_stderr_bytes",
-          65536,
-          max=16777216,
+        max_frame_bytes=frame,
+        max_stderr_bytes=stderr,
+      )
+    Sqlite(program, mutant) =>
+      @external.with_sqlite(program, action, rollback_as_commit=mutant)
+    Http(url, reset, actions, close, field, header, limit) =>
+      action(
+        @external.http_system(
+          url,
+          reset,
+          actions,
+          close,
+          session_field=field,
+          session_header=header,
+          max_response_bytes=limit,
         ),
       )
-    }
-    "sqlite" => {
-      let mutant = match self.target.get("rollback_as_commit") {
-        None | Some(False) => false
-        Some(True) => true
-        _ => raise @runner.Configuration("expected boolean rollback_as_commit")
-      }
-      @external.with_sqlite(
-        text(self.target, "program", default="sqlite3"),
-        action,
-        rollback_as_commit=mutant,
-      )
-    }
-    "http" => {
-      guard required(self.target, "actions") is Object(entries) else {
-        raise @runner.Configuration("HTTP actions must be an object")
-      }
-      let mappings = Map([])
-      for (input, value) in entries {
-        if !self.alphabet.contains(input) {
-          raise @runner.Configuration("HTTP action outside alphabet")
-        }
-        mappings[input] = parse_http_action(value)
-      }
-      if mappings.length() != self.alphabet.length() {
-        raise @runner.Configuration("HTTP action missing from alphabet")
-      }
-      let system = @external.http_system(
-        text(self.target, "base_url"),
-        parse_http_action(required(self.target, "reset")),
-        mappings,
-        parse_http_action(required(self.target, "close")),
-        session_field=text(self.target, "session_field"),
-        session_header=text(
-          self.target,
-          "session_header",
-          default="X-MoonStateLens-Session",
-        ),
-        max_response_bytes=integer(
-          self.target,
-          "max_response_bytes",
-          1048576,
-          min=1,
-          max=16777216,
-        ),
-      )
-      action(system)
-    }
-    "model" => {
-      let model = @lens.Machine::from_json(required(self.target, "model"))
-      if model.alphabet() != self.alphabet {
-        raise @runner.Configuration("model alphabet order mismatch")
-      }
+    Model(model) => {
       let state = [model.initial_state()]
       let table = model.table()
       let system = @runner.AsyncSystem::new(
@@ -121,7 +44,6 @@ async fn[T] Config::with_target(
       )
       action(system)
     }
-    _ => raise @runner.Configuration("unsupported target")
   }
 }
 

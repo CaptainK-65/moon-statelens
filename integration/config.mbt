@@ -32,7 +32,7 @@ pub struct Config {
   priv algorithm : @lens.Algorithm
   priv plan : @lens.VerificationPlan
   priv verification_json : Json
-  priv target : Map[String, Json]
+  priv target : TargetConfig
   priv kind : String
   priv budgets : RunBudgets
   priv expected_evidence : String
@@ -190,24 +190,13 @@ pub fn Config::from_json(value : Json) -> Config raise {
     "kv" => @lens.Algorithm::KearnsVazirani
     _ => raise @runner.Configuration("unknown learner")
   }
-  let target_json = required(object, "target")
-  guard target_json is Object(target) else {
-    raise @runner.Configuration("expected target object")
+  let (kind, target) = parse_target(required(object, "target"), alphabet) catch {
+    @runner.Configuration(message) =>
+      raise @runner.Configuration("target: " + message)
+    @lens.InvalidArgument(message) =>
+      raise @runner.Configuration("target.model: " + message)
+    error => raise error
   }
-  let kind = text(target, "kind")
-  let allowed = match kind {
-    "model" => ["kind", "model"]
-    "jsonl" =>
-      ["kind", "program", "args", "max_frame_bytes", "max_stderr_bytes"]
-    "sqlite" => ["kind", "program", "rollback_as_commit"]
-    "http" =>
-      [
-        "kind", "base_url", "reset", "actions", "close", "session_field", "session_header",
-        "max_response_bytes",
-      ]
-    _ => raise @runner.Configuration("unknown target kind")
-  }
-  ignore(fields(target_json, allowed))
   let budgets = fields(object.get("budgets").unwrap_or(Json::object({})), [
     "queries", "steps", "word_length", "cache_nodes", "output_code_units", "states",
     "rounds", "table_cells", "table_symbols", "prefixes", "query_timeout_ms", "step_timeout_ms",
@@ -256,11 +245,12 @@ pub fn Config::from_json(value : Json) -> Config raise {
   let paths = []
   for (key, _) in artifact_fields {
     let path = text(artifact_fields, key)
-    if path.is_empty() || paths.contains(path) {
+    let normalized = artifact_path(path)
+    if path.is_empty() || paths.contains(normalized) {
       raise @runner.Configuration("invalid or duplicate artifact path")
     }
-    paths.push(path)
-    artifacts[key] = path
+    paths.push(normalized)
+    artifacts[key] = normalized
   }
   let verification_json = required(object, "verification")
   {

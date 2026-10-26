@@ -1,0 +1,129 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+/// Run from the source-module root. This validates source, not a public release.
+async fn main {
+  let dir = "_build/acceptance/run-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  let records : Array[Json] = []
+  async fn command(
+    name : String,
+    program : String,
+    args : Array[String],
+  ) -> String {
+    let output = @shell.Cmd(program, args).output(
+      timeout_ms=600000,
+      max_output_bytes=16777216,
+    )
+    @fs.write_file(dir + "/" + name + ".log", output.stdout() + output.stderr())
+    records.push(
+      Json::object({
+        "name": Json(name),
+        "program": Json(program),
+        "arguments": Json(args),
+        "exit_code": Json(output.exit_code()),
+      }),
+    )
+    @fs.write_file(
+      dir + "/commands.json",
+      Json(records).stringify(indent=2) + "\n",
+    )
+    if output.exit_code() != 0 {
+      fail(
+        "Acceptance stage failed: " +
+        name +
+        "; see " +
+        dir +
+        "/" +
+        name +
+        ".log",
+      )
+    }
+    println("PASS " + name)
+    output.stdout()
+  }
+  let commit = command("commit", "git", ["rev-parse", "HEAD"]).trim().to_owned()
+  let status = command("working-tree", "git", ["status", "--porcelain"])
+  let versions = command("toolchain", "moon", ["version", "--all"])
+  let sqlite = command("sqlite", "sqlite3", ["--version"]).trim().to_owned()
+  let sanitized = versions
+    .split("\n")
+    .map(line => {
+      let line = line.trim()
+      match line.find(")") {
+        Some(i) => line[:i + 1].to_owned()
+        None => line.to_owned()
+      }
+    })
+  @fs.write_file(
+    dir + "/environment.json",
+    Json::object({
+      "source_commit": Json(commit),
+      "working_tree_dirty": Json(!status.trim().is_empty()),
+      "toolchain": Json(sanitized),
+      "sqlite": Json(sqlite),
+      "scope": Json(
+        "source checkout and public controlled examples; not registry-publication evidence",
+      ),
+    }).stringify(indent=2) +
+    "\n",
+  )
+  for
+    (name, args) in [
+      ("update", ["update"]),
+      ("check", ["check", "--target", "all", "--deny-warn"]),
+      ("build", ["build", "--target", "all", "--deny-warn"]),
+      ("test", ["test", "--target", "all", "--deny-warn"]),
+      ("format", ["fmt", "--check"]),
+      ("interfaces", ["info"]),
+      ("native-interfaces", ["run", "tools/update_native_interfaces.mbtx"]),
+    ] {
+    ignore(command(name, "moon", args))
+  }
+  let script_args = ["fmt", "--check"]
+  for filename in @fs.readdir("tools") {
+    if filename.has_suffix(".mbtx") {
+      script_args.push("tools/" + filename)
+    }
+  }
+  ignore(command("script-format", "moon", script_args))
+  ignore(
+    command("interface-drift", "git", ["diff", "--exit-code", "--", "*.mbti"]),
+  )
+  for example in ["session", "regression", "lru"] {
+    ignore(
+      command("example-" + example, "moon", ["run", "examples/" + example]),
+    )
+  }
+  for name in ["verify_cli", "verify_artifacts", "verify_native"] {
+    ignore(command(name, "moon", ["run", "tools/" + name + ".mbtx"]))
+  }
+  let summary = "# MoonStateLens source acceptance\n\n" +
+    "- Source commit: " +
+    commit +
+    "\n" +
+    "- Working tree dirty at start: " +
+    (!status.trim().is_empty()).to_string() +
+    "\n" +
+    "- SQLite: " +
+    sqlite +
+    "\n" +
+    "- All source stages completed successfully.\n" +
+    "- Logs and command exits: " +
+    dir +
+    "\n" +
+    "- Public package verification is a separate explicit-version check.\n"
+  @fs.write_file(dir + "/SUMMARY.md", summary)
+  if @env.get_env_var("GITHUB_STEP_SUMMARY") is Some(path) {
+    @fs.write_file(path, summary, append=true)
+  }
+  println("Source acceptance passed; evidence: " + dir)
+}

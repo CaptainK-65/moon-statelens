@@ -17,6 +17,20 @@ async fn main {
     if mode == "crash" {
       fail("injected fixture failure")
     }
+    // Deterministic artifact race: execution creates a destination only after
+    // the caller's filesystem preflight, without overwriting existing data.
+    if mode == "occupy-artifact" && operation == "reset" {
+      guard args is [_, _, path] else {
+        fail("expected controlled artifact path")
+      }
+      if !@fs.exists(path) {
+        @fs.write_file(
+          path,
+          "created-by-controlled-target",
+          create_mode=CreateNew,
+        )
+      }
+    }
     if mode == "slow-reset" && operation == "reset" {
       @async.sleep(5000)
     }

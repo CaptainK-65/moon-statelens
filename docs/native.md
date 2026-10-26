@@ -53,6 +53,21 @@ The native verification script saves reports under `_build/v0.2-evidence/run-*/`
 
 ## Configuration contract
 
+Before execution, validate structure and target semantics without target IO:
+
+```sh
+moon run cmd/statelens --target native -- validate-config configs/sqlite-kv.json
+moon run cmd/statelens --target native -- validate-config configs/sqlite-kv.json compare
+```
+
+The optional operation is run, compare or replay. Validation exits 0 with a
+moonstatelens.validation v1 envelope or 1 with the existing failure envelope.
+It parses target fields, action coverage, model alphabets, numeric limits and
+operation-specific artifact support. It does not launch executables, contact
+servers or create output files. It does not certify executable availability,
+URL reachability, filesystem permissions, reset behavior or state bounds.
+The configuration object and execution reuse the same parsed target definition.
+
 See `configs/` for complete version-1 experiment files. Top-level fields:
 format/version, identity, abstraction, alphabet, learner, target, verification,
 budgets, expectations and optional artifacts. Unknown keys and invalid numeric
@@ -129,6 +144,18 @@ sandbox or preemption of arbitrary synchronous target computation.
 
 Optional artifacts: report, model, dot and traces. Files must not already exist;
 writes use CreateNew. Model/DOT are omitted if no complete model exists.
+In 0.2.1, run-config writes its run report and inferred model/DOT/query traces.
+compare-config writes the same comparison report to each side's configured
+report path; each side's model/DOT/traces describe that side, including fresh
+confirmation queries in its trace log. All destinations across both sides must
+be distinct. replay-config supports report and traces only; model/DOT settings
+are rejected before target IO rather than silently ignored.
+
+Artifact paths resolve against the working directory when parsed. Preflight
+rejects existing destinations, missing/unwritable parents, lexical aliases and
+aliases through resolved parent directories. Parents must already exist.
+Filesystem case rules, symlinks or races can still cause an exclusive-create
+failure; actual write errors propagate and cannot become an accepted CLI exit.
 Different output files are not a filesystem transaction: interrupted writes can
 leave partial files, and a write failure does not imply an accepted run.
 

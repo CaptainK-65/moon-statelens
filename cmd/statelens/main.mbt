@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   let text =
-    #|MoonStateLens 0.2.0
+    #|MoonStateLens 0.2.1
     #|Usage: moon run cmd/statelens --target native -- COMMAND
     #|  demo session|regression|lru       Learn actual adapters and print evidence
     #|  learn MODEL.json STATE_BOUND     Learn a model-backed black box using W-method
@@ -16,6 +16,7 @@ fn usage() -> String {
     #|  run-config CONFIG.json           Learn an actual configured component
     #|  compare-config LEFT.json RIGHT.json  Infer and freshly confirm differences
     #|  replay-config CONFIG.json WORDS.json  Freshly replay arrays of input words
+    #|  validate-config CONFIG.json [run|compare|replay]  Validate without target IO
     #|  --version | --help
     #|
     #|Black-box evidence is conditional or budgeted. Equal learned models are not
@@ -28,7 +29,10 @@ async fn main {
   let args = @env.args()
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
-    [_, "--version"] => println("0.2.0")
+    [_, "--version"] => println("0.2.1")
+    [_, "validate-config", path] => validate_configuration(path, "run")
+    [_, "validate-config", path, operation] =>
+      validate_configuration(path, operation)
     [_, "run-config", path] => configuration_command("run", path, "")
     [_, "compare-config", left, right] =>
       configuration_command("compare", left, right)

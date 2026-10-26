@@ -1,0 +1,11 @@
+import {
+  "CaptainK-65/moon-statelens/integration",
+  "CaptainK-65/moon-statelens/runner",
+  "moonbitlang/async",
+  "moonbitlang/async/fs",
+  "moonbitlang/core/env",
+}
+
+pkgtype(kind: "executable")
+
+supported_targets = "+native"

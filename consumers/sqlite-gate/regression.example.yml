@@ -1,0 +1,38 @@
+name: Behavioral regression
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      controlled_mutation:
+        description: Deliberately inject a rollback mapping defect
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  gate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: hustcer/setup-moonbit@7673f8c9e3725fdbe7a349d881ca07c22044d94d # v1.23
+        with:
+          version: 0.10.15+943464bfa
+          core-version: 0.10.15+943464bfa
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: sudo apt-get update
+      - run: sudo apt-get install --yes sqlite3
+      - run: moon update
+      - name: Compare actual SQLite adapters
+        if: inputs.controlled_mutation != true
+        run: moon run . -- evidence
+      - name: Exercise the deliberately failing gate
+        if: inputs.controlled_mutation == true
+        run: moon run . -- evidence --controlled-mutation
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always()
+        with:
+          name: behavioral-evidence
+          path: evidence/

@@ -20,6 +20,7 @@ pub struct Config {
 }
 pub fn Config::from_json(Json) -> Self raise
 pub fn Config::manifest(Self) -> Json
+pub fn Config::validate(Self, operation? : String) -> Json raise
 
 pub(all) struct RunBudgets {
   queries : Int

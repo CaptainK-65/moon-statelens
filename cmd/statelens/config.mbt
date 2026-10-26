@@ -37,6 +37,18 @@ fn configuration_error(error : Error) -> Json {
 }
 
 ///|
+async fn validate_configuration(path : String, operation : String) -> Unit {
+  let report = configuration(path).validate(operation~) catch {
+    error => {
+      println(configuration_error(error).stringify(indent=2))
+      status_exit(1)
+      return
+    }
+  }
+  println(report.stringify(indent=2))
+}
+
+///|
 async fn configuration_command(
   operation : String,
   first : String,

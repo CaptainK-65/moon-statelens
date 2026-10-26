@@ -1,0 +1,107 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+/// Explicit public-version verification of the committed standalone consumer.
+/// A candidate can test existing API compatibility against the previous release.
+async fn main {
+  let version = match @env.args() {
+    [_, version] => version
+    _ => fail("expected public VERSION")
+  }
+  if version.is_empty() ||
+    version.contains("/") ||
+    version.contains("\\") ||
+    version.contains("\"") ||
+    version.contains("\n") ||
+    version.contains("\r") {
+    fail("invalid version")
+  }
+  let dir = "_build/standalone-consumer-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  for file in ["moon.mod", "moon.pkg", "main.mbt"] {
+    let contents = @fs.read_file("consumers/sqlite-gate/" + file).text()
+    @fs.write_file(
+      dir + "/" + file,
+      if file == "moon.mod" {
+        contents.replace(
+          old="moon-statelens@0.2.1",
+          new="moon-statelens@" + version,
+        )
+      } else {
+        contents
+      },
+    )
+  }
+  for args in [["update"], ["fmt", "--check"]] {
+    let output = @shell.Cmd("moon", args, cwd=dir).output(timeout_ms=60000)
+    if output.exit_code() != 0 {
+      fail(
+        "consumer preparation failed in " +
+        dir +
+        ": " +
+        output.stdout() +
+        output.stderr(),
+      )
+    }
+  }
+  for
+    (label, args, expected) in [
+      ("normal", ["normal-evidence"], 0),
+      ("CONTROLLED-mutation", ["mutant-evidence", "--controlled-mutation"], 2),
+    ] {
+    let output = @shell.Cmd(
+      "moon",
+      ["run", ".", "--target", "native", "--"] + args,
+      cwd=dir,
+    ).output(timeout_ms=240000, max_output_bytes=8388608)
+    @fs.write_file(
+      dir + "/" + label + ".log",
+      output.stdout() + output.stderr(),
+    )
+    if output.exit_code() != expected {
+      fail(
+        "standalone " + label + " failed: " + output.stderr() + output.stdout(),
+      )
+    }
+  }
+  let report = @fs.read_file(dir + "/mutant-evidence/comparison.json").json()
+  guard report is { "status": { "kind": "confirmed-difference", .. }, .. } else {
+    fail("controlled difference not freshly confirmed")
+  }
+  let left = @fs.read_file(dir + "/mutant-evidence/left-replay.json").json()
+  let right = @fs.read_file(dir + "/mutant-evidence/right-replay.json").json()
+  guard left is { "traces": Array(ltraces), .. } &&
+    right is { "traces": Array(rtraces), .. } &&
+    ltraces != rtraces else {
+    fail("saved counterexample did not reproduce")
+  }
+  let installed = @fs.read_file(
+    dir + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
+  ).text()
+  if !installed.contains("version = \"" + version + "\"") {
+    fail("wrong public version")
+  }
+  let summary = "# Standalone SQLite gate\n\n" +
+    "- Public package: CaptainK-65/moon-statelens@" +
+    version +
+    "\n" +
+    "- Normal comparison exited 0.\n" +
+    "- Controlled mutation exited 2 and saved fresh replay differences.\n" +
+    "- This does not allege a SQLite defect.\n" +
+    "- Evidence: " +
+    dir +
+    "\n"
+  @fs.write_file(dir + "/SUMMARY.md", summary)
+  if @env.get_env_var("GITHUB_STEP_SUMMARY") is Some(path) {
+    @fs.write_file(path, summary, append=true)
+  }
+  println(summary)
+}
