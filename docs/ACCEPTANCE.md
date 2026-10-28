@@ -1,4 +1,4 @@
-# MoonStateLens 最终验收入口（0.2.2）
+# MoonStateLens 最终验收入口（v0.3 候选）
 
 本索引对应已通过初审的多算法行为学习与真实组件兼容性验证方向。
 实际完成状态、冻结提交、CI 和发布证据见 [验证记录](VALIDATION.md)。
@@ -21,6 +21,8 @@ moon run tools/verify_acceptance.mbtx
 任一阶段失败即停止，并保留命令退出码及日志。
 输出在 _build/acceptance/run-*/；组件和产物证据另存于
 _build/v0.2-evidence/ 和 _build/artifact-evidence/。
+v0.3 新功能和量化实验保存在 `_build/v0.3-evidence/`，独立候选源码消费者
+在四后端执行相同的已提交测试源。完整说明见 [行为验证](behavior-validation.md)。
 元数据记录启动时的提交与工作区是否干净；冻结验收应使用干净且执行期间不变的检出。
 GitHub Actions 保存日志/报告及可读摘要；归档有保留期限，正式发布另保留精选公开证据。
 
@@ -36,6 +38,11 @@ GitHub Actions 保存日志/报告及可读摘要；归档有保留期限，正�
 | 模型与统计导出 | serialization.mbt、integration/run.mbt | JSON/DOT/报告/轨迹；多文件输出不是事务 |
 | 配置和工程集成 | integration/target_config.mbt、cmd/statelens/；integration/validation_test.mbt、artifacts_test.mbt | validate-config、compare-config、replay-config；离线验证不探测目标 |
 | MoonBit 生态消费 | 根包仅使用标准库；外围使用 async/x/path | 四后端公共包消费者与独立 SQLite 门禁范例 |
+| 保存模型回归与断言压缩 | regression_suite.mbt、regression_compaction.mbt、regression_execution.mbt | state/transition/W/Wp；可验证前缀证书；独立复测不压缩 |
+| 有限规则验证 | behavior_rules.mbt、integration/regression.mbt | 成功事件触发/解除；模型预测必须实际重放确认；可发现共有缺陷 |
+| 多上下文诊断 | diagnosis.mbt、integration/diagnosis.mbt | 可达模型乘积图；共同输入历史关联；逐一双方实际确认 |
+| HTML/JUnit 审查 | evidence_render.mbt、tools/verify_v03.mbtx | 离线筛选、逐步轨迹、模型图；不完整执行为门禁失败 |
+| 定量验证 | benchmarks/regression_study.mbt、scale_study.mbt | 60 个新增目标、64 状态、1,080 个不等价变异；固定语料与实际重置成本 |
 
 ## 最短真实组件演示
 
