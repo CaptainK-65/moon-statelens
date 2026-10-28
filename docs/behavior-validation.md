@@ -33,6 +33,7 @@ moon run cmd/statelens --target native -- regress-config configs/session-jsonl.j
 生成器先最小化模型，记录原始输入和**每一步**期望输出，去除重复词。
 默认最多检查 100,000 个候选词、2,000,000 个累计生成输入符号，单词最长 4,096；
 字符化工作默认上限 1,000,000。库接口可显式设置预算。
+若最小化或字符化准备本身无法完成，会直接报错，不产生伪造的完整套件。
 截断时 `generation_complete=false`，CLI 退出 3，仍可检查已保存的部分套件。
 `state` 仅表示模型状态覆盖，`transition` 表示模型迁移覆盖。
 只有完整生成并执行的 W/Wp 套件，才在确定、完全、可重置、相同字母表及
@@ -57,6 +58,10 @@ Trie 仅保留最长物理词，证书 `case_to_word` 为**每一个原始 case*
 不稳定、查询预算耗尽或超时不会得到 `passed=true`。
 即使部分 case 已执行，尚未完成复测的 case 仍显示 `not-run`。
 这种调度依赖相同初始状态和与历史无关的确定性输出，不适用于任意并发、随机或时钟系统。
+
+`moon run cmd/statelens --target native -- demo lru-gate` 还会仅通过真实
+`jhshuai/moonlarder` 的公开 API 学习十状态有限 LRU 抽象，把套件序列化并导入，
+再在一个新的实际 LRU 适配器上执行保存的断言，展示对 MoonBit 生态组件的直接用途。
 
 配置 artifact 遵循 replay 规则：可声明 `report`、`traces`，不接受 `model`、`dot`。
 报告内含基线模型、断言结果、证书和实际统计；输出仍使用独占创建和既有路径检查。

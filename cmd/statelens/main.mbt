@@ -24,6 +24,7 @@ fn usage() -> String {
     #|  render-report REPORT.json OUT.html   Offline interactive evidence viewer
     #|  junit REPORT.json OUT.xml            CI output for regression runs
     #|  study-v03 regression|prefix|scale   Reproduce the fixed v0.3 corpora
+    #|  demo lru-gate                       Learn real MoonLarder, save and execute assertions
     #|  --version | --help
     #|
     #|Black-box evidence is conditional or budgeted. Equal learned models are not
@@ -79,6 +80,7 @@ async fn main {
     [_, "demo", "session"] =>
       println(Json(session_result()).stringify(indent=2))
     [_, "demo", "lru"] => println(Json(lru_result()).stringify(indent=2))
+    [_, "demo", "lru-gate"] => println(lru_gate().stringify(indent=2))
     [_, "demo", "regression"] =>
       println(Json(regression_result()).stringify(indent=2))
     [_, "learn", path, bound] => {

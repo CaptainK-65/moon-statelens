@@ -75,6 +75,7 @@ async fn main {
     println("PASS " + study + " fixed corpus")
   }
   let session_suite = dir + "/session-suite.json"
+  ignore(recorder.json_command("moonlarder-saved-suite", ["demo", "lru-gate"]))
   ignore(
     recorder.json_command("generate-session-suite", [
       "generate-suite", "fixtures/session.json", "wp", "2", session_suite,
