@@ -1,0 +1,228 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/process",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+struct Recorder {
+  dir : String
+  commands : Array[Json]
+}
+
+///|
+async fn Recorder::invoke(
+  self : Recorder,
+  name : String,
+  args : Array[String],
+  expected~ : Int32 = 0,
+) -> String {
+  let result = @shell.Cmd(
+    "_build/native/debug/build/cmd/statelens/statelens.exe", args,
+  ).output(timeout_ms=300000, max_output_bytes=16777216)
+  @fs.write_file(
+    self.dir + "/" + name + ".log",
+    result.stdout() + result.stderr(),
+  )
+  self.commands.push(
+    Json::object({
+      "name": Json(name),
+      "arguments": Json(args),
+      "exit_code": Json(result.exit_code()),
+      "expected_exit_code": Json(expected),
+    }),
+  )
+  @fs.write_file(
+    self.dir + "/commands.json",
+    Json(self.commands).stringify(indent=2) + "\n",
+  )
+  if result.exit_code() != expected {
+    fail("v0.3 stage failed: " + name + "; see " + self.dir)
+  }
+  println("PASS " + name + " (exit " + expected.to_string() + ")")
+  result.stdout()
+}
+
+///|
+async fn Recorder::json_command(
+  self : Recorder,
+  name : String,
+  args : Array[String],
+  expected~ : Int32 = 0,
+) -> Json {
+  let raw = self.invoke(name, args, expected~)
+  let value = @json.parse(raw)
+  @fs.write_file(self.dir + "/" + name + ".json", raw)
+  value
+}
+
+///|
+/// Real IO and fixed corpora; all fixture defects are explicitly controlled.
+async fn main {
+  @shell.Cmd("moon", ["build", "--target", "native", "--deny-warn"])
+  .output(timeout_ms=120000, max_output_bytes=4194304)
+  .check()
+  let dir = "_build/v0.3-evidence/run-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  let recorder : Recorder = { dir, commands: [], }
+  for study in ["regression", "prefix", "scale"] {
+    ignore(recorder.json_command(study + "-study", ["study-v03", study]))
+    println("PASS " + study + " fixed corpus")
+  }
+  let session_suite = dir + "/session-suite.json"
+  ignore(
+    recorder.json_command("generate-session-suite", [
+      "generate-suite", "fixtures/session.json", "wp", "2", session_suite,
+    ]),
+  )
+  ignore(
+    recorder.json_command("jsonl-regression", [
+      "regress-config", "configs/session-jsonl.json", session_suite,
+    ]),
+  )
+  ignore(
+    recorder.json_command("jsonl-rules", [
+      "rules-config", "configs/session-jsonl.json", "fixtures/session-rules.json",
+    ]),
+  )
+  let buggy = @fs.read_file("configs/session-jsonl.json").json()
+  guard buggy is Object(config) && config["target"] is Object(target) else {
+    fail("session config")
+  }
+  target["args"] = Json(["regression"])
+  config["identity"] = Json("CONTROLLED-session-regression")
+  let buggy_path = dir + "/jsonl-mutant-config.json"
+  @fs.write_file(buggy_path, buggy.stringify(indent=2))
+  ignore(
+    recorder.json_command(
+      "jsonl-mutant-regression",
+      ["regress-config", buggy_path, session_suite],
+      expected=2,
+    ),
+  )
+  let rules = recorder.json_command(
+    "jsonl-mutant-rules",
+    ["rules-config", buggy_path, "fixtures/session-rules.json"],
+    expected=2,
+  )
+  guard rules is { "confirmed_violations": Number(n, ..), .. } && n > 0 else {
+    fail("no fresh rule confirmation")
+  }
+  ignore(
+    recorder.json_command(
+      "jsonl-diagnosis",
+      ["diagnose-config", "configs/session-jsonl.json", buggy_path],
+      expected=2,
+    ),
+  )
+  // Same actual defect on BOTH versions: compatibility is equal; rule still fails.
+  ignore(
+    recorder.json_command("shared-defect-diagnosis", [
+      "diagnose-config", buggy_path, buggy_path,
+    ]),
+  )
+
+  let learned = recorder.json_command("sqlite-learn", [
+    "run-config", "configs/sqlite-kv.json",
+  ])
+  guard learned
+    is { "inference": { "learning": { "model": model, .. }, .. }, .. } else {
+    fail("SQLite model")
+  }
+  let model_path = dir + "/sqlite-model.json"
+  @fs.write_file(model_path, model.stringify(indent=2))
+  let sqlite_suite = dir + "/sqlite-suite.json"
+  ignore(
+    recorder.json_command("generate-sqlite-suite", [
+      "generate-suite", model_path, "wp", "6", sqlite_suite,
+    ]),
+  )
+  ignore(
+    recorder.json_command("sqlite-regression", [
+      "regress-config", "configs/sqlite-kv.json", sqlite_suite,
+    ]),
+  )
+  ignore(
+    recorder.json_command(
+      "sqlite-mutant-regression",
+      ["regress-config", "configs/sqlite-mutant.json", sqlite_suite],
+      expected=2,
+    ),
+  )
+  let diagnosis = recorder.json_command(
+    "sqlite-diagnosis",
+    ["diagnose-config", "configs/sqlite-kv.json", "configs/sqlite-mutant.json"],
+    expected=2,
+  )
+  guard diagnosis is { "confirmed_contexts": Number(n, ..), .. } && n > 1 else {
+    fail("multi-context SQLite diagnosis")
+  }
+  ignore(
+    recorder.invoke("html-report", [
+      "render-report",
+      dir + "/sqlite-diagnosis.json",
+      dir + "/sqlite-diagnosis.html",
+    ]),
+  )
+  ignore(
+    recorder.invoke("junit-report", [
+      "junit",
+      dir + "/sqlite-mutant-regression.json",
+      dir + "/sqlite-mutant-regression.xml",
+    ]),
+  )
+  ignore(
+    recorder.invoke(
+      "html-refuses-overwrite",
+      [
+        "render-report",
+        dir + "/sqlite-diagnosis.json",
+        dir + "/sqlite-diagnosis.html",
+      ],
+      expected=1,
+    ),
+  )
+  @async.with_task_group(group => {
+    let (reader, output) = @process.read_from_process()
+    defer reader.close()
+    let server = @process.spawn(
+      group,
+      "_build/native/debug/build/cmd/http_fixture/http_fixture.exe",
+      ["0"],
+      stdout=output,
+      no_console_window=true,
+      cancel_handler=@process.hard_cancel(),
+      no_wait=true,
+    )
+    defer server.cancel()
+    let ready = @async.with_timeout(10000, () => reader.read_until("\n"))
+    guard ready is Some(url) else { fail("HTTP fixture did not start") }
+    let value = @fs.read_file("configs/http-session.json").json()
+    guard value is Object(c) && c["target"] is Object(t) else {
+      fail("HTTP config")
+    }
+    t["base_url"] = Json(url.trim().to_owned())
+    let path = dir + "/http-config.json"
+    @fs.write_file(path, value.stringify(indent=2))
+    ignore(
+      recorder.json_command("http-regression", [
+        "regress-config", path, session_suite,
+      ]),
+    )
+    ignore(
+      recorder.json_command("http-rules", [
+        "rules-config", path, "fixtures/session-rules.json",
+      ]),
+    )
+  })
+  @fs.write_file(
+    dir + "/SUMMARY.md",
+    "# v0.3 verification\n\nAll recorded commands matched their declared exits. Controlled defects are not third-party vulnerabilities. See commands.json, model/suite artifacts, fresh replay findings, reports and fixed-corpus studies.\n",
+  )
+  println("v0.3 evidence: " + dir)
+}

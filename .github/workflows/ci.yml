@@ -53,6 +53,10 @@ jobs:
             _build/acceptance/
             _build/artifact-evidence/
             _build/v0.2-evidence/
+            _build/v0.3-evidence/
+            _build/v03-consumer-source-*/receipt.json
+            _build/v03-consumer-source-*/commands.json
+            _build/v03-consumer-source-*/*.log
           retention-days: 30
   published-consumer:
     timeout-minutes: 20
@@ -81,6 +85,18 @@ jobs:
       - name: Verify committed standalone consumer against that public version
         if: matrix.target == 'native'
         run: moon run tools/verify_consumer.mbtx -- ${{ env.PUBLISHED_VERSION }}
+      - name: Verify all new v0.3 APIs against the actual public package
+        if: env.PUBLISHED_VERSION == '0.3.0'
+        run: moon run tools/verify_v03_consumer.mbtx -- public ${{ matrix.target }} 0.3.0
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always() && env.PUBLISHED_VERSION == '0.3.0'
+        with:
+          name: v03-public-${{ matrix.target }}
+          path: |
+            _build/v03-consumer-public-*/receipt.json
+            _build/v03-consumer-public-*/commands.json
+            _build/v03-consumer-public-*/*.log
+          retention-days: 30
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && matrix.target == 'native'
         with:
