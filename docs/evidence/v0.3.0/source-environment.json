@@ -1,5 +1,5 @@
 {
-  "source_commit": "1247abd2720a0f69b2fe87456f5e1b71d15f9736",
+  "source_commit": "4fc3944d1d317daac2fa95373ef7002bd476f608",
   "working_tree_dirty": false,
   "toolchain": [
     "moon 0.1.20261012 (748b63c 2026-10-12)",

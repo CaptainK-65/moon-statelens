@@ -1,0 +1,8499 @@
+{
+  "format": "moonstatelens.moonlarder-gate",
+  "version": 1,
+  "scope": "real jhshuai/moonlarder public API; capacity 2, three keys, no TTL; model learned before suite generation",
+  "learning": {
+    "format": "moonstatelens.learning",
+    "version": 1,
+    "model": {
+      "format": "moonstatelens.mealy",
+      "version": 1,
+      "alphabet": [
+        "put:a",
+        "put:b",
+        "put:c",
+        "get:a",
+        "get:b",
+        "get:c",
+        "clear"
+      ],
+      "initial": 0,
+      "transitions": [
+        [
+          {
+            "target": 1,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "stored"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 1,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 1,
+            "output": "hit:a"
+          },
+          {
+            "target": 1,
+            "output": "miss"
+          },
+          {
+            "target": 1,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "miss"
+          },
+          {
+            "target": 2,
+            "output": "hit:b"
+          },
+          {
+            "target": 2,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "miss"
+          },
+          {
+            "target": 3,
+            "output": "miss"
+          },
+          {
+            "target": 3,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 8,
+            "output": "hit:a"
+          },
+          {
+            "target": 4,
+            "output": "hit:b"
+          },
+          {
+            "target": 4,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "hit:a"
+          },
+          {
+            "target": 5,
+            "output": "miss"
+          },
+          {
+            "target": 5,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "miss"
+          },
+          {
+            "target": 7,
+            "output": "hit:b"
+          },
+          {
+            "target": 6,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "miss"
+          },
+          {
+            "target": 7,
+            "output": "hit:b"
+          },
+          {
+            "target": 6,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 8,
+            "output": "hit:a"
+          },
+          {
+            "target": 4,
+            "output": "hit:b"
+          },
+          {
+            "target": 8,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "hit:a"
+          },
+          {
+            "target": 9,
+            "output": "miss"
+          },
+          {
+            "target": 5,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ]
+      ]
+    },
+    "status": {
+      "kind": "supported",
+      "evidence": {
+        "kind": "conditional-state-bound",
+        "state_bound": 10
+      }
+    },
+    "statistics": {
+      "queries": 4509,
+      "cache_hits": 1972,
+      "resets": 2537,
+      "steps": 10104,
+      "completed_queries": 2537,
+      "cache_nodes": 1344,
+      "output_code_units": 56436
+    },
+    "rounds": [
+      {
+        "index": 1,
+        "states": 7,
+        "prefixes": 7,
+        "suffixes": 7,
+        "table_cells": 350,
+        "table_symbols": 350,
+        "queries": 350,
+        "counterexample_length": 4
+      },
+      {
+        "index": 2,
+        "states": 9,
+        "prefixes": 10,
+        "suffixes": 9,
+        "table_cells": 639,
+        "table_symbols": 781,
+        "queries": 2000,
+        "counterexample_length": 4
+      },
+      {
+        "index": 3,
+        "states": 10,
+        "prefixes": 13,
+        "suffixes": 10,
+        "table_cells": 920,
+        "table_symbols": 1196,
+        "queries": 4012
+      }
+    ],
+    "counterexamples": [
+      {
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "left_outputs": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "right_outputs": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ]
+      },
+      {
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "left_outputs": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "right_outputs": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ]
+      }
+    ]
+  },
+  "regression": {
+    "format": "moonstatelens.regression-run",
+    "version": 1,
+    "execution_complete": true,
+    "passed": true,
+    "unstable": false,
+    "reason": null,
+    "failed_cases": 0,
+    "pending_cases": 0,
+    "completed_physical_queries": 414,
+    "completed_physical_steps": 1590,
+    "stability_rechecks_per_word": 1,
+    "suite_evidence": {
+      "generation_complete": true,
+      "profile": "wp",
+      "state_bound": 10,
+      "conditional_conformance": true,
+      "assumptions": "deterministic total resettable Mealy target, same alphabet, actual states <= bound; suite must pass completely",
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 10,
+        "states_total": 10,
+        "transitions_visited": 70,
+        "transitions_total": 70
+      }
+    },
+    "model": {
+      "format": "moonstatelens.mealy",
+      "version": 1,
+      "alphabet": [
+        "put:a",
+        "put:b",
+        "put:c",
+        "get:a",
+        "get:b",
+        "get:c",
+        "clear"
+      ],
+      "initial": 0,
+      "transitions": [
+        [
+          {
+            "target": 1,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "stored"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 1,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 1,
+            "output": "hit:a"
+          },
+          {
+            "target": 1,
+            "output": "miss"
+          },
+          {
+            "target": 1,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 2,
+            "output": "miss"
+          },
+          {
+            "target": 2,
+            "output": "hit:b"
+          },
+          {
+            "target": 2,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "stored"
+          },
+          {
+            "target": 3,
+            "output": "miss"
+          },
+          {
+            "target": 3,
+            "output": "miss"
+          },
+          {
+            "target": 3,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "hit:a"
+          },
+          {
+            "target": 4,
+            "output": "hit:b"
+          },
+          {
+            "target": 4,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 8,
+            "output": "hit:a"
+          },
+          {
+            "target": 5,
+            "output": "miss"
+          },
+          {
+            "target": 5,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 6,
+            "output": "hit:a"
+          },
+          {
+            "target": 4,
+            "output": "hit:b"
+          },
+          {
+            "target": 6,
+            "output": "miss"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "miss"
+          },
+          {
+            "target": 9,
+            "output": "hit:b"
+          },
+          {
+            "target": 7,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 8,
+            "output": "stored"
+          },
+          {
+            "target": 4,
+            "output": "stored"
+          },
+          {
+            "target": 5,
+            "output": "stored"
+          },
+          {
+            "target": 8,
+            "output": "hit:a"
+          },
+          {
+            "target": 8,
+            "output": "miss"
+          },
+          {
+            "target": 5,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ],
+        [
+          {
+            "target": 6,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "stored"
+          },
+          {
+            "target": 7,
+            "output": "stored"
+          },
+          {
+            "target": 9,
+            "output": "miss"
+          },
+          {
+            "target": 9,
+            "output": "hit:b"
+          },
+          {
+            "target": 7,
+            "output": "hit:c"
+          },
+          {
+            "target": 0,
+            "output": "cleared"
+          }
+        ]
+      ]
+    },
+    "certificate": {
+      "format": "moonstatelens.prefix-certificate",
+      "version": 1,
+      "original_cases": 278,
+      "physical_words": [
+        [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:a",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:b",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:a",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:c",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:b",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:c",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        [
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:b",
+          "get:c"
+        ],
+        [
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "get:c",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "get:b",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "get:a",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:a",
+          "get:c"
+        ],
+        [
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        [
+          "clear",
+          "get:c"
+        ],
+        [
+          "clear",
+          "get:b"
+        ],
+        [
+          "clear",
+          "get:a"
+        ],
+        [
+          "get:c",
+          "get:c"
+        ],
+        [
+          "get:c",
+          "get:b"
+        ],
+        [
+          "get:c",
+          "get:a"
+        ],
+        [
+          "get:b",
+          "get:c"
+        ],
+        [
+          "get:b",
+          "get:b"
+        ],
+        [
+          "get:b",
+          "get:a"
+        ],
+        [
+          "get:a",
+          "get:c"
+        ],
+        [
+          "get:a",
+          "get:b"
+        ],
+        [
+          "get:a",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        [
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        [
+          "put:a",
+          "put:a",
+          "get:b"
+        ]
+      ],
+      "case_to_word": [
+        185,
+        185,
+        182,
+        179,
+        143,
+        157,
+        168,
+        168,
+        171,
+        165,
+        103,
+        124,
+        206,
+        157,
+        154,
+        151,
+        60,
+        205,
+        78,
+        143,
+        140,
+        137,
+        204,
+        14,
+        33,
+        124,
+        121,
+        118,
+        203,
+        202,
+        201,
+        103,
+        99,
+        95,
+        200,
+        199,
+        198,
+        78,
+        81,
+        75,
+        197,
+        196,
+        195,
+        60,
+        56,
+        52,
+        194,
+        193,
+        192,
+        33,
+        37,
+        29,
+        191,
+        190,
+        189,
+        14,
+        10,
+        6,
+        188,
+        187,
+        186,
+        185,
+        184,
+        183,
+        182,
+        181,
+        180,
+        179,
+        178,
+        177,
+        176,
+        176,
+        175,
+        174,
+        206,
+        173,
+        172,
+        171,
+        170,
+        169,
+        168,
+        167,
+        166,
+        165,
+        164,
+        163,
+        162,
+        162,
+        161,
+        160,
+        205,
+        159,
+        158,
+        157,
+        156,
+        155,
+        154,
+        153,
+        152,
+        151,
+        150,
+        149,
+        148,
+        148,
+        147,
+        146,
+        204,
+        145,
+        144,
+        143,
+        142,
+        141,
+        140,
+        139,
+        138,
+        137,
+        136,
+        135,
+        134,
+        134,
+        133,
+        132,
+        201,
+        131,
+        130,
+        202,
+        129,
+        128,
+        203,
+        127,
+        126,
+        125,
+        124,
+        123,
+        122,
+        121,
+        120,
+        119,
+        118,
+        117,
+        116,
+        115,
+        115,
+        114,
+        113,
+        198,
+        112,
+        111,
+        110,
+        199,
+        109,
+        108,
+        107,
+        200,
+        106,
+        105,
+        104,
+        103,
+        102,
+        101,
+        100,
+        99,
+        98,
+        97,
+        96,
+        95,
+        94,
+        93,
+        92,
+        91,
+        91,
+        90,
+        89,
+        195,
+        88,
+        87,
+        196,
+        86,
+        85,
+        197,
+        84,
+        83,
+        82,
+        81,
+        80,
+        79,
+        78,
+        77,
+        76,
+        75,
+        74,
+        73,
+        72,
+        72,
+        71,
+        70,
+        192,
+        69,
+        68,
+        67,
+        193,
+        66,
+        65,
+        64,
+        194,
+        63,
+        62,
+        61,
+        60,
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        48,
+        47,
+        46,
+        189,
+        45,
+        44,
+        43,
+        190,
+        42,
+        41,
+        191,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32,
+        31,
+        30,
+        29,
+        28,
+        27,
+        26,
+        25,
+        25,
+        24,
+        23,
+        186,
+        22,
+        21,
+        187,
+        20,
+        19,
+        18,
+        188,
+        17,
+        16,
+        15,
+        14,
+        13,
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5,
+        4,
+        3,
+        2,
+        2,
+        1,
+        0
+      ],
+      "scope": "each original assertion is a prefix of its mapped physical trace; separate fresh stability probes are not compacted"
+    },
+    "cases": [
+      {
+        "case": 0,
+        "inputs": [],
+        "expected": [],
+        "actual": [],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 185
+      },
+      {
+        "case": 1,
+        "inputs": [
+          "get:a"
+        ],
+        "expected": [
+          "miss"
+        ],
+        "actual": [
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 185
+      },
+      {
+        "case": 2,
+        "inputs": [
+          "get:b"
+        ],
+        "expected": [
+          "miss"
+        ],
+        "actual": [
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 182
+      },
+      {
+        "case": 3,
+        "inputs": [
+          "get:c"
+        ],
+        "expected": [
+          "miss"
+        ],
+        "actual": [
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 179
+      },
+      {
+        "case": 4,
+        "inputs": [
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 143
+      },
+      {
+        "case": 5,
+        "inputs": [
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 157
+      },
+      {
+        "case": 6,
+        "inputs": [
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 168
+      },
+      {
+        "case": 7,
+        "inputs": [
+          "put:a"
+        ],
+        "expected": [
+          "stored"
+        ],
+        "actual": [
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 168
+      },
+      {
+        "case": 8,
+        "inputs": [
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 171
+      },
+      {
+        "case": 9,
+        "inputs": [
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 165
+      },
+      {
+        "case": 10,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 103
+      },
+      {
+        "case": 11,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 124
+      },
+      {
+        "case": 12,
+        "inputs": [
+          "put:a",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 206
+      },
+      {
+        "case": 13,
+        "inputs": [
+          "put:b"
+        ],
+        "expected": [
+          "stored"
+        ],
+        "actual": [
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 157
+      },
+      {
+        "case": 14,
+        "inputs": [
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 154
+      },
+      {
+        "case": 15,
+        "inputs": [
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 151
+      },
+      {
+        "case": 16,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 60
+      },
+      {
+        "case": 17,
+        "inputs": [
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 205
+      },
+      {
+        "case": 18,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 78
+      },
+      {
+        "case": 19,
+        "inputs": [
+          "put:c"
+        ],
+        "expected": [
+          "stored"
+        ],
+        "actual": [
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 143
+      },
+      {
+        "case": 20,
+        "inputs": [
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 140
+      },
+      {
+        "case": 21,
+        "inputs": [
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 137
+      },
+      {
+        "case": 22,
+        "inputs": [
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 204
+      },
+      {
+        "case": 23,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 14
+      },
+      {
+        "case": 24,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 33
+      },
+      {
+        "case": 25,
+        "inputs": [
+          "put:a",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 124
+      },
+      {
+        "case": 26,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 121
+      },
+      {
+        "case": 27,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 118
+      },
+      {
+        "case": 28,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 203
+      },
+      {
+        "case": 29,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 202
+      },
+      {
+        "case": 30,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 201
+      },
+      {
+        "case": 31,
+        "inputs": [
+          "put:a",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 103
+      },
+      {
+        "case": 32,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 99
+      },
+      {
+        "case": 33,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 95
+      },
+      {
+        "case": 34,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 200
+      },
+      {
+        "case": 35,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 199
+      },
+      {
+        "case": 36,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 198
+      },
+      {
+        "case": 37,
+        "inputs": [
+          "put:b",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 78
+      },
+      {
+        "case": 38,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 81
+      },
+      {
+        "case": 39,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 75
+      },
+      {
+        "case": 40,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 197
+      },
+      {
+        "case": 41,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 196
+      },
+      {
+        "case": 42,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 195
+      },
+      {
+        "case": 43,
+        "inputs": [
+          "put:b",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 60
+      },
+      {
+        "case": 44,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 56
+      },
+      {
+        "case": 45,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 52
+      },
+      {
+        "case": 46,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 194
+      },
+      {
+        "case": 47,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 193
+      },
+      {
+        "case": 48,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 192
+      },
+      {
+        "case": 49,
+        "inputs": [
+          "put:c",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 33
+      },
+      {
+        "case": 50,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 37
+      },
+      {
+        "case": 51,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 29
+      },
+      {
+        "case": 52,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 191
+      },
+      {
+        "case": 53,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 190
+      },
+      {
+        "case": 54,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 189
+      },
+      {
+        "case": 55,
+        "inputs": [
+          "put:c",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 14
+      },
+      {
+        "case": 56,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 10
+      },
+      {
+        "case": 57,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 6
+      },
+      {
+        "case": 58,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 188
+      },
+      {
+        "case": 59,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 187
+      },
+      {
+        "case": 60,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 186
+      },
+      {
+        "case": 61,
+        "inputs": [
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 185
+      },
+      {
+        "case": 62,
+        "inputs": [
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 184
+      },
+      {
+        "case": 63,
+        "inputs": [
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 183
+      },
+      {
+        "case": 64,
+        "inputs": [
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 182
+      },
+      {
+        "case": 65,
+        "inputs": [
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 181
+      },
+      {
+        "case": 66,
+        "inputs": [
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 180
+      },
+      {
+        "case": 67,
+        "inputs": [
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 179
+      },
+      {
+        "case": 68,
+        "inputs": [
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 178
+      },
+      {
+        "case": 69,
+        "inputs": [
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 177
+      },
+      {
+        "case": 70,
+        "inputs": [
+          "clear"
+        ],
+        "expected": [
+          "cleared"
+        ],
+        "actual": [
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 176
+      },
+      {
+        "case": 71,
+        "inputs": [
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 176
+      },
+      {
+        "case": 72,
+        "inputs": [
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 175
+      },
+      {
+        "case": 73,
+        "inputs": [
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 174
+      },
+      {
+        "case": 74,
+        "inputs": [
+          "put:a",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 206
+      },
+      {
+        "case": 75,
+        "inputs": [
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 173
+      },
+      {
+        "case": 76,
+        "inputs": [
+          "put:a",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 172
+      },
+      {
+        "case": 77,
+        "inputs": [
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 171
+      },
+      {
+        "case": 78,
+        "inputs": [
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 170
+      },
+      {
+        "case": 79,
+        "inputs": [
+          "put:a",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 169
+      },
+      {
+        "case": 80,
+        "inputs": [
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 168
+      },
+      {
+        "case": 81,
+        "inputs": [
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 167
+      },
+      {
+        "case": 82,
+        "inputs": [
+          "put:a",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 166
+      },
+      {
+        "case": 83,
+        "inputs": [
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 165
+      },
+      {
+        "case": 84,
+        "inputs": [
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 164
+      },
+      {
+        "case": 85,
+        "inputs": [
+          "put:a",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 163
+      },
+      {
+        "case": 86,
+        "inputs": [
+          "put:a",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 162
+      },
+      {
+        "case": 87,
+        "inputs": [
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 162
+      },
+      {
+        "case": 88,
+        "inputs": [
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 161
+      },
+      {
+        "case": 89,
+        "inputs": [
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 160
+      },
+      {
+        "case": 90,
+        "inputs": [
+          "put:b",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 205
+      },
+      {
+        "case": 91,
+        "inputs": [
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 159
+      },
+      {
+        "case": 92,
+        "inputs": [
+          "put:b",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 158
+      },
+      {
+        "case": 93,
+        "inputs": [
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 157
+      },
+      {
+        "case": 94,
+        "inputs": [
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 156
+      },
+      {
+        "case": 95,
+        "inputs": [
+          "put:b",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 155
+      },
+      {
+        "case": 96,
+        "inputs": [
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 154
+      },
+      {
+        "case": 97,
+        "inputs": [
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 153
+      },
+      {
+        "case": 98,
+        "inputs": [
+          "put:b",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 152
+      },
+      {
+        "case": 99,
+        "inputs": [
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 151
+      },
+      {
+        "case": 100,
+        "inputs": [
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 150
+      },
+      {
+        "case": 101,
+        "inputs": [
+          "put:b",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 149
+      },
+      {
+        "case": 102,
+        "inputs": [
+          "put:b",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 148
+      },
+      {
+        "case": 103,
+        "inputs": [
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 148
+      },
+      {
+        "case": 104,
+        "inputs": [
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 147
+      },
+      {
+        "case": 105,
+        "inputs": [
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 146
+      },
+      {
+        "case": 106,
+        "inputs": [
+          "put:c",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 204
+      },
+      {
+        "case": 107,
+        "inputs": [
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 145
+      },
+      {
+        "case": 108,
+        "inputs": [
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 144
+      },
+      {
+        "case": 109,
+        "inputs": [
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 143
+      },
+      {
+        "case": 110,
+        "inputs": [
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 142
+      },
+      {
+        "case": 111,
+        "inputs": [
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 141
+      },
+      {
+        "case": 112,
+        "inputs": [
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 140
+      },
+      {
+        "case": 113,
+        "inputs": [
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 139
+      },
+      {
+        "case": 114,
+        "inputs": [
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 138
+      },
+      {
+        "case": 115,
+        "inputs": [
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 137
+      },
+      {
+        "case": 116,
+        "inputs": [
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 136
+      },
+      {
+        "case": 117,
+        "inputs": [
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 135
+      },
+      {
+        "case": 118,
+        "inputs": [
+          "put:c",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 134
+      },
+      {
+        "case": 119,
+        "inputs": [
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 134
+      },
+      {
+        "case": 120,
+        "inputs": [
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 133
+      },
+      {
+        "case": 121,
+        "inputs": [
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 132
+      },
+      {
+        "case": 122,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 201
+      },
+      {
+        "case": 123,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 131
+      },
+      {
+        "case": 124,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 130
+      },
+      {
+        "case": 125,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 202
+      },
+      {
+        "case": 126,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 129
+      },
+      {
+        "case": 127,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 128
+      },
+      {
+        "case": 128,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 203
+      },
+      {
+        "case": 129,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 127
+      },
+      {
+        "case": 130,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 126
+      },
+      {
+        "case": 131,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 125
+      },
+      {
+        "case": 132,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 124
+      },
+      {
+        "case": 133,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 123
+      },
+      {
+        "case": 134,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 122
+      },
+      {
+        "case": 135,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 121
+      },
+      {
+        "case": 136,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 120
+      },
+      {
+        "case": 137,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 119
+      },
+      {
+        "case": 138,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 118
+      },
+      {
+        "case": 139,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 117
+      },
+      {
+        "case": 140,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "get:c",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 116
+      },
+      {
+        "case": 141,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 115
+      },
+      {
+        "case": 142,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 115
+      },
+      {
+        "case": 143,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 114
+      },
+      {
+        "case": 144,
+        "inputs": [
+          "put:a",
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 113
+      },
+      {
+        "case": 145,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 198
+      },
+      {
+        "case": 146,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 112
+      },
+      {
+        "case": 147,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 111
+      },
+      {
+        "case": 148,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 110
+      },
+      {
+        "case": 149,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 199
+      },
+      {
+        "case": 150,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 109
+      },
+      {
+        "case": 151,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 108
+      },
+      {
+        "case": 152,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 107
+      },
+      {
+        "case": 153,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 200
+      },
+      {
+        "case": 154,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 106
+      },
+      {
+        "case": 155,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 105
+      },
+      {
+        "case": 156,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 104
+      },
+      {
+        "case": 157,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 103
+      },
+      {
+        "case": 158,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 102
+      },
+      {
+        "case": 159,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 101
+      },
+      {
+        "case": 160,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 100
+      },
+      {
+        "case": 161,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 99
+      },
+      {
+        "case": 162,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 98
+      },
+      {
+        "case": 163,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 97
+      },
+      {
+        "case": 164,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:b",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 96
+      },
+      {
+        "case": 165,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 95
+      },
+      {
+        "case": 166,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 94
+      },
+      {
+        "case": 167,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 93
+      },
+      {
+        "case": 168,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "get:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 92
+      },
+      {
+        "case": 169,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 91
+      },
+      {
+        "case": 170,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 91
+      },
+      {
+        "case": 171,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 90
+      },
+      {
+        "case": 172,
+        "inputs": [
+          "put:a",
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 89
+      },
+      {
+        "case": 173,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 195
+      },
+      {
+        "case": 174,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 88
+      },
+      {
+        "case": 175,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 87
+      },
+      {
+        "case": 176,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 196
+      },
+      {
+        "case": 177,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 86
+      },
+      {
+        "case": 178,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 85
+      },
+      {
+        "case": 179,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 197
+      },
+      {
+        "case": 180,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 84
+      },
+      {
+        "case": 181,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 83
+      },
+      {
+        "case": 182,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 82
+      },
+      {
+        "case": 183,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 81
+      },
+      {
+        "case": 184,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 80
+      },
+      {
+        "case": 185,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 79
+      },
+      {
+        "case": 186,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 78
+      },
+      {
+        "case": 187,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 77
+      },
+      {
+        "case": 188,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 76
+      },
+      {
+        "case": 189,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 75
+      },
+      {
+        "case": 190,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 74
+      },
+      {
+        "case": 191,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "get:c",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 73
+      },
+      {
+        "case": 192,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 72
+      },
+      {
+        "case": 193,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 72
+      },
+      {
+        "case": 194,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 71
+      },
+      {
+        "case": 195,
+        "inputs": [
+          "put:b",
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 70
+      },
+      {
+        "case": 196,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 192
+      },
+      {
+        "case": 197,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 69
+      },
+      {
+        "case": 198,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 68
+      },
+      {
+        "case": 199,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 67
+      },
+      {
+        "case": 200,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 193
+      },
+      {
+        "case": 201,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 66
+      },
+      {
+        "case": 202,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 65
+      },
+      {
+        "case": 203,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 64
+      },
+      {
+        "case": 204,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 194
+      },
+      {
+        "case": 205,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 63
+      },
+      {
+        "case": 206,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 62
+      },
+      {
+        "case": 207,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 61
+      },
+      {
+        "case": 208,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 60
+      },
+      {
+        "case": 209,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 59
+      },
+      {
+        "case": 210,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 58
+      },
+      {
+        "case": 211,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:a",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 57
+      },
+      {
+        "case": 212,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 56
+      },
+      {
+        "case": 213,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 55
+      },
+      {
+        "case": 214,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 54
+      },
+      {
+        "case": 215,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 53
+      },
+      {
+        "case": 216,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 52
+      },
+      {
+        "case": 217,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 51
+      },
+      {
+        "case": 218,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 50
+      },
+      {
+        "case": 219,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "get:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 49
+      },
+      {
+        "case": 220,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 48
+      },
+      {
+        "case": 221,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 48
+      },
+      {
+        "case": 222,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 47
+      },
+      {
+        "case": 223,
+        "inputs": [
+          "put:b",
+          "put:c",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 46
+      },
+      {
+        "case": 224,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 189
+      },
+      {
+        "case": 225,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 45
+      },
+      {
+        "case": 226,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 44
+      },
+      {
+        "case": 227,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 43
+      },
+      {
+        "case": 228,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 190
+      },
+      {
+        "case": 229,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 42
+      },
+      {
+        "case": 230,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:b",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 41
+      },
+      {
+        "case": 231,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 191
+      },
+      {
+        "case": 232,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 40
+      },
+      {
+        "case": 233,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 39
+      },
+      {
+        "case": 234,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "put:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 38
+      },
+      {
+        "case": 235,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 37
+      },
+      {
+        "case": 236,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 36
+      },
+      {
+        "case": 237,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 35
+      },
+      {
+        "case": 238,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:a",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:a",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 34
+      },
+      {
+        "case": 239,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 33
+      },
+      {
+        "case": 240,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 32
+      },
+      {
+        "case": 241,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 31
+      },
+      {
+        "case": 242,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:b",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 30
+      },
+      {
+        "case": 243,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 29
+      },
+      {
+        "case": 244,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 28
+      },
+      {
+        "case": 245,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 27
+      },
+      {
+        "case": 246,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "get:c",
+          "put:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 26
+      },
+      {
+        "case": 247,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 25
+      },
+      {
+        "case": 248,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 25
+      },
+      {
+        "case": 249,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 24
+      },
+      {
+        "case": 250,
+        "inputs": [
+          "put:c",
+          "put:a",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 23
+      },
+      {
+        "case": 251,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 186
+      },
+      {
+        "case": 252,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 22
+      },
+      {
+        "case": 253,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:a",
+          "put:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:a"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 21
+      },
+      {
+        "case": 254,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 187
+      },
+      {
+        "case": 255,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 20
+      },
+      {
+        "case": 256,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 19
+      },
+      {
+        "case": 257,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 18
+      },
+      {
+        "case": 258,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 188
+      },
+      {
+        "case": 259,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 17
+      },
+      {
+        "case": 260,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 16
+      },
+      {
+        "case": 261,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "put:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "stored",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 15
+      },
+      {
+        "case": 262,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 14
+      },
+      {
+        "case": 263,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 13
+      },
+      {
+        "case": 264,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:a",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 12
+      },
+      {
+        "case": 265,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:a",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "miss",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 11
+      },
+      {
+        "case": 266,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 10
+      },
+      {
+        "case": 267,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 9
+      },
+      {
+        "case": 268,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:b",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 8
+      },
+      {
+        "case": 269,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:b",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:b",
+          "stored",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 7
+      },
+      {
+        "case": 270,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 6
+      },
+      {
+        "case": 271,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:b"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:b"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 5
+      },
+      {
+        "case": 272,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:c",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "hit:c"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 4
+      },
+      {
+        "case": 273,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "get:c",
+          "put:a",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "hit:c",
+          "stored",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 3
+      },
+      {
+        "case": 274,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "clear"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 2
+      },
+      {
+        "case": 275,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:a"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 2
+      },
+      {
+        "case": 276,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:b"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 1
+      },
+      {
+        "case": 277,
+        "inputs": [
+          "put:c",
+          "put:b",
+          "clear",
+          "get:c"
+        ],
+        "expected": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "actual": [
+          "stored",
+          "stored",
+          "cleared",
+          "miss"
+        ],
+        "status": "passed",
+        "first_mismatch": null,
+        "physical_word": 0
+      }
+    ]
+  }
+}

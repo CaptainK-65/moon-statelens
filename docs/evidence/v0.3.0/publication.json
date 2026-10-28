@@ -1,0 +1,21 @@
+{
+  "version": "0.3.0",
+  "date": "2026-10-28",
+  "publication_source_commit": "b6e135c560d908fbe2576951b8bfed148982136b",
+  "publication_source_tree": "8a9e1009067bb16e4fa32b38d42ecadd5f0948c1",
+  "candidate_head": "2e87dddf8f35da38cfd68fef450c9964022172cd",
+  "candidate_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40659874937",
+  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40661968945",
+  "registry_http_status": 200,
+  "publish_client_exit": 0,
+  "uploaded_zip_sha256": "2858455c922748a7fa4557a054716fdd73ae846bd3534486b03190def2f11a72",
+  "uploaded_zip_bytes": 2530438,
+  "dry_run": {
+    "http_status": 202,
+    "client_exit": -1,
+    "scope": "earlier dry run succeeded at service; no upload"
+  },
+  "release": "https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.3.0",
+  "public_package": "https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.3.0",
+  "public_receipt": "public-verification.json"
+}

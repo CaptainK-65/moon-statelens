@@ -11,13 +11,15 @@ selected public v0.2.2 compatibility checks. **Those public jobs do not prove
 that v0.3.0 has been published.** Source acceptance tests the new v0.3 consumer
 sources on all four backends against an isolated candidate workspace.
 
-Selected evidence records immutable clean PR checkout
-`1247abd2720a0f69b2fe87456f5e1b71d15f9736`, candidate head
-`86475e3f69f1e05cc92cf315de98f9792caf9106` and Ubuntu SQLite 3.45.1.
+[Final candidate CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40659874937)
+and [publication-source main CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40661968945)
+also passed all seven jobs. Selected evidence records immutable clean PR checkout
+`4fc3944d1d317daac2fa95373ef7002bd476f608`, candidate head
+`2e87dddf8f35da38cfd68fef450c9964022172cd` and Ubuntu SQLite 3.45.1.
 The source CI includes four-backend checks/builds/tests, format and generated
 interface drift, old integration tests, new fixed corpora, actual SQLite,
 controlled HTTP/JSONL services, report/artifact output and independent consumers.
-The additional real MoonLarder saved-suite demo is part of the final release gate.
+The real MoonLarder saved-suite demo also passed in the final release gate.
 
 | Backend | Named source tests |
 | --- | ---: |
@@ -49,11 +51,25 @@ implemented here, not claims of algorithm invention.
 
 ## Distribution and exact-version public verification
 
+Actual upload returned HTTP **200**, client exit **0**. The uploaded ZIP has
+2,530,438 bytes and SHA-256
+`2858455c922748a7fa4557a054716fdd73ae846bd3534486b03190def2f11a72`.
+Publication source is `b6e135c560d908fbe2576951b8bfed148982136b`;
+tree `8a9e1009067bb16e4fa32b38d42ecadd5f0948c1` is identical to the tested
+final candidate and its actual PR checkout.
+
+After upload, **nine actual public-download checks passed**: original and new
+API consumers on each of four backends, plus the independent actual SQLite gate.
+The [public receipt](evidence/v0.3.0/public-verification.json) records the clean
+verifier checkout and each command exit. The new native consumer exercises all
+three new integration APIs; legacy/native and the standalone gate exercise real
+SQLite, artifact persistence and actual replay-confirmed mutation detection.
+
 The [v0.3.0 release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.3.0)
-records the final source commit/tree, tested candidate, actual uploaded ZIP hash,
-registry result and post-upload checks. The actual public-download receipt is
-appended after upload; source verification and package-publication evidence remain
-separate. Later documentation/CI-selector commits do not replace the uploaded archive.
+attaches the actual registry-uploaded ZIP and retained evidence. See the structured
+[publication receipt](evidence/v0.3.0/publication.json). Source verification and
+package-publication evidence remain separate. Later documentation/CI-selector
+commits do not replace the archive or publication source.
 
 From a clean checkout with the pinned compiler/core 0.10.15+943464bfa,
 moon 0.1.20261012 and sqlite3 on PATH:

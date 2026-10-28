@@ -1,7 +1,9 @@
 {
-  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40658111670",
-  "candidate_head": "86475e3f69f1e05cc92cf315de98f9792caf9106",
-  "source_checkout": "1247abd2720a0f69b2fe87456f5e1b71d15f9736",
-  "selection": "unaltered whitelisted Ubuntu CI source acceptance and v0.3 outputs; clean immutable PR checkout",
-  "scope": "fixed finite corpora and controlled actual targets; initial public jobs select v0.2.2, not proof of v0.3 publication"
+  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40659874937",
+  "candidate_head": "2e87dddf8f35da38cfd68fef450c9964022172cd",
+  "source_checkout": "4fc3944d1d317daac2fa95373ef7002bd476f608",
+  "publication_source": "b6e135c560d908fbe2576951b8bfed148982136b",
+  "source_tree": "8a9e1009067bb16e4fa32b38d42ecadd5f0948c1",
+  "selection": "unaltered whitelisted actual final candidate CI outputs, plus post-upload actual public downloads",
+  "scope": "source and public package evidence are distinct; finite generated corpora and explicitly controlled actual targets"
 }

@@ -1,0 +1,110 @@
+{
+  "version": "0.3.0",
+  "verifier_commit": "b6e135c560d908fbe2576951b8bfed148982136b",
+  "working_tree_dirty": false,
+  "commands": [
+    {
+      "name": "legacy-wasm",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "v03-wasm",
+      "arguments": [
+        "run",
+        "tools/verify_v03_consumer.mbtx",
+        "--",
+        "public",
+        "wasm",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-wasm-gc",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm-gc",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "v03-wasm-gc",
+      "arguments": [
+        "run",
+        "tools/verify_v03_consumer.mbtx",
+        "--",
+        "public",
+        "wasm-gc",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-js",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "js",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "v03-js",
+      "arguments": [
+        "run",
+        "tools/verify_v03_consumer.mbtx",
+        "--",
+        "public",
+        "js",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-native",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "native",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "v03-native",
+      "arguments": [
+        "run",
+        "tools/verify_v03_consumer.mbtx",
+        "--",
+        "public",
+        "native",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "standalone-sqlite",
+      "arguments": [
+        "run",
+        "tools/verify_consumer.mbtx",
+        "--",
+        "0.3.0"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "scope": "actual fresh registry downloads, not source substitution"
+}
