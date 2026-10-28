@@ -13,11 +13,17 @@ pub fn confirm_difference(Experiment, Experiment, Array[String]) -> Difference? 
 
 pub fn decode_model(String, max_code_units? : Int) -> Machine raise
 
+pub fn diagnose_models(Machine, Machine, max_pairs? : Int, max_findings? : Int, max_edges? : Int) -> ModelDiagnosis raise LensError
+
 pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
+
+pub fn evidence_html(Json) -> String
 
 pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
 
 pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
+
+pub fn regression_junit(Json) -> String raise LensError
 
 // Errors
 pub(all) suberror LensError {
@@ -37,6 +43,18 @@ pub fn Algorithm::equal(Self, Self) -> Bool
 pub fn Algorithm::name(Self) -> String
 pub fn Algorithm::not_equal(Self, Self) -> Bool
 pub fn Algorithm::to_repr(Self) -> @debug.Repr
+
+pub struct BehaviorRule {
+  // private fields
+}
+pub fn BehaviorRule::check_trace(Self, Array[String], Array[String]) -> Int? raise LensError
+pub fn BehaviorRule::finding(Self, RuleSearch, Array[String]?) -> Json raise
+pub fn BehaviorRule::from_json(Json) -> Self raise
+pub fn BehaviorRule::new(String, RuleEvent, kind? : String, trigger? : RuleEvent, release? : RuleEvent) -> Self raise LensError
+pub fn BehaviorRule::search(Self, Machine, max_pairs? : Int) -> RuleSearch raise LensError
+pub fn BehaviorRule::to_json(Self) -> Json
+pub fn BehaviorRule::verify(Self, Machine, Experiment, max_pairs? : Int) -> Json raise
+pub impl ToJson for BehaviorRule
 
 pub(all) enum CheckResult {
   Counterexample(Array[String])
@@ -168,6 +186,7 @@ pub fn Machine::from_json(Json) -> Self raise
 pub fn Machine::initial_state(Self) -> Int
 pub fn Machine::minimize(Self, max_work? : Int) -> Self raise LensError
 pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
+pub fn Machine::regression_suite(Self, profile? : String, state_bound? : Int, max_candidates? : Int, max_symbols? : Int, max_work? : Int) -> RegressionSuite raise
 pub fn Machine::state_count(Self) -> Int
 pub fn Machine::system(Self) -> System
 pub fn Machine::table(Self) -> Array[Array[Transition]]
@@ -177,6 +196,16 @@ pub fn Machine::to_repr(Self) -> @debug.Repr
 pub fn Machine::trace(Self, Array[String]) -> Array[String] raise LensError
 pub fn Machine::trace_from(Self, Int, Array[String]) -> Array[String] raise LensError
 pub impl ToJson for Machine
+
+pub(all) struct ModelDiagnosis {
+  differences : Array[Difference]
+  complete : Bool
+  visited_pairs : Int
+  checked_edges : Int
+  reason : String?
+} derive(ToJson, @debug.Debug)
+pub fn ModelDiagnosis::to_json(Self) -> Json
+pub fn ModelDiagnosis::to_repr(Self) -> @debug.Repr
 
 pub struct Oracle {
   // private fields
@@ -215,6 +244,65 @@ pub(all) enum QueryStart {
   Execute(QueryRequest)
 } derive(@debug.Debug)
 pub fn QueryStart::to_repr(Self) -> @debug.Repr
+
+pub(all) struct RegressionCase {
+  inputs : Array[String]
+  expected : Array[String]
+} derive(Eq, ToJson, @debug.Debug, @json.FromJson)
+pub fn RegressionCase::equal(Self, Self) -> Bool
+pub fn RegressionCase::from_json(Json, @json.JsonPath) -> Self raise @json.JsonDecodeError
+pub fn RegressionCase::not_equal(Self, Self) -> Bool
+pub fn RegressionCase::to_json(Self) -> Json
+pub fn RegressionCase::to_repr(Self) -> @debug.Repr
+
+pub struct RegressionExecution {
+  // private fields
+}
+pub fn RegressionExecution::abort(Self, String, unstable? : Bool) -> Unit
+pub fn RegressionExecution::next_word(Self) -> Array[String]?
+pub fn RegressionExecution::observe(Self, Array[String]) -> Unit raise
+pub fn RegressionExecution::report(Self) -> Json
+
+pub struct RegressionPlan {
+  // private fields
+}
+pub fn RegressionPlan::alphabet(Self) -> Array[String]
+pub fn RegressionPlan::certificate(Self) -> Json
+pub fn RegressionPlan::execution(Self, stability_rechecks? : Int) -> RegressionExecution raise
+pub fn RegressionPlan::run(Self, Experiment, stability_rechecks? : Int) -> Json raise
+pub fn RegressionPlan::validate(Self) -> Bool raise
+pub fn RegressionPlan::words(Self) -> Array[Array[String]]
+
+pub struct RegressionSuite {
+  // private fields
+}
+pub fn RegressionSuite::cases(Self) -> Array[RegressionCase]
+pub fn RegressionSuite::coverage(Self) -> Json
+pub fn RegressionSuite::evidence(Self) -> Json
+pub fn RegressionSuite::from_json(Json) -> Self raise
+pub fn RegressionSuite::is_complete(Self) -> Bool
+pub fn RegressionSuite::plan(Self, compact? : Bool) -> RegressionPlan
+pub fn RegressionSuite::to_json(Self) -> Json
+pub impl ToJson for RegressionSuite
+
+pub(all) struct RuleEvent {
+  input : String
+  output : String
+} derive(Eq, ToJson, @debug.Debug, @json.FromJson)
+pub fn RuleEvent::equal(Self, Self) -> Bool
+pub fn RuleEvent::from_json(Json, @json.JsonPath) -> Self raise @json.JsonDecodeError
+pub fn RuleEvent::not_equal(Self, Self) -> Bool
+pub fn RuleEvent::to_json(Self) -> Json
+pub fn RuleEvent::to_repr(Self) -> @debug.Repr
+
+pub(all) struct RuleSearch {
+  witness : Array[String]?
+  search_complete : Bool
+  visited_pairs : Int
+  reason : String?
+} derive(ToJson, @debug.Debug)
+pub fn RuleSearch::to_json(Self) -> Json
+pub fn RuleSearch::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Statistics {
   queries : Int
