@@ -2,11 +2,18 @@
 package "CaptainK-65/moon-statelens/integration"
 
 import {
+  "CaptainK-65/moon-statelens",
   "moonbitlang/core/debug",
 }
 
 // Values
+pub async fn check_rules(Config, Array[@moon-statelens.BehaviorRule]) -> RunResult
+
 pub async fn compare(Config, Config, max_refinements? : Int) -> RunResult
+
+pub async fn diagnose(Config, Config, max_findings? : Int, max_pairs? : Int) -> RunResult
+
+pub async fn regress(Config, @moon-statelens.RegressionSuite, compact? : Bool, stability_rechecks? : Int) -> RunResult
 
 pub async fn replay(Config, Array[Array[String]]) -> Json
 

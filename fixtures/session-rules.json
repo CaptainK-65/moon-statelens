@@ -1,0 +1,9 @@
+[
+  {
+    "id": "logout-isolation",
+    "kind": "until",
+    "forbidden": { "input": "request", "output": "allowed" },
+    "trigger": { "input": "logout", "output": "ok" },
+    "release": { "input": "login", "output": "ok" }
+  }
+]
