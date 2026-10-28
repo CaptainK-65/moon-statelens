@@ -1,4 +1,4 @@
-# MoonStateLens 最终验收入口（v0.3 候选）
+# MoonStateLens 最终验收入口（0.3.0）
 
 本索引对应已通过初审的多算法行为学习与真实组件兼容性验证方向。
 实际完成状态、冻结提交、CI 和发布证据见 [验证记录](VALIDATION.md)。
@@ -61,14 +61,15 @@ moon run cmd/statelens --target native -- compare-config configs/sqlite-kv.json 
 
 ## 验证正式发布包
 
-0.2.2 已正式发布，从仓库根目录分别执行：
+0.2.2 历史发布记录已保留。验证 0.3.0 正式包时，从仓库根目录执行：
 
 ```sh
-moon run tools/verify_published.mbtx -- wasm 0.2.2
-moon run tools/verify_published.mbtx -- wasm-gc 0.2.2
-moon run tools/verify_published.mbtx -- js 0.2.2
-moon run tools/verify_published.mbtx -- native 0.2.2
-moon run tools/verify_consumer.mbtx -- 0.2.2
+moon run tools/verify_v03_consumer.mbtx -- public wasm 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public wasm-gc 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public js 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public native 0.3.0
+moon run tools/verify_published.mbtx -- native 0.3.0
+moon run tools/verify_consumer.mbtx -- 0.3.0
 ```
 
 这些命令创建独立模块并下载公共包，不以当前检出替代包内容。

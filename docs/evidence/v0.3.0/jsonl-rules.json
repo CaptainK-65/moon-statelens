@@ -1,0 +1,259 @@
+{
+  "format": "moonstatelens.rule-check",
+  "version": 1,
+  "configuration": {
+    "identity": "controlled-session-subprocess",
+    "abstraction": "session-v1",
+    "target_kind": "jsonl",
+    "learner": "kv",
+    "alphabet": [
+      "login",
+      "logout",
+      "request"
+    ],
+    "budgets": {
+      "queries": 100000,
+      "steps": 2000000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "chain",
+      "stages": [
+        {
+          "kind": "replay",
+          "words": [
+            [
+              "login",
+              "logout",
+              "request"
+            ]
+          ]
+        },
+        {
+          "kind": "random",
+          "seed": 42,
+          "max_length": 8,
+          "tests": 30
+        },
+        {
+          "kind": "wp",
+          "state_bound": 2,
+          "max_tests": 1000,
+          "max_work": 10000
+        }
+      ]
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "inference": {
+    "format": "moonstatelens.inference",
+    "version": 2,
+    "algorithm": "kv",
+    "learning": {
+      "format": "moonstatelens.learning",
+      "version": 1,
+      "model": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "login",
+          "logout",
+          "request"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "denied"
+            }
+          ],
+          [
+            {
+              "target": 1,
+              "output": "ok"
+            },
+            {
+              "target": 0,
+              "output": "ok"
+            },
+            {
+              "target": 1,
+              "output": "allowed"
+            }
+          ]
+        ]
+      },
+      "status": {
+        "kind": "supported",
+        "evidence": {
+          "kind": "conditional-state-bound",
+          "state_bound": 2
+        }
+      },
+      "statistics": {
+        "queries": 65,
+        "cache_hits": 10,
+        "resets": 55,
+        "steps": 162,
+        "completed_queries": 55,
+        "cache_nodes": 76,
+        "output_code_units": 618
+      },
+      "rounds": [
+        {
+          "index": 1,
+          "states": 1,
+          "prefixes": 1,
+          "suffixes": 0,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 3,
+          "counterexample_length": 2
+        },
+        {
+          "index": 2,
+          "states": 2,
+          "prefixes": 2,
+          "suffixes": 1,
+          "table_cells": 0,
+          "table_symbols": 0,
+          "queries": 20
+        }
+      ],
+      "counterexamples": [
+        {
+          "inputs": [
+            "login",
+            "request"
+          ],
+          "left_outputs": [
+            "ok",
+            "denied"
+          ],
+          "right_outputs": [
+            "ok",
+            "allowed"
+          ]
+        }
+      ]
+    },
+    "metrics": {
+      "states": 2,
+      "access_sequences": 2,
+      "discriminators": 1,
+      "table_cells": 0,
+      "table_symbols": 0,
+      "tree_nodes": 3
+    },
+    "verification": [
+      [
+        {
+          "strategy": "replay",
+          "tests": 1,
+          "result": "completed"
+        },
+        {
+          "strategy": "random-words",
+          "tests": 1,
+          "result": "counterexample"
+        }
+      ],
+      [
+        {
+          "strategy": "replay",
+          "tests": 1,
+          "result": "completed"
+        },
+        {
+          "strategy": "random-words",
+          "tests": 30,
+          "result": "completed"
+        },
+        {
+          "strategy": "wp-method",
+          "tests": 14,
+          "result": "completed"
+        }
+      ]
+    ]
+  },
+  "rules": [
+    {
+      "id": "logout-isolation",
+      "kind": "until",
+      "forbidden": {
+        "input": "request",
+        "output": "allowed"
+      },
+      "trigger": {
+        "input": "logout",
+        "output": "ok"
+      },
+      "release": {
+        "input": "login",
+        "output": "ok"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "rule": {
+        "id": "logout-isolation",
+        "kind": "until",
+        "forbidden": {
+          "input": "request",
+          "output": "allowed"
+        },
+        "trigger": {
+          "input": "logout",
+          "output": "ok"
+        },
+        "release": {
+          "input": "login",
+          "output": "ok"
+        }
+      },
+      "prediction": {
+        "search_complete": true,
+        "visited_pairs": 3
+      },
+      "status": "no-model-violation",
+      "actual_outputs": null,
+      "violation_position": null,
+      "scope": "finite safety monitor; no-model-violation is about the supplied model only"
+    }
+  ],
+  "confirmed_violations": 0,
+  "complete": true,
+  "reason": null,
+  "statistics": {
+    "queries": 65,
+    "cache_hits": 10,
+    "resets": 55,
+    "steps": 162,
+    "completed_queries": 55,
+    "cache_nodes": 76,
+    "output_code_units": 618
+  },
+  "scope": "confirmed violations have fresh target traces; absence of violations remains conditional on learned-model evidence"
+}

@@ -1,0 +1,246 @@
+[
+  {
+    "name": "commit",
+    "program": "git",
+    "arguments": [
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "working-tree",
+    "program": "git",
+    "arguments": [
+      "status",
+      "--porcelain"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "toolchain",
+    "program": "moon",
+    "arguments": [
+      "version",
+      "--all"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "sqlite",
+    "program": "sqlite3",
+    "arguments": [
+      "--version"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "update",
+    "program": "moon",
+    "arguments": [
+      "update"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "check",
+    "program": "moon",
+    "arguments": [
+      "check",
+      "--target",
+      "all",
+      "--deny-warn"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "build",
+    "program": "moon",
+    "arguments": [
+      "build",
+      "--target",
+      "all",
+      "--deny-warn"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "test",
+    "program": "moon",
+    "arguments": [
+      "test",
+      "--target",
+      "all",
+      "--deny-warn"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "format",
+    "program": "moon",
+    "arguments": [
+      "fmt",
+      "--check"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "interfaces",
+    "program": "moon",
+    "arguments": [
+      "info"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "native-interfaces",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/update_native_interfaces.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "script-format",
+    "program": "moon",
+    "arguments": [
+      "fmt",
+      "--check",
+      "tools/verify_published.mbtx",
+      "tools/verify_acceptance.mbtx",
+      "tools/capture_native_evidence.mbtx",
+      "tools/verify_cli.mbtx",
+      "tools/verify_consumer.mbtx",
+      "tools/update_native_interfaces.mbtx",
+      "tools/verify_native.mbtx",
+      "tools/update_evidence.mbtx",
+      "tools/verify_v03.mbtx",
+      "tools/verify_artifacts.mbtx",
+      "tools/verify_v03_consumer.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "interface-drift",
+    "program": "git",
+    "arguments": [
+      "diff",
+      "--exit-code",
+      "--",
+      "*.mbti"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "example-session",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "examples/session"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "example-regression",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "examples/regression"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "example-lru",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "examples/lru"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "verify_cli",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_cli.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "verify_artifacts",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_artifacts.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "verify_native",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_native.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "verify_v03",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_v03.mbtx"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v03-source-consumer-wasm",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_v03_consumer.mbtx",
+      "--",
+      "source",
+      "wasm"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v03-source-consumer-wasm-gc",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_v03_consumer.mbtx",
+      "--",
+      "source",
+      "wasm-gc"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v03-source-consumer-js",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_v03_consumer.mbtx",
+      "--",
+      "source",
+      "js"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "v03-source-consumer-native",
+    "program": "moon",
+    "arguments": [
+      "run",
+      "tools/verify_v03_consumer.mbtx",
+      "--",
+      "source",
+      "native"
+    ],
+    "exit_code": 0
+  }
+]

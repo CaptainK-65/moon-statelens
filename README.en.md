@@ -50,7 +50,7 @@ moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run tools/verify_native.mbtx
 ```
 
-CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.2`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.3.0`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
 
 Version 0.2.2 adds offline target validation and persisted comparison/replay
 evidence. `validate-config CONFIG [run|compare|replay]` checks structure and

@@ -1,0 +1,2050 @@
+{
+  "format": "moonstatelens.scale-study",
+  "version": 1,
+  "scope": "60 new minimal reachable deterministic targets, both learners; exact reference oracle for independently checkable scale, not external-target W/Wp cost",
+  "targets": 60,
+  "learning_runs": 120,
+  "max_minimal_reachable_states": 64,
+  "cases": [
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 666,
+        "cache_hits": 573,
+        "resets": 93,
+        "steps": 787,
+        "completed_queries": 93,
+        "cache_nodes": 149,
+        "output_code_units": 3113
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 338,
+        "cache_hits": 281,
+        "resets": 57,
+        "steps": 512,
+        "completed_queries": 57,
+        "cache_nodes": 113,
+        "output_code_units": 2027
+      },
+      "rounds": 8
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 178,
+        "completed_queries": 34,
+        "cache_nodes": 35,
+        "output_code_units": 712
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 37,
+        "cache_hits": 12,
+        "resets": 25,
+        "steps": 125,
+        "completed_queries": 25,
+        "cache_nodes": 26,
+        "output_code_units": 500
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 837,
+        "cache_hits": 681,
+        "resets": 156,
+        "steps": 1783,
+        "completed_queries": 156,
+        "cache_nodes": 254,
+        "output_code_units": 7096
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 394,
+        "cache_hits": 317,
+        "resets": 77,
+        "steps": 632,
+        "completed_queries": 77,
+        "cache_nodes": 134,
+        "output_code_units": 2506
+      },
+      "rounds": 8
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 178,
+        "completed_queries": 34,
+        "cache_nodes": 35,
+        "output_code_units": 712
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 37,
+        "cache_hits": 12,
+        "resets": 25,
+        "steps": 125,
+        "completed_queries": 25,
+        "cache_nodes": 26,
+        "output_code_units": 500
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 821,
+        "cache_hits": 683,
+        "resets": 138,
+        "steps": 1438,
+        "completed_queries": 138,
+        "cache_nodes": 224,
+        "output_code_units": 5718
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 386,
+        "cache_hits": 319,
+        "resets": 67,
+        "steps": 514,
+        "completed_queries": 67,
+        "cache_nodes": 116,
+        "output_code_units": 2036
+      },
+      "rounds": 8
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 178,
+        "completed_queries": 34,
+        "cache_nodes": 35,
+        "output_code_units": 712
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 37,
+        "cache_hits": 12,
+        "resets": 25,
+        "steps": 125,
+        "completed_queries": 25,
+        "cache_nodes": 26,
+        "output_code_units": 500
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 769,
+        "cache_hits": 649,
+        "resets": 120,
+        "steps": 1129,
+        "completed_queries": 120,
+        "cache_nodes": 194,
+        "output_code_units": 4477
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 339,
+        "cache_hits": 285,
+        "resets": 54,
+        "steps": 442,
+        "completed_queries": 54,
+        "cache_nodes": 97,
+        "output_code_units": 1751
+      },
+      "rounds": 8
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 178,
+        "completed_queries": 34,
+        "cache_nodes": 35,
+        "output_code_units": 712
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 37,
+        "cache_hits": 12,
+        "resets": 25,
+        "steps": 125,
+        "completed_queries": 25,
+        "cache_nodes": 26,
+        "output_code_units": 500
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 687,
+        "cache_hits": 585,
+        "resets": 102,
+        "steps": 856,
+        "completed_queries": 102,
+        "cache_nodes": 164,
+        "output_code_units": 3394
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 353,
+        "cache_hits": 302,
+        "resets": 51,
+        "steps": 362,
+        "completed_queries": 51,
+        "cache_nodes": 84,
+        "output_code_units": 1430
+      },
+      "rounds": 8
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 8,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 178,
+        "completed_queries": 34,
+        "cache_nodes": 35,
+        "output_code_units": 712
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 8,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 37,
+        "cache_hits": 12,
+        "resets": 25,
+        "steps": 125,
+        "completed_queries": 25,
+        "cache_nodes": 26,
+        "output_code_units": 500
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 4726,
+        "cache_hits": 4417,
+        "resets": 309,
+        "steps": 5087,
+        "completed_queries": 309,
+        "cache_nodes": 557,
+        "output_code_units": 20281
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 2022,
+        "cache_hits": 1841,
+        "resets": 181,
+        "steps": 3456,
+        "completed_queries": 181,
+        "cache_nodes": 421,
+        "output_code_units": 13779
+      },
+      "rounds": 16
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 66,
+        "cache_hits": 0,
+        "resets": 66,
+        "steps": 610,
+        "completed_queries": 66,
+        "cache_nodes": 67,
+        "output_code_units": 2458
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 69,
+        "cache_hits": 20,
+        "resets": 49,
+        "steps": 441,
+        "completed_queries": 49,
+        "cache_nodes": 50,
+        "output_code_units": 1776
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 5449,
+        "cache_hits": 4885,
+        "resets": 564,
+        "steps": 13227,
+        "completed_queries": 564,
+        "cache_nodes": 1022,
+        "output_code_units": 52840
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 2582,
+        "cache_hits": 2297,
+        "resets": 285,
+        "steps": 4652,
+        "completed_queries": 285,
+        "cache_nodes": 526,
+        "output_code_units": 18562
+      },
+      "rounds": 16
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 66,
+        "cache_hits": 0,
+        "resets": 66,
+        "steps": 610,
+        "completed_queries": 66,
+        "cache_nodes": 67,
+        "output_code_units": 2464
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 69,
+        "cache_hits": 20,
+        "resets": 49,
+        "steps": 441,
+        "completed_queries": 49,
+        "cache_nodes": 50,
+        "output_code_units": 1782
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 5537,
+        "cache_hits": 5007,
+        "resets": 530,
+        "steps": 11898,
+        "completed_queries": 530,
+        "cache_nodes": 960,
+        "output_code_units": 47526
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 2566,
+        "cache_hits": 2299,
+        "resets": 267,
+        "steps": 4218,
+        "completed_queries": 267,
+        "cache_nodes": 492,
+        "output_code_units": 16828
+      },
+      "rounds": 16
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 66,
+        "cache_hits": 0,
+        "resets": 66,
+        "steps": 610,
+        "completed_queries": 66,
+        "cache_nodes": 67,
+        "output_code_units": 2458
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 69,
+        "cache_hits": 20,
+        "resets": 49,
+        "steps": 441,
+        "completed_queries": 49,
+        "cache_nodes": 50,
+        "output_code_units": 1776
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 5541,
+        "cache_hits": 5045,
+        "resets": 496,
+        "steps": 10637,
+        "completed_queries": 496,
+        "cache_nodes": 898,
+        "output_code_units": 42469
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 2023,
+        "cache_hits": 1845,
+        "resets": 178,
+        "steps": 3126,
+        "completed_queries": 178,
+        "cache_nodes": 381,
+        "output_code_units": 12463
+      },
+      "rounds": 16
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 66,
+        "cache_hits": 0,
+        "resets": 66,
+        "steps": 610,
+        "completed_queries": 66,
+        "cache_nodes": 67,
+        "output_code_units": 2458
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 69,
+        "cache_hits": 20,
+        "resets": 49,
+        "steps": 441,
+        "completed_queries": 49,
+        "cache_nodes": 50,
+        "output_code_units": 1776
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 5467,
+        "cache_hits": 5005,
+        "resets": 462,
+        "steps": 9444,
+        "completed_queries": 462,
+        "cache_nodes": 836,
+        "output_code_units": 37714
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 2493,
+        "cache_hits": 2258,
+        "resets": 235,
+        "steps": 3522,
+        "completed_queries": 235,
+        "cache_nodes": 428,
+        "output_code_units": 14046
+      },
+      "rounds": 16
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 16,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 66,
+        "cache_hits": 0,
+        "resets": 66,
+        "steps": 610,
+        "completed_queries": 66,
+        "cache_nodes": 67,
+        "output_code_units": 2464
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 16,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 69,
+        "cache_hits": 20,
+        "resets": 49,
+        "steps": 441,
+        "completed_queries": 49,
+        "cache_nodes": 50,
+        "output_code_units": 1782
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 15250,
+        "cache_hits": 14597,
+        "resets": 653,
+        "steps": 15979,
+        "completed_queries": 653,
+        "cache_nodes": 1221,
+        "output_code_units": 63817
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 6074,
+        "cache_hits": 5705,
+        "resets": 369,
+        "steps": 10880,
+        "completed_queries": 369,
+        "cache_nodes": 921,
+        "output_code_units": 43451
+      },
+      "rounds": 24
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 98,
+        "cache_hits": 0,
+        "resets": 98,
+        "steps": 1298,
+        "completed_queries": 98,
+        "cache_nodes": 99,
+        "output_code_units": 5234
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 101,
+        "cache_hits": 28,
+        "resets": 73,
+        "steps": 949,
+        "completed_queries": 73,
+        "cache_nodes": 74,
+        "output_code_units": 3824
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 16909,
+        "cache_hits": 15681,
+        "resets": 1228,
+        "steps": 43551,
+        "completed_queries": 1228,
+        "cache_nodes": 2302,
+        "output_code_units": 174104
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 8098,
+        "cache_hits": 7477,
+        "resets": 621,
+        "steps": 15136,
+        "completed_queries": 621,
+        "cache_nodes": 1174,
+        "output_code_units": 60474
+      },
+      "rounds": 24
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 98,
+        "cache_hits": 0,
+        "resets": 98,
+        "steps": 1298,
+        "completed_queries": 98,
+        "cache_nodes": 99,
+        "output_code_units": 5248
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 101,
+        "cache_hits": 28,
+        "resets": 73,
+        "steps": 949,
+        "completed_queries": 73,
+        "cache_nodes": 74,
+        "output_code_units": 3838
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 17229,
+        "cache_hits": 16051,
+        "resets": 1178,
+        "steps": 40598,
+        "completed_queries": 1178,
+        "cache_nodes": 2208,
+        "output_code_units": 162294
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 8074,
+        "cache_hits": 7479,
+        "resets": 595,
+        "steps": 14194,
+        "completed_queries": 595,
+        "cache_nodes": 1124,
+        "output_code_units": 56708
+      },
+      "rounds": 24
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 98,
+        "cache_hits": 0,
+        "resets": 98,
+        "steps": 1298,
+        "completed_queries": 98,
+        "cache_nodes": 99,
+        "output_code_units": 5234
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 101,
+        "cache_hits": 28,
+        "resets": 73,
+        "steps": 949,
+        "completed_queries": 73,
+        "cache_nodes": 74,
+        "output_code_units": 3824
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 17417,
+        "cache_hits": 16289,
+        "resets": 1128,
+        "steps": 37745,
+        "completed_queries": 1128,
+        "cache_nodes": 2114,
+        "output_code_units": 150861
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 6075,
+        "cache_hits": 5709,
+        "resets": 366,
+        "steps": 10098,
+        "completed_queries": 366,
+        "cache_nodes": 857,
+        "output_code_units": 40327
+      },
+      "rounds": 24
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 98,
+        "cache_hits": 0,
+        "resets": 98,
+        "steps": 1298,
+        "completed_queries": 98,
+        "cache_nodes": 99,
+        "output_code_units": 5234
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 101,
+        "cache_hits": 28,
+        "resets": 73,
+        "steps": 949,
+        "completed_queries": 73,
+        "cache_nodes": 74,
+        "output_code_units": 3824
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 17479,
+        "cache_hits": 16401,
+        "resets": 1078,
+        "steps": 34992,
+        "completed_queries": 1078,
+        "cache_nodes": 2020,
+        "output_code_units": 139874
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 7961,
+        "cache_hits": 7414,
+        "resets": 547,
+        "steps": 12570,
+        "completed_queries": 547,
+        "cache_nodes": 1028,
+        "output_code_units": 50214
+      },
+      "rounds": 24
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 24,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 98,
+        "cache_hits": 0,
+        "resets": 98,
+        "steps": 1298,
+        "completed_queries": 98,
+        "cache_nodes": 99,
+        "output_code_units": 5248
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 24,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 101,
+        "cache_hits": 28,
+        "resets": 73,
+        "steps": 949,
+        "completed_queries": 73,
+        "cache_nodes": 74,
+        "output_code_units": 3838
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 35310,
+        "cache_hits": 34185,
+        "resets": 1125,
+        "steps": 36535,
+        "completed_queries": 1125,
+        "cache_nodes": 2141,
+        "output_code_units": 146009
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 13518,
+        "cache_hits": 12897,
+        "resets": 621,
+        "steps": 24832,
+        "completed_queries": 621,
+        "cache_nodes": 1613,
+        "output_code_units": 99235
+      },
+      "rounds": 32
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 130,
+        "cache_hits": 0,
+        "resets": 130,
+        "steps": 2242,
+        "completed_queries": 130,
+        "cache_nodes": 131,
+        "output_code_units": 9034
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 133,
+        "cache_hits": 36,
+        "resets": 97,
+        "steps": 1649,
+        "completed_queries": 97,
+        "cache_nodes": 98,
+        "output_code_units": 6640
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 38289,
+        "cache_hits": 36141,
+        "resets": 2148,
+        "steps": 101971,
+        "completed_queries": 2148,
+        "cache_nodes": 4094,
+        "output_code_units": 407752
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 18478,
+        "cache_hits": 17393,
+        "resets": 1085,
+        "steps": 35156,
+        "completed_queries": 1085,
+        "cache_nodes": 2078,
+        "output_code_units": 140530
+      },
+      "rounds": 32
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 130,
+        "cache_hits": 0,
+        "resets": 130,
+        "steps": 2242,
+        "completed_queries": 130,
+        "cache_nodes": 131,
+        "output_code_units": 9056
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 133,
+        "cache_hits": 36,
+        "resets": 97,
+        "steps": 1649,
+        "completed_queries": 97,
+        "cache_nodes": 98,
+        "output_code_units": 6662
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 38969,
+        "cache_hits": 36887,
+        "resets": 2082,
+        "steps": 96754,
+        "completed_queries": 2082,
+        "cache_nodes": 3968,
+        "output_code_units": 386886
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 18446,
+        "cache_hits": 17395,
+        "resets": 1051,
+        "steps": 33514,
+        "completed_queries": 1051,
+        "cache_nodes": 2012,
+        "output_code_units": 133964
+      },
+      "rounds": 32
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 130,
+        "cache_hits": 0,
+        "resets": 130,
+        "steps": 2242,
+        "completed_queries": 130,
+        "cache_nodes": 131,
+        "output_code_units": 9034
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 133,
+        "cache_hits": 36,
+        "resets": 97,
+        "steps": 1649,
+        "completed_queries": 97,
+        "cache_nodes": 98,
+        "output_code_units": 6640
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 39469,
+        "cache_hits": 37453,
+        "resets": 2016,
+        "steps": 91669,
+        "completed_queries": 2016,
+        "cache_nodes": 3842,
+        "output_code_units": 366517
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 13519,
+        "cache_hits": 12901,
+        "resets": 618,
+        "steps": 23406,
+        "completed_queries": 618,
+        "cache_nodes": 1525,
+        "output_code_units": 93535
+      },
+      "rounds": 32
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 130,
+        "cache_hits": 0,
+        "resets": 130,
+        "steps": 2242,
+        "completed_queries": 130,
+        "cache_nodes": 131,
+        "output_code_units": 9034
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 133,
+        "cache_hits": 36,
+        "resets": 97,
+        "steps": 1649,
+        "completed_queries": 97,
+        "cache_nodes": 98,
+        "output_code_units": 6640
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 39795,
+        "cache_hits": 37845,
+        "resets": 1950,
+        "steps": 86716,
+        "completed_queries": 1950,
+        "cache_nodes": 3716,
+        "output_code_units": 346738
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 18293,
+        "cache_hits": 17306,
+        "resets": 987,
+        "steps": 30578,
+        "completed_queries": 987,
+        "cache_nodes": 1884,
+        "output_code_units": 122222
+      },
+      "rounds": 32
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 32,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 130,
+        "cache_hits": 0,
+        "resets": 130,
+        "steps": 2242,
+        "completed_queries": 130,
+        "cache_nodes": 131,
+        "output_code_units": 9056
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 32,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 133,
+        "cache_hits": 36,
+        "resets": 97,
+        "steps": 1649,
+        "completed_queries": 97,
+        "cache_nodes": 98,
+        "output_code_units": 6662
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 116326,
+        "cache_hits": 113873,
+        "resets": 2453,
+        "steps": 118927,
+        "completed_queries": 2453,
+        "cache_nodes": 4749,
+        "output_code_units": 475513
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 42678,
+        "cache_hits": 41361,
+        "resets": 1317,
+        "steps": 80512,
+        "completed_queries": 1317,
+        "cache_nodes": 3573,
+        "output_code_units": 321907
+      },
+      "rounds": 48
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 194,
+        "cache_hits": 0,
+        "resets": 194,
+        "steps": 4898,
+        "completed_queries": 194,
+        "cache_nodes": 195,
+        "output_code_units": 19706
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 197,
+        "cache_hits": 52,
+        "resets": 145,
+        "steps": 3625,
+        "completed_queries": 145,
+        "cache_nodes": 146,
+        "output_code_units": 14576
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 123097,
+        "cache_hits": 118341,
+        "resets": 4756,
+        "steps": 339963,
+        "completed_queries": 4756,
+        "cache_nodes": 9214,
+        "output_code_units": 1359656
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 59974,
+        "cache_hits": 57577,
+        "resets": 2397,
+        "steps": 116092,
+        "completed_queries": 2397,
+        "cache_nodes": 4654,
+        "output_code_units": 464226
+      },
+      "rounds": 48
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 194,
+        "cache_hits": 0,
+        "resets": 194,
+        "steps": 4898,
+        "completed_queries": 194,
+        "cache_nodes": 195,
+        "output_code_units": 19744
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 197,
+        "cache_hits": 52,
+        "resets": 145,
+        "steps": 3625,
+        "completed_queries": 145,
+        "cache_nodes": 146,
+        "output_code_units": 14614
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 124881,
+        "cache_hits": 120223,
+        "resets": 4658,
+        "steps": 328298,
+        "completed_queries": 4658,
+        "cache_nodes": 9024,
+        "output_code_units": 1312998
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 59926,
+        "cache_hits": 57579,
+        "resets": 2347,
+        "steps": 112474,
+        "completed_queries": 2347,
+        "cache_nodes": 4556,
+        "output_code_units": 449756
+      },
+      "rounds": 48
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 194,
+        "cache_hits": 0,
+        "resets": 194,
+        "steps": 4898,
+        "completed_queries": 194,
+        "cache_nodes": 195,
+        "output_code_units": 19706
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 197,
+        "cache_hits": 52,
+        "resets": 145,
+        "steps": 3625,
+        "completed_queries": 145,
+        "cache_nodes": 146,
+        "output_code_units": 14576
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 126389,
+        "cache_hits": 121829,
+        "resets": 4560,
+        "steps": 316829,
+        "completed_queries": 4560,
+        "cache_nodes": 8834,
+        "output_code_units": 1267077
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 42679,
+        "cache_hits": 41365,
+        "resets": 1314,
+        "steps": 77222,
+        "completed_queries": 1314,
+        "cache_nodes": 3437,
+        "output_code_units": 308751
+      },
+      "rounds": 48
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 194,
+        "cache_hits": 0,
+        "resets": 194,
+        "steps": 4898,
+        "completed_queries": 194,
+        "cache_nodes": 195,
+        "output_code_units": 19706
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 197,
+        "cache_hits": 52,
+        "resets": 145,
+        "steps": 3625,
+        "completed_queries": 145,
+        "cache_nodes": 146,
+        "output_code_units": 14576
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 127627,
+        "cache_hits": 123165,
+        "resets": 4462,
+        "steps": 305556,
+        "completed_queries": 4462,
+        "cache_nodes": 8644,
+        "output_code_units": 1222034
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 59693,
+        "cache_hits": 57442,
+        "resets": 2251,
+        "steps": 105762,
+        "completed_queries": 2251,
+        "cache_nodes": 4364,
+        "output_code_units": 422910
+      },
+      "rounds": 48
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 48,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 194,
+        "cache_hits": 0,
+        "resets": 194,
+        "steps": 4898,
+        "completed_queries": 194,
+        "cache_nodes": 195,
+        "output_code_units": 19744
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 48,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 197,
+        "cache_hits": 52,
+        "resets": 145,
+        "steps": 3625,
+        "completed_queries": 145,
+        "cache_nodes": 146,
+        "output_code_units": 14614
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 272350,
+        "cache_hits": 268057,
+        "resets": 4293,
+        "steps": 276839,
+        "completed_queries": 4293,
+        "cache_nodes": 8381,
+        "output_code_units": 1107097
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 0,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 97694,
+        "cache_hits": 95425,
+        "resets": 2269,
+        "steps": 186880,
+        "completed_queries": 2269,
+        "cache_nodes": 6301,
+        "output_code_units": 747331
+      },
+      "rounds": 64
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 258,
+        "cache_hits": 0,
+        "resets": 258,
+        "steps": 8578,
+        "completed_queries": 258,
+        "cache_nodes": 259,
+        "output_code_units": 34474
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 1,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 261,
+        "cache_hits": 68,
+        "resets": 193,
+        "steps": 6369,
+        "completed_queries": 193,
+        "cache_nodes": 194,
+        "output_code_units": 25584
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 284449,
+        "cache_hits": 276061,
+        "resets": 8388,
+        "steps": 800931,
+        "completed_queries": 8388,
+        "cache_nodes": 16382,
+        "output_code_units": 3203464
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 2,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 139358,
+        "cache_hits": 135137,
+        "resets": 4221,
+        "steps": 272036,
+        "completed_queries": 4221,
+        "cache_nodes": 8254,
+        "output_code_units": 1087954
+      },
+      "rounds": 64
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 258,
+        "cache_hits": 0,
+        "resets": 258,
+        "steps": 8578,
+        "completed_queries": 258,
+        "cache_nodes": 259,
+        "output_code_units": 34528
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 3,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 261,
+        "cache_hits": 68,
+        "resets": 193,
+        "steps": 6369,
+        "completed_queries": 193,
+        "cache_nodes": 194,
+        "output_code_units": 25638
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 287849,
+        "cache_hits": 279591,
+        "resets": 8258,
+        "steps": 780258,
+        "completed_queries": 8258,
+        "cache_nodes": 16128,
+        "output_code_units": 3120774
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 4,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 139294,
+        "cache_hits": 135139,
+        "resets": 4155,
+        "steps": 265674,
+        "completed_queries": 4155,
+        "cache_nodes": 8124,
+        "output_code_units": 1062508
+      },
+      "rounds": 64
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 258,
+        "cache_hits": 0,
+        "resets": 258,
+        "steps": 8578,
+        "completed_queries": 258,
+        "cache_nodes": 259,
+        "output_code_units": 34474
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 5,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 261,
+        "cache_hits": 68,
+        "resets": 193,
+        "steps": 6369,
+        "completed_queries": 193,
+        "cache_nodes": 194,
+        "output_code_units": 25584
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 290877,
+        "cache_hits": 282749,
+        "resets": 8128,
+        "steps": 759845,
+        "completed_queries": 8128,
+        "cache_nodes": 15874,
+        "output_code_units": 3039061
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 6,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 97695,
+        "cache_hits": 95429,
+        "resets": 2266,
+        "steps": 180958,
+        "completed_queries": 2266,
+        "cache_nodes": 6117,
+        "output_code_units": 723647
+      },
+      "rounds": 64
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 258,
+        "cache_hits": 0,
+        "resets": 258,
+        "steps": 8578,
+        "completed_queries": 258,
+        "cache_nodes": 259,
+        "output_code_units": 34474
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 7,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 261,
+        "cache_hits": 68,
+        "resets": 193,
+        "steps": 6369,
+        "completed_queries": 193,
+        "cache_nodes": 194,
+        "output_code_units": 25584
+      },
+      "rounds": 2
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 293539,
+        "cache_hits": 285541,
+        "resets": 7998,
+        "steps": 739692,
+        "completed_queries": 7998,
+        "cache_nodes": 15620,
+        "output_code_units": 2958514
+      },
+      "rounds": 3
+    },
+    {
+      "family": "delayed-probe",
+      "seed": 8,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 138981,
+        "cache_hits": 134954,
+        "resets": 4027,
+        "steps": 253650,
+        "completed_queries": 4027,
+        "cache_nodes": 7868,
+        "output_code_units": 1014414
+      },
+      "rounds": 64
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 64,
+      "algorithm": "lstar",
+      "correct": true,
+      "statistics": {
+        "queries": 258,
+        "cache_hits": 0,
+        "resets": 258,
+        "steps": 8578,
+        "completed_queries": 258,
+        "cache_nodes": 259,
+        "output_code_units": 34528
+      },
+      "rounds": 1
+    },
+    {
+      "family": "cycle-observation",
+      "seed": 9,
+      "minimal_reachable_states": 64,
+      "algorithm": "kv",
+      "correct": true,
+      "statistics": {
+        "queries": 261,
+        "cache_hits": 68,
+        "resets": 193,
+        "steps": 6369,
+        "completed_queries": 193,
+        "cache_nodes": 194,
+        "output_code_units": 25638
+      },
+      "rounds": 2
+    }
+  ]
+}

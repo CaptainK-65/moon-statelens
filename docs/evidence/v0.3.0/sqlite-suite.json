@@ -1,0 +1,1643 @@
+{
+  "format": "moonstatelens.regression-suite",
+  "version": 1,
+  "model": {
+    "format": "moonstatelens.mealy",
+    "version": 1,
+    "alphabet": [
+      "begin",
+      "put",
+      "delete",
+      "commit",
+      "rollback",
+      "read"
+    ],
+    "initial": 0,
+    "transitions": [
+      [
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "transaction-error"
+        },
+        {
+          "target": 0,
+          "output": "transaction-error"
+        },
+        {
+          "target": 0,
+          "output": "empty"
+        }
+      ],
+      [
+        {
+          "target": 1,
+          "output": "transaction-error"
+        },
+        {
+          "target": 3,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "empty"
+        }
+      ],
+      [
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "transaction-error"
+        },
+        {
+          "target": 2,
+          "output": "transaction-error"
+        },
+        {
+          "target": 2,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 3,
+          "output": "transaction-error"
+        },
+        {
+          "target": 3,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 3,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 4,
+          "output": "transaction-error"
+        },
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 4,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 5,
+          "output": "transaction-error"
+        },
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "empty"
+        }
+      ]
+    ]
+  },
+  "profile": "wp",
+  "state_bound": 6,
+  "max_candidates": 100000,
+  "max_symbols": 2000000,
+  "max_work": 1000000,
+  "cases": [
+    {
+      "inputs": [],
+      "expected": []
+    },
+    {
+      "inputs": [
+        "begin"
+      ],
+      "expected": [
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "read"
+      ],
+      "expected": [
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "transaction-error",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put"
+      ],
+      "expected": [
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "delete"
+      ],
+      "expected": [
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "commit"
+      ],
+      "expected": [
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "transaction-error",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "transaction-error",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "rollback"
+      ],
+      "expected": [
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "transaction-error",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "empty",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "read",
+        "read"
+      ],
+      "expected": [
+        "empty",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "present",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "present",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "transaction-error"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "empty"
+      ]
+    },
+    {
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "ok",
+        "present"
+      ]
+    }
+  ],
+  "generated_candidates": 131,
+  "evidence": {
+    "generation_complete": true,
+    "profile": "wp",
+    "state_bound": 6,
+    "conditional_conformance": true,
+    "assumptions": "deterministic total resettable Mealy target, same alphabet, actual states <= bound; suite must pass completely",
+    "coverage": {
+      "scope": "reachable model coverage, not implementation code coverage",
+      "states_visited": 6,
+      "states_total": 6,
+      "transitions_visited": 36,
+      "transitions_total": 36
+    }
+  }
+}

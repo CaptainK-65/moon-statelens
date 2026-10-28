@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.3.0 (candidate)
+## 0.3.0
 
 - Export/import model-derived state, transition, W and Wp regression suites with recomputed evidence and explicit truncation.
 - Share physical prefix executions while preserving every original output assertion in a checkable certificate; retain independent fresh stability probes.

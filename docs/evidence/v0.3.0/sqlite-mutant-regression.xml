@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="MoonStateLens" tests="113" failures="8" skipped="0">
+<testcase classname="MoonStateLens.Regression" name="case-0">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-1">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-2">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-3">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-4">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-5">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-6">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-7">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-8">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-9">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-10">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-11">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-12">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-13">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-14">
+<failure message="baseline output mismatch">{&quot;case":14,"inputs":["begin","put","rollback","read"],"expected":["ok","ok","ok","empty"],"actual":["ok","ok","ok","present"],"status":"failed","first_mismatch":3,"physical_word":72}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-15">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-16">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-17">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-18">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-19">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-20">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-21">
+<failure message="baseline output mismatch">{&quot;case":21,"inputs":["put","begin","delete","rollback","read"],"expected":["ok","ok","ok","ok","present"],"actual":["ok","ok","ok","ok","empty"],"status":"failed","first_mismatch":4,"physical_word":70}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-22">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-23">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-24">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-25">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-26">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-27">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-28">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-29">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-30">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-31">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-32">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-33">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-34">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-35">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-36">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-37">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-38">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-39">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-40">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-41">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-42">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-43">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-44">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-45">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-46">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-47">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-48">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-49">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-50">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-51">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-52">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-53">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-54">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-55">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-56">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-57">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-58">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-59">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-60">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-61">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-62">
+<failure message="baseline output mismatch">{&quot;case":62,"inputs":["begin","put","begin","rollback","read"],"expected":["ok","ok","transaction-error","ok","empty"],"actual":["ok","ok","transaction-error","ok","present"],"status":"failed","first_mismatch":4,"physical_word":39}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-63">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-64">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-65">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-66">
+<failure message="baseline output mismatch">{&quot;case":66,"inputs":["begin","put","put","rollback","read"],"expected":["ok","ok","ok","ok","empty"],"actual":["ok","ok","ok","ok","present"],"status":"failed","first_mismatch":4,"physical_word":36}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-67">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-68">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-69">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-70">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-71">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-72">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-73">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-74">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-75">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-76">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-77">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-78">
+<failure message="baseline output mismatch">{&quot;case":78,"inputs":["begin","put","read","rollback","read"],"expected":["ok","ok","present","ok","empty"],"actual":["ok","ok","present","ok","present"],"status":"failed","first_mismatch":4,"physical_word":27}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-79">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-80">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-81">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-82">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-83">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-84">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-85">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-86">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-87">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-88">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-89">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-90">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-91">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-92">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-93">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-94">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-95">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-96">
+<failure message="baseline output mismatch">{&quot;case":96,"inputs":["put","begin","delete","begin","rollback","read"],"expected":["ok","ok","ok","transaction-error","ok","present"],"actual":["ok","ok","ok","transaction-error","ok","empty"],"status":"failed","first_mismatch":5,"physical_word":12}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-97">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-98">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-99">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-100">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-101">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-102">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-103">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-104">
+<failure message="baseline output mismatch">{&quot;case":104,"inputs":["put","begin","delete","delete","rollback","read"],"expected":["ok","ok","ok","ok","ok","present"],"actual":["ok","ok","ok","ok","ok","empty"],"status":"failed","first_mismatch":5,"physical_word":6}</failure>
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-105">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-106">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-107">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-108">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-109">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-110">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-111">
+</testcase>
+<testcase classname="MoonStateLens.Regression" name="case-112">
+<failure message="baseline output mismatch">{&quot;case":112,"inputs":["put","begin","delete","read","rollback","read"],"expected":["ok","ok","ok","empty","ok","present"],"actual":["ok","ok","ok","empty","ok","empty"],"status":"failed","first_mismatch":5,"physical_word":0}</failure>
+</testcase>
+</testsuite>

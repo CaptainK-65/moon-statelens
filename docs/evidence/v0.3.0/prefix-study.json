@@ -1,0 +1,59 @@
+{
+  "format": "moonstatelens.prefix-study",
+  "version": 1,
+  "scope": "state-cover suites on deliberately nested access paths; not W/Wp completeness or a representative workload",
+  "cases": [
+    {
+      "states": 8,
+      "raw_resets": 16,
+      "compact_resets": 2,
+      "reset_reduction": 0.875,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 8,
+        "states_total": 8,
+        "transitions_visited": 7,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 16,
+      "raw_resets": 32,
+      "compact_resets": 2,
+      "reset_reduction": 0.9375,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 16,
+        "states_total": 16,
+        "transitions_visited": 15,
+        "transitions_total": 16
+      }
+    },
+    {
+      "states": 32,
+      "raw_resets": 64,
+      "compact_resets": 2,
+      "reset_reduction": 0.96875,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 32,
+        "states_total": 32,
+        "transitions_visited": 31,
+        "transitions_total": 32
+      }
+    },
+    {
+      "states": 64,
+      "raw_resets": 128,
+      "compact_resets": 2,
+      "reset_reduction": 0.984375,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 64,
+        "states_total": 64,
+        "transitions_visited": 63,
+        "transitions_total": 64
+      }
+    }
+  ]
+}

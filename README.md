@@ -75,7 +75,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.2.2
+moon add CaptainK-65/moon-statelens@0.3.0
 ```
 
 消费包中加入：
