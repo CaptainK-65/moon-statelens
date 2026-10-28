@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.3.0
+
+- Export/import model-derived state, transition, W and Wp regression suites with recomputed evidence and explicit truncation.
+- Share physical prefix executions while preserving every original output assertion in a checkable certificate; retain independent fresh stability probes.
+- Execute saved suites through sync/async systems and all native configured adapters without relearning; export original case outcomes and JUnit with incomplete-evidence failures.
+- Check finite successful-input/output safety rules using model × monitor search and fresh target replay, including defects shared by both versions.
+- Diagnose multiple reachable product-edge differences, individually confirmed on both actual targets; preserve partial and spurious results.
+- Add offline interactive HTML with inert escaped data, filtering, trace inspection and per-input model graphs.
+- Add reproducible 60-target/64-state dual-learner scale and 1,080-mutant assertion-preservation studies, real SQLite/HTTP/JSONL checks, and the same standalone consumer source for prepublication/public validation.
+
 ## 0.2.2
 
 - Fix duplicate import blocks in the generated public native consumer configuration.

@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   let text =
-    #|MoonStateLens 0.2.2
+    #|MoonStateLens 0.3.0
     #|Usage: moon run cmd/statelens --target native -- COMMAND
     #|  demo session|regression|lru       Learn actual adapters and print evidence
     #|  learn MODEL.json STATE_BOUND     Learn a model-backed black box using W-method
@@ -17,6 +17,14 @@ fn usage() -> String {
     #|  compare-config LEFT.json RIGHT.json  Infer and freshly confirm differences
     #|  replay-config CONFIG.json WORDS.json  Freshly replay arrays of input words
     #|  validate-config CONFIG.json [run|compare|replay]  Validate without target IO
+    #|  generate-suite MODEL.json state|transition|w|wp BOUND OUT.json
+    #|  regress-config CONFIG.json SUITE.json [raw|compact]  Execute saved assertions
+    #|  rules-config CONFIG.json RULES.json  Infer and freshly verify safety rules
+    #|  diagnose-config LEFT.json RIGHT.json  Confirm multiple differing contexts
+    #|  render-report REPORT.json OUT.html   Offline interactive evidence viewer
+    #|  junit REPORT.json OUT.xml            CI output for regression runs
+    #|  study-v03 regression|prefix|scale   Reproduce the fixed v0.3 corpora
+    #|  demo lru-gate                       Learn real MoonLarder, save and execute assertions
     #|  --version | --help
     #|
     #|Black-box evidence is conditional or budgeted. Equal learned models are not
@@ -29,7 +37,7 @@ async fn main {
   let args = @env.args()
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
-    [_, "--version"] => println("0.2.2")
+    [_, "--version"] => println("0.3.0")
     [_, "validate-config", path] => validate_configuration(path, "run")
     [_, "validate-config", path, operation] =>
       validate_configuration(path, operation)
@@ -38,9 +46,41 @@ async fn main {
       configuration_command("compare", left, right)
     [_, "replay-config", config, words] =>
       configuration_command("replay", config, words)
+    [_, "regress-config", config, suite] =>
+      regression_command(config, suite, true)
+    [_, "regress-config", config, suite, "compact"] =>
+      regression_command(config, suite, true)
+    [_, "regress-config", config, suite, "raw"] =>
+      regression_command(config, suite, false)
+    [_, "rules-config", config, rules] =>
+      configuration_command("rules", config, rules)
+    [_, "diagnose-config", left, right] =>
+      configuration_command("diagnose", left, right)
+    [_, "generate-suite", model, profile, bound, out] => {
+      let suite = read_model(model).regression_suite(
+        profile~,
+        state_bound=@string.parse_int(bound),
+      )
+      write_new(out, Json(suite).stringify(indent=2) + "\n")
+      println(suite.evidence().stringify(indent=2))
+      if !suite.is_complete() {
+        status_exit(3)
+      }
+    }
+    [_, "render-report", report, out] =>
+      write_new(out, @lens.evidence_html(@json.parse(read_text(report))))
+    [_, "junit", report, out] =>
+      write_new(out, @lens.regression_junit(@json.parse(read_text(report))))
+    [_, "study-v03", "regression"] =>
+      println(@study.regression_study().stringify(indent=2))
+    [_, "study-v03", "prefix"] =>
+      println(@study.prefix_study().stringify(indent=2))
+    [_, "study-v03", "scale"] =>
+      println(@study.scale_study().stringify(indent=2))
     [_, "demo", "session"] =>
       println(Json(session_result()).stringify(indent=2))
     [_, "demo", "lru"] => println(Json(lru_result()).stringify(indent=2))
+    [_, "demo", "lru-gate"] => println(lru_gate().stringify(indent=2))
     [_, "demo", "regression"] =>
       println(Json(regression_result()).stringify(indent=2))
     [_, "learn", path, bound] => {

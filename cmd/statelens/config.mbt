@@ -59,6 +59,16 @@ async fn configuration_command(
     match operation {
       "run" => @integration.run(config)
       "compare" => @integration.compare(config, configuration(second))
+      "diagnose" => @integration.diagnose(config, configuration(second))
+      "rules" => {
+        guard @json.parse(read_text(second)) is Array(values) else {
+          raise @runner.Configuration("rules must be an array")
+        }
+        @integration.check_rules(
+          config,
+          values.map(v => @lens.BehaviorRule::from_json(v)),
+        )
+      }
       "replay" => {
         let words : Array[Array[String]] = @json.from_json(
           @json.parse(read_text(second)),
@@ -67,6 +77,31 @@ async fn configuration_command(
       }
       _ => raise @runner.Configuration("unknown configuration operation")
     }
+  } catch {
+    error => {
+      println(configuration_error(error).stringify(indent=2))
+      status_exit(1)
+      return
+    }
+  }
+  println(result.report.stringify(indent=2))
+  if result.exit_code != 0 {
+    status_exit(result.exit_code)
+  }
+}
+
+///|
+async fn regression_command(
+  config_path : String,
+  suite_path : String,
+  compact : Bool,
+) -> Unit {
+  let result = try {
+    let config = configuration(config_path)
+    let suite = @lens.RegressionSuite::from_json(
+      @json.parse(read_text(suite_path)),
+    )
+    @integration.regress(config, suite, compact~)
   } catch {
     error => {
       println(configuration_error(error).stringify(indent=2))

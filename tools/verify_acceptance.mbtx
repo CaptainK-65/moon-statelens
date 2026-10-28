@@ -103,8 +103,15 @@ async fn main {
       command("example-" + example, "moon", ["run", "examples/" + example]),
     )
   }
-  for name in ["verify_cli", "verify_artifacts", "verify_native"] {
+  for name in ["verify_cli", "verify_artifacts", "verify_native", "verify_v03"] {
     ignore(command(name, "moon", ["run", "tools/" + name + ".mbtx"]))
+  }
+  for target in ["wasm", "wasm-gc", "js", "native"] {
+    ignore(
+      command("v03-source-consumer-" + target, "moon", [
+        "run", "tools/verify_v03_consumer.mbtx", "--", "source", target,
+      ]),
+    )
   }
   let summary = "# MoonStateLens source acceptance\n\n" +
     "- Source commit: " +

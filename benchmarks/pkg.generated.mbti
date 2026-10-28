@@ -4,7 +4,13 @@ package "CaptainK-65/moon-statelens/benchmarks"
 // Values
 pub fn algorithm_study() -> Json raise
 
+pub fn prefix_study() -> Json raise
+
 pub fn query_study() -> Json raise
+
+pub fn regression_study() -> Json raise
+
+pub fn scale_study() -> Json raise
 
 // Errors
 

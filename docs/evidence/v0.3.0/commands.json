@@ -1,0 +1,202 @@
+[
+  {
+    "name": "regression-study",
+    "arguments": [
+      "study-v03",
+      "regression"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "prefix-study",
+    "arguments": [
+      "study-v03",
+      "prefix"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "scale-study",
+    "arguments": [
+      "study-v03",
+      "scale"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "generate-session-suite",
+    "arguments": [
+      "generate-suite",
+      "fixtures/session.json",
+      "wp",
+      "2",
+      "_build/v0.3-evidence/run-1793176715479/session-suite.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "jsonl-regression",
+    "arguments": [
+      "regress-config",
+      "configs/session-jsonl.json",
+      "_build/v0.3-evidence/run-1793176715479/session-suite.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "jsonl-rules",
+    "arguments": [
+      "rules-config",
+      "configs/session-jsonl.json",
+      "fixtures/session-rules.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "jsonl-mutant-regression",
+    "arguments": [
+      "regress-config",
+      "_build/v0.3-evidence/run-1793176715479/jsonl-mutant-config.json",
+      "_build/v0.3-evidence/run-1793176715479/session-suite.json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2
+  },
+  {
+    "name": "jsonl-mutant-rules",
+    "arguments": [
+      "rules-config",
+      "_build/v0.3-evidence/run-1793176715479/jsonl-mutant-config.json",
+      "fixtures/session-rules.json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2
+  },
+  {
+    "name": "jsonl-diagnosis",
+    "arguments": [
+      "diagnose-config",
+      "configs/session-jsonl.json",
+      "_build/v0.3-evidence/run-1793176715479/jsonl-mutant-config.json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2
+  },
+  {
+    "name": "shared-defect-diagnosis",
+    "arguments": [
+      "diagnose-config",
+      "_build/v0.3-evidence/run-1793176715479/jsonl-mutant-config.json",
+      "_build/v0.3-evidence/run-1793176715479/jsonl-mutant-config.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "sqlite-learn",
+    "arguments": [
+      "run-config",
+      "configs/sqlite-kv.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "generate-sqlite-suite",
+    "arguments": [
+      "generate-suite",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-model.json",
+      "wp",
+      "6",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-suite.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "sqlite-regression",
+    "arguments": [
+      "regress-config",
+      "configs/sqlite-kv.json",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-suite.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "sqlite-mutant-regression",
+    "arguments": [
+      "regress-config",
+      "configs/sqlite-mutant.json",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-suite.json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2
+  },
+  {
+    "name": "sqlite-diagnosis",
+    "arguments": [
+      "diagnose-config",
+      "configs/sqlite-kv.json",
+      "configs/sqlite-mutant.json"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2
+  },
+  {
+    "name": "html-report",
+    "arguments": [
+      "render-report",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-diagnosis.json",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-diagnosis.html"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "junit-report",
+    "arguments": [
+      "junit",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-mutant-regression.json",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-mutant-regression.xml"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "html-refuses-overwrite",
+    "arguments": [
+      "render-report",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-diagnosis.json",
+      "_build/v0.3-evidence/run-1793176715479/sqlite-diagnosis.html"
+    ],
+    "exit_code": 1,
+    "expected_exit_code": 1
+  },
+  {
+    "name": "http-regression",
+    "arguments": [
+      "regress-config",
+      "_build/v0.3-evidence/run-1793176715479/http-config.json",
+      "_build/v0.3-evidence/run-1793176715479/session-suite.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  },
+  {
+    "name": "http-rules",
+    "arguments": [
+      "rules-config",
+      "_build/v0.3-evidence/run-1793176715479/http-config.json",
+      "fixtures/session-rules.json"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0
+  }
+]

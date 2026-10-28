@@ -1,0 +1,7 @@
+{
+  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40658111670",
+  "candidate_head": "86475e3f69f1e05cc92cf315de98f9792caf9106",
+  "source_checkout": "1247abd2720a0f69b2fe87456f5e1b71d15f9736",
+  "selection": "unaltered whitelisted Ubuntu CI source acceptance and v0.3 outputs; clean immutable PR checkout",
+  "scope": "fixed finite corpora and controlled actual targets; initial public jobs select v0.2.2, not proof of v0.3 publication"
+}

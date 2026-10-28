@@ -4,11 +4,28 @@
 
 [Acceptance and proposal mapping](docs/ACCEPTANCE.md) · [Standalone consumer and CI](consumers/sqlite-gate/README.md) · [Maintainer explanation](docs/maintainer-notes.md)
 
+[v0.3 behavior rules, certified regression suites and multi-context diagnosis](docs/behavior-validation.md)
+
 ![MoonStateLens: a precision lens reveals a hidden state network. Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.
 
 The root library supports wasm, wasm-gc, JS and native. Version 0.2 adds independent L* and KV learners, W/Wp and composed verification, resumable query execution, and native asynchronous HTTP, JSONL subprocess and real SQLite CLI adapters. Systems remain deterministic, resettable and finite under an explicit abstraction. See [native integration](docs/native.md) and [algorithm invariants](docs/algorithms.md).
+
+Version 0.3 adds finite input/output safety monitors with fresh target confirmation,
+saved model-derived state/transition/W/Wp regression suites, prefix-sharing certificates
+preserving every original assertion, multiple freshly replayed differing contexts,
+an offline interactive evidence viewer and JUnit output. Rules can detect defects
+shared by both versions; regression execution does not require relearning the target.
+
+Fixed-corpus results: 60 new minimal/reachable targets up to 64 states, 120 correct
+learning runs across both algorithms, 1,080 behaviorally inequivalent controlled
+mutants detected with identical original case failures before/after compaction.
+Across 30 small models and complete W/Wp passing suites, 1,183 original cases are
+preserved and median physical resets decrease 62.5%, with the same independent
+fresh stability rechecks. These are finite reproducible measurements, not universal
+performance/detection claims. Run `moon run tools/verify_v03.mbtx`; see the
+[measurement scope and new workflows](docs/behavior-validation.md).
 
 ## Run
 
@@ -33,7 +50,7 @@ moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run tools/verify_native.mbtx
 ```
 
-CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.2.2`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.3.0`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
 
 Version 0.2.2 adds offline target validation and persisted comparison/replay
 evidence. `validate-config CONFIG [run|compare|replay]` checks structure and
@@ -74,8 +91,7 @@ Observed conflicts invalidate the session. Cache bypass and periodic checks prov
 
 The suite includes 200 generated targets, delayed distinguishing suffixes, independent reverse-pair/BFS cross-checks, mutation witnesses, real-library integration, replay and resource boundaries. CI checks all four library backends on Linux, Windows and macOS, plus the native CLI.
 
-The portable suite has 51 named tests per backend; native has 71 after five
-0.2.2 integration regressions. Generated corpora are cases inside named tests,
+Generated corpora and mutation studies are cases inside named tests,
 not tens of thousands of individually named tests. Actual frozen-commit CI and
 publication results are linked in the [validation record](docs/VALIDATION.md).
 

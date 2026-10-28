@@ -6,6 +6,8 @@
 
 [验收入口与功能对应表](docs/ACCEPTANCE.md) · [独立项目接入与 CI 范例](consumers/sqlite-gate/README.md) · [维护者原理说明](docs/maintainer-notes.md)
 
+[v0.3 行为规则、模型回归与多差异诊断](docs/behavior-validation.md)
+
 ![MoonStateLens：光学镜头揭示黑盒中的状态网络。Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
@@ -14,7 +16,7 @@ MoonStateLens 是纯 MoonBit 编写的主动 Mealy 自动机学习内核。调�
 
 v0.2 提供 L* 与 KV 两种学习器、W/Wp 验证及策略链。核心库支持 wasm、wasm-gc、JS、native；native 执行器接入异步 HTTP、JSONL 子进程和真实 SQLite CLI，保留原同步接口。
 
-v0.2.2 补齐离线配置检查、比较／回放产物导出与统一验收命令。首次使用可按目标选择：
+v0.3 增加有限行为规则检查、可保存的模型回归测试集、保留全部原始断言的前缀压缩、多个差异上下文的真实确认，以及离线交互报告与 JUnit。首次使用可按目标选择：
 
 | 目标 | 入口与预期 |
 | --- | --- |
@@ -22,6 +24,9 @@ v0.2.2 补齐离线配置检查、比较／回放产物导出与统一验收命�
 | 在自己的 MoonBit 项目使用核心库 | [可执行 API 示例](README.mbt.md)，便携核心测试使用 `moon test --target wasm` |
 | 学习真实 SQLite 或接入进程／HTTP | 先安装 SQLite 并构建 native，按下方命令及 [完整说明](docs/native.md) 操作 |
 | 复现最终源码验收 | 首次先 `moon update`，再 `moon run tools/verify_acceptance.mbtx`，实际运行检查、构建、测试和演示并保存日志 |
+| 复现 v0.3 新增能力与量化实验 | `moon run tools/verify_v03.mbtx`，实际运行规则／回归／诊断及三组固定实验 |
+
+**固定语料实测**：新增 60 个可达且最小的学习目标，双算法共 120 次正确运行，最大 64 状态；1,080 个行为不等价的受控变异全部检出；压缩前后原始失败断言一致。在 30 个小模型的 W/Wp 正常完整执行中，保留 1,183 个原始 case，物理重置次数中位数减少 **62.5%**（双方都保留独立稳定性复测）。这些数字不是任意组件的性能或缺陷检出保证，[完整口径与复现](docs/behavior-validation.md#量化口径)。
 
 ```sh
 moon update
@@ -70,7 +75,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.2.2
+moon add CaptainK-65/moon-statelens@0.3.0
 ```
 
 消费包中加入：
@@ -92,6 +97,9 @@ import {
 - **模型分析**：可达状态、最小化、最短模型区分词、一次反向状态对搜索构造区分后缀。
 - **兼容性验证**：真实回放确认差异；未复现的模型分歧进入新一轮学习。
 - **交付证据**：版本化 JSON、DOT 图、逐轮统计、反例与可复现查询成本报告。
+- **模型回归**：状态／迁移覆盖、W/Wp 套件导出与实际执行；前缀证书逐一保留原始断言，生成或执行不完整不会通过门禁。
+- **有限行为规则**：始终禁用、触发后禁用、直到成功事件才解除；模型反例需在实际组件上重新确认，可发现两版共有的缺陷。
+- **多差异审查**：按共同输入历史分析模型乘积图，在双方实际目标上确认每个差异上下文；离线筛选、逐步回放视图、模型图和 JUnit。
 
 核心源码位于仓库根目录；`adapters/`、`examples/`、`benchmarks/` 和 `cmd/` 分别是实际组件接入、消费者、成本实验与 CLI。[架构说明](docs/architecture.md) 对应每项职责及不变量。
 

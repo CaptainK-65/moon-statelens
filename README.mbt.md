@@ -1,11 +1,38 @@
 # Tested embedding example
 
-Add `CaptainK-65/moon-statelens@0.1.0` to your module and this import to its `moon.pkg`:
+Add `CaptainK-65/moon-statelens` to your module and this import to its `moon.pkg`:
 
 ```moonbit nocheck
 ///|
 import {
   "CaptainK-65/moon-statelens" @lens,
+}
+```
+
+Model-derived regression suites retain every original assertion when sharing
+prefixes. Independent fresh stability probes remain enabled by default:
+
+```mbt check
+///|
+test "saved assertions and successful-event safety rules" {
+  let model = @lens.Machine::new(["logout", "request"], [
+    [{ target: 0, output: "ok", }, { target: 0, output: "denied", }],
+  ])
+  let suite = model.regression_suite(profile="wp", state_bound=1)
+  let imported = @lens.RegressionSuite::from_json(Json(suite))
+  assert_true(imported.plan().validate())
+  let report = imported
+    .plan()
+    .run(@lens.Experiment::new(model.system(), model.alphabet()))
+  guard report is { "passed": True, .. } else { fail("regression") }
+  let rule = @lens.BehaviorRule::new(
+    "logged-out-denial",
+    { input: "request", output: "allowed", },
+    kind="after",
+    trigger={ input: "logout", output: "ok", },
+  )
+  assert_true(rule.search(model).witness is None)
+  assert_eq(rule.check_trace(["logout", "request"], ["ok", "allowed"]), Some(1))
 }
 ```
 

@@ -1,95 +1,92 @@
-# Validation record — 0.2.2
+# Validation record — 0.3.0
 
-Date: 2026-10-26. Final distributed patch: CaptainK-65/moon-statelens@0.2.2.
+Date: 2026-10-28. Historical stable baseline: [0.2.2](VALIDATION-v0.2.2.md).
+Earlier records: [0.1](VALIDATION-v0.1.md), [0.2.0](VALIDATION-v0.2.0.md), [0.2.1](VALIDATION-v0.2.1.md).
 
-Historical records: [0.1.0](VALIDATION-v0.1.md),
-[0.2.0](VALIDATION-v0.2.0.md), [0.2.1](VALIDATION-v0.2.1.md).
+## Source verification
 
-## Frozen source and CI
+[Initial v0.3 candidate CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40658111670)
+passed all seven jobs: Linux/Windows/macOS source acceptance and four explicitly
+selected public v0.2.2 compatibility checks. **Those public jobs do not prove
+that v0.3.0 has been published.** Source acceptance tests the new v0.3 consumer
+sources on all four backends against an isolated candidate workspace.
 
-- Publication source commit: b925110a028148fa5e306317e27a0c32af3d3453.
-- Source tree: da1569a45aba2b8b8c9237c8021c970ec3ab8d3f; identical to candidate
-  118bef412490dc09f835c3f1da5d286261c6a2fe.
-- [Candidate CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40260754530)
-  and [default-branch source CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40261462438)
-  both passed all seven jobs.
-- Linux/Windows/macOS source validation includes four-backend check/build/test,
-  formatting, generated-interface drift, real HTTP/JSONL/SQLite, CLI artifacts
-  and an actual target-created-file race after output preflight.
-- That source CI's public-consumer jobs explicitly selected 0.2.1, exercising
-  the repaired native configuration/artifact branch before 0.2.2 publication.
-  They are separate from the actual public 0.2.2 checks recorded below.
-- The selected source environment records a clean checkout at the publication
-  commit. All recorded source command exits are 0.
+Selected evidence records immutable clean PR checkout
+`1247abd2720a0f69b2fe87456f5e1b71d15f9736`, candidate head
+`86475e3f69f1e05cc92cf315de98f9792caf9106` and Ubuntu SQLite 3.45.1.
+The source CI includes four-backend checks/builds/tests, format and generated
+interface drift, old integration tests, new fixed corpora, actual SQLite,
+controlled HTTP/JSONL services, report/artifact output and independent consumers.
+The additional real MoonLarder saved-suite demo is part of the final release gate.
 
 | Backend | Named source tests |
 | --- | ---: |
-| wasm | 51 |
-| wasm-gc | 51 |
-| JS | 51 |
-| native | 71 |
+| wasm | 60 |
+| wasm-gc | 60 |
+| JS | 60 |
+| native | 83 |
 
-Five new integration regressions and CLI verification cover offline parsing,
-artifact persistence, aliases, overwrite protection, unsupported replay outputs,
-private-setting omission and write failures. Generated corpora remain cases
-inside named tests, not tens of thousands of separately named tests.
+Generated models, exhaustive pairs and mutation cases are cases inside named
+tests/studies, not thousands of individually named unit tests.
 
-## Registry publication and actual public consumers
+## Reproducible finite measurements
 
-- Actual 0.2.2 registry upload returned HTTP **200**, client exit **0**.
-- Uploaded archive SHA-256:
-  84d58d7e36b412b9977b05be6e671668633d51ce6313cca6c473c88db739e7e7.
-- [GitHub release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.2.2)
-  attaches the actual uploaded ZIP.
-- [Mooncakes 0.2.2](https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.2.2)
-  is the public package selected by fresh independent consumers.
-- All four public backend checks exited 0 after downloading the actual 0.2.2
-  module. Native additionally exercised Config.validate, persisted comparison
-  and replay reports, and real SQLite transactions.
-- The standalone public 0.2.2 consumer passed normal exit 0 and deliberately
-  mutated exit 2; saved fresh replays differed.
-- [Public verification receipt](evidence/v0.2.2/public-verification.json)
-  records all five actual successful command exits from verifier checkout b925110.
-- The 0.2.1 generated-consumer import defect was fixed and tested against public
-  0.2.1 before publishing 0.2.2, so the distributed verifier is also corrected.
+| Measurement | Result | Evidence |
+| --- | --- | --- |
+| New learning corpus | 60 minimal/reachable targets, 120 correct runs, both algorithms, up to 64 states | [scale study](evidence/v0.3.0/scale-study.json); exact reference oracle, not external-target W/Wp cost |
+| Suite assertion preservation | 1,183 original cases, every output position preserved | [regression study](evidence/v0.3.0/regression-study.json); 30 models × W/Wp |
+| Mutation detection | 1,080 inequivalent controlled output/target mutations killed | Same study; independent exact comparison; identical original failed cases before/after compaction |
+| False positives | 0 on passing baselines and 30 state-renumbered equivalents | Finite corpus only; no universal guarantee |
+| Physical reset reduction | Median 62.5% | Complete normal executions, same independent fresh rechecks; all samples retained |
+| Deliberately nested prefix family | 87.5–98.4375% fewer resets | [separate state-cover study](evidence/v0.3.0/prefix-study.json), not W/Wp completeness or a representative workload |
+| Actual SQLite diagnosis | 4 freshly confirmed contexts | [diagnosis](evidence/v0.3.0/sqlite-diagnosis.json); contexts are not independent bugs |
+| Defect shared by both versions | Equal actual targets in [diagnosis](evidence/v0.3.0/shared-defect-diagnosis.json), but [safety rule violation confirmed](evidence/v0.3.0/jsonl-mutant-rules.json) | Controlled session fixture |
 
-The uploaded archive captures pre-upload publication status. This current GitHub
-record appends the post-upload receipts; later documentation/CI-selector commits
-do not replace the publication source or the uploaded archive.
+Full metric definitions and limitations: [behavior validation](behavior-validation.md).
+Root inference and analysis code uses MoonBit core only. W/Wp generation,
+finite monitors and prefix sharing are established techniques independently
+implemented here, not claims of algorithm invention.
 
-## Reproduction
+## Distribution and exact-version public verification
 
-From a clean repository checkout, first bootstrap a fresh registry:
+The [v0.3.0 release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.3.0)
+records the final source commit/tree, tested candidate, actual uploaded ZIP hash,
+registry result and post-upload checks. The actual public-download receipt is
+appended after upload; source verification and package-publication evidence remain
+separate. Later documentation/CI-selector commits do not replace the uploaded archive.
+
+From a clean checkout with the pinned compiler/core 0.10.15+943464bfa,
+moon 0.1.20261012 and sqlite3 on PATH:
 
 ```sh
 moon update
 moon run tools/verify_acceptance.mbtx
-moon run tools/verify_published.mbtx -- wasm 0.2.2
-moon run tools/verify_published.mbtx -- wasm-gc 0.2.2
-moon run tools/verify_published.mbtx -- js 0.2.2
-moon run tools/verify_published.mbtx -- native 0.2.2
-moon run tools/verify_consumer.mbtx -- 0.2.2
+moon run tools/verify_v03_consumer.mbtx -- public wasm 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public wasm-gc 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public js 0.3.0
+moon run tools/verify_v03_consumer.mbtx -- public native 0.3.0
+moon run tools/verify_published.mbtx -- native 0.3.0
+moon run tools/verify_consumer.mbtx -- 0.3.0
 ```
 
-CI pins compiler/core 0.10.15+943464bfa and moon 0.1.20261012, explicit runner
-labels and action revisions. Source verification writes environment, commands,
-logs and summaries; public verification always names its registry version.
-See [acceptance mapping](ACCEPTANCE.md) and the [current CI](https://github.com/CaptainK-65/moon-statelens/actions/workflows/ci.yml).
+The same committed v0.3 consumer sources run before publication against candidate
+source and afterward against an actual registry download. Their receipts explicitly
+state which mode ran. The original public verification and standalone SQLite gate
+also remain available for checking previous APIs and real transactions.
 
-## Selected retained evidence
+## Retained evidence and limits
 
-[Evidence provenance](evidence/v0.2.2/provenance.json) links selected public-only
-files to source CI and the actual publication commit. The directory includes
-source commands/test output, offline validation, explicit-model comparison and
-replay, a real output-write failure, and real SQLite comparison/fresh replays.
-It excludes ephemeral target configuration files and credentials. CI keeps full
-artifacts for its retention window; the GitHub release also retains this selected
-evidence as an attachment.
+[Provenance](evidence/v0.3.0/provenance.json) identifies the actual producer.
+The selected evidence directory includes complete original study outputs, suite
+and model files, per-case regression results, JUnit, fresh rule traces,
+multi-context diagnosis and an [offline HTML report](evidence/v0.3.0/sqlite-diagnosis.html).
+Artifacts are whitelisted public controlled examples; credentials are excluded.
+The GitHub release retains evidence beyond the CI artifact retention window.
 
-SQLite's defect is deliberately injected in the adapter mapping. W/Wp evidence
-depends on the declared finite abstraction, deterministic reliable reset and
-correct state bounds (normal=6, controlled mutant=4). Offline validation does not
-prove those behavioral premises. Output logs may be bounded/truncated, and
-multiple artifact writes are not a transaction; a failed write is an execution
-failure even if inference first computed a valid model or confirmed difference.
-No claim is made about arbitrary black-box equivalence or production adoption.
+SQLite rollback-as-commit is deliberately injected in the adapter, not a SQLite
+defect. Reliable reset, determinism, a finite alphabet/abstraction and correct
+state bounds remain premises. Completed state/transition cover is model coverage,
+not implementation code coverage. Truncated generation, pending queries, unstable
+replays and resource exhaustion never yield an unconditional pass. Multi-file
+artifact writes remain non-transactional; output failures cannot be accepted.
+No claim is made about arbitrary program equivalence or production adoption.

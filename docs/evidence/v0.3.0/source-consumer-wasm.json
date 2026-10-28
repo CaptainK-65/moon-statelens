@@ -1,0 +1,32 @@
+{
+  "mode": "source",
+  "target": "wasm",
+  "version": "0.3.0",
+  "scope": "candidate source workspace; not publication evidence",
+  "passed": true,
+  "commands": [
+    {
+      "arguments": [
+        "update"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "fmt",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "run",
+        ".",
+        "--target",
+        "wasm",
+        "--deny-warn"
+      ],
+      "exit_code": 0
+    }
+  ]
+}

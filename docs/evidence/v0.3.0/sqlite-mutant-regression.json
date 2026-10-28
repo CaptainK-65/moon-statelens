@@ -1,0 +1,3324 @@
+{
+  "format": "moonstatelens.regression-run",
+  "version": 1,
+  "execution_complete": true,
+  "passed": false,
+  "unstable": false,
+  "reason": null,
+  "failed_cases": 8,
+  "pending_cases": 0,
+  "completed_physical_queries": 152,
+  "completed_physical_steps": 590,
+  "stability_rechecks_per_word": 1,
+  "suite_evidence": {
+    "generation_complete": true,
+    "profile": "wp",
+    "state_bound": 6,
+    "conditional_conformance": true,
+    "assumptions": "deterministic total resettable Mealy target, same alphabet, actual states <= bound; suite must pass completely",
+    "coverage": {
+      "scope": "reachable model coverage, not implementation code coverage",
+      "states_visited": 6,
+      "states_total": 6,
+      "transitions_visited": 36,
+      "transitions_total": 36
+    }
+  },
+  "model": {
+    "format": "moonstatelens.mealy",
+    "version": 1,
+    "alphabet": [
+      "begin",
+      "put",
+      "delete",
+      "commit",
+      "rollback",
+      "read"
+    ],
+    "initial": 0,
+    "transitions": [
+      [
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "transaction-error"
+        },
+        {
+          "target": 0,
+          "output": "transaction-error"
+        },
+        {
+          "target": 0,
+          "output": "empty"
+        }
+      ],
+      [
+        {
+          "target": 1,
+          "output": "transaction-error"
+        },
+        {
+          "target": 3,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "empty"
+        }
+      ],
+      [
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "transaction-error"
+        },
+        {
+          "target": 2,
+          "output": "transaction-error"
+        },
+        {
+          "target": 2,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 3,
+          "output": "transaction-error"
+        },
+        {
+          "target": 3,
+          "output": "ok"
+        },
+        {
+          "target": 1,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 3,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 4,
+          "output": "transaction-error"
+        },
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 4,
+          "output": "present"
+        }
+      ],
+      [
+        {
+          "target": 5,
+          "output": "transaction-error"
+        },
+        {
+          "target": 4,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "ok"
+        },
+        {
+          "target": 0,
+          "output": "ok"
+        },
+        {
+          "target": 2,
+          "output": "ok"
+        },
+        {
+          "target": 5,
+          "output": "empty"
+        }
+      ]
+    ]
+  },
+  "certificate": {
+    "format": "moonstatelens.prefix-certificate",
+    "version": 1,
+    "original_cases": 113,
+    "physical_words": [
+      [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "read",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "read",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "commit",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "commit",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "put",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "put",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "begin",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "begin",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "read",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "read",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "read",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "rollback",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "commit",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "commit",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "delete",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "delete",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "put",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "put",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "put",
+        "begin"
+      ],
+      [
+        "begin",
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "begin",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "begin",
+        "begin"
+      ],
+      [
+        "put",
+        "read",
+        "read"
+      ],
+      [
+        "put",
+        "read",
+        "begin"
+      ],
+      [
+        "put",
+        "rollback",
+        "begin"
+      ],
+      [
+        "put",
+        "commit",
+        "read"
+      ],
+      [
+        "put",
+        "commit",
+        "begin"
+      ],
+      [
+        "put",
+        "delete",
+        "read"
+      ],
+      [
+        "put",
+        "delete",
+        "begin"
+      ],
+      [
+        "put",
+        "put",
+        "read"
+      ],
+      [
+        "put",
+        "put",
+        "begin"
+      ],
+      [
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "read",
+        "read"
+      ],
+      [
+        "begin",
+        "read",
+        "begin"
+      ],
+      [
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      [
+        "begin",
+        "commit",
+        "read"
+      ],
+      [
+        "begin",
+        "commit",
+        "begin"
+      ],
+      [
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "delete",
+        "read"
+      ],
+      [
+        "begin",
+        "delete",
+        "begin"
+      ],
+      [
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "begin",
+        "read"
+      ],
+      [
+        "begin",
+        "begin",
+        "begin"
+      ],
+      [
+        "read",
+        "read"
+      ],
+      [
+        "read",
+        "begin"
+      ],
+      [
+        "rollback",
+        "begin"
+      ],
+      [
+        "commit",
+        "read"
+      ],
+      [
+        "commit",
+        "begin"
+      ],
+      [
+        "delete",
+        "read"
+      ],
+      [
+        "delete",
+        "begin"
+      ],
+      [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      [
+        "put",
+        "rollback",
+        "read"
+      ],
+      [
+        "begin",
+        "rollback",
+        "read"
+      ],
+      [
+        "rollback",
+        "read"
+      ]
+    ],
+    "case_to_word": [
+      62,
+      62,
+      64,
+      75,
+      62,
+      53,
+      74,
+      26,
+      26,
+      43,
+      73,
+      41,
+      41,
+      29,
+      72,
+      26,
+      17,
+      71,
+      14,
+      14,
+      2,
+      70,
+      69,
+      69,
+      68,
+      67,
+      67,
+      66,
+      75,
+      65,
+      64,
+      63,
+      62,
+      61,
+      60,
+      59,
+      59,
+      58,
+      57,
+      56,
+      56,
+      55,
+      74,
+      54,
+      53,
+      52,
+      51,
+      50,
+      50,
+      49,
+      48,
+      48,
+      47,
+      46,
+      46,
+      45,
+      73,
+      44,
+      43,
+      42,
+      41,
+      40,
+      39,
+      38,
+      38,
+      37,
+      36,
+      35,
+      35,
+      34,
+      33,
+      32,
+      32,
+      31,
+      72,
+      30,
+      29,
+      28,
+      27,
+      26,
+      25,
+      24,
+      23,
+      23,
+      22,
+      21,
+      20,
+      20,
+      19,
+      71,
+      18,
+      17,
+      16,
+      15,
+      14,
+      13,
+      12,
+      11,
+      11,
+      10,
+      9,
+      8,
+      8,
+      7,
+      6,
+      5,
+      5,
+      4,
+      70,
+      3,
+      2,
+      1,
+      0
+    ],
+    "scope": "each original assertion is a prefix of its mapped physical trace; separate fresh stability probes are not compacted"
+  },
+  "cases": [
+    {
+      "case": 0,
+      "inputs": [],
+      "expected": [],
+      "actual": [],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 62
+    },
+    {
+      "case": 1,
+      "inputs": [
+        "begin"
+      ],
+      "expected": [
+        "ok"
+      ],
+      "actual": [
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 62
+    },
+    {
+      "case": 2,
+      "inputs": [
+        "read"
+      ],
+      "expected": [
+        "empty"
+      ],
+      "actual": [
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 64
+    },
+    {
+      "case": 3,
+      "inputs": [
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "transaction-error",
+        "empty"
+      ],
+      "actual": [
+        "transaction-error",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 75
+    },
+    {
+      "case": 4,
+      "inputs": [
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 62
+    },
+    {
+      "case": 5,
+      "inputs": [
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 53
+    },
+    {
+      "case": 6,
+      "inputs": [
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 74
+    },
+    {
+      "case": 7,
+      "inputs": [
+        "put"
+      ],
+      "expected": [
+        "ok"
+      ],
+      "actual": [
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 26
+    },
+    {
+      "case": 8,
+      "inputs": [
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 26
+    },
+    {
+      "case": 9,
+      "inputs": [
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 43
+    },
+    {
+      "case": 10,
+      "inputs": [
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 73
+    },
+    {
+      "case": 11,
+      "inputs": [
+        "begin",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 41
+    },
+    {
+      "case": 12,
+      "inputs": [
+        "begin",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 41
+    },
+    {
+      "case": 13,
+      "inputs": [
+        "begin",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 29
+    },
+    {
+      "case": 14,
+      "inputs": [
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "failed",
+      "first_mismatch": 3,
+      "physical_word": 72
+    },
+    {
+      "case": 15,
+      "inputs": [
+        "put",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 26
+    },
+    {
+      "case": 16,
+      "inputs": [
+        "put",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 17
+    },
+    {
+      "case": 17,
+      "inputs": [
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 71
+    },
+    {
+      "case": 18,
+      "inputs": [
+        "put",
+        "begin",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 14
+    },
+    {
+      "case": 19,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 14
+    },
+    {
+      "case": 20,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 2
+    },
+    {
+      "case": 21,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "failed",
+      "first_mismatch": 4,
+      "physical_word": 70
+    },
+    {
+      "case": 22,
+      "inputs": [
+        "delete"
+      ],
+      "expected": [
+        "ok"
+      ],
+      "actual": [
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 69
+    },
+    {
+      "case": 23,
+      "inputs": [
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 69
+    },
+    {
+      "case": 24,
+      "inputs": [
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 68
+    },
+    {
+      "case": 25,
+      "inputs": [
+        "commit"
+      ],
+      "expected": [
+        "transaction-error"
+      ],
+      "actual": [
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 67
+    },
+    {
+      "case": 26,
+      "inputs": [
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "transaction-error",
+        "ok"
+      ],
+      "actual": [
+        "transaction-error",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 67
+    },
+    {
+      "case": 27,
+      "inputs": [
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "transaction-error",
+        "empty"
+      ],
+      "actual": [
+        "transaction-error",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 66
+    },
+    {
+      "case": 28,
+      "inputs": [
+        "rollback"
+      ],
+      "expected": [
+        "transaction-error"
+      ],
+      "actual": [
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 75
+    },
+    {
+      "case": 29,
+      "inputs": [
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "transaction-error",
+        "ok"
+      ],
+      "actual": [
+        "transaction-error",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 65
+    },
+    {
+      "case": 30,
+      "inputs": [
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "empty",
+        "ok"
+      ],
+      "actual": [
+        "empty",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 64
+    },
+    {
+      "case": 31,
+      "inputs": [
+        "read",
+        "read"
+      ],
+      "expected": [
+        "empty",
+        "empty"
+      ],
+      "actual": [
+        "empty",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 63
+    },
+    {
+      "case": 32,
+      "inputs": [
+        "begin",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 62
+    },
+    {
+      "case": 33,
+      "inputs": [
+        "begin",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 61
+    },
+    {
+      "case": 34,
+      "inputs": [
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 60
+    },
+    {
+      "case": 35,
+      "inputs": [
+        "begin",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 59
+    },
+    {
+      "case": 36,
+      "inputs": [
+        "begin",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 59
+    },
+    {
+      "case": 37,
+      "inputs": [
+        "begin",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 58
+    },
+    {
+      "case": 38,
+      "inputs": [
+        "begin",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 57
+    },
+    {
+      "case": 39,
+      "inputs": [
+        "begin",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 56
+    },
+    {
+      "case": 40,
+      "inputs": [
+        "begin",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 56
+    },
+    {
+      "case": 41,
+      "inputs": [
+        "begin",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 55
+    },
+    {
+      "case": 42,
+      "inputs": [
+        "begin",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 74
+    },
+    {
+      "case": 43,
+      "inputs": [
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 54
+    },
+    {
+      "case": 44,
+      "inputs": [
+        "begin",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "empty",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 53
+    },
+    {
+      "case": 45,
+      "inputs": [
+        "begin",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "empty",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 52
+    },
+    {
+      "case": 46,
+      "inputs": [
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "empty",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "empty",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 51
+    },
+    {
+      "case": 47,
+      "inputs": [
+        "put",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 50
+    },
+    {
+      "case": 48,
+      "inputs": [
+        "put",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 50
+    },
+    {
+      "case": 49,
+      "inputs": [
+        "put",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 49
+    },
+    {
+      "case": 50,
+      "inputs": [
+        "put",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 48
+    },
+    {
+      "case": 51,
+      "inputs": [
+        "put",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 48
+    },
+    {
+      "case": 52,
+      "inputs": [
+        "put",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 47
+    },
+    {
+      "case": 53,
+      "inputs": [
+        "put",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 46
+    },
+    {
+      "case": 54,
+      "inputs": [
+        "put",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 46
+    },
+    {
+      "case": 55,
+      "inputs": [
+        "put",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 45
+    },
+    {
+      "case": 56,
+      "inputs": [
+        "put",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 73
+    },
+    {
+      "case": 57,
+      "inputs": [
+        "put",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "transaction-error",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 44
+    },
+    {
+      "case": 58,
+      "inputs": [
+        "put",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "present",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "present",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 43
+    },
+    {
+      "case": 59,
+      "inputs": [
+        "put",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "present",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "present",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 42
+    },
+    {
+      "case": 60,
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 41
+    },
+    {
+      "case": 61,
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 40
+    },
+    {
+      "case": 62,
+      "inputs": [
+        "begin",
+        "put",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ],
+      "status": "failed",
+      "first_mismatch": 4,
+      "physical_word": 39
+    },
+    {
+      "case": 63,
+      "inputs": [
+        "begin",
+        "put",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 38
+    },
+    {
+      "case": 64,
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 38
+    },
+    {
+      "case": 65,
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 37
+    },
+    {
+      "case": 66,
+      "inputs": [
+        "begin",
+        "put",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "failed",
+      "first_mismatch": 4,
+      "physical_word": 36
+    },
+    {
+      "case": 67,
+      "inputs": [
+        "begin",
+        "put",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 35
+    },
+    {
+      "case": 68,
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 35
+    },
+    {
+      "case": 69,
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 34
+    },
+    {
+      "case": 70,
+      "inputs": [
+        "begin",
+        "put",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 33
+    },
+    {
+      "case": 71,
+      "inputs": [
+        "begin",
+        "put",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 32
+    },
+    {
+      "case": 72,
+      "inputs": [
+        "begin",
+        "put",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 32
+    },
+    {
+      "case": 73,
+      "inputs": [
+        "begin",
+        "put",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 31
+    },
+    {
+      "case": 74,
+      "inputs": [
+        "begin",
+        "put",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 72
+    },
+    {
+      "case": 75,
+      "inputs": [
+        "begin",
+        "put",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 30
+    },
+    {
+      "case": 76,
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 29
+    },
+    {
+      "case": 77,
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 28
+    },
+    {
+      "case": 78,
+      "inputs": [
+        "begin",
+        "put",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "present"
+      ],
+      "status": "failed",
+      "first_mismatch": 4,
+      "physical_word": 27
+    },
+    {
+      "case": 79,
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 26
+    },
+    {
+      "case": 80,
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 25
+    },
+    {
+      "case": 81,
+      "inputs": [
+        "put",
+        "begin",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 24
+    },
+    {
+      "case": 82,
+      "inputs": [
+        "put",
+        "begin",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 23
+    },
+    {
+      "case": 83,
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 23
+    },
+    {
+      "case": 84,
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 22
+    },
+    {
+      "case": 85,
+      "inputs": [
+        "put",
+        "begin",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 21
+    },
+    {
+      "case": 86,
+      "inputs": [
+        "put",
+        "begin",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 20
+    },
+    {
+      "case": 87,
+      "inputs": [
+        "put",
+        "begin",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 20
+    },
+    {
+      "case": 88,
+      "inputs": [
+        "put",
+        "begin",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 19
+    },
+    {
+      "case": 89,
+      "inputs": [
+        "put",
+        "begin",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 71
+    },
+    {
+      "case": 90,
+      "inputs": [
+        "put",
+        "begin",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 18
+    },
+    {
+      "case": 91,
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 17
+    },
+    {
+      "case": 92,
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 16
+    },
+    {
+      "case": 93,
+      "inputs": [
+        "put",
+        "begin",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "present",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 15
+    },
+    {
+      "case": 94,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 14
+    },
+    {
+      "case": 95,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 13
+    },
+    {
+      "case": 96,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "begin",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error",
+        "ok",
+        "empty"
+      ],
+      "status": "failed",
+      "first_mismatch": 5,
+      "physical_word": 12
+    },
+    {
+      "case": 97,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 11
+    },
+    {
+      "case": 98,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 11
+    },
+    {
+      "case": 99,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 10
+    },
+    {
+      "case": 100,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "put",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 9
+    },
+    {
+      "case": 101,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 8
+    },
+    {
+      "case": 102,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 8
+    },
+    {
+      "case": 103,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 7
+    },
+    {
+      "case": 104,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "delete",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "failed",
+      "first_mismatch": 5,
+      "physical_word": 6
+    },
+    {
+      "case": 105,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 5
+    },
+    {
+      "case": 106,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 5
+    },
+    {
+      "case": 107,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "commit",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 4
+    },
+    {
+      "case": 108,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 70
+    },
+    {
+      "case": 109,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "rollback",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "ok",
+        "ok"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 3
+    },
+    {
+      "case": 110,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "begin"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "transaction-error"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "transaction-error"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 2
+    },
+    {
+      "case": 111,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "empty"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "empty"
+      ],
+      "status": "passed",
+      "first_mismatch": null,
+      "physical_word": 1
+    },
+    {
+      "case": 112,
+      "inputs": [
+        "put",
+        "begin",
+        "delete",
+        "read",
+        "rollback",
+        "read"
+      ],
+      "expected": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "ok",
+        "present"
+      ],
+      "actual": [
+        "ok",
+        "ok",
+        "ok",
+        "empty",
+        "ok",
+        "empty"
+      ],
+      "status": "failed",
+      "first_mismatch": 5,
+      "physical_word": 0
+    }
+  ],
+  "configuration": {
+    "identity": "CONTROLLED-rollback-as-commit-fixture",
+    "abstraction": "sqlite-single-row-v1",
+    "target_kind": "sqlite",
+    "learner": "kv",
+    "alphabet": [
+      "begin",
+      "put",
+      "delete",
+      "commit",
+      "rollback",
+      "read"
+    ],
+    "budgets": {
+      "queries": 20000,
+      "steps": 200000,
+      "word_length": 4096,
+      "cache_nodes": 1000000,
+      "output_code_units": 16777216,
+      "states": 256,
+      "rounds": 64,
+      "table_cells": 1000000,
+      "table_symbols": 4000000,
+      "prefixes": 20000,
+      "query_timeout_ms": 30000,
+      "step_timeout_ms": 3000,
+      "cleanup_timeout_ms": 1000,
+      "run_timeout_ms": 120000
+    },
+    "verification": {
+      "kind": "wp",
+      "state_bound": 4,
+      "max_tests": 20000,
+      "max_work": 100000
+    },
+    "expected_evidence": "conditional-state-bound"
+  },
+  "statistics": {
+    "queries": 152,
+    "cache_hits": 0,
+    "resets": 152,
+    "steps": 590,
+    "completed_queries": 152,
+    "cache_nodes": 127,
+    "output_code_units": 2686
+  }
+}

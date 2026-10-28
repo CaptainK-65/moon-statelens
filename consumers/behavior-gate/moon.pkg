@@ -1,0 +1,9 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/integration",
+  "moonbitlang/async",
+}
+
+pkgtype(kind: "executable")
+
+supported_targets = "+native"

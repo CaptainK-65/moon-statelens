@@ -1,0 +1,14 @@
+{
+  "source_commit": "1247abd2720a0f69b2fe87456f5e1b71d15f9736",
+  "working_tree_dirty": false,
+  "toolchain": [
+    "moon 0.1.20261012 (748b63c 2026-10-12)",
+    "moonc v0.10.15+943464bfa (2026-10-12)",
+    "moonrun 0.1.20261012 (748b63c 2026-10-12)",
+    "",
+    "Feature flags enabled: rr_moon_mod,rr_moon_pkg",
+    ""
+  ],
+  "sqlite": "3.45.1 2024-01-30 16:01:20 e876e51a0ed5c5b3126f52e532044363a014bc594cfefa87ffb5b82257ccalt1 (64-bit)",
+  "scope": "source checkout and public controlled examples; not registry-publication evidence"
+}

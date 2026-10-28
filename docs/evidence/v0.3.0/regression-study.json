@@ -1,0 +1,1995 @@
+{
+  "format": "moonstatelens.regression-study",
+  "version": 1,
+  "scope": "fixed 30 minimal 2..6-state deterministic models: direct observation, delayed probe, grouped cycle outputs; W/Wp at m=n; complete runs with one fresh recheck per word; no universal speed/detection claim",
+  "non_equivalent_mutants": 1080,
+  "equivalent_mutants_excluded": 0,
+  "mutants_killed": 1080,
+  "identical_original_case_failures": true,
+  "false_positives_on_baselines": 0,
+  "certified_original_cases": 1183,
+  "state_renumbered_equivalents": 30,
+  "median_reset_reduction": 0.625,
+  "cases": [
+    {
+      "states": 2,
+      "salt": 0,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 210
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 126
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 0,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 210
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 126
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 1,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 162
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 92
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 1,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 162
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 92
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 2,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 224
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 124
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 2,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 224
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 124
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 3,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 210
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 126
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 3,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 210
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 126
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 4,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 164
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 94
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 4,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 164
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 94
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 5,
+      "profile": "w",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 240
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 140
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 2,
+      "salt": 5,
+      "profile": "wp",
+      "original_cases": 8,
+      "compact_words": 3,
+      "raw_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 28,
+        "completed_queries": 16,
+        "cache_nodes": 8,
+        "output_code_units": 240
+      },
+      "compact_statistics": {
+        "queries": 6,
+        "cache_hits": 0,
+        "resets": 6,
+        "steps": 16,
+        "completed_queries": 6,
+        "cache_nodes": 8,
+        "output_code_units": 140
+      },
+      "reset_reduction": 0.625,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 2,
+        "states_total": 2,
+        "transitions_visited": 4,
+        "transitions_total": 4
+      }
+    },
+    {
+      "states": 3,
+      "salt": 0,
+      "profile": "w",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 50,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 360
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 26,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 198
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 0,
+      "profile": "wp",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 50,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 360
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 26,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 198
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 1,
+      "profile": "w",
+      "original_cases": 15,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 84,
+        "completed_queries": 30,
+        "cache_nodes": 19,
+        "output_code_units": 492
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 60,
+        "completed_queries": 16,
+        "cache_nodes": 19,
+        "output_code_units": 350
+      },
+      "reset_reduction": 0.4666666666666667,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 1,
+      "profile": "wp",
+      "original_cases": 12,
+      "compact_words": 5,
+      "raw_statistics": {
+        "queries": 24,
+        "cache_hits": 0,
+        "resets": 24,
+        "steps": 66,
+        "completed_queries": 24,
+        "cache_nodes": 16,
+        "output_code_units": 386
+      },
+      "compact_statistics": {
+        "queries": 10,
+        "cache_hits": 0,
+        "resets": 10,
+        "steps": 42,
+        "completed_queries": 10,
+        "cache_nodes": 16,
+        "output_code_units": 244
+      },
+      "reset_reduction": 0.5833333333333333,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 2,
+      "profile": "w",
+      "original_cases": 15,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 76,
+        "completed_queries": 30,
+        "cache_nodes": 15,
+        "output_code_units": 582
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 52,
+        "completed_queries": 16,
+        "cache_nodes": 15,
+        "output_code_units": 404
+      },
+      "reset_reduction": 0.4666666666666667,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 2,
+      "profile": "wp",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 50,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 392
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 26,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 214
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 3,
+      "profile": "w",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 50,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 360
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 26,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 198
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 3,
+      "profile": "wp",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 50,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 360
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 26,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 198
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 4,
+      "profile": "w",
+      "original_cases": 15,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 84,
+        "completed_queries": 30,
+        "cache_nodes": 19,
+        "output_code_units": 498
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 60,
+        "completed_queries": 16,
+        "cache_nodes": 19,
+        "output_code_units": 356
+      },
+      "reset_reduction": 0.4666666666666667,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 4,
+      "profile": "wp",
+      "original_cases": 15,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 84,
+        "completed_queries": 30,
+        "cache_nodes": 19,
+        "output_code_units": 498
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 60,
+        "completed_queries": 16,
+        "cache_nodes": 19,
+        "output_code_units": 356
+      },
+      "reset_reduction": 0.4666666666666667,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 5,
+      "profile": "w",
+      "original_cases": 15,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 68,
+        "completed_queries": 30,
+        "cache_nodes": 15,
+        "output_code_units": 606
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 48,
+        "completed_queries": 16,
+        "cache_nodes": 15,
+        "output_code_units": 440
+      },
+      "reset_reduction": 0.4666666666666667,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 3,
+      "salt": 5,
+      "profile": "wp",
+      "original_cases": 11,
+      "compact_words": 4,
+      "raw_statistics": {
+        "queries": 22,
+        "cache_hits": 0,
+        "resets": 22,
+        "steps": 44,
+        "completed_queries": 22,
+        "cache_nodes": 11,
+        "output_code_units": 374
+      },
+      "compact_statistics": {
+        "queries": 8,
+        "cache_hits": 0,
+        "resets": 8,
+        "steps": 24,
+        "completed_queries": 8,
+        "cache_nodes": 11,
+        "output_code_units": 208
+      },
+      "reset_reduction": 0.6363636363636364,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 3,
+        "states_total": 3,
+        "transitions_visited": 6,
+        "transitions_total": 6
+      }
+    },
+    {
+      "states": 4,
+      "salt": 0,
+      "profile": "w",
+      "original_cases": 14,
+      "compact_words": 5,
+      "raw_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 78,
+        "completed_queries": 28,
+        "cache_nodes": 14,
+        "output_code_units": 546
+      },
+      "compact_statistics": {
+        "queries": 10,
+        "cache_hits": 0,
+        "resets": 10,
+        "steps": 38,
+        "completed_queries": 10,
+        "cache_nodes": 14,
+        "output_code_units": 282
+      },
+      "reset_reduction": 0.6428571428571428,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 0,
+      "profile": "wp",
+      "original_cases": 14,
+      "compact_words": 5,
+      "raw_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 78,
+        "completed_queries": 28,
+        "cache_nodes": 14,
+        "output_code_units": 546
+      },
+      "compact_statistics": {
+        "queries": 10,
+        "cache_hits": 0,
+        "resets": 10,
+        "steps": 38,
+        "completed_queries": 10,
+        "cache_nodes": 14,
+        "output_code_units": 282
+      },
+      "reset_reduction": 0.6428571428571428,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 1,
+      "profile": "w",
+      "original_cases": 29,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 58,
+        "cache_hits": 0,
+        "resets": 58,
+        "steps": 232,
+        "completed_queries": 58,
+        "cache_nodes": 34,
+        "output_code_units": 1370
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 106,
+        "completed_queries": 20,
+        "cache_nodes": 34,
+        "output_code_units": 624
+      },
+      "reset_reduction": 0.6551724137931034,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 1,
+      "profile": "wp",
+      "original_cases": 20,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 40,
+        "cache_hits": 0,
+        "resets": 40,
+        "steps": 148,
+        "completed_queries": 40,
+        "cache_nodes": 30,
+        "output_code_units": 876
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 98,
+        "completed_queries": 20,
+        "cache_nodes": 30,
+        "output_code_units": 578
+      },
+      "reset_reduction": 0.5,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 2,
+      "profile": "w",
+      "original_cases": 19,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 38,
+        "cache_hits": 0,
+        "resets": 38,
+        "steps": 116,
+        "completed_queries": 38,
+        "cache_nodes": 19,
+        "output_code_units": 846
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 76,
+        "completed_queries": 20,
+        "cache_nodes": 19,
+        "output_code_units": 566
+      },
+      "reset_reduction": 0.4736842105263158,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 2,
+      "profile": "wp",
+      "original_cases": 19,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 38,
+        "cache_hits": 0,
+        "resets": 38,
+        "steps": 116,
+        "completed_queries": 38,
+        "cache_nodes": 19,
+        "output_code_units": 846
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 76,
+        "completed_queries": 20,
+        "cache_nodes": 19,
+        "output_code_units": 566
+      },
+      "reset_reduction": 0.4736842105263158,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 3,
+      "profile": "w",
+      "original_cases": 14,
+      "compact_words": 5,
+      "raw_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 66,
+        "completed_queries": 28,
+        "cache_nodes": 14,
+        "output_code_units": 492
+      },
+      "compact_statistics": {
+        "queries": 10,
+        "cache_hits": 0,
+        "resets": 10,
+        "steps": 34,
+        "completed_queries": 10,
+        "cache_nodes": 14,
+        "output_code_units": 264
+      },
+      "reset_reduction": 0.6428571428571428,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 3,
+      "profile": "wp",
+      "original_cases": 14,
+      "compact_words": 5,
+      "raw_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 66,
+        "completed_queries": 28,
+        "cache_nodes": 14,
+        "output_code_units": 492
+      },
+      "compact_statistics": {
+        "queries": 10,
+        "cache_hits": 0,
+        "resets": 10,
+        "steps": 34,
+        "completed_queries": 10,
+        "cache_nodes": 14,
+        "output_code_units": 264
+      },
+      "reset_reduction": 0.6428571428571428,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 4,
+      "profile": "w",
+      "original_cases": 24,
+      "compact_words": 15,
+      "raw_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 184,
+        "completed_queries": 48,
+        "cache_nodes": 34,
+        "output_code_units": 1096
+      },
+      "compact_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 144,
+        "completed_queries": 30,
+        "cache_nodes": 34,
+        "output_code_units": 858
+      },
+      "reset_reduction": 0.375,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 4,
+      "profile": "wp",
+      "original_cases": 24,
+      "compact_words": 15,
+      "raw_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 184,
+        "completed_queries": 48,
+        "cache_nodes": 34,
+        "output_code_units": 1096
+      },
+      "compact_statistics": {
+        "queries": 30,
+        "cache_hits": 0,
+        "resets": 30,
+        "steps": 144,
+        "completed_queries": 30,
+        "cache_nodes": 34,
+        "output_code_units": 858
+      },
+      "reset_reduction": 0.375,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 5,
+      "profile": "w",
+      "original_cases": 19,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 38,
+        "cache_hits": 0,
+        "resets": 38,
+        "steps": 116,
+        "completed_queries": 38,
+        "cache_nodes": 19,
+        "output_code_units": 862
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 76,
+        "completed_queries": 20,
+        "cache_nodes": 19,
+        "output_code_units": 582
+      },
+      "reset_reduction": 0.4736842105263158,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 4,
+      "salt": 5,
+      "profile": "wp",
+      "original_cases": 17,
+      "compact_words": 8,
+      "raw_statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 102,
+        "completed_queries": 34,
+        "cache_nodes": 17,
+        "output_code_units": 766
+      },
+      "compact_statistics": {
+        "queries": 16,
+        "cache_hits": 0,
+        "resets": 16,
+        "steps": 62,
+        "completed_queries": 16,
+        "cache_nodes": 17,
+        "output_code_units": 486
+      },
+      "reset_reduction": 0.5294117647058824,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 4,
+        "states_total": 4,
+        "transitions_visited": 8,
+        "transitions_total": 8
+      }
+    },
+    {
+      "states": 5,
+      "salt": 0,
+      "profile": "w",
+      "original_cases": 17,
+      "compact_words": 6,
+      "raw_statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 112,
+        "completed_queries": 34,
+        "cache_nodes": 17,
+        "output_code_units": 768
+      },
+      "compact_statistics": {
+        "queries": 12,
+        "cache_hits": 0,
+        "resets": 12,
+        "steps": 52,
+        "completed_queries": 12,
+        "cache_nodes": 17,
+        "output_code_units": 378
+      },
+      "reset_reduction": 0.6470588235294117,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 0,
+      "profile": "wp",
+      "original_cases": 17,
+      "compact_words": 6,
+      "raw_statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 112,
+        "completed_queries": 34,
+        "cache_nodes": 17,
+        "output_code_units": 768
+      },
+      "compact_statistics": {
+        "queries": 12,
+        "cache_hits": 0,
+        "resets": 12,
+        "steps": 52,
+        "completed_queries": 12,
+        "cache_nodes": 17,
+        "output_code_units": 378
+      },
+      "reset_reduction": 0.6470588235294117,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 1,
+      "profile": "w",
+      "original_cases": 35,
+      "compact_words": 12,
+      "raw_statistics": {
+        "queries": 70,
+        "cache_hits": 0,
+        "resets": 70,
+        "steps": 292,
+        "completed_queries": 70,
+        "cache_nodes": 41,
+        "output_code_units": 1728
+      },
+      "compact_statistics": {
+        "queries": 24,
+        "cache_hits": 0,
+        "resets": 24,
+        "steps": 132,
+        "completed_queries": 24,
+        "cache_nodes": 41,
+        "output_code_units": 778
+      },
+      "reset_reduction": 0.6571428571428571,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 1,
+      "profile": "wp",
+      "original_cases": 27,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 54,
+        "cache_hits": 0,
+        "resets": 54,
+        "steps": 210,
+        "completed_queries": 54,
+        "cache_nodes": 35,
+        "output_code_units": 1240
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 110,
+        "completed_queries": 20,
+        "cache_nodes": 35,
+        "output_code_units": 646
+      },
+      "reset_reduction": 0.6296296296296297,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 2,
+      "profile": "w",
+      "original_cases": 29,
+      "compact_words": 12,
+      "raw_statistics": {
+        "queries": 58,
+        "cache_hits": 0,
+        "resets": 58,
+        "steps": 228,
+        "completed_queries": 58,
+        "cache_nodes": 29,
+        "output_code_units": 1588
+      },
+      "compact_statistics": {
+        "queries": 24,
+        "cache_hits": 0,
+        "resets": 24,
+        "steps": 116,
+        "completed_queries": 24,
+        "cache_nodes": 29,
+        "output_code_units": 824
+      },
+      "reset_reduction": 0.5862068965517242,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 2,
+      "profile": "wp",
+      "original_cases": 24,
+      "compact_words": 12,
+      "raw_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 188,
+        "completed_queries": 48,
+        "cache_nodes": 29,
+        "output_code_units": 1318
+      },
+      "compact_statistics": {
+        "queries": 24,
+        "cache_hits": 0,
+        "resets": 24,
+        "steps": 116,
+        "completed_queries": 24,
+        "cache_nodes": 29,
+        "output_code_units": 824
+      },
+      "reset_reduction": 0.5,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 3,
+      "profile": "w",
+      "original_cases": 17,
+      "compact_words": 6,
+      "raw_statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 88,
+        "completed_queries": 34,
+        "cache_nodes": 17,
+        "output_code_units": 660
+      },
+      "compact_statistics": {
+        "queries": 12,
+        "cache_hits": 0,
+        "resets": 12,
+        "steps": 44,
+        "completed_queries": 12,
+        "cache_nodes": 17,
+        "output_code_units": 342
+      },
+      "reset_reduction": 0.6470588235294117,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 3,
+      "profile": "wp",
+      "original_cases": 17,
+      "compact_words": 6,
+      "raw_statistics": {
+        "queries": 34,
+        "cache_hits": 0,
+        "resets": 34,
+        "steps": 88,
+        "completed_queries": 34,
+        "cache_nodes": 17,
+        "output_code_units": 660
+      },
+      "compact_statistics": {
+        "queries": 12,
+        "cache_hits": 0,
+        "resets": 12,
+        "steps": 44,
+        "completed_queries": 12,
+        "cache_nodes": 17,
+        "output_code_units": 342
+      },
+      "reset_reduction": 0.6470588235294117,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 4,
+      "profile": "w",
+      "original_cases": 35,
+      "compact_words": 24,
+      "raw_statistics": {
+        "queries": 70,
+        "cache_hits": 0,
+        "resets": 70,
+        "steps": 340,
+        "completed_queries": 70,
+        "cache_nodes": 53,
+        "output_code_units": 2030
+      },
+      "compact_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 280,
+        "completed_queries": 48,
+        "cache_nodes": 53,
+        "output_code_units": 1672
+      },
+      "reset_reduction": 0.3142857142857143,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 4,
+      "profile": "wp",
+      "original_cases": 35,
+      "compact_words": 24,
+      "raw_statistics": {
+        "queries": 70,
+        "cache_hits": 0,
+        "resets": 70,
+        "steps": 340,
+        "completed_queries": 70,
+        "cache_nodes": 53,
+        "output_code_units": 2030
+      },
+      "compact_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 280,
+        "completed_queries": 48,
+        "cache_nodes": 53,
+        "output_code_units": 1672
+      },
+      "reset_reduction": 0.3142857142857143,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 5,
+      "profile": "w",
+      "original_cases": 29,
+      "compact_words": 12,
+      "raw_statistics": {
+        "queries": 58,
+        "cache_hits": 0,
+        "resets": 58,
+        "steps": 208,
+        "completed_queries": 58,
+        "cache_nodes": 29,
+        "output_code_units": 1596
+      },
+      "compact_statistics": {
+        "queries": 24,
+        "cache_hits": 0,
+        "resets": 24,
+        "steps": 108,
+        "completed_queries": 24,
+        "cache_nodes": 29,
+        "output_code_units": 832
+      },
+      "reset_reduction": 0.5862068965517242,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 5,
+      "salt": 5,
+      "profile": "wp",
+      "original_cases": 24,
+      "compact_words": 10,
+      "raw_statistics": {
+        "queries": 48,
+        "cache_hits": 0,
+        "resets": 48,
+        "steps": 158,
+        "completed_queries": 48,
+        "cache_nodes": 24,
+        "output_code_units": 1226
+      },
+      "compact_statistics": {
+        "queries": 20,
+        "cache_hits": 0,
+        "resets": 20,
+        "steps": 84,
+        "completed_queries": 20,
+        "cache_nodes": 24,
+        "output_code_units": 666
+      },
+      "reset_reduction": 0.5833333333333333,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 5,
+        "states_total": 5,
+        "transitions_visited": 10,
+        "transitions_total": 10
+      }
+    },
+    {
+      "states": 6,
+      "salt": 0,
+      "profile": "w",
+      "original_cases": 20,
+      "compact_words": 7,
+      "raw_statistics": {
+        "queries": 40,
+        "cache_hits": 0,
+        "resets": 40,
+        "steps": 152,
+        "completed_queries": 40,
+        "cache_nodes": 20,
+        "output_code_units": 1026
+      },
+      "compact_statistics": {
+        "queries": 14,
+        "cache_hits": 0,
+        "resets": 14,
+        "steps": 68,
+        "completed_queries": 14,
+        "cache_nodes": 20,
+        "output_code_units": 486
+      },
+      "reset_reduction": 0.65,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 0,
+      "profile": "wp",
+      "original_cases": 20,
+      "compact_words": 7,
+      "raw_statistics": {
+        "queries": 40,
+        "cache_hits": 0,
+        "resets": 40,
+        "steps": 152,
+        "completed_queries": 40,
+        "cache_nodes": 20,
+        "output_code_units": 1026
+      },
+      "compact_statistics": {
+        "queries": 14,
+        "cache_hits": 0,
+        "resets": 14,
+        "steps": 68,
+        "completed_queries": 14,
+        "cache_nodes": 20,
+        "output_code_units": 486
+      },
+      "reset_reduction": 0.65,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 1,
+      "profile": "w",
+      "original_cases": 48,
+      "compact_words": 28,
+      "raw_statistics": {
+        "queries": 96,
+        "cache_hits": 0,
+        "resets": 96,
+        "steps": 480,
+        "completed_queries": 96,
+        "cache_nodes": 76,
+        "output_code_units": 2856
+      },
+      "compact_statistics": {
+        "queries": 56,
+        "cache_hits": 0,
+        "resets": 56,
+        "steps": 352,
+        "completed_queries": 56,
+        "cache_nodes": 76,
+        "output_code_units": 2092
+      },
+      "reset_reduction": 0.41666666666666663,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 1,
+      "profile": "wp",
+      "original_cases": 38,
+      "compact_words": 23,
+      "raw_statistics": {
+        "queries": 76,
+        "cache_hits": 0,
+        "resets": 76,
+        "steps": 374,
+        "completed_queries": 76,
+        "cache_nodes": 68,
+        "output_code_units": 2224
+      },
+      "compact_statistics": {
+        "queries": 46,
+        "cache_hits": 0,
+        "resets": 46,
+        "steps": 286,
+        "completed_queries": 46,
+        "cache_nodes": 68,
+        "output_code_units": 1698
+      },
+      "reset_reduction": 0.39473684210526316,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 2,
+      "profile": "w",
+      "original_cases": 41,
+      "compact_words": 14,
+      "raw_statistics": {
+        "queries": 82,
+        "cache_hits": 0,
+        "resets": 82,
+        "steps": 398,
+        "completed_queries": 82,
+        "cache_nodes": 41,
+        "output_code_units": 2690
+      },
+      "compact_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 164,
+        "completed_queries": 28,
+        "cache_nodes": 41,
+        "output_code_units": 1130
+      },
+      "reset_reduction": 0.6585365853658536,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 2,
+      "profile": "wp",
+      "original_cases": 29,
+      "compact_words": 14,
+      "raw_statistics": {
+        "queries": 58,
+        "cache_hits": 0,
+        "resets": 58,
+        "steps": 278,
+        "completed_queries": 58,
+        "cache_nodes": 41,
+        "output_code_units": 1898
+      },
+      "compact_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 164,
+        "completed_queries": 28,
+        "cache_nodes": 41,
+        "output_code_units": 1130
+      },
+      "reset_reduction": 0.5172413793103448,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 3,
+      "profile": "w",
+      "original_cases": 20,
+      "compact_words": 7,
+      "raw_statistics": {
+        "queries": 40,
+        "cache_hits": 0,
+        "resets": 40,
+        "steps": 116,
+        "completed_queries": 40,
+        "cache_nodes": 20,
+        "output_code_units": 864
+      },
+      "compact_statistics": {
+        "queries": 14,
+        "cache_hits": 0,
+        "resets": 14,
+        "steps": 56,
+        "completed_queries": 14,
+        "cache_nodes": 20,
+        "output_code_units": 432
+      },
+      "reset_reduction": 0.65,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 3,
+      "profile": "wp",
+      "original_cases": 20,
+      "compact_words": 7,
+      "raw_statistics": {
+        "queries": 40,
+        "cache_hits": 0,
+        "resets": 40,
+        "steps": 116,
+        "completed_queries": 40,
+        "cache_nodes": 20,
+        "output_code_units": 864
+      },
+      "compact_statistics": {
+        "queries": 14,
+        "cache_hits": 0,
+        "resets": 14,
+        "steps": 56,
+        "completed_queries": 14,
+        "cache_nodes": 20,
+        "output_code_units": 432
+      },
+      "reset_reduction": 0.65,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 4,
+      "profile": "w",
+      "original_cases": 48,
+      "compact_words": 35,
+      "raw_statistics": {
+        "queries": 96,
+        "cache_hits": 0,
+        "resets": 96,
+        "steps": 564,
+        "completed_queries": 96,
+        "cache_nodes": 76,
+        "output_code_units": 3372
+      },
+      "compact_statistics": {
+        "queries": 70,
+        "cache_hits": 0,
+        "resets": 70,
+        "steps": 480,
+        "completed_queries": 70,
+        "cache_nodes": 76,
+        "output_code_units": 2870
+      },
+      "reset_reduction": 0.27083333333333337,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 4,
+      "profile": "wp",
+      "original_cases": 48,
+      "compact_words": 35,
+      "raw_statistics": {
+        "queries": 96,
+        "cache_hits": 0,
+        "resets": 96,
+        "steps": 564,
+        "completed_queries": 96,
+        "cache_nodes": 76,
+        "output_code_units": 3372
+      },
+      "compact_statistics": {
+        "queries": 70,
+        "cache_hits": 0,
+        "resets": 70,
+        "steps": 480,
+        "completed_queries": 70,
+        "cache_nodes": 76,
+        "output_code_units": 2870
+      },
+      "reset_reduction": 0.27083333333333337,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 5,
+      "profile": "w",
+      "original_cases": 41,
+      "compact_words": 14,
+      "raw_statistics": {
+        "queries": 82,
+        "cache_hits": 0,
+        "resets": 82,
+        "steps": 336,
+        "completed_queries": 82,
+        "cache_nodes": 41,
+        "output_code_units": 2556
+      },
+      "compact_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 148,
+        "completed_queries": 28,
+        "cache_nodes": 41,
+        "output_code_units": 1158
+      },
+      "reset_reduction": 0.6585365853658536,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    },
+    {
+      "states": 6,
+      "salt": 5,
+      "profile": "wp",
+      "original_cases": 28,
+      "compact_words": 14,
+      "raw_statistics": {
+        "queries": 56,
+        "cache_hits": 0,
+        "resets": 56,
+        "steps": 196,
+        "completed_queries": 56,
+        "cache_nodes": 28,
+        "output_code_units": 1490
+      },
+      "compact_statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 122,
+        "completed_queries": 28,
+        "cache_nodes": 28,
+        "output_code_units": 954
+      },
+      "reset_reduction": 0.5,
+      "coverage": {
+        "scope": "reachable model coverage, not implementation code coverage",
+        "states_visited": 6,
+        "states_total": 6,
+        "transitions_visited": 12,
+        "transitions_total": 12
+      }
+    }
+  ]
+}
