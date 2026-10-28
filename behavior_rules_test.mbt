@@ -29,6 +29,17 @@ test "finite rules use successful events and release only after successful login
     input: "request",
     output: "allowed",
   })
+  assert_eq(Json(@lens.BehaviorRule::from_json(Json(always))), Json(always))
+  assert_eq(
+    Json(
+      @lens.BehaviorRule::from_json({
+        "id": "no-allow",
+        "kind": "forbidden",
+        "forbidden": { "input": "request", "output": "allowed" },
+      }),
+    ),
+    Json(always),
+  )
   assert_eq(always.check_trace(["request"], ["allowed"]), Some(0))
   let after = @lens.BehaviorRule::new(
     "no-reopen",
@@ -36,6 +47,7 @@ test "finite rules use successful events and release only after successful login
     kind="after",
     trigger={ input: "logout", output: "ok", },
   )
+  assert_eq(Json(@lens.BehaviorRule::from_json(Json(after))), Json(after))
   assert_eq(
     after.check_trace(["logout", "login", "request"], ["ok", "ok", "allowed"]),
     Some(2),

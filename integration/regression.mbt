@@ -84,14 +84,25 @@ pub async fn check_rules(
         let findings = []
         let mut confirmed = 0
         let mut complete = config.accepts(inference.learning)
+        let mut reason : String? = if complete {
+          None
+        } else {
+          Some("learning evidence expectation not met")
+        }
         if inference.learning.model is Some(model) &&
           !(inference.learning.status is Unstable(..)) {
           for rule in rules {
             let finding = @runner.verify_rule(experiment, model, rule) catch {
-              @lens.LimitExceeded(_)
-              | @lens.InconsistentObservation(..)
-              | @runner.TimedOut(_) => {
+              @lens.LimitExceeded(message) | @runner.TimedOut(message) => {
                 complete = false
+                reason = Some(message)
+                findings.push(rule.finding(rule.search(model), None))
+                break
+              }
+              @lens.InconsistentObservation(..) => {
+                complete = false
+                reason = Some("unstable fresh rule replay")
+                findings.push(rule.finding(rule.search(model), None))
                 break
               }
               error => raise error
@@ -106,6 +117,7 @@ pub async fn check_rules(
           }
         } else {
           complete = false
+          reason = Some("missing or unstable hypothesis")
         }
         let report = Json::object({
           "format": Json("moonstatelens.rule-check"),
@@ -116,6 +128,7 @@ pub async fn check_rules(
           "findings": Json(findings),
           "confirmed_violations": Json(confirmed),
           "complete": Json(complete),
+          "reason": reason.map(r => Json(r)).unwrap_or(Json::null()),
           "statistics": Json(experiment.statistics()),
           "scope": Json(
             "confirmed violations have fresh target traces; absence of violations remains conditional on learned-model evidence",

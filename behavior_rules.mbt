@@ -51,15 +51,6 @@ pub fn BehaviorRule::new(
 }
 
 ///|
-priv struct RuleDocument {
-  id : String
-  kind : String
-  forbidden : RuleEvent
-  trigger : RuleEvent?
-  release : RuleEvent?
-} derive(@json.FromJson)
-
-///|
 pub fn BehaviorRule::from_json(value : Json) -> BehaviorRule raise {
   guard value is Object(fields) else {
     raise InvalidArgument("rule must be an object")
@@ -69,13 +60,23 @@ pub fn BehaviorRule::from_json(value : Json) -> BehaviorRule raise {
       raise InvalidArgument("unknown rule field: " + key)
     }
   }
-  let d : RuleDocument = @json.from_json(value)
+  guard fields.get("id") is Some(String(id)) &&
+    fields.get("kind") is Some(String(kind)) &&
+    fields.get("forbidden") is Some(forbidden) else {
+    raise InvalidArgument("rule requires id, kind and forbidden event")
+  }
+  fn optional_event(name : String) -> RuleEvent? raise {
+    match fields.get(name) {
+      None | Some(Null) => None
+      Some(event) => Some(@json.from_json(event))
+    }
+  }
   BehaviorRule::new(
-    d.id,
-    d.forbidden,
-    kind=d.kind,
-    trigger?=d.trigger,
-    release?=d.release,
+    id,
+    @json.from_json(forbidden),
+    kind~,
+    trigger?=optional_event("trigger"),
+    release?=optional_event("release"),
   )
 }
 
