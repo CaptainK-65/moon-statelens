@@ -35,6 +35,8 @@ pub async fn infer(
   max_table_cells~ : Int32 = 1000000,
   max_table_symbols~ : Int32 = 4000000,
   max_prefixes~ : Int32 = 20000,
+  seed? : @lens.Machine,
+  binary_cex~ : Bool = false,
 ) -> InferenceReport {
   let mut driver : @lens.LearningDriver? = None
   let verification : Array[Array[@lens.VerificationStage]] = []
@@ -81,6 +83,8 @@ pub async fn infer(
       max_table_cells~,
       max_table_symbols~,
       max_prefixes~,
+      seed?,
+      binary_cex~,
     )
     driver = Some(active)
     for ;; {

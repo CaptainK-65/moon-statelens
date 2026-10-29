@@ -1,0 +1,90 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn main {
+  let (mode, target) = match @env.args() {
+    [_, mode, target] => (mode, target)
+    _ => fail("expected source|public BACKEND")
+  }
+  if !["source", "public"].contains(mode) ||
+    !["wasm", "wasm-gc", "js", "native"].contains(target) {
+    fail("invalid mode/backend")
+  }
+  let dir = "_build/evolution-consumer-" +
+    mode +
+    "-" +
+    target +
+    "-" +
+    @env.now().to_string()
+  let consumer = dir + "/consumer"
+  @fs.mkdir(consumer, recursive=true)
+  @fs.write_file(
+    consumer + "/moon.mod",
+    "name = \"examples/evolution-consumer\"\nimport {\n  \"CaptainK-65/moon-statelens@0.4.0\",\n}\n",
+  )
+  for file in ["main.mbt", "moon.pkg"] {
+    @fs.write_file(
+      consumer + "/" + file,
+      @fs.read_file("examples/evolution/" + file),
+    )
+  }
+  if mode == "source" {
+    @fs.write_file(
+      dir + "/moon.work",
+      "members = [\n  " +
+      Json(@fs.realpath(".")).stringify() +
+      ",\n  " +
+      Json(@fs.realpath(consumer)).stringify() +
+      ",\n]\n",
+    )
+  }
+  @shell.Cmd("moon", ["update"], cwd=consumer).output(timeout_ms=90000).check()
+  let output = @shell.Cmd(
+    "moon",
+    ["run", ".", "--target", target, "--deny-warn"],
+    cwd=consumer,
+  ).output(timeout_ms=180000, max_output_bytes=4194304)
+  @fs.write_file(dir + "/output.log", output.stdout() + output.stderr())
+  output.check()
+  guard @json.parse(output.stdout())
+    is {
+      "guided": { "status": { "kind": "supported", .. }, .. },
+      "confirmed_difference": {
+        "left_outputs": Array(l),
+        "right_outputs": Array(r),
+        ..
+      },
+      ..
+    } &&
+    l != r else {
+    fail("actual version evolution was not confirmed")
+  }
+  if mode == "public" {
+    if !@fs.read_file(
+        consumer + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
+      )
+      .text()
+      .contains("version = \"0.4.0\"") {
+      fail("wrong public version")
+    }
+  }
+  @fs.write_file(
+    dir + "/receipt.json",
+    Json::object({
+      "version": Json("0.4.0"),
+      "mode": Json(mode),
+      "target": Json(target),
+      "exit": Json(output.exit_code()),
+      "passed": Json(true),
+    }).stringify(indent=2),
+  )
+  println("Evolution " + mode + " consumer passed on " + target + ": " + dir)
+}

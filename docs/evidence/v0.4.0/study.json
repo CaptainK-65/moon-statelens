@@ -1,0 +1,4191 @@
+{
+  "format": "moonstatelens.evolution-study",
+  "version": 1,
+  "pairs": 20,
+  "scope": "fixed delayed-observation cycles, output changes; baseline model already available; all fresh new-version observations, same Wp bounds and cache settings; no universal speed claim",
+  "median_reset_reduction": 0.6102348481547645,
+  "all_pair_reductions": [
+    0,
+    0.31818181818181823,
+    0.3389830508474576,
+    0.375,
+    0.38383838383838387,
+    0.4155844155844156,
+    0.43333333333333335,
+    0.49397590361445787,
+    0.521186440677966,
+    0.5932203389830508,
+    0.6272493573264781,
+    0.6957746478873239,
+    0.7310549777117386,
+    0.7870662460567823,
+    0.8182565789473684,
+    0.8591549295774648,
+    0.8834652594547053,
+    0.9109512030582415,
+    0.9281945400321174,
+    0.9456066945606695
+  ],
+  "cases": [
+    {
+      "states": 3,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 83,
+        "cache_hits": 24,
+        "resets": 59,
+        "steps": 165,
+        "completed_queries": 59,
+        "cache_nodes": 25,
+        "output_code_units": 708
+      },
+      "verification_resets": 37,
+      "verification_steps": 86,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 3,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 42,
+        "cache_hits": 3,
+        "resets": 39,
+        "steps": 112,
+        "completed_queries": 39,
+        "cache_nodes": 19,
+        "output_code_units": 475
+      },
+      "verification_resets": 21,
+      "verification_steps": 57,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 3,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 69,
+        "completed_queries": 28,
+        "cache_nodes": 15,
+        "output_code_units": 322
+      },
+      "verification_resets": 14,
+      "verification_steps": 31,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 3,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 28,
+        "cache_hits": 0,
+        "resets": 28,
+        "steps": 69,
+        "completed_queries": 28,
+        "cache_nodes": 15,
+        "output_code_units": 322
+      },
+      "verification_resets": 14,
+      "verification_steps": 31,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 4,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 168,
+        "cache_hits": 72,
+        "resets": 96,
+        "steps": 347,
+        "completed_queries": 96,
+        "cache_nodes": 44,
+        "output_code_units": 1448
+      },
+      "verification_resets": 68,
+      "verification_steps": 214,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 4,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 72,
+        "cache_hits": 12,
+        "resets": 60,
+        "steps": 231,
+        "completed_queries": 60,
+        "cache_nodes": 34,
+        "output_code_units": 960
+      },
+      "verification_resets": 36,
+      "verification_steps": 134,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 4,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 94,
+        "cache_hits": 28,
+        "resets": 66,
+        "steps": 209,
+        "completed_queries": 66,
+        "cache_nodes": 29,
+        "output_code_units": 932
+      },
+      "verification_resets": 38,
+      "verification_steps": 95,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 4,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 49,
+        "cache_hits": 4,
+        "resets": 45,
+        "steps": 145,
+        "completed_queries": 45,
+        "cache_nodes": 24,
+        "output_code_units": 640
+      },
+      "verification_resets": 22,
+      "verification_steps": 63,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 5,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 302,
+        "cache_hits": 148,
+        "resets": 154,
+        "steps": 681,
+        "completed_queries": 154,
+        "cache_nodes": 73,
+        "output_code_units": 2796
+      },
+      "verification_resets": 119,
+      "verification_steps": 471,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 5,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 110,
+        "cache_hits": 20,
+        "resets": 90,
+        "steps": 436,
+        "completed_queries": 90,
+        "cache_nodes": 53,
+        "output_code_units": 1789
+      },
+      "verification_resets": 55,
+      "verification_steps": 260,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 5,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 182,
+        "cache_hits": 83,
+        "resets": 99,
+        "steps": 380,
+        "completed_queries": 99,
+        "cache_nodes": 50,
+        "output_code_units": 1655
+      },
+      "verification_resets": 64,
+      "verification_steps": 200,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 5,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 76,
+        "cache_hits": 15,
+        "resets": 61,
+        "steps": 248,
+        "completed_queries": 61,
+        "cache_nodes": 41,
+        "output_code_units": 1066
+      },
+      "verification_resets": 32,
+      "verification_steps": 116,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 6,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 507,
+        "cache_hits": 258,
+        "resets": 249,
+        "steps": 1295,
+        "completed_queries": 249,
+        "cache_nodes": 120,
+        "output_code_units": 5264
+      },
+      "verification_resets": 206,
+      "verification_steps": 981,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 6,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 156,
+        "cache_hits": 30,
+        "resets": 126,
+        "steps": 736,
+        "completed_queries": 126,
+        "cache_nodes": 76,
+        "output_code_units": 2998
+      },
+      "verification_resets": 78,
+      "verification_steps": 447,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 6,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 319,
+        "cache_hits": 169,
+        "resets": 150,
+        "steps": 679,
+        "completed_queries": 150,
+        "cache_nodes": 82,
+        "output_code_units": 2930
+      },
+      "verification_resets": 108,
+      "verification_steps": 412,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 6,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 109,
+        "cache_hits": 24,
+        "resets": 85,
+        "steps": 423,
+        "completed_queries": 85,
+        "cache_nodes": 62,
+        "output_code_units": 1780
+      },
+      "verification_resets": 44,
+      "verification_steps": 196,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 7,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 821,
+        "cache_hits": 408,
+        "resets": 413,
+        "steps": 2461,
+        "completed_queries": 413,
+        "cache_nodes": 201,
+        "output_code_units": 9940
+      },
+      "verification_resets": 361,
+      "verification_steps": 2012,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 7,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 210,
+        "cache_hits": 42,
+        "resets": 168,
+        "steps": 1149,
+        "completed_queries": 168,
+        "cache_nodes": 103,
+        "output_code_units": 4659
+      },
+      "verification_resets": 105,
+      "verification_steps": 707,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 7,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 527,
+        "cache_hits": 291,
+        "resets": 236,
+        "steps": 1231,
+        "completed_queries": 236,
+        "cache_nodes": 134,
+        "output_code_units": 5313
+      },
+      "verification_resets": 186,
+      "verification_steps": 849,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 7,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 148,
+        "cache_hits": 35,
+        "resets": 113,
+        "steps": 668,
+        "completed_queries": 113,
+        "cache_nodes": 87,
+        "output_code_units": 2774
+      },
+      "verification_resets": 58,
+      "verification_steps": 309,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 8,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 1314,
+        "cache_hits": 604,
+        "resets": 710,
+        "steps": 4771,
+        "completed_queries": 710,
+        "cache_nodes": 348,
+        "output_code_units": 19192
+      },
+      "verification_resets": 648,
+      "verification_steps": 4152,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 8,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 272,
+        "cache_hits": 56,
+        "resets": 216,
+        "steps": 1693,
+        "completed_queries": 216,
+        "cache_nodes": 134,
+        "output_code_units": 6844
+      },
+      "verification_resets": 136,
+      "verification_steps": 1052,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 8,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 844,
+        "cache_hits": 455,
+        "resets": 389,
+        "steps": 2302,
+        "completed_queries": 389,
+        "cache_nodes": 224,
+        "output_code_units": 9996
+      },
+      "verification_resets": 330,
+      "verification_steps": 1773,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 8,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 193,
+        "cache_hits": 48,
+        "resets": 145,
+        "steps": 995,
+        "completed_queries": 145,
+        "cache_nodes": 116,
+        "output_code_units": 4096
+      },
+      "verification_resets": 74,
+      "verification_steps": 461,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 9,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 2120,
+        "cache_hits": 852,
+        "resets": 1268,
+        "steps": 9521,
+        "completed_queries": 1268,
+        "cache_nodes": 625,
+        "output_code_units": 38204
+      },
+      "verification_resets": 1195,
+      "verification_steps": 8693,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 9,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 342,
+        "cache_hits": 72,
+        "resets": 270,
+        "steps": 2386,
+        "completed_queries": 270,
+        "cache_nodes": 169,
+        "output_code_units": 9625
+      },
+      "verification_resets": 171,
+      "verification_steps": 1494,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 9,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 1340,
+        "cache_hits": 667,
+        "resets": 673,
+        "steps": 4478,
+        "completed_queries": 673,
+        "cache_nodes": 388,
+        "output_code_units": 19611
+      },
+      "verification_resets": 604,
+      "verification_steps": 3766,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 9,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 244,
+        "cache_hits": 63,
+        "resets": 181,
+        "steps": 1416,
+        "completed_queries": 181,
+        "cache_nodes": 149,
+        "output_code_units": 5794
+      },
+      "verification_resets": 92,
+      "verification_steps": 658,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 10,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 3501,
+        "cache_hits": 1158,
+        "resets": 2343,
+        "steps": 19543,
+        "completed_queries": 2343,
+        "cache_nodes": 1160,
+        "output_code_units": 78304
+      },
+      "verification_resets": 2258,
+      "verification_steps": 18463,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 10,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 420,
+        "cache_hits": 90,
+        "resets": 330,
+        "steps": 3246,
+        "completed_queries": 330,
+        "cache_nodes": 208,
+        "output_code_units": 13074
+      },
+      "verification_resets": 210,
+      "verification_steps": 2045,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 10,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 2149,
+        "cache_hits": 933,
+        "resets": 1216,
+        "steps": 9049,
+        "completed_queries": 1216,
+        "cache_nodes": 698,
+        "output_code_units": 39958
+      },
+      "verification_resets": 1136,
+      "verification_steps": 8114,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 10,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 301,
+        "cache_hits": 80,
+        "resets": 221,
+        "steps": 1943,
+        "completed_queries": 221,
+        "cache_nodes": 186,
+        "output_code_units": 7916
+      },
+      "verification_resets": 112,
+      "verification_steps": 906,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 11,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 5975,
+        "cache_hits": 1528,
+        "resets": 4447,
+        "steps": 40997,
+        "completed_queries": 4447,
+        "cache_nodes": 2209,
+        "output_code_units": 164132
+      },
+      "verification_resets": 4349,
+      "verification_steps": 39618,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 11,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 506,
+        "cache_hits": 110,
+        "resets": 396,
+        "steps": 4291,
+        "completed_queries": 396,
+        "cache_nodes": 251,
+        "output_code_units": 17263
+      },
+      "verification_resets": 253,
+      "verification_steps": 2717,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 11,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 3533,
+        "cache_hits": 1259,
+        "resets": 2274,
+        "steps": 18841,
+        "completed_queries": 2274,
+        "cache_nodes": 1298,
+        "output_code_units": 83749
+      },
+      "verification_resets": 2182,
+      "verification_steps": 17639,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 11,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 364,
+        "cache_hits": 99,
+        "resets": 265,
+        "steps": 2588,
+        "completed_queries": 265,
+        "cache_nodes": 227,
+        "output_code_units": 10510
+      },
+      "verification_resets": 134,
+      "verification_steps": 1211,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 12,
+      "change": 0,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 10572,
+        "cache_hits": 1968,
+        "resets": 8604,
+        "steps": 87211,
+        "completed_queries": 8604,
+        "cache_nodes": 4284,
+        "output_code_units": 349000
+      },
+      "verification_resets": 8492,
+      "verification_steps": 85482,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 11,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 12,
+      "change": 0,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 600,
+        "cache_hits": 132,
+        "resets": 468,
+        "steps": 5539,
+        "completed_queries": 468,
+        "cache_nodes": 298,
+        "output_code_units": 22264
+      },
+      "verification_resets": 300,
+      "verification_steps": 3522,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 11,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 12,
+      "change": 1,
+      "guided": false,
+      "correct": true,
+      "statistics": {
+        "queries": 6010,
+        "cache_hits": 1651,
+        "resets": 4359,
+        "steps": 40008,
+        "completed_queries": 4359,
+        "cache_nodes": 2476,
+        "output_code_units": 178672
+      },
+      "verification_resets": 4254,
+      "verification_steps": 38491,
+      "rounds": 2,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 11,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    },
+    {
+      "states": 12,
+      "change": 1,
+      "guided": true,
+      "correct": true,
+      "statistics": {
+        "queries": 433,
+        "cache_hits": 120,
+        "resets": 313,
+        "steps": 3363,
+        "completed_queries": 313,
+        "cache_nodes": 272,
+        "output_code_units": 13624
+      },
+      "verification_resets": 158,
+      "verification_steps": 1579,
+      "rounds": 1,
+      "target": {
+        "format": "moonstatelens.mealy",
+        "version": 1,
+        "alphabet": [
+          "a",
+          "b"
+        ],
+        "initial": 0,
+        "transitions": [
+          [
+            {
+              "target": 1,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "origin"
+            }
+          ],
+          [
+            {
+              "target": 2,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 3,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 4,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 5,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 6,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 7,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 8,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 9,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 10,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 11,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "miss"
+            }
+          ],
+          [
+            {
+              "target": 0,
+              "output": "tick"
+            },
+            {
+              "target": 0,
+              "output": "changed"
+            }
+          ]
+        ]
+      }
+    }
+  ]
+}

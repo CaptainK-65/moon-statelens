@@ -11,7 +11,7 @@
 
 name = "CaptainK-65/moon-statelens"
 
-version = "0.3.0"
+version = "0.4.0"
 
 readme = "README.md"
 
@@ -30,4 +30,5 @@ import {
   "moonbitlang/quickcheck@0.15.0",
   "moonbitlang/async@0.22.5",
   "moonbitlang/x@0.5.5",
+  "RunnerQuan/moonlimit@0.1.1",
 }

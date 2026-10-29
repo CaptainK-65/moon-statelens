@@ -4,11 +4,13 @@
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.
 
+Version 0.4 adds history-guided L* relearning with fresh observations, optional binary KV counterexample decomposition, real MoonLimit targets and a browser demo running actual compiled MoonBit code. The fixed 20-pair evolution study records 61.02% median physical reset reduction including Wp verification; AALpy 2.0.0 independently learns and checks the same 20 targets. These finite measurements are not universal speed or adoption claims.
+
 <!-- Keep navigation compatible with GitHub's Markdown renderer; no custom CSS or embedded SVG links. -->
 <p align="center">
   <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-en.svg" width="270" alt="Quick start: installation and executable API examples"></a>
   <a href="docs/native.md"><img src="docs/assets/nav/adapters-en.svg" width="270" alt="Connect a component: async HTTP, JSONL and SQLite"></a>
-  <a href="docs/behavior-validation.md"><img src="docs/assets/nav/behavior-en.svg" width="270" alt="Validate behavior: rules, regression suites and diagnosis"></a>
+  <a href="docs/evolution.md"><img src="docs/assets/nav/behavior-en.svg" width="270" alt="Validate behavior: version evolution, rules, regression suites and diagnosis"></a>
   <a href="docs/architecture.md"><img src="docs/assets/nav/algorithms-en.svg" width="270" alt="Learning architecture: L*, KV and W/Wp"></a>
   <a href="docs/ACCEPTANCE.md"><img src="docs/assets/nav/acceptance-en.svg" width="270" alt="Acceptance and evidence: scope, reproduction and releases"></a>
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-en.svg" width="270" alt="CI integration: standalone SQLite regression gate"></a>

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0
+
+- Initialize L* observation structure from a historical model; all new-version outputs are freshly sampled. Validate alphabets and abstraction identity, and retain normal budgets/verification.
+- Add optional binary KV counterexample decomposition with unequal-endpoint invariants; keep linear default compatibility.
+- Add real MoonLimit quota/token-bucket targets, a compiled self-contained browser experiment and JSON/JUnit export.
+- Publish a phased 20-pair evolution cost study and independent AALpy 2.0.0 equivalence check; add four-backend candidate/public consumer verification.
+- Add a quarterly presentation brief explaining independent contribution, actual results and limits.
+
 ## 0.3.0
 
 - Export/import model-derived state, transition, W and Wp regression suites with recomputed evidence and explicit truncation.

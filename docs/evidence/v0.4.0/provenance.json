@@ -1,0 +1,6 @@
+{
+  "scope": "actual local development execution; final CI/release receipts are recorded separately",
+  "source_candidate": "1b70443",
+  "reference": "AALpy 2.0.0, pydot 4.0.1, pyparsing 3.3.3",
+  "clock": "2026-10-29 Asia/Shanghai"
+}

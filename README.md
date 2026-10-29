@@ -6,11 +6,14 @@
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
 
+**v0.4 版本演进**：历史模型引导 L* 重新学习、二分 KV 反例处理，以及真实限流/配额组件案例。
+通过下方“行为验证”卡片进入版本演进说明，获取浏览器实验室、原始实验数据和三分钟展示提纲。
+
 <!-- Navigation uses ordinary links around local SVGs so GitHub renders the entire card as a link. -->
 <p align="center">
   <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-zh.svg" width="270" alt="快速开始：安装与可执行 API 示例"></a>
   <a href="docs/native.md"><img src="docs/assets/nav/adapters-zh.svg" width="270" alt="组件接入：异步 HTTP、JSONL 子进程与 SQLite"></a>
-  <a href="docs/behavior-validation.md"><img src="docs/assets/nav/behavior-zh.svg" width="270" alt="行为验证：规则、模型回归与多差异诊断"></a>
+  <a href="docs/evolution.md"><img src="docs/assets/nav/behavior-zh.svg" width="270" alt="行为验证：版本演进、规则、模型回归与多差异诊断"></a>
   <a href="docs/algorithms.md"><img src="docs/assets/nav/algorithms-zh.svg" width="270" alt="算法与原理：L*、KV 与 W/Wp"></a>
   <a href="docs/ACCEPTANCE.md"><img src="docs/assets/nav/acceptance-zh.svg" width="270" alt="验收与证据：功能对应、复现步骤与发布记录"></a>
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-zh.svg" width="270" alt="工程集成：独立项目与 SQLite CI 门禁范例"></a>
