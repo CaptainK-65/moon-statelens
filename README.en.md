@@ -10,7 +10,7 @@ Version 0.4 adds history-guided L* relearning with fresh observations, optional 
   <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/lab-banner-en.svg" width="840" alt="Open the live MoonBit laboratory: actual learning and replay, quota models with 3→4 states, 83→54 resets, JSON/JUnit downloads"></a>
 </p>
 
-**Click the card to try it without installing anything.** Run actual compiled MoonBit learning, compare cold and history-guided runs, inspect quota/token-bucket/LRU models, and download JSON evidence or JUnit. The controlled quota capacity change from 2 to 3 produces **3→4 observable states**, **83→54 resets**, and a freshly replayed rejected/allowed difference on the third acquisition. These counts describe this scenario only.
+**Click the card to run your own experiment.** Configure old/new quota capacities and query budgets, compare your own model JSON, inspect existing execution reports, or generate JSONL configurations and a GitHub Actions gate for your repository. Files are read locally in your browser. The default real-component case still produces **3→4 states and 83→54 resets**; these are scenario-specific counts. Token-bucket/LRU presets and JSON/JUnit downloads remain available. See the [laboratory guide and evidence boundaries](docs/laboratory.md).
 
 <!-- Keep navigation compatible with GitHub's Markdown renderer; no custom CSS or embedded SVG links. -->
 <p align="center">

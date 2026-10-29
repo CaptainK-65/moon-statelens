@@ -32,6 +32,7 @@ jobs:
       - run: python -m pip install aalpy==2.0.0 pydot==4.0.1 pyparsing==3.3.3
       - run: moon run tools/verify_evolution.mbtx
       - run: moon run tools/build_evolution_demo.mbtx
+      - run: moon run tools/verify_lab_wizard.mbtx
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:

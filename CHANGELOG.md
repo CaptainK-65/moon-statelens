@@ -1,5 +1,12 @@
 # Changelog
 
+## Unreleased — customizable browser laboratory
+
+- Add parameterized actual quota experiments with fresh version replay, explicit incomplete outcomes, worker cancellation and a browser time limit.
+- Compare uploaded complete models through the MoonBit core; inspect existing JSON reports and export selected models without claiming actual component verification.
+- Generate per-version JSONL configs and a pinned repository-owned Actions gate; validate generated configs with the actual native CLI.
+- Add portable request-protocol tests and a 12-check browser integration fixture. Existing 0.4.0 registry artifacts remain immutable; these additions are available in the source and hosted laboratory.
+
 ## 0.4.0
 
 - Initialize L* observation structure from a historical model; all new-version outputs are freshly sampled. Validate alphabets and abstraction identity, and retain normal budgets/verification.

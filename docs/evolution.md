@@ -4,6 +4,9 @@
 
 ## 可复现入口
 
+在线实验室现有三个入口：自定义真实配额实验、导入模型／报告、生成自己的仓库接入文件。
+见 [实验室使用指南](laboratory.md)。令牌桶与 LRU 保留固定参数示例；它们的参数目前不能在网页编辑。
+
 ```sh
 moon update
 moon run examples/evolution

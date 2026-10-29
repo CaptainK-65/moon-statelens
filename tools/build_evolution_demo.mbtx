@@ -13,6 +13,12 @@ async fn main {
   ])
   .output()
   .check()
+  @shell.Cmd("moon", [
+    "build", "examples/browser", "--target", "js", "--release", "--deny-warn",
+  ])
+  .output()
+  .check()
+  let lab = @fs.read_file("_build/js/release/build/examples/browser/browser.js").text()
   let program = @fs.read_file(
     "_build/js/release/build/examples/evolution/evolution.js",
   ).text()
@@ -29,7 +35,8 @@ async fn main {
     "docs/demo/index.html",
     shell
     .replace(old="<!-- APACHE_LICENSE -->", new=license)
-    .replace(old="/* MOONBIT_PROGRAM */", new=program),
+    .replace(old="/* MOONBIT_PROGRAM */", new=program)
+    .replace(old="/* LAB_PROGRAM */", new=lab),
   )
   println("Built self-contained browser demo from actual MoonBit executable")
 }

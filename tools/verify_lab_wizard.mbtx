@@ -1,0 +1,49 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn main {
+  let text = @fs.read_file("examples/evolution/shell.html").text()
+  let wizard = text.split("function wizard(){").collect()[1]
+  .split("$('generate').onclick")
+  .collect()[0].to_owned()
+  let workflow = text.split("function workflow(){").collect()[1]
+  .split("if(new URLSearchParams")
+  .collect()[0].to_owned()
+  let js = "const values={alphabet:'login,logout,request',bound:'2',abstraction:'session-v1','program-left':'bin/old','program-right':'bin/new',repository:'https://github.com/example/project'};const $=id=>({value:values[id]});function integer(id,min,max){const n=Number($(id).value);if(!Number.isInteger(n)||n<min||n>max)throw Error('invalid');return n}function wizard(){" +
+    wizard +
+    "function workflow(){" +
+    workflow +
+    "if(!workflow().includes('if: always()'))throw Error('missing artifact retention');const good=wizard();values['program-left']='../escape';let rejected=false;try{wizard()}catch(e){rejected=true}if(!rejected)throw Error('traversal accepted');console.log(JSON.stringify(good.configs));"
+  let result = @shell.Cmd("node", ["--eval", js]).output()
+  result.check()
+  guard @json.parse(result.stdout()) is Array(configs) && configs.length() == 2 else {
+    fail("wizard output")
+  }
+  let dir = "_build/wizard-check-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  for i, config in configs {
+    let path = dir + "/" + i.to_string() + ".json"
+    @fs.write_file(path, config.stringify(indent=2))
+    let validation = @shell.Cmd("moon", [
+      "run", "cmd/statelens", "--target", "native", "--", "validate-config", path,
+      "compare",
+    ]).output()
+    @fs.write_file(
+      dir + "/validation-" + i.to_string() + ".log",
+      validation.stdout() + validation.stderr(),
+    )
+    validation.check()
+  }
+  println(
+    "Generated browser configurations pass actual native compare preflight; invalid paths rejected: " +
+    dir,
+  )
+}

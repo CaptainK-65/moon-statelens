@@ -1,0 +1,8 @@
+import {
+  "CaptainK-65/moon-statelens/examples/lab_logic" @lab,
+  "moonbitlang/core/json",
+}
+
+pkgtype(kind: "executable")
+
+supported_targets = "+js"

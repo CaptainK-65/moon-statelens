@@ -12,7 +12,7 @@
   <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/lab-banner-zh.svg" width="840" alt="点击进入在线版本演进实验室：无需安装，运行真实 MoonBit 学习与回放；配额案例重置次数 83→54，模型状态 3→4；支持 JSON/JUnit 下载"></a>
 </p>
 
-**点击上方卡片即可体验**：在浏览器中运行真实 MoonBit 程序，比较冷启动与历史模型引导学习，查看新旧配额、令牌桶和 LRU 缓存模型，并下载 JSON 证据与 JUnit 报告。配额容量从 2 调整为 3 的案例中，模型从 **3 状态变为 4 状态**，重置次数由 **83 降至 54**，并实际回放确认第三次申请的拒绝／允许差异。数字仅对应该演示场景。
+**点击卡片，开始自己的实验**：调整新旧配额容量和查询预算，运行真实 MoonBit 学习与回放；导入自己的模型 JSON 进行精确比较，或查看已有执行报告；通过接入向导生成真实组件配置与 GitHub Actions 工作流。文件在浏览器本地读取。默认配额案例仍可复现 **3→4 状态、83→54 次重置**，数字仅对应该场景。完整组件示例包含令牌桶和 LRU，支持 JSON/JUnit 下载。[使用指南与接入边界](docs/laboratory.md)。
 
 <!-- Navigation uses ordinary links around local SVGs so GitHub renders the entire card as a link. -->
 <p align="center">

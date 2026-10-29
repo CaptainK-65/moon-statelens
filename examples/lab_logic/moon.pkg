@@ -1,0 +1,4 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/adapters/moonlimit" @limit,
+}
