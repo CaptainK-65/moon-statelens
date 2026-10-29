@@ -108,6 +108,11 @@ async fn main {
   }
   for target in ["wasm", "wasm-gc", "js", "native"] {
     ignore(
+      command("evolution-source-" + target, "moon", [
+        "run", "tools/verify_evolution_package.mbtx", "--", "source", target,
+      ]),
+    )
+    ignore(
       command("v03-source-consumer-" + target, "moon", [
         "run", "tools/verify_v03_consumer.mbtx", "--", "source", target,
       ]),

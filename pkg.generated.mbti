@@ -21,7 +21,7 @@ pub fn evidence_html(Json) -> String
 
 pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
 
-pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
+pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool) -> LearningResult raise
 
 pub fn regression_junit(Json) -> String raise LensError
 
@@ -130,7 +130,7 @@ pub struct LearningDriver {
 pub fn LearningDriver::algorithm(Self) -> Algorithm
 pub fn LearningDriver::event(Self, queries? : Int) -> LearningEvent raise LensError
 pub fn LearningDriver::metrics(Self) -> DriverMetrics
-pub fn LearningDriver::new(Algorithm, Array[String], max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> Self raise
+pub fn LearningDriver::new(Algorithm, Array[String], max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool) -> Self raise
 pub fn LearningDriver::refine(Self, Array[String], Array[String]) -> Unit raise
 pub fn LearningDriver::result(Self, Statistics, LearningStatus) -> LearningResult
 pub fn LearningDriver::submit(Self, Int, Array[String]) -> Unit raise

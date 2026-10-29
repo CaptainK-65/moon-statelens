@@ -84,5 +84,7 @@ async fn Config::infer(
     max_table_cells=b.table_cells,
     max_table_symbols=b.table_symbols,
     max_prefixes=b.prefixes,
+    seed?=self.seed,
+    binary_cex=self.binary_cex,
   )
 }

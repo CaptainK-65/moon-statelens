@@ -6,6 +6,9 @@
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
 
+**v0.4 版本演进**：历史模型引导 L* 重新学习、二分 KV 反例处理，以及真实限流/配额组件案例。
+[运行实际 MoonBit 浏览器实验室](docs/demo/index.html)（下载后直接用浏览器打开） · [复现与指标口径](docs/evolution.md) · [三分钟展示提纲](docs/judging-brief.md)。
+
 <!-- Navigation uses ordinary links around local SVGs so GitHub renders the entire card as a link. -->
 <p align="center">
   <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-zh.svg" width="270" alt="快速开始：安装与可执行 API 示例"></a>

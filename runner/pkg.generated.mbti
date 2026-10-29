@@ -7,7 +7,7 @@ import {
 }
 
 // Values
-pub async fn infer(AsyncExperiment, @moon-statelens.VerificationPlan, algorithm? : @moon-statelens.Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> InferenceReport
+pub async fn infer(AsyncExperiment, @moon-statelens.VerificationPlan, algorithm? : @moon-statelens.Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : @moon-statelens.Machine, binary_cex? : Bool) -> InferenceReport
 
 pub async fn run_regression(AsyncExperiment, @moon-statelens.RegressionPlan, stability_rechecks? : Int) -> Json
 

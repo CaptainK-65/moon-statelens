@@ -1,0 +1,7 @@
+import {
+  "CaptainK-65/moon-statelens" @lens,
+  "CaptainK-65/moon-statelens/adapters/moonlimit" @limit,
+  "CaptainK-65/moon-statelens/adapters/moonlarder" @lru,
+}
+
+pkgtype(kind: "executable")

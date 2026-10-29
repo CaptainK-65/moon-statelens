@@ -1,0 +1,28 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+}
+
+///|
+async fn main {
+  @shell.Cmd("moon", [
+    "build", "examples/evolution", "--target", "js", "--release", "--deny-warn",
+  ])
+  .output()
+  .check()
+  let program = @fs.read_file(
+    "_build/js/release/build/examples/evolution/evolution.js",
+  ).text()
+  if !@fs.exists("docs/demo") {
+    @fs.mkdir("docs/demo", recursive=true)
+  }
+  let shell = @fs.read_file("examples/evolution/shell.html").text()
+  @fs.write_file(
+    "docs/demo/index.html",
+    shell.replace(old="/* MOONBIT_PROGRAM */", new=program),
+  )
+  println("Built self-contained browser demo from actual MoonBit executable")
+}

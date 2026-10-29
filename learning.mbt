@@ -50,6 +50,8 @@ pub fn learn_with(
   max_table_cells~ : Int32 = 1000000,
   max_table_symbols~ : Int32 = 4000000,
   max_prefixes~ : Int32 = 20000,
+  seed? : Machine,
+  binary_cex~ : Bool = false,
 ) -> LearningResult raise {
   let mut driver : LearningDriver? = None
   fn result(status) {
@@ -67,6 +69,8 @@ pub fn learn_with(
       max_table_cells~,
       max_table_symbols~,
       max_prefixes~,
+      seed?,
+      binary_cex~,
     )
     driver = Some(active)
     for ;; {

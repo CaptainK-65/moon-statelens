@@ -13,6 +13,7 @@ priv struct ActiveTree {
   nodes : Array[TreeNode]
   max_states : Int32
   max_prefixes : Int32
+  binary_cex : Bool
 }
 
 ///|
@@ -21,6 +22,7 @@ fn ActiveTree::new(
   metrics : ActiveMetrics,
   max_states : Int32,
   max_prefixes : Int32,
+  binary_cex : Bool,
 ) -> ActiveTree {
   metrics.accesses = 1
   metrics.nodes = 1
@@ -32,6 +34,7 @@ fn ActiveTree::new(
     nodes: [Leaf(0)],
     max_states,
     max_prefixes,
+    binary_cex,
   }
 }
 
@@ -122,7 +125,42 @@ fn ActiveTree::refine(
     let state = path[path.length() - 1]
     path.push(model.transitions[state][model.input_index(a)].target)
   }
-  self.find_split(word, path, 1, actual[actual.length() - 1])
+  if self.binary_cex {
+    self.binary_split(
+      word,
+      path,
+      0,
+      word.length() - 1,
+      actual[actual.length() - 1],
+    )
+  } else {
+    self.find_split(word, path, 1, actual[actual.length() - 1])
+  }
+}
+
+///|
+/// Unequal endpoint observations, not a monotonicity assumption. Each query
+/// retains an interval with unequal endpoints until an adjacent split remains.
+fn ActiveTree::binary_split(
+  self : ActiveTree,
+  word : Array[String],
+  path : Array[Int32],
+  low : Int32,
+  high : Int32,
+  lower_output : String,
+) -> Instruction raise {
+  if high == low + 1 {
+    return self.find_split(word, path, high, lower_output)
+  }
+  let middle = low + (high - low) / 2
+  Ask(self.accesses[path[middle]] + word[middle:].to_owned(), outputs => {
+    let observed = outputs[outputs.length() - 1]
+    if observed == lower_output {
+      self.binary_split(word, path, middle, high, observed)
+    } else {
+      self.binary_split(word, path, low, middle, lower_output)
+    }
+  })
 }
 
 ///|

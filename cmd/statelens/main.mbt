@@ -1,7 +1,7 @@
 ///|
 fn usage() -> String {
   let text =
-    #|MoonStateLens 0.3.0
+    #|MoonStateLens 0.4.0
     #|Usage: moon run cmd/statelens --target native -- COMMAND
     #|  demo session|regression|lru       Learn actual adapters and print evidence
     #|  learn MODEL.json STATE_BOUND     Learn a model-backed black box using W-method
@@ -37,7 +37,7 @@ async fn main {
   let args = @env.args()
   match args {
     [_] | [_, "--help"] | [_, "help"] => println(usage())
-    [_, "--version"] => println("0.3.0")
+    [_, "--version"] => println("0.4.0")
     [_, "validate-config", path] => validate_configuration(path, "run")
     [_, "validate-config", path, operation] =>
       validate_configuration(path, operation)
@@ -135,6 +135,7 @@ async fn main {
     [_, "export", "lru", path] =>
       write_new(path, lru_result().model.unwrap().encode() + "\n")
     [_, "benchmark"] => println(@study.query_study().stringify(indent=2))
+    [_, "study-v04"] => println(@study.evolution_study().stringify(indent=2))
     [_, "benchmark-algorithms"] =>
       println(@study.algorithm_study().stringify(indent=2))
     [_, "benchmark", path] =>

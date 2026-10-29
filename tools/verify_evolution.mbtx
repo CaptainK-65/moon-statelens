@@ -1,0 +1,81 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+  "moonbitlang/async@0.22.5/process",
+  "moonbitlang/core/env",
+  "moonbitlang/core/json",
+}
+
+///|
+async fn main {
+  let python = match @env.args() {
+    [_, path] => path
+    _ => "python"
+  }
+  let dir = "_build/evolution-check-" + @env.now().to_string()
+  @fs.mkdir(dir, recursive=true)
+  @shell.Cmd("moon", ["build", "--target", "native", "--deny-warn"])
+  .output(timeout_ms=120000)
+  .check()
+  let study = @shell.Cmd("moon", [
+    "run", "cmd/statelens", "--target", "native", "--", "study-v04",
+  ]).output(timeout_ms=120000)
+  study.check()
+  @fs.write_file(dir + "/study.json", study.stdout())
+  guard @json.parse(study.stdout()) is { "cases": Array(cases), .. } else {
+    fail("study")
+  }
+  let models = cases
+    .filter(c => c is { "guided": False, .. })
+    .map(c => {
+      guard c is { "target": model, .. } else { fail("target") }
+      model
+    })
+  @fs.write_file(
+    dir + "/request.json",
+    Json::object({ "models": Json(models) }).stringify(),
+  )
+  let input = @process.redirect_from_file(dir + "/request.json")
+  let (code, reference, errors) = @process.collect_output(
+    python,
+    ["reference/aalpy_backend.py"],
+    stdin=input,
+    no_console_window=true,
+  )
+  if code != 0 {
+    fail(errors.text())
+  }
+  @fs.write_file(dir + "/aalpy.json", reference.text())
+  guard reference.json() is { "models": Array(learned), .. } &&
+    learned.length() == models.length() else {
+    fail("reference count")
+  }
+  for i, model in models {
+    let left = dir + "/target-" + i.to_string() + ".json"
+    let right = dir + "/reference-" + i.to_string() + ".json"
+    @fs.write_file(left, model.stringify())
+    @fs.write_file(right, learned[i].stringify())
+    let result = @shell.Cmd("moon", [
+      "run", "cmd/statelens", "--target", "native", "--", "compare", left, right,
+    ]).output(timeout_ms=60000)
+    result.check()
+    guard @json.parse(result.stdout()) is { "difference": Null, .. } else {
+      fail("cross-implementation mismatch")
+    }
+  }
+  @fs.write_file(
+    dir + "/receipt.json",
+    Json::object({
+      "reference": Json("AALpy 2.0.0"),
+      "models": Json(models.length()),
+      "observable_equivalence": Json(true),
+      "scope": Json(
+        "independently learned explicit models, exact observable comparison; not a cross-language throughput claim",
+      ),
+    }).stringify(indent=2),
+  )
+  println("AALpy independent equivalence passed; evidence: " + dir)
+}

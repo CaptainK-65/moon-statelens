@@ -1,5 +1,7 @@
 # Sources and dependencies
 
+v0.4 uses `RunnerQuan/moonlimit@0.1.1` (Apache-2.0) as a real system under learning, through public APIs only. AALpy 2.0.0 (MIT), pydot 4.0.1 and pyparsing 3.3.3 are optional independent-reference test dependencies, not production inference dependencies; their source is not copied. The JSON reference backend is repository-authored. Browser JavaScript in docs/demo/index.html is generated from examples/evolution using the MoonBit compiler and embeds the MoonBit core/MoonLimit/MoonLarder code; their original licenses and notices apply. Run tools/build_evolution_demo.mbtx to rebuild. Rivest–Schapire-style counterexample decomposition and history-guided observation structure reuse are established techniques independently implemented here, not newly invented algorithms.
+
 MoonStateLens is an independent MoonBit implementation of published ideas in active automata learning. It does not embed or invoke LearnLib or AALpy, and no source files were copied from them.
 
 - Dana Angluin, *Learning regular sets from queries and counterexamples*, Information and Computation 75(2), 1987. DOI: https://doi.org/10.1016/0890-5401(87)90052-6. The original formalism is DFA; this project implements an output-suffix Mealy variant.

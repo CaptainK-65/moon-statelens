@@ -37,6 +37,8 @@ pub struct Config {
   priv budgets : RunBudgets
   priv expected_evidence : String
   priv artifacts : Map[String, String]
+  priv seed : @lens.Machine?
+  priv binary_cex : Bool
 }
 
 ///|
@@ -171,7 +173,7 @@ pub fn Config::from_json(value : Json) -> Config raise {
   let owned = @json.parse(value.stringify())
   let object = fields(owned, [
     "format", "version", "identity", "abstraction", "alphabet", "learner", "target",
-    "verification", "budgets", "expectations", "artifacts",
+    "verification", "budgets", "expectations", "artifacts", "history", "counterexample",
   ])
   if text(object, "format") != "moonstatelens.experiment" ||
     integer(object, "version", 0) != 1 {
@@ -189,6 +191,27 @@ pub fn Config::from_json(value : Json) -> Config raise {
     "lstar" => @lens.Algorithm::LStar
     "kv" => @lens.Algorithm::KearnsVazirani
     _ => raise @runner.Configuration("unknown learner")
+  }
+  let binary_cex = match text(object, "counterexample", default="linear") {
+    "linear" => false
+    "binary" => true
+    _ => raise @runner.Configuration("counterexample must be linear or binary")
+  }
+  let seed = match object.get("history") {
+    None => None
+    Some(value) => {
+      let history = fields(value, ["abstraction", "model"])
+      if text(history, "abstraction") != abstraction || algorithm != LStar {
+        raise @runner.Configuration(
+          "history requires matching abstraction and lstar",
+        )
+      }
+      let model = @lens.Machine::from_json(required(history, "model"))
+      if model.alphabet() != alphabet {
+        raise @runner.Configuration("history alphabet order mismatch")
+      }
+      Some(model)
+    }
   }
   let (kind, target) = parse_target(required(object, "target"), alphabet) catch {
     @runner.Configuration(message) =>
@@ -265,6 +288,8 @@ pub fn Config::from_json(value : Json) -> Config raise {
     budgets: budget,
     expected_evidence,
     artifacts,
+    seed,
+    binary_cex,
   }
 }
 
@@ -279,5 +304,9 @@ pub fn Config::manifest(self : Config) -> Json {
     "budgets": Json(self.budgets),
     "verification": self.verification_json,
     "expected_evidence": Json(self.expected_evidence),
+    "history_states": self.seed
+    .map(m => Json(m.state_count()))
+    .unwrap_or(Json::null()),
+    "counterexample": Json(if self.binary_cex { "binary" } else { "linear" }),
   })
 }

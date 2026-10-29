@@ -100,6 +100,8 @@ pub fn LearningDriver::new(
   max_table_cells~ : Int32 = 1000000,
   max_table_symbols~ : Int32 = 4000000,
   max_prefixes~ : Int32 = 20000,
+  seed? : Machine,
+  binary_cex~ : Bool = false,
 ) -> LearningDriver raise {
   validate_alphabet(alphabet)
   if max_states < 1 ||
@@ -119,12 +121,21 @@ pub fn LearningDriver::new(
     nodes: 0,
   }
   let instruction = match algorithm {
-    LStar =>
-      ActiveTable::new(
+    LStar => {
+      let table = ActiveTable::new(
         alphabet, metrics, max_states, max_table_cells, max_table_symbols, max_prefixes,
-      ).fill()
-    KearnsVazirani =>
-      ActiveTree::new(alphabet, metrics, max_states, max_prefixes).build()
+      )
+      if seed is Some(model) {
+        table.initialize_from(model)
+      }
+      table.fill()
+    }
+    KearnsVazirani => {
+      if seed is Some(_) {
+        raise InvalidArgument("historical model initialization requires LStar")
+      }
+      ActiveTree::new(alphabet, metrics, max_states, max_prefixes, binary_cex).build()
+    }
   }
   {
     algorithm,
