@@ -7,6 +7,8 @@ import {
 }
 
 // Values
+pub fn backward_compatibility(Machine, Machine, max_pairs? : Int) -> Json raise
+
 pub fn compare(Experiment, Experiment, Oracle, Oracle, max_states? : Int, max_refinements? : Int) -> CompatibilityResult raise
 
 pub fn confirm_difference(Experiment, Experiment, Array[String]) -> Difference? raise
@@ -21,7 +23,7 @@ pub fn evidence_html(Json) -> String
 
 pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
 
-pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool) -> LearningResult raise
+pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool, on_event? : (Json) -> Unit) -> LearningResult raise
 
 pub fn regression_junit(Json) -> String raise LensError
 

@@ -52,6 +52,7 @@ pub fn learn_with(
   max_prefixes~ : Int32 = 20000,
   seed? : Machine,
   binary_cex~ : Bool = false,
+  on_event~ : (Json) -> Unit = _ => (),
 ) -> LearningResult raise {
   let mut driver : LearningDriver? = None
   fn result(status) {
@@ -77,17 +78,58 @@ pub fn learn_with(
       match active.event(queries=experiment.statistics().queries) {
         Query(request) =>
           active.submit(request.id, experiment.query(request.inputs))
-        Hypothesis(model) =>
+        Hypothesis(model) => {
+          on_event(
+            Json::object({
+              "kind": Json("hypothesis"),
+              "model": Json(model),
+              "statistics": Json(experiment.statistics()),
+            }),
+          )
           match (oracle.check)(model, experiment) {
-            Counterexample(word) =>
-              active.refine(word, experiment.query(word, bypass_cache=true))
-            NoCounterexample(evidence) => return result(Supported(evidence))
-            Inconclusive(reason) => return result(Inconclusive(reason))
+            Counterexample(word) => {
+              let outputs = experiment.query(word, bypass_cache=true)
+              on_event(
+                Json::object({
+                  "kind": Json("counterexample"),
+                  "inputs": Json(word),
+                  "predicted": Json(model.trace(word)),
+                  "observed": Json(outputs),
+                  "statistics": Json(experiment.statistics()),
+                }),
+              )
+              active.refine(word, outputs)
+            }
+            NoCounterexample(evidence) => {
+              on_event(
+                Json::object({
+                  "kind": Json("verification"),
+                  "evidence": Json(evidence),
+                  "statistics": Json(experiment.statistics()),
+                }),
+              )
+              return result(Supported(evidence))
+            }
+            Inconclusive(reason) => {
+              on_event(
+                Json::object({
+                  "kind": Json("inconclusive"),
+                  "reason": Json(reason),
+                }),
+              )
+              return result(Inconclusive(reason))
+            }
           }
+        }
       }
     }
   } catch {
-    LimitExceeded(reason) => result(Inconclusive(reason))
+    LimitExceeded(reason) => {
+      on_event(
+        Json::object({ "kind": Json("inconclusive"), "reason": Json(reason) }),
+      )
+      result(Inconclusive(reason))
+    }
     InconsistentObservation(word~, expected~, actual~) =>
       result(Unstable(word~, expected~, actual~))
     error => raise error

@@ -1,5 +1,7 @@
 # MoonStateLens
 
+The source and hosted laboratory now include an evidence studio: paired model canvases, trace stepping, actual synchronous learning events, backward compatibility on old-input histories, and integrity-checked replayable experiment bundles. These source additions do not replace the frozen public release. See [the laboratory guide](docs/laboratory.md) for scope and reproduction.
+
 ![MoonStateLens: a precision lens reveals a hidden state network. Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.

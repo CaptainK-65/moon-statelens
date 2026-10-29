@@ -26,6 +26,25 @@ async fn main {
     @fs.mkdir("docs/demo", recursive=true)
   }
   let shell = @fs.read_file("examples/evolution/shell.html").text()
+  let revision = @shell.Cmd("git", ["rev-parse", "HEAD"])
+    .output()
+    .stdout()
+    .trim()
+    .to_owned()
+  let dirty = !@shell.Cmd("git", ["status", "--porcelain"])
+    .output()
+    .stdout()
+    .trim()
+    .is_empty()
+  let workbench = @fs.read_file("examples/evolution/workbench.html")
+    .text()
+    .replace(
+      old="/* BUILD_PROVENANCE */null",
+      new=Json::object({
+        "base_commit": Json(revision),
+        "working_tree_dirty": Json(dirty),
+      }).stringify(),
+    )
   let license = @fs.read_file("LICENSE")
     .text()
     .replace(old="&", new="&amp;")
@@ -34,6 +53,7 @@ async fn main {
   @fs.write_file(
     "docs/demo/index.html",
     shell
+    .replace(old="</main>", new=workbench + "</main>")
     .replace(old="<!-- APACHE_LICENSE -->", new=license)
     .replace(old="/* MOONBIT_PROGRAM */", new=program)
     .replace(old="/* LAB_PROGRAM */", new=lab),

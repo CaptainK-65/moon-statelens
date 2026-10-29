@@ -1,5 +1,11 @@
 # Changelog
 
+## Unreleased — directional compatibility and evidence studio
+
+- Add exact supplied-model backward compatibility on old-input histories, including explicit removed-operation and changed-behavior outcomes.
+- Add optional synchronous learning event callbacks for actual hypotheses, fresh counterexamples and verification outcomes.
+- Add side-by-side model canvases, trace stepping, event inspection and locally verified replayable experiment bundles. Checksums check content consistency, not authenticity.
+
 ## Unreleased — customizable browser laboratory
 
 - Add parameterized actual quota experiments with fresh version replay, explicit incomplete outcomes, worker cancellation and a browser time limit.

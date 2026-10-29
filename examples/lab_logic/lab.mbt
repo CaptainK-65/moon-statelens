@@ -33,6 +33,7 @@ pub fn execute(request : Json) -> Json raise {
         fail("capacities must be integers 1..6; query budget 1..100000")
       }
       let alphabet = ["acquire", "release"]
+      let events : Array[Json] = []
       let baseline = @lens.learn(
         @lens.Experiment::new(@limit.quota_system(a), alphabet, max_queries=q),
         @lens.Oracle::wp_method(a + 1),
@@ -55,6 +56,7 @@ pub fn execute(request : Json) -> Json raise {
         @lens.Oracle::wp_method(b + 1),
         LStar,
         seed~,
+        on_event=e => events.push(e),
       )
       let complete = cold.status is Supported(_) &&
         guided.status is Supported(_)
@@ -75,6 +77,7 @@ pub fn execute(request : Json) -> Json raise {
         "version": Json(1),
         "complete": Json(complete),
         "request": request,
+        "events": Json(events),
         "baseline": Json(baseline),
         "cold": Json(cold),
         "guided": Json(guided),
@@ -96,6 +99,19 @@ pub fn execute(request : Json) -> Json raise {
     { "mode": "models", "left": left, "right": right, .. } => {
       let l = bounded_model(left)
       let r = bounded_model(right)
+      let directional = match request {
+        { "directional": True, .. } => true
+        _ => false
+      }
+      if directional {
+        return Json::object({
+          "format": Json("moonstatelens.directional-analysis"),
+          "version": Json(1),
+          "left": Json(l),
+          "right": Json(r),
+          "analysis": @lens.backward_compatibility(l, r, max_pairs=16384),
+        })
+      }
       Json::object({
         "format": Json("moonstatelens.model-analysis"),
         "version": Json(1),
