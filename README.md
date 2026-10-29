@@ -2,15 +2,25 @@
 
 [![CI](https://github.com/CaptainK-65/moon-statelens/actions/workflows/ci.yml/badge.svg)](https://github.com/CaptainK-65/moon-statelens/actions/workflows/ci.yml) [![License: Apache-2.0](https://img.shields.io/badge/license-Apache--2.0-blue)](LICENSE)
 
-[English](README.en.md) · [Mooncakes](https://mooncakes.io/docs/CaptainK-65/moon-statelens) · [可执行快速开始](README.mbt.md) · [异步与真实组件接入](docs/native.md) · [算法说明](docs/algorithms.md) · [独立核心说明](docs/independent-core.md)
-
-[验收入口与功能对应表](docs/ACCEPTANCE.md) · [独立项目接入与 CI 范例](consumers/sqlite-gate/README.md) · [维护者原理说明](docs/maintainer-notes.md)
-
-[v0.3 行为规则、模型回归与多差异诊断](docs/behavior-validation.md)
-
 ![MoonStateLens：光学镜头揭示黑盒中的状态网络。Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
+
+<!-- Navigation uses ordinary links around local SVGs so GitHub renders the entire card as a link. -->
+<p align="center">
+  <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-zh.svg" width="270" alt="快速开始：安装与可执行 API 示例"></a>
+  <a href="docs/native.md"><img src="docs/assets/nav/adapters-zh.svg" width="270" alt="组件接入：异步 HTTP、JSONL 子进程与 SQLite"></a>
+  <a href="docs/behavior-validation.md"><img src="docs/assets/nav/behavior-zh.svg" width="270" alt="行为验证：规则、模型回归与多差异诊断"></a>
+  <a href="docs/algorithms.md"><img src="docs/assets/nav/algorithms-zh.svg" width="270" alt="算法与原理：L*、KV 与 W/Wp"></a>
+  <a href="docs/ACCEPTANCE.md"><img src="docs/assets/nav/acceptance-zh.svg" width="270" alt="验收与证据：功能对应、复现步骤与发布记录"></a>
+  <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-zh.svg" width="270" alt="工程集成：独立项目与 SQLite CI 门禁范例"></a>
+</p>
+<p align="center">
+  <a href="README.en.md"><img src="docs/assets/nav/english.svg" width="100" alt="Read in English"></a>
+  <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes 包文档"></a>
+  <a href="docs/independent-core.md"><img src="docs/assets/nav/core-zh.svg" width="132" alt="独立核心说明"></a>
+  <a href="docs/maintainer-notes.md"><img src="docs/assets/nav/maintainer-zh.svg" width="120" alt="维护者原理说明"></a>
+</p>
 
 MoonStateLens 是纯 MoonBit 编写的主动 Mealy 自动机学习内核。调用方提供有限操作集合与 `reset/step` 适配器，学习器主动设计实验，区分隐藏的可观察状态，通过反例修正模型，并生成可审查的状态图与回归轨迹。
 

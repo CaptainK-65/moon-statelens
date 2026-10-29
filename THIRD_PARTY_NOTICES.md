@@ -18,4 +18,6 @@ Generated .mbti interfaces are unmodified MoonBit compiler output. Generated mod
 
 The root LICENSE applies to this repository's distributed material; dependencies retain their own notices. Third-party libraries and the separately installed SQLite CLI retain their upstream terms. CI references external GitHub Actions by revision; their source is not redistributed as project algorithms.
 
+README navigation cards and utility buttons in `docs/assets/nav/` are repository-authored SVGs with original simple geometric icons. Regenerate them with `moon run tools/generate_readme_nav.mbtx`. Navigation is supplied by README anchor elements, with no remote badge generator, font, script or UI library dependency.
+
 v0.3 model-derived suite workflows were informed by the public [AutomataLib overview](https://learnlib.de/pages/automatalib) and [ALEX learning/testing documentation](https://learnlib.de/alex/book/contents/user-manual/learning/). Finite monitor product search, suite certificates, native execution, reports and fixed mutation corpora are repository-authored implementations of established techniques, not copied source. The HTML viewer contains authored CSS/JavaScript/SVG and has no external frontend or CDN dependency. No claim is made to invent W/Wp, safety monitors, prefix tries or generic replay/reduction.

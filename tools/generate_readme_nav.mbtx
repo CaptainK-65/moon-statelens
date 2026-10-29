@@ -1,0 +1,111 @@
+///|
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+}
+
+///|
+fn escape(text : String) -> String {
+  text
+  .replace(old="&", new="&amp;")
+  .replace(old="<", new="&lt;")
+  .replace(old=">", new="&gt;")
+}
+
+///|
+fn card(
+  category : String,
+  title : String,
+  description : String,
+  icon : String,
+) -> String {
+  (
+    $|<svg xmlns="http://www.w3.org/2000/svg" width="352" height="112" viewBox="0 0 352 112" role="img" aria-label="\{escape(title)}">
+    $|  <title>\{escape(title)} — \{escape(description)}</title>
+    $|  <defs><linearGradient id="surface" x2="1" y2="1"><stop stop-color="#111d2d"/><stop offset="1" stop-color="#112936"/></linearGradient></defs>
+    $|  <rect x="6" y="6" width="340" height="100" rx="14" fill="url(#surface)" stroke="#2d495a"/>
+    $|  <path d="M22 6h100" stroke="#75f5de" stroke-opacity=".55"/>
+    $|  <rect x="21" y="36" width="40" height="40" rx="11" fill="#153340" stroke="#2c5861"/>
+    $|  <g transform="translate(29 44)" fill="none" stroke="#83f4de" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">\{icon}</g>
+    $|  <g font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif">
+    $|    <text x="77" y="28" fill="#7ca3b8" font-size="9" letter-spacing="1.3">\{escape(category)}</text>
+    $|    <text x="77" y="52" fill="#eef6fc" font-size="19" font-weight="600">\{escape(title)}</text>
+    $|    <text x="77" y="76" fill="#a6becf" font-size="12">\{escape(description)}</text>
+    $|  </g>
+    $|  <path d="M311 25h12v12m-12 0 12-12" fill="none" stroke="#7ebbc8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    $|</svg>
+    $|
+  )
+}
+
+///|
+fn pill(title : String, width : Int32) -> String {
+  (
+    $|<svg xmlns="http://www.w3.org/2000/svg" width="\{width}" height="38" viewBox="0 0 \{width} 38" role="img" aria-label="\{escape(title)}">
+    $|  <title>\{escape(title)}</title>
+    $|  <rect x="3" y="3" width="\{width-6}" height="32" rx="9" fill="#121f2d" stroke="#304656"/>
+    $|  <circle cx="17" cy="19" r="2.5" fill="#73c9ca"/>
+    $|  <text x="29" y="23" font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#c3d4e2">\{escape(title)}</text>
+    $|</svg>
+    $|
+  )
+}
+
+///|
+/// Repository-authored vectors; README anchor wrappers provide navigation.
+async fn main {
+  let dir = "docs/assets/nav"
+  if !@fs.exists(dir) {
+    @fs.mkdir(dir, recursive=true)
+  }
+  let cards = [
+    (
+      "quickstart", "01 / GET STARTED", "快速开始", "安装 · 可执行 API 示例",
+      "Quick start", "Install · executable API examples", "<path d=\"m8 6-6 6 6 6m8-12 6 6-6 6m-3-15-2 18\"/>",
+    ),
+    (
+      "adapters", "02 / REAL COMPONENTS", "组件接入", "HTTP · JSONL · SQLite",
+      "Connect a component", "HTTP · JSONL · SQLite adapters", "<rect x=\"2\" y=\"2\" width=\"8\" height=\"7\" rx=\"2\"/><rect x=\"14\" y=\"15\" width=\"8\" height=\"7\" rx=\"2\"/><path d=\"M6 9v7a3 3 0 0 0 3 3h5M18 15V8a3 3 0 0 0-3-3h-5\"/>",
+    ),
+    (
+      "behavior", "03 / BEHAVIOR LAB", "行为验证", "规则 · 回归套件 · 多差异诊断",
+      "Validate behavior", "Rules · regression · diagnosis", "<circle cx=\"12\" cy=\"12\" r=\"9\"/><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"m12 12 8-8M12 1v3M23 12h-3M12 23v-3M1 12h3\"/>",
+    ),
+    (
+      "algorithms", "04 / UNDER THE HOOD", "算法与原理", "L* · KV · W / Wp",
+      "Learning architecture", "L* · KV · W / Wp", "<circle cx=\"5\" cy=\"5\" r=\"3\"/><circle cx=\"19\" cy=\"6\" r=\"3\"/><circle cx=\"12\" cy=\"19\" r=\"3\"/><path d=\"m8 5 8 1M6 8l5 8m7-7-5 7\"/>",
+    ),
+    (
+      "acceptance", "05 / EVIDENCE", "验收与证据", "功能对应 · 复现 · 发布记录",
+      "Acceptance & evidence", "Scope · reproduce · release records", "<path d=\"M14 2H5a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9zM14 2v7h7m-14 6 3 3 7-7\"/>",
+    ),
+    (
+      "integration", "06 / SHIP A GATE", "工程集成", "独立项目 · SQLite CI 门禁",
+      "CI integration", "Standalone SQLite regression gate", "<rect x=\"1\" y=\"2\" width=\"7\" height=\"6\" rx=\"1.5\"/><rect x=\"16\" y=\"16\" width=\"7\" height=\"6\" rx=\"1.5\"/><path d=\"M8 5h7a4 4 0 0 1 4 4v7M4 8v7a4 4 0 0 0 4 4h8m0-10 3 3 3-3\"/>",
+    ),
+  ]
+  for (id, category, zh, zh_description, en, en_description, icon) in cards {
+    @fs.write_file(
+      dir + "/" + id + "-zh.svg",
+      card(category, zh, zh_description, icon),
+    )
+    @fs.write_file(
+      dir + "/" + id + "-en.svg",
+      card(category, en, en_description, icon),
+    )
+  }
+  for
+    (id, label, width) in [
+      ("english", "English", 100),
+      ("chinese", "简体中文", 108),
+      ("mooncakes", "Mooncakes", 122),
+      ("core-zh", "独立核心说明", 132),
+      ("core-en", "Independent core", 150),
+      ("maintainer-zh", "维护者指南", 120),
+      ("maintainer-en", "Maintainer guide", 148),
+    ] {
+    @fs.write_file(dir + "/" + id + ".svg", pill(label, width))
+  }
+  println("Generated 12 navigation cards and 7 utility buttons")
+}
