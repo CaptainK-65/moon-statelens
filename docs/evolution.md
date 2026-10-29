@@ -1,5 +1,7 @@
 # v0.4：组件版本演进
 
+[浏览器实验室文件](demo/index.html) · [原始数据](evidence/v0.4.0/study.json) · [展示提纲](judging-brief.md) · [规则、回归套件与多差异诊断](behavior-validation.md)
+
 ## 可复现入口
 
 ```sh
