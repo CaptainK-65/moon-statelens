@@ -1,14 +1,24 @@
 # MoonStateLens
 
-[中文](README.md) · [Tested quick start](README.mbt.md) · [Architecture](docs/architecture.md)
-
-[Acceptance and proposal mapping](docs/ACCEPTANCE.md) · [Standalone consumer and CI](consumers/sqlite-gate/README.md) · [Maintainer explanation](docs/maintainer-notes.md)
-
-[v0.3 behavior rules, certified regression suites and multi-context diagnosis](docs/behavior-validation.md)
-
 ![MoonStateLens: a precision lens reveals a hidden state network. Learn hidden behavior. Replay the difference.](docs/assets/hero-v2.png)
 
 A MoonBit-native active Mealy learner that infers observable states through reset/step experiments and confirms behavioral regressions by replaying distinguishing words on both actual adapters.
+
+<!-- Keep navigation compatible with GitHub's Markdown renderer; no custom CSS or embedded SVG links. -->
+<p align="center">
+  <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-en.svg" width="270" alt="Quick start: installation and executable API examples"></a>
+  <a href="docs/native.md"><img src="docs/assets/nav/adapters-en.svg" width="270" alt="Connect a component: async HTTP, JSONL and SQLite"></a>
+  <a href="docs/behavior-validation.md"><img src="docs/assets/nav/behavior-en.svg" width="270" alt="Validate behavior: rules, regression suites and diagnosis"></a>
+  <a href="docs/architecture.md"><img src="docs/assets/nav/algorithms-en.svg" width="270" alt="Learning architecture: L*, KV and W/Wp"></a>
+  <a href="docs/ACCEPTANCE.md"><img src="docs/assets/nav/acceptance-en.svg" width="270" alt="Acceptance and evidence: scope, reproduction and releases"></a>
+  <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-en.svg" width="270" alt="CI integration: standalone SQLite regression gate"></a>
+</p>
+<p align="center">
+  <a href="README.md"><img src="docs/assets/nav/chinese.svg" width="108" alt="阅读简体中文版"></a>
+  <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes package documentation"></a>
+  <a href="docs/independent-core.md"><img src="docs/assets/nav/core-en.svg" width="150" alt="Independent core responsibilities"></a>
+  <a href="docs/maintainer-notes.md"><img src="docs/assets/nav/maintainer-en.svg" width="148" alt="Maintainer explanation"></a>
+</p>
 
 The root library supports wasm, wasm-gc, JS and native. Version 0.2 adds independent L* and KV learners, W/Wp and composed verification, resumable query execution, and native asynchronous HTTP, JSONL subprocess and real SQLite CLI adapters. Systems remain deterministic, resettable and finite under an explicit abstraction. See [native integration](docs/native.md) and [algorithm invariants](docs/algorithms.md).
 

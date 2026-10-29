@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="38" viewBox="0 0 100 38" role="img" aria-label="English">
+  <title>English</title>
+  <rect x="3" y="3" width="94" height="32" rx="9" fill="#121f2d" stroke="#304656"/>
+  <circle cx="17" cy="19" r="2.5" fill="#73c9ca"/>
+  <text x="29" y="23" font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#c3d4e2">English</text>
+</svg>
