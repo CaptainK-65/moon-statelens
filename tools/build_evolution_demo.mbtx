@@ -20,9 +20,16 @@ async fn main {
     @fs.mkdir("docs/demo", recursive=true)
   }
   let shell = @fs.read_file("examples/evolution/shell.html").text()
+  let license = @fs.read_file("LICENSE")
+    .text()
+    .replace(old="&", new="&amp;")
+    .replace(old="<", new="&lt;")
+    .replace(old=">", new="&gt;")
   @fs.write_file(
     "docs/demo/index.html",
-    shell.replace(old="/* MOONBIT_PROGRAM */", new=program),
+    shell
+    .replace(old="<!-- APACHE_LICENSE -->", new=license)
+    .replace(old="/* MOONBIT_PROGRAM */", new=program),
   )
   println("Built self-contained browser demo from actual MoonBit executable")
 }

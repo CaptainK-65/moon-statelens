@@ -100,6 +100,7 @@ async fn main {
       ("english", "English", 100),
       ("chinese", "简体中文", 108),
       ("mooncakes", "Mooncakes", 122),
+      ("live", "LIVE LAB", 116),
       ("core-zh", "独立核心说明", 132),
       ("core-en", "Independent core", 150),
       ("maintainer-zh", "维护者指南", 120),
@@ -107,5 +108,5 @@ async fn main {
     ] {
     @fs.write_file(dir + "/" + id + ".svg", pill(label, width))
   }
-  println("Generated 12 navigation cards and 7 utility buttons")
+  println("Generated 12 navigation cards and 8 utility buttons")
 }

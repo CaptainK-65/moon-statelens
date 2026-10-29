@@ -3,7 +3,8 @@
 <main><small>MoonBit 原生内核 · 实际公共组件 · 全部在浏览器本地执行</small><h1>MoonStateLens <strong>版本演进实验室</strong></h1><p>学习旧版配额行为，观察容量从 2 变为 3 后的模型更新和真实差异。下方按钮直接执行编译后的 MoonBit 程序；没有录制数据或远程服务。</p>
 <button id="run">运行完整学习实验</button><button id="json" disabled>下载 JSON 证据</button><button id="xml" disabled>下载 JUnit</button><p id="status">待运行。实验还会学习真实 MoonLimit 令牌桶和 MoonLarder 缓存。</p>
 <div id="metrics" class="grid"></div><section><h2>新旧组件的真实确认轨迹</h2><div id="trace"></div></section><section><h2>查看模型</h2><select id="which"><option value="baseline">旧版配额</option><option value="guided">历史引导的新版本</option><option value="token_bucket">令牌桶</option><option value="moonlarder">LRU 缓存</option></select><div id="model"></div></section><details><summary>完整执行结果</summary><pre id="raw"></pre></details>
-<p><small>配额容量改变是受控配置变更，不声称上游组件存在缺陷。限流实验按整周期推进虚拟时间，只观察准入结果；W/Wp 结论依赖明确的有限状态上界、确定性及可靠重置。此演示同步完成后呈现实际结果，不伪造逐帧进度。</small></p></main>
+<p><small>配额容量改变是受控配置变更，不声称上游组件存在缺陷。限流实验按整周期推进虚拟时间，只观察准入结果；W/Wp 结论依赖明确的有限状态上界、确定性及可靠重置。此演示同步完成后呈现实际结果，不伪造逐帧进度。</small></p>
+<details><summary>开源来源与许可证</summary><p>MoonStateLens 的 MoonBit 程序编译为本页 JavaScript，包含 MoonBit core、RunnerQuan/moonlimit 0.1.1 和 jhshuai/moonlarder 0.15.0；这些组件使用 Apache-2.0。独立参考 AALpy 不包含在本页。源码与完整来源说明位于 <a href="https://github.com/CaptainK-65/moon-statelens">GitHub 仓库</a>。</p><pre><!-- APACHE_LICENSE --></pre></details></main>
 <script>
 'use strict';let result;const $=id=>document.getElementById(id),node=(tag,text)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=String(text);return n};
 function download(text,name,type){const u=URL.createObjectURL(new Blob([text],{type})),a=node('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}

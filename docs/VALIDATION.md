@@ -60,6 +60,31 @@ code and can also run locally without a network connection.
 
 ## Distribution
 
-The source candidate is verified. Publication-source identification, uploaded
-archive digest and fresh public-package receipts will be recorded here after
-the 0.4.0 upload; the historical 0.3.0 records remain intact.
+[Publication-source main CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/40810486063)
+passed all eight jobs. It still selected public 0.3.0 compatibility; the post-upload
+checks below are the independent evidence for 0.4.0.
+
+Actual upload returned HTTP **200**, client exit **0**. Publication source is
+`b6c3cf3f0e231ef38fbe60de8b1dd9efdfcba9ee`, tree
+`559f2cc5b5751287c7e849da0c7a3e2916c5840d`. Only documentation/assets/evidence
+changed between the tested candidate and this frozen upload source.
+The actual uploaded ZIP contains 2,643,510 bytes; SHA-256 is
+`b7fd31da2fbb4a726786825794e65621ddf8f6ecfa5afe87eab53d6796558321`.
+
+After upload, **nine actual public-download checks passed**: legacy and evolution
+consumers on each of wasm/wasm-gc/JS/native, plus the independent actual SQLite
+gate. The [receipt](evidence/v0.4.0/public-verification.json) records a clean verifier
+checkout and every command exit. Public evolution consumers use the same committed
+test sources as source consumers and exercise actual quota/token/cache learning
+and fresh replay. The SQLite controlled mutation must confirm a difference.
+
+The [v0.4.0 release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.4.0)
+retains the actual uploaded ZIP and selected evidence beyond CI artifact retention.
+See the structured [publication record](evidence/v0.4.0/publication.json).
+Later evidence, CI-selector and browser-license documentation updates do not
+replace this package archive or frozen source. The historical 0.3.0 records remain intact.
+
+The [live browser laboratory](https://captaink-65.github.io/moon-statelens/demo/)
+was actually executed in Edge: 3/4 quota states, 83/54 resets and the freshly
+confirmed acquire/acquire/acquire difference. The offline HTML includes its
+third-party source attribution and Apache-2.0 text.

@@ -69,7 +69,7 @@ moon run cmd/statelens --target native -- compare-config configs/sqlite-kv.json 
 
 ## 验证正式发布包
 
-历史发布记录已保留。0.4.0 发布后，从仓库根目录执行：
+历史发布记录已保留。0.4.0 已发布且完成实际公共下载核验，从仓库根目录复现：
 
 ```sh
 moon run tools/verify_evolution_package.mbtx -- public wasm

@@ -1,0 +1,22 @@
+{
+  "version": "0.4.0",
+  "date": "2026-10-29",
+  "publication_source_commit": "b6c3cf3f0e231ef38fbe60de8b1dd9efdfcba9ee",
+  "publication_source_tree": "559f2cc5b5751287c7e849da0c7a3e2916c5840d",
+  "candidate_head": "0590fbade7cd0e8dcb45d32a896e9b12c65ed143",
+  "candidate_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40808040911",
+  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40810486063",
+  "registry_http_status": 200,
+  "publish_client_exit": 0,
+  "uploaded_zip_sha256": "b7fd31da2fbb4a726786825794e65621ddf8f6ecfa5afe87eab53d6796558321",
+  "uploaded_zip_bytes": 2643510,
+  "dry_run": {
+    "http_status": 202,
+    "client_exit": -1,
+    "scope": "service confirmed dry-run success; no upload"
+  },
+  "release": "https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.4.0",
+  "public_package": "https://mooncakes.io/docs/CaptainK-65/moon-statelens@0.4.0",
+  "public_receipt": "public-verification.json",
+  "scope": "frozen upload source; subsequent documentation/CI/demo-license updates do not replace this archive or source identifier"
+}

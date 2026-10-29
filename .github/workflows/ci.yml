@@ -8,14 +8,14 @@ on:
       published_version:
         description: Public package version to independently verify
         required: true
-        default: 0.3.0
+        default: 0.4.0
 permissions:
   contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 env:
-  PUBLISHED_VERSION: ${{ inputs.published_version || '0.3.0' }}
+  PUBLISHED_VERSION: ${{ inputs.published_version || '0.4.0' }}
 jobs:
   evolution-reference:
     runs-on: ubuntu-24.04
@@ -79,6 +79,8 @@ jobs:
             _build/v03-consumer-source-*/receipt.json
             _build/v03-consumer-source-*/commands.json
             _build/v03-consumer-source-*/*.log
+            _build/evolution-consumer-source-*/receipt.json
+            _build/evolution-consumer-source-*/output.log
           retention-days: 30
   published-consumer:
     timeout-minutes: 20
@@ -121,6 +123,14 @@ jobs:
             _build/v03-consumer-public-*/receipt.json
             _build/v03-consumer-public-*/commands.json
             _build/v03-consumer-public-*/*.log
+          retention-days: 30
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        if: always() && env.PUBLISHED_VERSION == '0.4.0'
+        with:
+          name: v04-public-${{ matrix.target }}
+          path: |
+            _build/evolution-consumer-public-*/receipt.json
+            _build/evolution-consumer-public-*/output.log
           retention-days: 30
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && matrix.target == 'native'

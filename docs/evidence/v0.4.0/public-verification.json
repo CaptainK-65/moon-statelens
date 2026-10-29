@@ -1,0 +1,106 @@
+{
+  "version": "0.4.0",
+  "verifier_commit": "b6c3cf3f0e231ef38fbe60de8b1dd9efdfcba9ee",
+  "working_tree_dirty": false,
+  "commands": [
+    {
+      "name": "legacy-wasm",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm",
+        "0.4.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "evolution-wasm",
+      "arguments": [
+        "run",
+        "tools/verify_evolution_package.mbtx",
+        "--",
+        "public",
+        "wasm"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-wasm-gc",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "wasm-gc",
+        "0.4.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "evolution-wasm-gc",
+      "arguments": [
+        "run",
+        "tools/verify_evolution_package.mbtx",
+        "--",
+        "public",
+        "wasm-gc"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-js",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "js",
+        "0.4.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "evolution-js",
+      "arguments": [
+        "run",
+        "tools/verify_evolution_package.mbtx",
+        "--",
+        "public",
+        "js"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "legacy-native",
+      "arguments": [
+        "run",
+        "tools/verify_published.mbtx",
+        "--",
+        "native",
+        "0.4.0"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "evolution-native",
+      "arguments": [
+        "run",
+        "tools/verify_evolution_package.mbtx",
+        "--",
+        "public",
+        "native"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "standalone-sqlite",
+      "arguments": [
+        "run",
+        "tools/verify_consumer.mbtx",
+        "--",
+        "0.4.0"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "scope": "actual fresh registry downloads, not source substitution"
+}
