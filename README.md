@@ -7,7 +7,12 @@
 **通过黑盒交互推导行为模型，再把版本差异回放到真实目标。**
 
 **v0.4 版本演进**：历史模型引导 L* 重新学习、二分 KV 反例处理，以及真实限流/配额组件案例。
-通过下方“行为验证”卡片进入版本演进说明，获取浏览器实验室、原始实验数据和三分钟展示提纲。
+
+<p align="center">
+  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/lab-banner-zh.svg" width="840" alt="点击进入在线版本演进实验室：无需安装，运行真实 MoonBit 学习与回放；配额案例重置次数 83→54，模型状态 3→4；支持 JSON/JUnit 下载"></a>
+</p>
+
+**点击上方卡片即可体验**：在浏览器中运行真实 MoonBit 程序，比较冷启动与历史模型引导学习，查看新旧配额、令牌桶和 LRU 缓存模型，并下载 JSON 证据与 JUnit 报告。配额容量从 2 调整为 3 的案例中，模型从 **3 状态变为 4 状态**，重置次数由 **83 降至 54**，并实际回放确认第三次申请的拒绝／允许差异。数字仅对应该演示场景。
 
 <!-- Navigation uses ordinary links around local SVGs so GitHub renders the entire card as a link. -->
 <p align="center">
@@ -19,7 +24,6 @@
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-zh.svg" width="270" alt="工程集成：独立项目与 SQLite CI 门禁范例"></a>
 </p>
 <p align="center">
-  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/live.svg" width="116" alt="在线实验室：直接运行真实 MoonBit 学习与回放"></a>
   <a href="README.en.md"><img src="docs/assets/nav/english.svg" width="100" alt="Read in English"></a>
   <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes 包文档"></a>
   <a href="docs/independent-core.md"><img src="docs/assets/nav/core-zh.svg" width="132" alt="独立核心说明"></a>

@@ -6,6 +6,12 @@ A MoonBit-native active Mealy learner that infers observable states through rese
 
 Version 0.4 adds history-guided L* relearning with fresh observations, optional binary KV counterexample decomposition, real MoonLimit targets and a browser demo running actual compiled MoonBit code. The fixed 20-pair evolution study records 61.02% median physical reset reduction including Wp verification; AALpy 2.0.0 independently learns and checks the same 20 targets. These finite measurements are not universal speed or adoption claims.
 
+<p align="center">
+  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/lab-banner-en.svg" width="840" alt="Open the live MoonBit laboratory: actual learning and replay, quota models with 3→4 states, 83→54 resets, JSON/JUnit downloads"></a>
+</p>
+
+**Click the card to try it without installing anything.** Run actual compiled MoonBit learning, compare cold and history-guided runs, inspect quota/token-bucket/LRU models, and download JSON evidence or JUnit. The controlled quota capacity change from 2 to 3 produces **3→4 observable states**, **83→54 resets**, and a freshly replayed rejected/allowed difference on the third acquisition. These counts describe this scenario only.
+
 <!-- Keep navigation compatible with GitHub's Markdown renderer; no custom CSS or embedded SVG links. -->
 <p align="center">
   <a href="README.mbt.md"><img src="docs/assets/nav/quickstart-en.svg" width="270" alt="Quick start: installation and executable API examples"></a>
@@ -16,7 +22,6 @@ Version 0.4 adds history-guided L* relearning with fresh observations, optional 
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-en.svg" width="270" alt="CI integration: standalone SQLite regression gate"></a>
 </p>
 <p align="center">
-  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/live.svg" width="116" alt="Live lab: actual MoonBit learning and replay in your browser"></a>
   <a href="README.md"><img src="docs/assets/nav/chinese.svg" width="108" alt="阅读简体中文版"></a>
   <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes package documentation"></a>
   <a href="docs/independent-core.md"><img src="docs/assets/nav/core-en.svg" width="150" alt="Independent core responsibilities"></a>

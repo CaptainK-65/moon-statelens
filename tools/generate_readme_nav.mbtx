@@ -53,6 +53,45 @@ fn pill(title : String, width : Int32) -> String {
 }
 
 ///|
+fn lab_banner(title : String, description : String, action : String) -> String {
+  (
+    $|<svg xmlns="http://www.w3.org/2000/svg" width="840" height="244" viewBox="0 0 840 244" role="img" aria-label="\{escape(title)}">
+    $|  <title>\{escape(title)} — \{escape(description)}</title>
+    $|  <defs>
+    $|    <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#101d30"/><stop offset="1" stop-color="#0d3038"/></linearGradient>
+    $|    <linearGradient id="accent"><stop stop-color="#80f6da"/><stop offset="1" stop-color="#75ceff"/></linearGradient>
+    $|    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse"><path d="M24 0H0v24" fill="none" stroke="#80d5e8" stroke-opacity=".045"/></pattern>
+    $|  </defs>
+    $|  <rect x="2" y="2" width="836" height="240" rx="18" fill="url(#surface)" stroke="#367684"/>
+    $|  <rect x="3" y="3" width="834" height="238" rx="17" fill="url(#grid)"/>
+    $|  <path d="M26 2h188" stroke="#80f6da" stroke-width="3"/>
+    $|  <g font-family="'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif">
+    $|    <circle cx="33" cy="32" r="4" fill="#80f6da"/>
+    $|    <text x="46" y="36" font-size="11" fill="#99e7e2" letter-spacing="1.8">LIVE LAB / MOONBIT IN YOUR BROWSER</text>
+    $|    <text x="28" y="87" font-size="30" font-weight="700" fill="#f1f8ff">\{escape(title)}</text>
+    $|    <text x="29" y="117" font-size="14" fill="#b5d2e0">\{escape(description)}</text>
+    $|    <text x="29" y="148" font-size="11" fill="#7eabba" letter-spacing=".7">MOONLIMIT + MOONLARDER · JSON / JUNIT</text>
+    $|    <rect x="28" y="176" width="285" height="42" rx="10" fill="url(#accent)"/>
+    $|    <path d="m44 189 12 8-12 8z" fill="#0c2833"/>
+    $|    <text x="69" y="203" font-size="15" font-weight="700" fill="#0c2833">\{escape(action)}</text>
+    $|    <path d="M285 192h10m-4-4 4 4-4 4" fill="none" stroke="#0c2833" stroke-width="1.5"/>
+    $|    <rect x="534" y="22" width="280" height="198" rx="14" fill="#0b1828" stroke="#2e5265"/>
+    $|    <text x="553" y="48" font-size="10" fill="#91bbc9" letter-spacing="1">REAL QUOTA CASE / CAPACITY 2 → 3</text>
+    $|    <path d="M674 66v73" stroke="#284653"/>
+    $|    <text x="553" y="103" font-size="36" fill="#ebf4ff" font-weight="700">83</text>
+    $|    <text x="695" y="103" font-size="36" fill="#80f6da" font-weight="700">54</text>
+    $|    <text x="553" y="126" font-size="10" fill="#94b0c4">COLD RESETS</text>
+    $|    <text x="695" y="126" font-size="10" fill="#94b0c4">GUIDED RESETS</text>
+    $|    <path d="M553 147h242" stroke="#284653"/>
+    $|    <text x="553" y="174" font-size="16" fill="#d7eef7">3 → 4 observable states</text>
+    $|    <text x="553" y="198" font-size="11" fill="#83c9d3">acquire × 3 → rejected / allowed</text>
+    $|  </g>
+    $|</svg>
+    $|
+  )
+}
+
+///|
 /// Repository-authored vectors; README anchor wrappers provide navigation.
 async fn main {
   let dir = "docs/assets/nav"
@@ -108,5 +147,21 @@ async fn main {
     ] {
     @fs.write_file(dir + "/" + id + ".svg", pill(label, width))
   }
-  println("Generated 12 navigation cards and 8 utility buttons")
+  @fs.write_file(
+    dir + "/lab-banner-zh.svg",
+    lab_banner(
+      "在线版本演进实验室", "无需安装，亲手运行模型学习、版本回放与证据导出。",
+      "点击进入 · 运行完整学习实验",
+    ),
+  )
+  @fs.write_file(
+    dir + "/lab-banner-en.svg",
+    lab_banner(
+      "Component evolution lab", "Run real MoonBit learning and replay. No installation.",
+      "Open the live laboratory",
+    ),
+  )
+  println(
+    "Generated 12 navigation cards, 8 utility buttons and 2 laboratory banners",
+  )
 }
