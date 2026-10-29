@@ -1,6 +1,6 @@
 # v0.4：组件版本演进
 
-[浏览器实验室文件](demo/index.html) · [原始数据](evidence/v0.4.0/study.json) · [展示提纲](judging-brief.md) · [规则、回归套件与多差异诊断](behavior-validation.md)
+[在线实验室](https://captaink-65.github.io/moon-statelens/demo/) · [离线实验文件](demo/index.html) · [原始数据](evidence/v0.4.0/ci/study.json) · [展示提纲](judging-brief.md) · [规则、回归套件与多差异诊断](behavior-validation.md)
 
 ## 可复现入口
 
@@ -20,6 +20,8 @@ moon run tools/build_evolution_demo.mbtx
 `learn_with(..., LStar, seed=old_model)` 将历史模型的访问序列（显式前缀闭包）
 和区分后缀作为初始实验结构。表的观察行从空开始，由新版目标逐条重新采集。
 输入集合及顺序必须一致。状态可以新增、消失或合并，旧输出不会成为新版证据。
+每个目标版本必须创建新的 `Experiment` / `AsyncExperiment`；不能跨版本复用旧会话的观察缓存。
+native 配置执行会为本次目标创建新会话。
 历史提示消耗正常的表、查询、步骤与输出预算；准备失败或预算不足不会认证模型。
 当前支持明确失败结果，未实现自动冷启动回退，也不序列化暂停闭包。
 已有 `learn` 和默认 `learn_with` 行为保留。

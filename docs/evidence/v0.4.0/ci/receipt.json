@@ -1,0 +1,6 @@
+{
+  "reference": "AALpy 2.0.0",
+  "models": 20,
+  "observable_equivalence": true,
+  "scope": "independently learned explicit models, exact observable comparison; not a cross-language throughput claim"
+}

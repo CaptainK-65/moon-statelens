@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="116" height="38" viewBox="0 0 116 38" role="img" aria-label="Live MoonBit lab">
+  <title>Live MoonBit lab</title>
+  <rect x="3" y="3" width="110" height="32" rx="9" fill="#123037" stroke="#3c8d91"/>
+  <path d="M15 14l8 5-8 5z" fill="#83ead9"/>
+  <text x="31" y="23" font-family="'Segoe UI',sans-serif" font-size="12" fill="#d5fff6">LIVE LAB</text>
+</svg>

@@ -1,6 +1,8 @@
-# MoonStateLens 最终验收入口（0.3.0）
+# MoonStateLens 最终验收入口（0.4.0）
 
 本索引对应已通过初审的多算法行为学习与真实组件兼容性验证方向。
+季度展示新增历史模型引导重学、KV 二分反例处理、MoonLimit 配额/令牌桶与独立 AALpy 对照。
+建议先阅读 [三分钟展示提纲](judging-brief.md) 和 [组件版本演进](evolution.md)。
 实际完成状态、冻结提交、CI 和发布证据见 [验证记录](VALIDATION.md)。
 历史申报书保留在 [APPLICATION.md](../APPLICATION.md)，不覆盖当时的承诺与记录。
 
@@ -23,6 +25,8 @@ moon run tools/verify_acceptance.mbtx
 _build/v0.2-evidence/ 和 _build/artifact-evidence/。
 v0.3 新功能和量化实验保存在 `_build/v0.3-evidence/`，独立候选源码消费者
 在四后端执行相同的已提交测试源。完整说明见 [行为验证](behavior-validation.md)。
+v0.4 演进对照保存在 `_build/evolution-check-*/`，新的真实组件消费者位于
+`_build/evolution-consumer-*/`；独立参考需要安装 AALpy 2.0.0，见演进指南。
 元数据记录启动时的提交与工作区是否干净；冻结验收应使用干净且执行期间不变的检出。
 GitHub Actions 保存日志/报告及可读摘要；归档有保留期限，正式发布另保留精选公开证据。
 
@@ -43,6 +47,10 @@ GitHub Actions 保存日志/报告及可读摘要；归档有保留期限，正�
 | 多上下文诊断 | diagnosis.mbt、integration/diagnosis.mbt | 可达模型乘积图；共同输入历史关联；逐一双方实际确认 |
 | HTML/JUnit 审查 | evidence_render.mbt、tools/verify_v03.mbtx | 离线筛选、逐步轨迹、模型图；不完整执行为门禁失败 |
 | 定量验证 | benchmarks/regression_study.mbt、scale_study.mbt | 60 个新增目标、64 状态、1,080 个不等价变异；固定语料与实际重置成本 |
+| 历史引导重学 | learning_seed.mbt、evolution_test.mbt、integration/evolution_test.mbt | 仅复用访问/区分结构；新版目标使用新会话采样；60 组结构变化正确性测试 |
+| 二分 KV 反例处理 | learning_tree.mbt、evolution_test.mbt | 可选二分定位；保持默认线性策略；端点不等不变量 |
+| 真实限流组件 | adapters/moonlimit/、examples/evolution/ | 公共 API 的配额和显式时间令牌桶抽象；配置变化不称为上游缺陷 |
+| 演进量化与独立对照 | benchmarks/evolution_study.mbt、reference/aalpy_backend.py、tools/verify_evolution.mbtx | 20 对有限变更；61.02% 重置中位数减少；20 个独立学习模型等价 |
 
 ## 最短真实组件演示
 
@@ -61,15 +69,15 @@ moon run cmd/statelens --target native -- compare-config configs/sqlite-kv.json 
 
 ## 验证正式发布包
 
-0.2.2 历史发布记录已保留。验证 0.3.0 正式包时，从仓库根目录执行：
+历史发布记录已保留。0.4.0 发布后，从仓库根目录执行：
 
 ```sh
-moon run tools/verify_v03_consumer.mbtx -- public wasm 0.3.0
-moon run tools/verify_v03_consumer.mbtx -- public wasm-gc 0.3.0
-moon run tools/verify_v03_consumer.mbtx -- public js 0.3.0
-moon run tools/verify_v03_consumer.mbtx -- public native 0.3.0
-moon run tools/verify_published.mbtx -- native 0.3.0
-moon run tools/verify_consumer.mbtx -- 0.3.0
+moon run tools/verify_evolution_package.mbtx -- public wasm
+moon run tools/verify_evolution_package.mbtx -- public wasm-gc
+moon run tools/verify_evolution_package.mbtx -- public js
+moon run tools/verify_evolution_package.mbtx -- public native
+moon run tools/verify_published.mbtx -- native 0.4.0
+moon run tools/verify_consumer.mbtx -- 0.4.0
 ```
 
 这些命令创建独立模块并下载公共包，不以当前检出替代包内容。

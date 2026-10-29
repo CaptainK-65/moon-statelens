@@ -1,0 +1,8 @@
+Total tests: 64, passed: 64, failed: 0. [wasm]
+Total tests: 64, passed: 64, failed: 0. [wasm-gc]
+Total tests: 64, passed: 64, failed: 0. [js]
+Total tests: 88, passed: 88, failed: 0. [native]
+/home/runner/work/moon-statelens/moon-statelens/.mooncakes/moonbitlang/async/src/internal/event_loop/thread_pool.c: In function ‘cancellation_signal_handler’:
+/home/runner/work/moon-statelens/moon-statelens/.mooncakes/moonbitlang/async/src/internal/event_loop/thread_pool.c:471:5: warning: ignoring return value of ‘write’ declared with attribute ‘warn_unused_result’ [-Wunused-result]
+  471 |     write(pool.notify_send, &data, sizeof(data));
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,6 @@
+{
+  "run": "https://github.com/CaptainK-65/moon-statelens/actions/runs/40808040911",
+  "candidate_head": "0590fbade7cd0e8dcb45d32a896e9b12c65ed143",
+  "actual_pr_checkout": "f6456ec46ab0aa58b0a02075cc3d16b953f93028",
+  "scope": "actual Ubuntu source acceptance and independent reference artifacts; all eight CI jobs passed; public jobs in this candidate checked legacy 0.3.0 only"
+}

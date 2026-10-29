@@ -16,6 +16,7 @@ Version 0.4 adds history-guided L* relearning with fresh observations, optional 
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-en.svg" width="270" alt="CI integration: standalone SQLite regression gate"></a>
 </p>
 <p align="center">
+  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/live.svg" width="116" alt="Live lab: actual MoonBit learning and replay in your browser"></a>
   <a href="README.md"><img src="docs/assets/nav/chinese.svg" width="108" alt="阅读简体中文版"></a>
   <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes package documentation"></a>
   <a href="docs/independent-core.md"><img src="docs/assets/nav/core-en.svg" width="150" alt="Independent core responsibilities"></a>
@@ -62,7 +63,7 @@ moon run cmd/statelens --target native -- run-config configs/sqlite-kv.json
 moon run tools/verify_native.mbtx
 ```
 
-CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.3.0`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
+CI pins compiler/core 0.10.15+943464bfa / moon 0.1.20261012. Native tests require SQLite on PATH and built fixture executables. Install the package with `moon add CaptainK-65/moon-statelens@0.4.0`, then import `"CaptainK-65/moon-statelens" @lens` in your package. Portable core-only tests can use the wasm backend.
 
 Version 0.2.2 adds offline target validation and persisted comparison/replay
 evidence. `validate-config CONFIG [run|compare|replay]` checks structure and

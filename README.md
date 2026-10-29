@@ -19,6 +19,7 @@
   <a href="consumers/sqlite-gate/README.md"><img src="docs/assets/nav/integration-zh.svg" width="270" alt="工程集成：独立项目与 SQLite CI 门禁范例"></a>
 </p>
 <p align="center">
+  <a href="https://captaink-65.github.io/moon-statelens/demo/"><img src="docs/assets/nav/live.svg" width="116" alt="在线实验室：直接运行真实 MoonBit 学习与回放"></a>
   <a href="README.en.md"><img src="docs/assets/nav/english.svg" width="100" alt="Read in English"></a>
   <a href="https://mooncakes.io/docs/CaptainK-65/moon-statelens"><img src="docs/assets/nav/mooncakes.svg" width="122" alt="Mooncakes 包文档"></a>
   <a href="docs/independent-core.md"><img src="docs/assets/nav/core-zh.svg" width="132" alt="独立核心说明"></a>
@@ -88,7 +89,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.3.0
+moon add CaptainK-65/moon-statelens@0.4.0
 ```
 
 消费包中加入：
