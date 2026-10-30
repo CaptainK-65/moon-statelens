@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.5.0 — Final acceptance release
+
+- Pin compiler/core 0.10.18+6c83a7f62 and moon 0.1.20261028; verify the compiler at the acceptance entry.
+- Include directional compatibility, synchronous learning evidence callbacks and the complete browser studio/bundle features developed after 0.4.0.
+- Add state-renumbering, pair-limit, actual counterexample-output and incomplete-event tests; test new public APIs in independent evolution consumers.
+- Run the existing 17 browser integration checks in headless CI and retain their DOM/logs. Migrate tool scripts to compiler-supported import frontmatter.
+
+The following entries describe development leading to 0.5.0; the immutable 0.4.0 publication remains archived.
+
 ## Unreleased — directional compatibility and evidence studio
 
 - Add exact supplied-model backward compatibility on old-input histories, including explicit removed-operation and changed-behavior outcomes.

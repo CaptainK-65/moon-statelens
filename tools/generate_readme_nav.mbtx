@@ -1,9 +1,10 @@
-///|
+----
 import {
   "moonbitlang/async@0.22.5",
   "moonbitlang/async@0.22.5/fs",
   "moonbitlang/async@0.22.5/io",
 }
+----
 
 ///|
 fn escape(text : String) -> String {

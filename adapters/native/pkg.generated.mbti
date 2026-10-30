@@ -6,9 +6,9 @@ import {
 }
 
 // Values
-pub fn http_system(String, HttpAction, Map[String, HttpAction], HttpAction, session_field? : String, session_header? : String, max_response_bytes? : Int) -> @runner.AsyncSystem raise
+pub fn http_system(String, HttpAction, Map[String, HttpAction], HttpAction, session_field? : String, session_header? : String, max_response_bytes? : Int32) -> @runner.AsyncSystem raise
 
-pub async fn[T] with_jsonl(String, Array[String], async (@runner.AsyncSystem) -> T, max_frame_bytes? : Int, max_stderr_bytes? : Int) -> T
+pub async fn[T] with_jsonl(String, Array[String], async (@runner.AsyncSystem) -> T, max_frame_bytes? : Int32, max_stderr_bytes? : Int32) -> T
 
 pub async fn[T] with_sqlite(String, async (@runner.AsyncSystem) -> T, rollback_as_commit? : Bool) -> T
 
@@ -20,7 +20,7 @@ pub(all) struct HttpAction {
   verb : String
   body : Json
   output_field : String
-  expect_status : Int
+  expect_status : Int32
 }
 
 // Type aliases

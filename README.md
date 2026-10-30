@@ -79,7 +79,7 @@ moon run examples/lru
 
 ## 快速验证
 
-验收工具链：MoonBit/compiler/core `0.10.15+943464bfa`，moon `0.1.20261012`，CI 固定该版本。native 集成测试需先构建夹具，并确保 `sqlite3` 位于 PATH；仅测试便携核心可用 `moon test --target wasm`。
+验收工具链：MoonBit/compiler/core `0.10.18+6c83a7f62`，moon `0.1.20261028`，CI 固定该版本。native 集成测试需先构建夹具，并确保 `sqlite3` 位于 PATH；仅测试便携核心可用 `moon test --target wasm`。
 
 ```sh
 git clone https://github.com/CaptainK-65/moon-statelens.git
@@ -95,7 +95,7 @@ moon run tools/verify_cli.mbtx
 安装发布包的方式：
 
 ```sh
-moon add CaptainK-65/moon-statelens@0.4.0
+moon add CaptainK-65/moon-statelens@0.5.0
 ```
 
 消费包中加入：

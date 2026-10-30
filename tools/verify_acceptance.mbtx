@@ -1,4 +1,4 @@
-///|
+----
 import {
   "moonbitlang/async@0.22.5",
   "moonbitlang/async@0.22.5/fs",
@@ -7,6 +7,7 @@ import {
   "moonbitlang/core/env",
   "moonbitlang/core/json",
 }
+----
 
 ///|
 /// Run from the source-module root. This validates source, not a public release.
@@ -53,6 +54,12 @@ async fn main {
   let commit = command("commit", "git", ["rev-parse", "HEAD"]).trim().to_owned()
   let status = command("working-tree", "git", ["status", "--porcelain"])
   let versions = command("toolchain", "moon", ["version", "--all"])
+  let compiler = command("compiler-minimum", "moonc", ["-v"])
+  if !compiler.contains("v0.10.18+") {
+    fail(
+      "final acceptance requires pinned moonc 0.10.18 (minimum contest version 0.10.16)",
+    )
+  }
   let sqlite = command("sqlite", "sqlite3", ["--version"]).trim().to_owned()
   let sanitized = versions
     .split("\n")

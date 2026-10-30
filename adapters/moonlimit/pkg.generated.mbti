@@ -6,7 +6,7 @@ import {
 }
 
 // Values
-pub fn quota_system(Int) -> @moon-statelens.System
+pub fn quota_system(Int32) -> @moon-statelens.System
 
 pub fn token_system() -> @moon-statelens.System
 

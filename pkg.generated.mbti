@@ -7,23 +7,23 @@ import {
 }
 
 // Values
-pub fn backward_compatibility(Machine, Machine, max_pairs? : Int) -> Json raise
+pub fn backward_compatibility(Machine, Machine, max_pairs? : Int32) -> Json raise
 
-pub fn compare(Experiment, Experiment, Oracle, Oracle, max_states? : Int, max_refinements? : Int) -> CompatibilityResult raise
+pub fn compare(Experiment, Experiment, Oracle, Oracle, max_states? : Int32, max_refinements? : Int32) -> CompatibilityResult raise
 
 pub fn confirm_difference(Experiment, Experiment, Array[String]) -> Difference? raise
 
-pub fn decode_model(String, max_code_units? : Int) -> Machine raise
+pub fn decode_model(String, max_code_units? : Int32) -> Machine raise
 
-pub fn diagnose_models(Machine, Machine, max_pairs? : Int, max_findings? : Int, max_edges? : Int) -> ModelDiagnosis raise LensError
+pub fn diagnose_models(Machine, Machine, max_pairs? : Int32, max_findings? : Int32, max_edges? : Int32) -> ModelDiagnosis raise LensError
 
-pub fn distinguish(Machine, Machine, max_pairs? : Int) -> Difference? raise LensError
+pub fn distinguish(Machine, Machine, max_pairs? : Int32) -> Difference? raise LensError
 
 pub fn evidence_html(Json) -> String
 
-pub fn learn(Experiment, Oracle, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int) -> LearningResult raise
+pub fn learn(Experiment, Oracle, max_states? : Int32, max_rounds? : Int32, max_table_cells? : Int32, max_table_symbols? : Int32, max_prefixes? : Int32) -> LearningResult raise
 
-pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool, on_event? : (Json) -> Unit) -> LearningResult raise
+pub fn learn_with(Experiment, Oracle, Algorithm, max_states? : Int32, max_rounds? : Int32, max_table_cells? : Int32, max_table_symbols? : Int32, max_prefixes? : Int32, seed? : Machine, binary_cex? : Bool, on_event? : (Json) -> Unit) -> LearningResult raise
 
 pub fn regression_junit(Json) -> String raise LensError
 
@@ -49,13 +49,13 @@ pub fn Algorithm::to_repr(Self) -> @debug.Repr
 pub struct BehaviorRule {
   // private fields
 }
-pub fn BehaviorRule::check_trace(Self, Array[String], Array[String]) -> Int? raise LensError
+pub fn BehaviorRule::check_trace(Self, Array[String], Array[String]) -> Int32? raise LensError
 pub fn BehaviorRule::finding(Self, RuleSearch, Array[String]?) -> Json raise
 pub fn BehaviorRule::from_json(Json) -> Self raise
 pub fn BehaviorRule::new(String, RuleEvent, kind? : String, trigger? : RuleEvent, release? : RuleEvent) -> Self raise LensError
-pub fn BehaviorRule::search(Self, Machine, max_pairs? : Int) -> RuleSearch raise LensError
+pub fn BehaviorRule::search(Self, Machine, max_pairs? : Int32) -> RuleSearch raise LensError
 pub fn BehaviorRule::to_json(Self) -> Json
-pub fn BehaviorRule::verify(Self, Machine, Experiment, max_pairs? : Int) -> Json raise
+pub fn BehaviorRule::verify(Self, Machine, Experiment, max_pairs? : Int32) -> Json raise
 pub impl ToJson for BehaviorRule
 
 pub(all) enum CheckResult {
@@ -71,7 +71,7 @@ pub(all) struct CompatibilityResult {
   right : LearningResult
   left_statistics : Statistics
   right_statistics : Statistics
-  refinements : Int
+  refinements : Int32
   spurious_inputs : Array[Array[String]]
 } derive(@debug.Debug)
 pub fn CompatibilityResult::to_json(Self) -> Json
@@ -99,19 +99,19 @@ pub fn Difference::to_json(Self) -> Json
 pub fn Difference::to_repr(Self) -> @debug.Repr
 
 pub(all) struct DriverMetrics {
-  states : Int
-  access_sequences : Int
-  discriminators : Int
-  table_cells : Int
-  table_symbols : Int
-  tree_nodes : Int
+  states : Int32
+  access_sequences : Int32
+  discriminators : Int32
+  table_cells : Int32
+  table_symbols : Int32
+  tree_nodes : Int32
 } derive(ToJson, @debug.Debug)
 pub fn DriverMetrics::to_json(Self) -> Json
 pub fn DriverMetrics::to_repr(Self) -> @debug.Repr
 
 pub(all) enum Evidence {
   ExactReference
-  ConditionalStateBound(Int)
+  ConditionalStateBound(Int32)
   Budgeted(String)
 } derive(@debug.Debug)
 pub fn Evidence::to_json(Self) -> Json
@@ -122,7 +122,7 @@ pub struct Experiment {
   // private fields
 }
 pub fn Experiment::alphabet(Self) -> Array[String]
-pub fn Experiment::new(System, Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, max_output_code_units? : Int, use_cache? : Bool, recheck_every? : Int) -> Self raise LensError
+pub fn Experiment::new(System, Array[String], max_queries? : Int32, max_steps? : Int32, max_word_length? : Int32, max_cache_nodes? : Int32, max_output_code_units? : Int32, use_cache? : Bool, recheck_every? : Int32) -> Self raise LensError
 pub fn Experiment::query(Self, Array[String], bypass_cache? : Bool) -> Array[String] raise
 pub fn Experiment::statistics(Self) -> Statistics
 
@@ -130,12 +130,12 @@ pub struct LearningDriver {
   // private fields
 }
 pub fn LearningDriver::algorithm(Self) -> Algorithm
-pub fn LearningDriver::event(Self, queries? : Int) -> LearningEvent raise LensError
+pub fn LearningDriver::event(Self, queries? : Int32) -> LearningEvent raise LensError
 pub fn LearningDriver::metrics(Self) -> DriverMetrics
-pub fn LearningDriver::new(Algorithm, Array[String], max_states? : Int, max_rounds? : Int, max_table_cells? : Int, max_table_symbols? : Int, max_prefixes? : Int, seed? : Machine, binary_cex? : Bool) -> Self raise
+pub fn LearningDriver::new(Algorithm, Array[String], max_states? : Int32, max_rounds? : Int32, max_table_cells? : Int32, max_table_symbols? : Int32, max_prefixes? : Int32, seed? : Machine, binary_cex? : Bool) -> Self raise
 pub fn LearningDriver::refine(Self, Array[String], Array[String]) -> Unit raise
 pub fn LearningDriver::result(Self, Statistics, LearningStatus) -> LearningResult
-pub fn LearningDriver::submit(Self, Int, Array[String]) -> Unit raise
+pub fn LearningDriver::submit(Self, Int32, Array[String]) -> Unit raise
 
 pub(all) enum LearningEvent {
   Query(QueryRequest)
@@ -155,14 +155,14 @@ pub fn LearningResult::to_repr(Self) -> @debug.Repr
 pub impl ToJson for LearningResult
 
 pub(all) struct LearningRound {
-  index : Int
-  states : Int
-  prefixes : Int
-  suffixes : Int
-  table_cells : Int
-  table_symbols : Int
-  queries : Int
-  counterexample_length : Int?
+  index : Int32
+  states : Int32
+  prefixes : Int32
+  suffixes : Int32
+  table_cells : Int32
+  table_symbols : Int32
+  queries : Int32
+  counterexample_length : Int32?
 } derive(ToJson, @debug.Debug)
 pub fn LearningRound::to_json(Self) -> Json
 pub fn LearningRound::to_repr(Self) -> @debug.Repr
@@ -179,31 +179,31 @@ pub impl ToJson for LearningStatus
 pub struct Machine {
   // private fields
 } derive(@debug.Debug)
-pub fn Machine::access_sequences(Self) -> Array[(Int, Array[String])]
+pub fn Machine::access_sequences(Self) -> Array[(Int32, Array[String])]
 pub fn Machine::alphabet(Self) -> Array[String]
-pub fn Machine::characterizing_set(Self, max_work? : Int) -> Array[Array[String]] raise LensError
-pub fn Machine::distinguish_states(Self, Int, Int) -> Array[String]? raise LensError
+pub fn Machine::characterizing_set(Self, max_work? : Int32) -> Array[Array[String]] raise LensError
+pub fn Machine::distinguish_states(Self, Int32, Int32) -> Array[String]? raise LensError
 pub fn Machine::encode(Self) -> String
 pub fn Machine::from_json(Json) -> Self raise
-pub fn Machine::initial_state(Self) -> Int
-pub fn Machine::minimize(Self, max_work? : Int) -> Self raise LensError
-pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int) -> Self raise LensError
-pub fn Machine::regression_suite(Self, profile? : String, state_bound? : Int, max_candidates? : Int, max_symbols? : Int, max_work? : Int) -> RegressionSuite raise
-pub fn Machine::state_count(Self) -> Int
+pub fn Machine::initial_state(Self) -> Int32
+pub fn Machine::minimize(Self, max_work? : Int32) -> Self raise LensError
+pub fn Machine::new(Array[String], Array[Array[Transition]], initial? : Int32) -> Self raise LensError
+pub fn Machine::regression_suite(Self, profile? : String, state_bound? : Int32, max_candidates? : Int32, max_symbols? : Int32, max_work? : Int32) -> RegressionSuite raise
+pub fn Machine::state_count(Self) -> Int32
 pub fn Machine::system(Self) -> System
 pub fn Machine::table(Self) -> Array[Array[Transition]]
 pub fn Machine::to_dot(Self) -> String
 pub fn Machine::to_json(Self) -> Json
 pub fn Machine::to_repr(Self) -> @debug.Repr
 pub fn Machine::trace(Self, Array[String]) -> Array[String] raise LensError
-pub fn Machine::trace_from(Self, Int, Array[String]) -> Array[String] raise LensError
+pub fn Machine::trace_from(Self, Int32, Array[String]) -> Array[String] raise LensError
 pub impl ToJson for Machine
 
 pub(all) struct ModelDiagnosis {
   differences : Array[Difference]
   complete : Bool
-  visited_pairs : Int
-  checked_edges : Int
+  visited_pairs : Int32
+  checked_edges : Int32
   reason : String?
 } derive(ToJson, @debug.Debug)
 pub fn ModelDiagnosis::to_json(Self) -> Json
@@ -213,17 +213,17 @@ pub struct Oracle {
   // private fields
 }
 pub fn Oracle::evaluate(Self, Machine, Experiment) -> CheckResult raise
-pub fn Oracle::exact(Machine, max_pairs? : Int) -> Self raise LensError
-pub fn Oracle::exhaustive(Int, max_tests? : Int) -> Self raise LensError
+pub fn Oracle::exact(Machine, max_pairs? : Int32) -> Self raise LensError
+pub fn Oracle::exhaustive(Int32, max_tests? : Int32) -> Self raise LensError
 pub fn Oracle::new((Machine, Experiment) -> CheckResult raise) -> Self
 pub fn Oracle::plan(VerificationPlan) -> Self raise LensError
-pub fn Oracle::random_words(seed? : UInt, max_length? : Int, tests? : Int) -> Self raise LensError
-pub fn Oracle::w_method(Int, max_tests? : Int, max_characterization_work? : Int) -> Self raise LensError
+pub fn Oracle::random_words(seed? : UInt32, max_length? : Int32, tests? : Int32) -> Self raise LensError
+pub fn Oracle::w_method(Int32, max_tests? : Int32, max_characterization_work? : Int32) -> Self raise LensError
 pub fn Oracle::with_regressions(Self, Array[Array[String]]) -> Self
-pub fn Oracle::wp_method(Int, max_tests? : Int, max_characterization_work? : Int) -> Self raise LensError
+pub fn Oracle::wp_method(Int32, max_tests? : Int32, max_characterization_work? : Int32) -> Self raise LensError
 
 pub(all) struct QueryRequest {
-  id : Int
+  id : Int32
   inputs : Array[String]
 } derive(@debug.Debug)
 pub fn QueryRequest::to_repr(Self) -> @debug.Repr
@@ -231,15 +231,15 @@ pub fn QueryRequest::to_repr(Self) -> @debug.Repr
 pub struct QuerySession {
   // private fields
 }
-pub fn QuerySession::abort(Self, Int) -> Unit
-pub fn QuerySession::accept_output(Self, Int, String) -> Unit raise LensError
+pub fn QuerySession::abort(Self, Int32) -> Unit
+pub fn QuerySession::accept_output(Self, Int32, String) -> Unit raise LensError
 pub fn QuerySession::alphabet(Self) -> Array[String]
-pub fn QuerySession::commit(Self, Int) -> Array[String] raise LensError
-pub fn QuerySession::new(Array[String], max_queries? : Int, max_steps? : Int, max_word_length? : Int, max_cache_nodes? : Int, max_output_code_units? : Int, use_cache? : Bool, recheck_every? : Int) -> Self raise LensError
-pub fn QuerySession::reset_started(Self, Int) -> Unit raise LensError
+pub fn QuerySession::commit(Self, Int32) -> Array[String] raise LensError
+pub fn QuerySession::new(Array[String], max_queries? : Int32, max_steps? : Int32, max_word_length? : Int32, max_cache_nodes? : Int32, max_output_code_units? : Int32, use_cache? : Bool, recheck_every? : Int32) -> Self raise LensError
+pub fn QuerySession::reset_started(Self, Int32) -> Unit raise LensError
 pub fn QuerySession::start(Self, Array[String], bypass_cache? : Bool) -> QueryStart raise LensError
 pub fn QuerySession::statistics(Self) -> Statistics
-pub fn QuerySession::step_started(Self, Int) -> Unit raise LensError
+pub fn QuerySession::step_started(Self, Int32) -> Unit raise LensError
 
 pub(all) enum QueryStart {
   Cached(Array[String])
@@ -270,8 +270,8 @@ pub struct RegressionPlan {
 }
 pub fn RegressionPlan::alphabet(Self) -> Array[String]
 pub fn RegressionPlan::certificate(Self) -> Json
-pub fn RegressionPlan::execution(Self, stability_rechecks? : Int) -> RegressionExecution raise
-pub fn RegressionPlan::run(Self, Experiment, stability_rechecks? : Int) -> Json raise
+pub fn RegressionPlan::execution(Self, stability_rechecks? : Int32) -> RegressionExecution raise
+pub fn RegressionPlan::run(Self, Experiment, stability_rechecks? : Int32) -> Json raise
 pub fn RegressionPlan::validate(Self) -> Bool raise
 pub fn RegressionPlan::words(Self) -> Array[Array[String]]
 
@@ -300,20 +300,20 @@ pub fn RuleEvent::to_repr(Self) -> @debug.Repr
 pub(all) struct RuleSearch {
   witness : Array[String]?
   search_complete : Bool
-  visited_pairs : Int
+  visited_pairs : Int32
   reason : String?
 } derive(ToJson, @debug.Debug)
 pub fn RuleSearch::to_json(Self) -> Json
 pub fn RuleSearch::to_repr(Self) -> @debug.Repr
 
 pub(all) struct Statistics {
-  queries : Int
-  cache_hits : Int
-  resets : Int
-  steps : Int
-  completed_queries : Int
-  cache_nodes : Int
-  output_code_units : Int
+  queries : Int32
+  cache_hits : Int32
+  resets : Int32
+  steps : Int32
+  completed_queries : Int32
+  cache_nodes : Int32
+  output_code_units : Int32
 } derive(ToJson, @debug.Debug)
 pub fn Statistics::to_json(Self) -> Json
 pub fn Statistics::to_repr(Self) -> @debug.Repr
@@ -324,7 +324,7 @@ pub struct System {
 pub fn System::new(reset~ : () -> Unit raise, step~ : (String) -> String raise, close? : () -> Unit raise) -> Self
 
 pub(all) struct Transition {
-  target : Int
+  target : Int32
   output : String
 } derive(Eq, ToJson, @debug.Debug, @json.FromJson)
 pub fn Transition::equal(Self, Self) -> Bool
@@ -339,7 +339,7 @@ pub struct VerificationCursor {
 pub fn VerificationCursor::event(Self) -> VerificationEvent raise LensError
 pub fn VerificationCursor::new(VerificationPlan, Machine) -> Self raise
 pub fn VerificationCursor::stages(Self) -> Array[VerificationStage]
-pub fn VerificationCursor::submit(Self, Int, Array[String]) -> Unit raise
+pub fn VerificationCursor::submit(Self, Int32, Array[String]) -> Unit raise
 
 pub(all) enum VerificationEvent {
   Query(QueryRequest)
@@ -349,10 +349,10 @@ pub fn VerificationEvent::to_repr(Self) -> @debug.Repr
 
 pub(all) enum VerificationPlan {
   Exact(Machine)
-  Exhaustive(depth~ : Int, max_tests~ : Int)
-  RandomWords(seed~ : UInt, max_length~ : Int, tests~ : Int)
-  WMethod(bound~ : Int, max_tests~ : Int, max_work~ : Int)
-  WpMethod(bound~ : Int, max_tests~ : Int, max_work~ : Int)
+  Exhaustive(depth~ : Int32, max_tests~ : Int32)
+  RandomWords(seed~ : UInt32, max_length~ : Int32, tests~ : Int32)
+  WMethod(bound~ : Int32, max_tests~ : Int32, max_work~ : Int32)
+  WpMethod(bound~ : Int32, max_tests~ : Int32, max_work~ : Int32)
   Replay(Array[Array[String]])
   Chain(Array[VerificationPlan])
 } derive(@debug.Debug)
@@ -360,7 +360,7 @@ pub fn VerificationPlan::to_repr(Self) -> @debug.Repr
 
 pub(all) struct VerificationStage {
   strategy : String
-  tests : Int
+  tests : Int32
   result : String
 } derive(ToJson, @debug.Debug)
 pub fn VerificationStage::to_json(Self) -> Json

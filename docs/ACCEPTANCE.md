@@ -1,4 +1,4 @@
-# MoonStateLens 最终验收入口（0.4.0）
+# MoonStateLens 最终验收入口（0.5.0）
 
 本索引对应已通过初审的多算法行为学习与真实组件兼容性验证方向。
 季度展示新增历史模型引导重学、KV 二分反例处理、MoonLimit 配额/令牌桶与独立 AALpy 对照。
@@ -8,8 +8,8 @@
 
 ## 从干净源码复现
 
-需要 Git、已验证的 MoonBit/compiler/core 0.10.15+943464bfa
-（moon 0.1.20261012）及位于 PATH 的 sqlite3。核心库的 wasm 验证不需要 SQLite。
+需要 Git、已验证的 MoonBit/compiler/core 0.10.18+6c83a7f62
+（moon 0.1.20261028）及位于 PATH 的 sqlite3。核心库的 wasm 验证不需要 SQLite。
 
 ```sh
 git clone https://github.com/CaptainK-65/moon-statelens.git

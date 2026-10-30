@@ -1,6 +1,7 @@
 ///|
 fn main raise {
   let alphabet = ["acquire", "release"]
+  let recorded : Array[Json] = []
   let baseline = @lens.learn(
     @lens.Experiment::new(@limit.quota_system(2), alphabet),
     @lens.Oracle::wp_method(3),
@@ -15,6 +16,7 @@ fn main raise {
     @lens.Oracle::wp_method(4),
     LStar,
     seed=baseline,
+    on_event=e => recorded.push(e),
   )
   let token = @lens.learn(
     @lens.Experiment::new(@limit.token_system(), ["request", "tick"]),
@@ -34,6 +36,11 @@ fn main raise {
     @lens.distinguish(cold.model.unwrap(), guided.model.unwrap()) is None,
   )
   let word = @lens.distinguish(baseline, guided.model.unwrap()).unwrap().inputs
+  assert_true(!recorded.is_empty())
+  assert_true(
+    @lens.backward_compatibility(baseline, baseline)
+    is { "status": "compatible-on-old-inputs", .. },
+  )
   let confirmation = @lens.confirm_difference(
     @lens.Experiment::new(@limit.quota_system(2), alphabet),
     @lens.Experiment::new(@limit.quota_system(3), alphabet),
@@ -43,6 +50,7 @@ fn main raise {
     Json::object({
       "format": Json("moonstatelens.evolution-demo"),
       "version": Json(1),
+      "new_api_acceptance": Json(true),
       "scope": Json(
         "actual MoonLimit/MoonLarder public APIs; quota configuration 2 to 3, not an upstream defect",
       ),

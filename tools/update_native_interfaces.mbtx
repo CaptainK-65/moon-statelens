@@ -1,10 +1,11 @@
-///|
+----
 import {
   "moonbitlang/async@0.22.5",
   "moonbitlang/async@0.22.5/fs",
   "moonbitlang/async@0.22.5/io",
   "moonbitlang/async@0.22.5/shell",
 }
+----
 
 ///|
 /// moon info keeps the module's wasm canonical backend. Native-only interfaces

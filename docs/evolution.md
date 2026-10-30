@@ -1,6 +1,6 @@
 # v0.4：组件版本演进
 
-[在线实验室](https://captaink-65.github.io/moon-statelens/demo/) · [离线实验文件](demo/index.html) · [原始数据](evidence/v0.4.0/ci/study.json) · [展示提纲](judging-brief.md) · [规则、回归套件与多差异诊断](behavior-validation.md)
+[在线实验室](https://captaink-65.github.io/moon-statelens/demo/) · [离线实验文件](demo/index.html) · [原始数据](evidence/v0.5.0/ci/study.json) · [展示提纲](judging-brief.md) · [规则、回归套件与多差异诊断](behavior-validation.md)
 
 ## 可复现入口
 

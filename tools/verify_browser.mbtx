@@ -1,0 +1,26 @@
+----
+import {
+  "moonbitlang/async@0.22.5",
+  "moonbitlang/async@0.22.5/fs",
+  "moonbitlang/async@0.22.5/io",
+  "moonbitlang/async@0.22.5/shell",
+}
+----
+
+///|
+async fn main {
+  @fs.mkdir("_build/browser-acceptance", recursive=true)
+  let uri = "file://" + @fs.realpath("examples/browser/lab.test.html")
+  let output = @shell.Cmd("google-chrome", [
+    "--headless", "--no-sandbox", "--disable-gpu", "--allow-file-access-from-files",
+    "--virtual-time-budget=30000", "--dump-dom", uri,
+  ]).output(timeout_ms=90000, max_output_bytes=8388608)
+  @fs.write_file("_build/browser-acceptance/result.html", output.stdout())
+  @fs.write_file("_build/browser-acceptance/stderr.log", output.stderr())
+  output.check()
+  if !output.stdout().contains("ALL 17 CHECKS PASSED") ||
+    !output.stdout().contains("<title>PASS laboratory</title>") {
+    fail("browser acceptance failed; inspect retained DOM")
+  }
+  println("Actual headless browser: all 17 integration checks passed")
+}

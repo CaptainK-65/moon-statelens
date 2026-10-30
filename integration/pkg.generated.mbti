@@ -9,11 +9,11 @@ import {
 // Values
 pub async fn check_rules(Config, Array[@moon-statelens.BehaviorRule]) -> RunResult
 
-pub async fn compare(Config, Config, max_refinements? : Int) -> RunResult
+pub async fn compare(Config, Config, max_refinements? : Int32) -> RunResult
 
-pub async fn diagnose(Config, Config, max_findings? : Int, max_pairs? : Int) -> RunResult
+pub async fn diagnose(Config, Config, max_findings? : Int32, max_pairs? : Int32) -> RunResult
 
-pub async fn regress(Config, @moon-statelens.RegressionSuite, compact? : Bool, stability_rechecks? : Int) -> RunResult
+pub async fn regress(Config, @moon-statelens.RegressionSuite, compact? : Bool, stability_rechecks? : Int32) -> RunResult
 
 pub async fn replay(Config, Array[Array[String]]) -> Json
 
@@ -30,27 +30,27 @@ pub fn Config::manifest(Self) -> Json
 pub fn Config::validate(Self, operation? : String) -> Json raise
 
 pub(all) struct RunBudgets {
-  queries : Int
-  steps : Int
-  word_length : Int
-  cache_nodes : Int
-  output_code_units : Int
-  states : Int
-  rounds : Int
-  table_cells : Int
-  table_symbols : Int
-  prefixes : Int
-  query_timeout_ms : Int
-  step_timeout_ms : Int
-  cleanup_timeout_ms : Int
-  run_timeout_ms : Int
+  queries : Int32
+  steps : Int32
+  word_length : Int32
+  cache_nodes : Int32
+  output_code_units : Int32
+  states : Int32
+  rounds : Int32
+  table_cells : Int32
+  table_symbols : Int32
+  prefixes : Int32
+  query_timeout_ms : Int32
+  step_timeout_ms : Int32
+  cleanup_timeout_ms : Int32
+  run_timeout_ms : Int32
 } derive(ToJson, @debug.Debug)
 pub fn RunBudgets::to_json(Self) -> Json
 pub fn RunBudgets::to_repr(Self) -> @debug.Repr
 
 pub(all) struct RunResult {
   report : Json
-  exit_code : Int
+  exit_code : Int32
 } derive(@debug.Debug)
 pub fn RunResult::to_repr(Self) -> @debug.Repr
 

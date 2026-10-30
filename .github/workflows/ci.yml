@@ -24,8 +24,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
       - uses: hustcer/setup-moonbit@7673f8c9e3725fdbe7a349d881ca07c22044d94d
         with:
-          version: 0.10.15+943464bfa
-          core-version: 0.10.15+943464bfa
+          version: 0.10.18+6c83a7f62
+          core-version: 0.10.18+6c83a7f62
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: moon update
@@ -33,6 +33,7 @@ jobs:
       - run: moon run tools/verify_evolution.mbtx
       - run: moon run tools/build_evolution_demo.mbtx
       - run: moon run tools/verify_lab_wizard.mbtx
+      - run: moon run tools/verify_browser.mbtx
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         if: always()
         with:
@@ -40,6 +41,7 @@ jobs:
           path: |
             _build/evolution-check-*/
             docs/demo/index.html
+            _build/browser-acceptance/
   validate:
     timeout-minutes: 25
     strategy:
@@ -51,8 +53,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: hustcer/setup-moonbit@7673f8c9e3725fdbe7a349d881ca07c22044d94d # v1.23
         with:
-          version: 0.10.15+943464bfa
-          core-version: 0.10.15+943464bfa
+          version: 0.10.18+6c83a7f62
+          core-version: 0.10.18+6c83a7f62
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Bootstrap registry before compiling standalone verification scripts
@@ -94,8 +96,8 @@ jobs:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
       - uses: hustcer/setup-moonbit@7673f8c9e3725fdbe7a349d881ca07c22044d94d # v1.23
         with:
-          version: 0.10.15+943464bfa
-          core-version: 0.10.15+943464bfa
+          version: 0.10.18+6c83a7f62
+          core-version: 0.10.18+6c83a7f62
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - run: moon update
@@ -114,7 +116,7 @@ jobs:
         if: env.PUBLISHED_VERSION == '0.3.0'
         run: moon run tools/verify_v03_consumer.mbtx -- public ${{ matrix.target }} 0.3.0
       - name: Verify actual public v0.4 evolution APIs and real components
-        if: env.PUBLISHED_VERSION == '0.4.0'
+        if: env.PUBLISHED_VERSION == '0.5.0'
         run: moon run tools/verify_evolution_package.mbtx -- public ${{ matrix.target }}
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: always() && env.PUBLISHED_VERSION == '0.3.0'
@@ -126,7 +128,7 @@ jobs:
             _build/v03-consumer-public-*/*.log
           retention-days: 30
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
-        if: always() && env.PUBLISHED_VERSION == '0.4.0'
+        if: always() && env.PUBLISHED_VERSION == '0.5.0'
         with:
           name: v04-public-${{ matrix.target }}
           path: |
