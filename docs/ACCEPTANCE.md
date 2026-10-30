@@ -87,15 +87,15 @@ moon run cmd/statelens --target native -- compare-config configs/sqlite-kv.json 
 
 ## 验证正式发布包
 
-历史发布记录已保留。0.4.0 已发布且完成实际公共下载核验，从仓库根目录复现：
+历史发布记录已保留。0.5.0 已发布且完成实际公共下载核验，从仓库根目录复现：
 
 ```sh
 moon run tools/verify_evolution_package.mbtx -- public wasm
 moon run tools/verify_evolution_package.mbtx -- public wasm-gc
 moon run tools/verify_evolution_package.mbtx -- public js
 moon run tools/verify_evolution_package.mbtx -- public native
-moon run tools/verify_published.mbtx -- native 0.4.0
-moon run tools/verify_consumer.mbtx -- 0.4.0
+moon run tools/verify_published.mbtx -- native 0.5.0
+moon run tools/verify_consumer.mbtx -- 0.5.0
 ```
 
 这些命令创建独立模块并下载公共包，不以当前检出替代包内容。

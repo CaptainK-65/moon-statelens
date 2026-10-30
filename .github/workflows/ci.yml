@@ -8,14 +8,14 @@ on:
       published_version:
         description: Public package version to independently verify
         required: true
-        default: 0.4.0
+        default: 0.5.0
 permissions:
   contents: read
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 env:
-  PUBLISHED_VERSION: ${{ inputs.published_version || '0.4.0' }}
+  PUBLISHED_VERSION: ${{ inputs.published_version || '0.5.0' }}
 jobs:
   evolution-reference:
     runs-on: ubuntu-24.04

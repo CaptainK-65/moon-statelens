@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><style>body{background:#101b2a;color:#8cf0d6;font:18px system-ui}iframe{width:100%;height:700px;border:1px solid #456}pre{white-space:pre-wrap}</style><title>PASS laboratory</title></head><body><h1>Laboratory browser integration checks</h1><pre id="checks">RUNNING
+PASS 1 custom real quota replay
+PASS 2 default observed reset counts
+PASS 3 equal-capacity experiment
+PASS 4 budget exhaustion cannot pass or download JUnit
+PASS 5 exact model analysis with scoped verdict
+PASS 6 equivalent supplied models
+PASS 7 invalid model clears old successful results
+PASS 8 wizard files use actual config artifact keys
+PASS 9 workflow retains evidence on failed gate
+PASS 10 uploaded report is inspection only
+PASS 11 malformed report clears stale download
+PASS 12 legacy quota token and LRU demo
+PASS 13 model canvas and actual hypothesis events
+PASS 14 experiment bundle contains replayable request
+PASS 15 bundle restore checks integrity without asserting authenticity
+PASS 16 modified bundle rejected and stale result cleared
+PASS 17 new operation preserves old-client compatibility
+ALL 17 CHECKS PASSED</pre><iframe src="../../docs/demo/index.html"></iframe><script>
+const f=document.querySelector('iframe'),log=document.querySelector('#checks');
+f.onload=async()=>{const w=f.contentWindow,d=w.document,$=id=>d.getElementById(id);let passed=0;const check=(ok,label)=>{if(!ok)throw Error(label);log.textContent+='\nPASS '+(++passed)+' '+label};const settle=async()=>{for(let i=0;i<1000;i++){if(!$('run').disabled)return;await new Promise(r=>setTimeout(r,20))}throw Error('worker timeout')};try{
+$('run').click();await settle();check($('verdict').textContent.includes('确认行为变化'),'custom real quota replay');check($('metrics').textContent.includes('83')&&$('metrics').textContent.includes('54'),'default observed reset counts');
+$('next').value=2;$('run').click();await settle();check($('verdict').textContent.includes('未发现配额'),'equal-capacity experiment');
+$('budget').value=1;$('run').click();await settle();check($('verdict').textContent.includes('未完成')&&$('xml').disabled,'budget exhaustion cannot pass or download JUnit');
+$('sample').click();$('compare').click();await settle();check($('verdict').textContent.includes('未连接真实组件')&&$('trace').textContent.includes('denied'),'exact model analysis with scoped verdict');
+$('right').value=$('left').value;$('compare').click();await settle();check($('verdict').textContent.includes('可观察等价'),'equivalent supplied models');
+$('left').value='{"format":"wrong"}';$('compare').click();await settle();check($('status').textContent.includes('执行失败')&&$('json').disabled,'invalid model clears old successful results');
+$('generate').click();const generated=w.wizard();check($('wizard-downloads').children.length===4&&generated.configs[0].artifacts.model.endsWith('/left/model.json'),'wizard files use actual config artifact keys');check(w.workflow().includes('if: always()')&&w.workflow().includes('compare-config'),'workflow retains evidence on failed gate');
+const transfer=new DataTransfer();transfer.items.add(new File(['{"format":"moonstatelens.learning","version":1,"status":{"kind":"inconclusive"}}'],'report.json',{type:'application/json'}));$('report-file').files=transfer.files;await $('report-file').onchange({target:$('report-file')});check($('status').textContent.includes('没有重新运行'),'uploaded report is inspection only');
+const invalid=new DataTransfer();invalid.items.add(new File(['bad json'],'broken.json'));$('report-file').files=invalid.files;await $('report-file').onchange({target:$('report-file')});check($('json').disabled&&$('report-status').textContent.includes('无法导入'),'malformed report clears stale download');
+$('preset').click();await settle();check($('which').options.length>=5&&$('metrics').textContent.includes('54'),'legacy quota token and LRU demo');
+$('budget').value=20000;$('next').value=3;$('run').click();await settle();check($('graph-old').querySelector('svg')&&$('event-list').children.length>=2,'model canvas and actual hypothesis events');
+let saved;const previousDownload=w.download;w.download=(text)=>saved=text;await $('bundle-save').onclick();w.download=previousDownload;check(JSON.parse(saved).payload.request.mode==='quota','experiment bundle contains replayable request');
+async function openBundle(text){const t=new DataTransfer();t.items.add(new File([text],'experiment.json'));$('bundle-open').files=t.files;await $('bundle-open').onchange({target:$('bundle-open')})}
+await openBundle(saved);check(!$('bundle-rerun').disabled&&$('wb-proof').textContent.includes('不认证'),'bundle restore checks integrity without asserting authenticity');const tampered=JSON.parse(saved);tampered.payload.request.old_capacity=6;await openBundle(JSON.stringify(tampered));check($('bundle-status').textContent.includes('不一致')&&$('bundle-save').disabled,'modified bundle rejected and stale result cleared');
+$('left').value=JSON.stringify({format:'moonstatelens.mealy',version:1,alphabet:['x'],initial:0,transitions:[[{target:0,output:'ok'}]]});$('right').value=JSON.stringify({format:'moonstatelens.mealy',version:1,alphabet:['new','x'],initial:0,transitions:[[{target:0,output:'extra'},{target:0,output:'ok'}]]});$('directional').checked=true;$('compare').click();await settle();check($('verdict').textContent.includes('旧操作历史兼容'),'new operation preserves old-client compatibility');
+log.textContent+='\nALL '+passed+' CHECKS PASSED';document.title='PASS laboratory';
+}catch(e){log.textContent+='\nFAIL '+e.stack;document.title='FAIL laboratory'}};
+</script>
+</body></html>

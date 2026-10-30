@@ -1,0 +1,17 @@
+{
+  "version": "0.5.0",
+  "date": "2026-10-30 Asia/Shanghai",
+  "source_commit": "1eaabb1aa0859c581335b56291f598337fb1abb8",
+  "source_tree": "cec477fb01bbd0eac5f12fe21c8e2b3a70b8ce60",
+  "source_ci": "https://github.com/CaptainK-65/moon-statelens/actions/runs/41007457007",
+  "moonc": "0.10.18+6c83a7f62",
+  "moon": "0.1.20261028",
+  "registry_status": 200,
+  "publish_client_exit": 0,
+  "dry_run_status": 202,
+  "dry_run_client_exit": 0,
+  "archive_bytes": 2780355,
+  "archive_sha256": "5cdf408a85b8bad7a53991e6f2eca7ec85302c8069d5ffc06e453f7d0b1cbfbb",
+  "public_checks": 9,
+  "scope": "frozen actual registry archive; later evidence/CI-selector documentation does not replace the upload"
+}

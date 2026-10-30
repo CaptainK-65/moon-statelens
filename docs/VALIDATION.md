@@ -49,3 +49,11 @@ Synchronous learning event callbacks are not async-runner tracing or resumable c
 Release candidate 0.5.0. Actual upload, immutable source, archive digest and public
 download verification will be recorded here after publication. The existing 0.4.0
 release/package is not replaced or retagged.
+
+## Final publication and retained receipts
+
+All eight source CI jobs passed on the clean frozen source `1eaabb1aa0859c581335b56291f598337fb1abb8`: [CI](https://github.com/CaptainK-65/moon-statelens/actions/runs/41007457007). This includes actual headless browser execution of all 17 checks and the independent AALpy reference. CI pre-publication public jobs explicitly selected 0.4.0.
+
+Actual 0.5.0 registry upload returned HTTP 200/client exit 0. Nine post-upload public-download checks then passed: legacy and new evolution consumers on all four backends, plus the independent SQLite gate. The new consumers actually exercise directional compatibility and learning event callbacks. [Public receipt](evidence/v0.5.0/public-verification.json), [publication metadata](evidence/v0.5.0/publication.json), [clean environment](evidence/v0.5.0/ci/environment.json), [test log](evidence/v0.5.0/ci/test.log), [browser result](evidence/v0.5.0/ci/browser.html).
+
+Archive: 2,780,355 bytes, SHA-256 `5cdf408a85b8bad7a53991e6f2eca7ec85302c8069d5ffc06e453f7d0b1cbfbb`. The [v0.5.0 release](https://github.com/CaptainK-65/moon-statelens/releases/tag/v0.5.0) retains the actual upload and selected evidence. Current installation: `moon add CaptainK-65/moon-statelens@0.5.0`. Later evidence and CI-selector commits do not replace the frozen source/archive. The hosted laboratory artifact here is the actual clean-source CI output.
