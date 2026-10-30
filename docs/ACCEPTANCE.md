@@ -1,5 +1,23 @@
 # MoonStateLens 最终验收入口（0.5.0）
 
+## 九项要求对应表
+
+| 验收要求 | 项目入口与证据 |
+| --- | --- |
+| MoonBit 为主，moonc ≥0.10.16 | 根目录学习/验证内核、runner 与 adapters；固定 compiler/core 0.10.18+6c83a7f62，验收入口检查版本 |
+| 公开仓库与提交历史 | GitHub 公开 main、真实提交/Issues/PR/CHANGELOG；旧版本与历史证据保留 |
+| 结构与核心功能 | 根目录算法，adapters 目标接入，runner 异步，integration 配置，examples 示例，tools 验收 |
+| README 与可复现说明 | README.md / README.en.md / README.mbt.md；本页统一入口和预期退出码 |
+| CI 检查/构建/测试 | 三系统源码验收、四后端消费者、独立参考和真实 headless 浏览器联测 |
+| 可运行示例 | `moon run examples/session`；真实组件 `examples/evolution`；在线实验室 |
+| 核心路径测试 | 四后端命名测试、真实 SQLite/HTTP/JSONL、模型生成与突变、事件和预算边界、17 项网页联测 |
+| Mooncakes 发布 | 最终版本发布及公共下载回执见 VALIDATION.md；源码检查与发布检查分别记录 |
+| OSI 许可证和来源 | LICENSE 为 Apache-2.0；THIRD_PARTY_NOTICES.md、离线实验室内的许可证与来源声明 |
+
+先执行 `moon version --all` 核对版本；当前验收固定 0.10.18，而非系统 PATH 中可能存在的旧版本。
+不安装 SQLite 的最短示例：`moon update` 后 `moon run examples/session`，预期输出会话学习模型及条件验证结果。
+完整组件和正式包检查需要 sqlite3 位于 PATH。最终发布版本及实测回执以验证记录为准。
+
 本索引对应已通过初审的多算法行为学习与真实组件兼容性验证方向。
 季度展示新增历史模型引导重学、KV 二分反例处理、MoonLimit 配额/令牌桶与独立 AALpy 对照。
 建议先阅读 [三分钟展示提纲](judging-brief.md) 和 [组件版本演进](evolution.md)。
