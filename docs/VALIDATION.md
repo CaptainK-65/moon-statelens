@@ -46,9 +46,7 @@ Synchronous learning event callbacks are not async-runner tracing or resumable c
 
 ## Publication status
 
-Release candidate 0.5.0. Actual upload, immutable source, archive digest and public
-download verification will be recorded here after publication. The existing 0.4.0
-release/package is not replaced or retagged.
+Version 0.5.0 is published and public-download verified. The immutable source, archive digest and receipts are recorded below. Historical 0.4.0 remains unchanged.
 
 ## Final publication and retained receipts
 

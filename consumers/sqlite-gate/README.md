@@ -1,3 +1,5 @@
+本目录保留历史固定版本的独立接入基线，用于兼容性复现。最终验收 0.5.0 的安装与实际公共下载回执见仓库 docs/ACCEPTANCE.md 和 docs/VALIDATION.md；根目录验证工具会按显式版本创建新的独立消费者。
+
 # Standalone SQLite compatibility gate
 
 This is a separate MoonBit module. Copy this directory into your own repository;
