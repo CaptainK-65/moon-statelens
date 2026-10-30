@@ -39,4 +39,79 @@ async fn main {
   if target != "native" {
     @fs.write_file(
       consumer + "/moon.pkg",
-      "
+      "import {\n  \"CaptainK-65/moon-statelens\" @lens,\n}\n\npkgtype(kind: \"executable\")\n",
+    )
+    @fs.write_file(
+      consumer + "/main.mbt",
+      "///|\nfn main raise {\n  verify_core()\n}\n",
+    )
+  }
+  let commands = []
+  async fn run(args : Array[String], cwd : String) -> String {
+    let result = @shell.Cmd("moon", args, cwd~).output(
+      timeout_ms=180000,
+      max_output_bytes=8388608,
+    )
+    commands.push(
+      Json::object({
+        "arguments": Json(args),
+        "exit_code": Json(result.exit_code()),
+      }),
+    )
+    @fs.write_file(dir + "/commands.json", Json(commands).stringify(indent=2))
+    @fs.write_file(
+      dir + "/stage-" + commands.length().to_string() + ".log",
+      result.stdout() + result.stderr(),
+    )
+    if result.exit_code() != 0 {
+      fail("v0.3 consumer failed; see " + dir + ": " + result.stderr())
+    }
+    result.stdout()
+  }
+  if mode == "source" {
+    @fs.write_file(
+      dir + "/moon.work",
+      "members = [\n  " +
+      Json(root).stringify() +
+      ",\n  " +
+      Json(@fs.realpath(consumer)).stringify() +
+      ",\n]\n",
+    )
+  }
+  ignore(run(["update"], consumer))
+  ignore(run(["fmt", "--check"], consumer))
+  let output = run(["run", ".", "--target", target, "--deny-warn"], consumer)
+  if !output.contains("v0.3 core consumer ok") ||
+    (target == "native" && !output.contains("v0.3 native consumer ok")) {
+    fail("consumer did not finish")
+  }
+  if mode == "public" {
+    let installed = @fs.read_file(
+      consumer + "/.mooncakes/CaptainK-65/moon-statelens/moon.mod",
+    ).text()
+    if !installed.contains("version = \"" + version + "\"") {
+      fail("unexpected public version")
+    }
+  }
+  @fs.write_file(
+    dir + "/receipt.json",
+    Json::object({
+      "mode": Json(mode),
+      "target": Json(target),
+      "version": Json(version),
+      "scope": Json(
+        if mode == "public" {
+          "actual registry download; new core/native APIs"
+        } else {
+          "candidate source workspace; not publication evidence"
+        },
+      ),
+      "passed": Json(true),
+      "commands": Json(commands),
+    }).stringify(indent=2) +
+    "\n",
+  )
+  println(
+    "v0.3 " + mode + " consumer verified on " + target + "; receipt: " + dir,
+  )
+}
